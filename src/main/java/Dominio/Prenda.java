@@ -3,7 +3,8 @@ package Dominio;
 public class Prenda {
 	private TipoPrenda tipoPrenda;
 	private Material material; //TODO que sea consistente
-	private String color; //TOTDO pensar, no creo que sea una buena idea
+	private Color colorPrimario;
+	private Color colorSecundario;
 	
 	
 	public Prenda(TipoPrenda tipoPrenda, Categoria categoria, Material material){
