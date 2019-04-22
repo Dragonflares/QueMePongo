@@ -1,8 +1,19 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>proyecto</groupId>
-  <artifactId>proyecto</artifactId>
+  <groupId>pruebaTp</groupId>
+  <artifactId>pruebaTp</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+
+  <dependencies>
+
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+      </dependency>
+
+   </dependencies>
+
   <build>
     <plugins>
       <plugin>
@@ -15,18 +26,4 @@
       </plugin>
     </plugins>
   </build>
-
-<dependencies>
-
-      <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.12</version>
-      </dependency>
-
-   </dependencies>
-
-
-
-
 </project>
