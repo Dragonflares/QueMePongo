@@ -21,7 +21,7 @@ public class Prenda {
 		return this.tipoPrenda;
 	}
 
-	public Categoria getCategoria() { //TODO que sea consistente
+	public Categoria getCategoria() { 
 		return this.tipoPrenda.getCategoria();
 	} 
 }

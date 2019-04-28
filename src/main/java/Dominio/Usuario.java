@@ -30,7 +30,5 @@ public class Usuario {
 		this.guardarropas.add(guardarropa);
 	}
 	
-	public int cuantasPrendasTiene(int indice) {
-		return this.guardarropas.get(indice).cuantasPrendas();
-	}
+	
 }
