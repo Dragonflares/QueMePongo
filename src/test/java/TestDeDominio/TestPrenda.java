@@ -8,7 +8,7 @@ import Dominio.Color;
 import Dominio.Material;
 import Dominio.Prenda;
 import Dominio.TipoPrenda;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class TestPrenda {
 	

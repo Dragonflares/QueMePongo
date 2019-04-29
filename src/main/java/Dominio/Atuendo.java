@@ -1,15 +1,15 @@
 package Dominio;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Atuendo {
-	private List<Prenda> prendas;
+	private List<Prenda> prendas = new ArrayList<Prenda>();
 	
 	public Atuendo(List<Prenda> prendas) {
 		
-		if(this.sonDeDistintoTipo()) {
 			this.prendas = prendas;
-		}
 		
 	}
 	
@@ -19,15 +19,15 @@ public class Atuendo {
 		prendas.add(prenda);
 	}
 	
-	public boolean sonDeDistintoTipo() {
+	public boolean sonDeDistintoTipo(List<Prenda> prendas) {
 		
 		int i;
 		for(i= 0; i<prendas.size(); i++) {
 			
 			Prenda prendaActual = prendas.get(i);
-			prendas.stream().filter(p -> (sonIgualTipo(prendaActual, p) && p != prendaActual));
+			List<Prenda> listaVacia = prendas.stream().filter(p -> (sonIgualTipo(prendaActual, p) && p != prendaActual)).collect(Collectors.toList());
 			
-			if(!prendas.isEmpty()) {
+			if(!listaVacia.isEmpty()) {
 				return true;
 			}
 		}
@@ -39,5 +39,9 @@ public class Atuendo {
 	
 	public boolean sonIgualTipo(Prenda prenda1, Prenda prenda2) {
 		return prenda1.getTipoPrenda().equals(prenda2.getTipoPrenda());
+	}
+	
+	public List<Prenda> getPrendas() {
+		return this.prendas;
 	}
 }

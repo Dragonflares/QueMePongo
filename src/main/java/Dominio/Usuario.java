@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Usuario {
 	private String username;
-	private List<Guardarropa> guardarropas;
+	public List<Guardarropa> guardarropas;
 	
 	public Usuario(String username){
 		this.username = username;
@@ -27,6 +27,10 @@ public class Usuario {
 	}
 	
 	private void inicializarGuardarropa(Guardarropa guardarropa) {
+		this.guardarropas.add(guardarropa);
+	}
+	
+	public void agregarGuardarropa(Guardarropa guardarropa) {
 		this.guardarropas.add(guardarropa);
 	}
 	
