@@ -34,5 +34,10 @@ public class Usuario {
 		this.guardarropas.add(guardarropa);
 	}
 	
+	private void agregarPrendaAGuardarropa(Guardarropa guardarropa, Prenda prenda)
+	{
+		guardarropa.agregarPrenda(prenda);
+	}
+	
 	
 }

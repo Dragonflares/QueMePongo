@@ -17,6 +17,33 @@ public class Guardarropa {
 		this.accesorios = accesorios;
 	}
 	
+	public void agregarPrenda(Prenda prenda) {
+		switch(prenda.getTipoPrenda().getCategoria())
+		{
+		case CALZADO:
+		{
+			calzados.add(prenda);
+			break;
+		}
+		case PARTE_SUPERIOR:
+		{
+			prendasSuperiores.add(prenda);
+			break;
+		}
+		case PARTE_INFERIOR:
+		{
+			prendasInferiores.add(prenda);
+			break;
+		}
+		case ACCESORIOS:
+		{
+			accesorios.add(prenda);
+			break;
+		}
+		default:
+			break;
+		}
+	}
 	
 	public ArrayList<Atuendo> generarRecomendaciones(){
 		ArrayList<Atuendo> atuendos = new ArrayList<>();
