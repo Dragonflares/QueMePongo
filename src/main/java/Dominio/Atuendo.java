@@ -7,9 +7,11 @@ import java.util.stream.Collectors;
 public class Atuendo {
 	private List<Prenda> prendas = new ArrayList<Prenda>();
 	
-	public Atuendo(List<Prenda> prendas) {
-		
+	public Atuendo(List<Prenda> prendas) throws Exception {
+		if(sonDeDistintoTipo(prendas))
 			this.prendas = prendas;
+		else 
+			throw new Exception("No son del mismo tipo.");
 		
 	}
 	
