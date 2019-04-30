@@ -29,7 +29,7 @@ public class Atuendo {
 			Prenda prendaActual = prendas.get(i);
 			List<Prenda> listaVacia = prendas.stream().filter(p -> (sonIgualTipo(prendaActual, p) && p != prendaActual)).collect(Collectors.toList());
 			
-			if(!listaVacia.isEmpty()) {
+			if(listaVacia.isEmpty()) {
 				return true;
 			}
 		}

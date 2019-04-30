@@ -45,6 +45,19 @@ public class Guardarropa {
 		}
 	}
 	
+	public List<Prenda> getPrendasSuperiores(){
+		return this.prendasSuperiores;
+	}
+	public List<Prenda> getPrendasInferiores(){
+		return this.prendasInferiores;
+	}
+	public List<Prenda> getAccesorios(){
+		return this.accesorios;
+	}
+	public List<Prenda> getCalzados(){
+		return this.calzados;
+	}
+	
 	public ArrayList<Atuendo> generarRecomendaciones(){
 		ArrayList<Atuendo> atuendos = new ArrayList<>();
 		
@@ -68,7 +81,10 @@ public class Guardarropa {
 		return atuendos;
 	}
 	
-	
+	public ArrayList<Prenda> listasUnificadas(){
+		List<Prenda> listaUnificada = new ArrayList<Prenda>();
+		return listaUnificada.stream().concat(prendasSuperiores.stream(), prendasInferiores.stream()).concat();
+	}
 	
 }
 

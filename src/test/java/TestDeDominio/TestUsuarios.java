@@ -22,6 +22,8 @@ public class TestUsuarios {
 	private Usuario julieta;
 	private Guardarropa guardarropas1;
 	private Atuendo atuendo;
+	private Prenda remeraRoja;
+	private Prenda remeraAzul;
 	
 	@Before
 	public void init() throws Exception {
@@ -29,8 +31,8 @@ public class TestUsuarios {
 		Prenda zapatillasNegras = new Prenda(TipoPrenda.ZAPATILLAS, Color.NEGRO, Color.GRIS, Material.CUERO);
 		Prenda cinturonNaranja = new Prenda(TipoPrenda.CINTURON, Color.NARANJA, Color.NEGRO, Material.CUERO);
 		Prenda pantalonAzul = new Prenda(TipoPrenda.PANTALON, Color.AZUL, Color.AMARILLO, Material.JEAN);
-		Prenda remeraAzul = new Prenda(TipoPrenda.REMERA, Color.AZUL, Color.AMARILLO, Material.ALGODON);
-		Prenda remeraRoja = new Prenda(TipoPrenda.REMERA, Color.ROJO, Color.AMARILLO, Material.ALGODON);
+		remeraAzul = new Prenda(TipoPrenda.REMERA, Color.AZUL, Color.AMARILLO, Material.ALGODON);
+		remeraRoja = new Prenda(TipoPrenda.REMERA, Color.ROJO, Color.AMARILLO, Material.ALGODON);
 		
 		ArrayList<Prenda> prendasSuperiores = new ArrayList<Prenda>();
 		prendasSuperiores.add(remeraRoja);
@@ -73,5 +75,9 @@ public class TestUsuarios {
 		Assert.assertEquals(atuendo.getPrendas().get(1), guardarropas1.generarRecomendaciones().get(0).getPrendas().get(1));
 	}
 	
+	@Test
+	public void dosRemerasSonDelMismoTipo() {
+		Assert.assertTrue(atuendo.sonDeDistintoTipo(atuendo.getPrendas()));
+	}
 	
 }
