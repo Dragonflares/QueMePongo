@@ -34,10 +34,13 @@ public class Usuario {
 		this.guardarropas.add(guardarropa);
 	}
 	
-	private void agregarPrendaAGuardarropa(Guardarropa guardarropa, Prenda prenda)
-	{
-		guardarropa.agregarPrenda(prenda);
+	public void agregarPrendaAGuardarropa(Guardarropa guardarropa, Prenda prenda) throws Exception {
+		if(!this.guardarropas.stream().anyMatch(p -> p.listasUnificadas().contains(prenda))) {
+			guardarropa.agregarPrenda(prenda);
+		} else {
+			throw new Exception("Ya tenes la prenda en otro guardarropa");
+		}
+		
 	}
-	
 	
 }

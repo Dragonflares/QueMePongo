@@ -23,7 +23,7 @@ public class TestUsuarios {
 	private Guardarropa guardarropas1;
 	private Atuendo atuendo;
 	private Prenda remeraRoja;
-	private Prenda remeraAzul;
+	private Guardarropa guardarropas2;
 	
 	@Before
 	public void init() throws Exception {
@@ -31,7 +31,7 @@ public class TestUsuarios {
 		Prenda zapatillasNegras = new Prenda(TipoPrenda.ZAPATILLAS, Color.NEGRO, Color.GRIS, Material.CUERO);
 		Prenda cinturonNaranja = new Prenda(TipoPrenda.CINTURON, Color.NARANJA, Color.NEGRO, Material.CUERO);
 		Prenda pantalonAzul = new Prenda(TipoPrenda.PANTALON, Color.AZUL, Color.AMARILLO, Material.JEAN);
-		remeraAzul = new Prenda(TipoPrenda.REMERA, Color.AZUL, Color.AMARILLO, Material.ALGODON);
+		Prenda remeraAzul = new Prenda(TipoPrenda.REMERA, Color.AZUL, Color.AMARILLO, Material.ALGODON);
 		remeraRoja = new Prenda(TipoPrenda.REMERA, Color.ROJO, Color.AMARILLO, Material.ALGODON);
 		
 		ArrayList<Prenda> prendasSuperiores = new ArrayList<Prenda>();
@@ -56,6 +56,7 @@ public class TestUsuarios {
 		atuendo = new Atuendo(atuendo1);
 		
 		guardarropas1 = new Guardarropa(prendasSuperiores, prendasInferiores, calzados, accesorios);
+		guardarropas2 = new Guardarropa(prendasSuperiores, prendasInferiores, calzados, accesorios);
 		
 		julieta = new Usuario("giu", guardarropas1);
 	}
@@ -80,4 +81,12 @@ public class TestUsuarios {
 		Assert.assertTrue(atuendo.sonDeDistintoTipo(atuendo.getPrendas()));
 	}
 	
+	@Test(expected=Exception.class)
+	
+	public void usuarioAgregaPrendaRepetida() throws Exception {
+		julieta.agregarGuardarropa(guardarropas2);
+		Prenda prenda = new Prenda(TipoPrenda.MUSCULOSA, Color.BLANCO, Color.AMARILLO, Material.ALGODON);
+		julieta.agregarPrendaAGuardarropa(guardarropas2, prenda);
+		julieta.agregarPrendaAGuardarropa(guardarropas1, prenda);
+	}
 }

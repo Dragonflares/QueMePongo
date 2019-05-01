@@ -82,8 +82,12 @@ public class Guardarropa {
 	}
 	
 	public ArrayList<Prenda> listasUnificadas(){
-		List<Prenda> listaUnificada = new ArrayList<Prenda>();
-		return listaUnificada.stream().concat(prendasSuperiores.stream(), prendasInferiores.stream()).concat();
+		ArrayList<Prenda> listaUnificada = new ArrayList<Prenda>();
+		listaUnificada.addAll(prendasSuperiores);
+		listaUnificada.addAll(prendasInferiores);
+		listaUnificada.addAll(calzados);
+		listaUnificada.addAll(accesorios);
+		return listaUnificada;
 	}
 	
 }
