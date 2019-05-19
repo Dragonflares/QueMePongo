@@ -35,7 +35,7 @@ public class Usuario {
 	}
 	
 	public void agregarPrendaAGuardarropa(Guardarropa guardarropa, Prenda prenda) throws Exception {
-		if(!this.guardarropas.stream().anyMatch(p -> p.listasUnificadas().contains(prenda))) {
+		if(!this.guardarropas.stream().anyMatch(p -> p.getPrendas().contains(prenda))) {
 			guardarropa.agregarPrenda(prenda);
 		} else {
 			throw new Exception("Ya tenes la prenda en otro guardarropa");

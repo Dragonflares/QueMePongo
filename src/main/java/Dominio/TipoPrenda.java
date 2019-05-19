@@ -14,7 +14,7 @@ public class TipoPrenda {
 		this.materialesNoCompatibles = materialesNoCompatibles;
 	}
 	
-	public List<Material> getMaterialNoCompatible(){
+	public List<Material> getMaterialesNoCompatible(){
 		return this.materialesNoCompatibles;
 	}
 	

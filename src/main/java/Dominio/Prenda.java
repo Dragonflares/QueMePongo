@@ -1,4 +1,6 @@
 package Dominio;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Prenda {
 	private TipoPrenda tipoPrenda;
@@ -17,7 +19,7 @@ public class Prenda {
 			throw new Exception("No pueden ser del mismo color."); 
 		}
 		
-		if(!material.equals(tipoPrenda.getMaterialNoCompatible())) {
+		if(!tipoPrenda.getMaterialesNoCompatible().contains(material)) {
 			this.material = material;
 		} else {
 			throw new Exception("Ingreso un tipo de prenda no compatible.");
@@ -31,4 +33,8 @@ public class Prenda {
 	public Categoria getCategoria() { 
 		return this.tipoPrenda.getCategoria();
 	} 
+//	public Boolean esDeTalCategoria(Categoria categoria)
+//	{
+//		return this.getTipoPrenda().getCategoria() == categoria;
+//	}
 }
