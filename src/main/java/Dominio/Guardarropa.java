@@ -2,60 +2,32 @@ package Dominio;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.stream.Collectors;
 public class Guardarropa {
-	private List<Prenda> prendasSuperiores;
-	private List<Prenda> prendasInferiores;
-	private List<Prenda> calzados;
-	private List<Prenda> accesorios;
+
+	private List<Prenda> prendas;
 	
-	
-	public Guardarropa(List<Prenda> prendasSuperiores, List<Prenda> prendasInferiores, List<Prenda> calzados, List<Prenda> accesorios) {
-		this.prendasSuperiores = prendasSuperiores;
-		this.prendasInferiores = prendasInferiores;
-		this.calzados = calzados;
-		this.accesorios = accesorios;
+	public Guardarropa(List<Prenda> prendas) {
+		this.prendas = prendas;
 	}
 	
 	public void agregarPrenda(Prenda prenda) {
-		switch(prenda.getTipoPrenda().getCategoria())
-		{
-		case CALZADO:
-		{
-			calzados.add(prenda);
-			break;
-		}
-		case PARTE_SUPERIOR:
-		{
-			prendasSuperiores.add(prenda);
-			break;
-		}
-		case PARTE_INFERIOR:
-		{
-			prendasInferiores.add(prenda);
-			break;
-		}
-		case ACCESORIOS:
-		{
-			accesorios.add(prenda);
-			break;
-		}
-		default:
-			break;
-		}
+		
+		prendas.add(prenda);
 	}
 	
+	
 	public List<Prenda> getPrendasSuperiores(){
-		return this.prendasSuperiores;
+		return  prendas.stream().filter(p -> p.isTipoPrenda(Categoria.PARTE_SUPERIOR)).collect(Collectors.toList());
 	}
 	public List<Prenda> getPrendasInferiores(){
-		return this.prendasInferiores;
+		return  prendas.stream().filter(p -> p.isTipoPrenda(Categoria.PARTE_INFERIOR)).collect(Collectors.toList());
 	}
 	public List<Prenda> getAccesorios(){
-		return this.accesorios;
+		return  prendas.stream().filter(p -> p.isTipoPrenda(Categoria.ACCESORIOS)).collect(Collectors.toList());
 	}
 	public List<Prenda> getCalzados(){
-		return this.calzados;
+		return  prendas.stream().filter(p -> p.isTipoPrenda(Categoria.CALZADO)).collect(Collectors.toList());
 	}
 	
 	public ArrayList<Atuendo> generarRecomendaciones(){
@@ -91,5 +63,10 @@ public class Guardarropa {
 	}
 	
 }
+
+
+
+
+List<DispositivoInteligente> filtrarDispositivos(Predicate<DispositivoInteligente> unaCondicion) { 		return dispositivosInteligentes.stream().filter(unaCondicion).collect(Collectors.toList()); 	}
 
 
