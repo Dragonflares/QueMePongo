@@ -8,6 +8,10 @@ import Dominio.Color;
 import Dominio.Material;
 import Dominio.Prenda;
 import Dominio.TipoPrenda;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Assert;
 
 public class TestPrenda {
@@ -15,17 +19,17 @@ public class TestPrenda {
 
 private TipoPrenda tipoPrenda;
 private Prenda remera;
+public 	List<Material> materialesNoCompatiblesRem = new ArrayList<>();
 	
 	@Before
 	public void init() throws Exception {
-		tipoPrenda = TipoPrenda.REMERA;
+		materialesNoCompatiblesRem.add(Material.CUERO);
+		materialesNoCompatiblesRem.add(Material.GABARDINA);
+		
+		tipoPrenda = new TipoPrenda(Categoria.PARTE_SUPERIOR, materialesNoCompatiblesRem);
 		remera = new Prenda(tipoPrenda, Color.ROJO, Color.AMARILLO, Material.ALGODON);
 	}
 	
-	@Test
-	public void queTipoDePrendaEs() {
-		Assert.assertEquals(TipoPrenda.REMERA, remera.getTipoPrenda());
-	}
 	
 	@Test
 	public void queTipoDeCategoriaTiene() {

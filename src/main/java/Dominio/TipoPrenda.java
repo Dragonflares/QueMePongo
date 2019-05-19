@@ -8,7 +8,7 @@ public class TipoPrenda {
 	private Categoria categoria;
 	private List<Material> materialesNoCompatibles;
 	
-	private TipoPrenda(Categoria categoria, List<Material> materialesNoCompatibles)
+	public TipoPrenda(Categoria categoria, List<Material> materialesNoCompatibles)
 	{
 		this.categoria = categoria;
 		this.materialesNoCompatibles = materialesNoCompatibles;
