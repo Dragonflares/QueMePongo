@@ -9,6 +9,7 @@ public class Prenda {
 	private Material material;
 
 
+
 	public Prenda(TipoPrenda tipoPrenda, Color colorPrimario, Color colorSecundario, Material material) throws Exception {
 		this.tipoPrenda = tipoPrenda;
 

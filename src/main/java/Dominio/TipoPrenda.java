@@ -5,11 +5,14 @@ import java.util.ArrayList;
 
 public class TipoPrenda {
 
+	private Ropa ropa;
 	private Categoria categoria;
 	private List<Material> materialesNoCompatibles;
+	private List<Ropa> ropasNoCompatibles;
 	
-	public TipoPrenda(Categoria categoria, List<Material> materialesNoCompatibles)
+	public TipoPrenda(Ropa ropa, Categoria categoria, List<Material> materialesNoCompatibles)
 	{
+		this.ropa = ropa;
 		this.categoria = categoria;
 		this.materialesNoCompatibles = materialesNoCompatibles;
 	}
