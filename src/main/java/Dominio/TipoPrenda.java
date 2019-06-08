@@ -8,13 +8,14 @@ public class TipoPrenda {
 	private Ropa ropa;
 	private Categoria categoria;
 	private List<Material> materialesNoCompatibles;
-	private List<Ropa> ropasNoCompatibles;
+	private List<Ropa> ropasCompatibles;
 	
-	public TipoPrenda(Ropa ropa, Categoria categoria, List<Material> materialesNoCompatibles)
+	public TipoPrenda(Ropa ropa, Categoria categoria, List<Material> materialesNoCompatibles, List<Ropa> ropasCompatibles)
 	{
 		this.ropa = ropa;
 		this.categoria = categoria;
 		this.materialesNoCompatibles = materialesNoCompatibles;
+		this.ropasCompatibles = ropasCompatibles;
 	}
 	
 	public List<Material> getMaterialesNoCompatible(){

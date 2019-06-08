@@ -1,16 +1,14 @@
 package Dominio;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Prenda {
 	private TipoPrenda tipoPrenda;
 	private Color colorPrimario;
 	private Color colorSecundario;
 	private Material material;
+	private String imagen;
 
 
-
-	public Prenda(TipoPrenda tipoPrenda, Color colorPrimario, Color colorSecundario, Material material) throws Exception {
+	public Prenda(TipoPrenda tipoPrenda, Color colorPrimario, Color colorSecundario, Material material, String imagen) throws Exception {
 		this.tipoPrenda = tipoPrenda;
 
 		if (!colorPrimario.equals(colorSecundario)) {
@@ -25,6 +23,7 @@ public class Prenda {
 		} else {
 			throw new Exception("Ingreso un tipo de prenda no compatible.");
 		}
+		this.imagen = imagen;
 	}
 
 	public TipoPrenda getTipoPrenda() {

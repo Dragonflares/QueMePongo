@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 public class Guardarropa {
 
 	private List<Prenda> prendas;
+	private APIClimatica climaHelp;
 	
 	public Guardarropa(List<Prenda> prendas) {
 		this.prendas = prendas;
