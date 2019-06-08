@@ -3,21 +3,26 @@ import java.util.List;
 import java.util.ArrayList;
 @SuppressWarnings("unused")
 
-public class TipoPrenda {
+public class TipoPrenda implements Abrigo{
 
-	private Ropa ropa;
+	private TipoDeRopa ropa;
 	private Categoria categoria;
 	private List<Material> materialesNoCompatibles;
-	private List<Ropa> ropasCompatibles;
-	
-	public TipoPrenda(Ropa ropa, Categoria categoria, List<Material> materialesNoCompatibles, List<Ropa> ropasCompatibles)
+	private List<TipoDeRopa> ropasCompatibles;
+	private int nivelDeCalor;
+	public TipoPrenda(TipoDeRopa ropa, Categoria categoria, List<Material> materialesNoCompatibles, List<TipoDeRopa> ropasCompatibles, int nivelDeCalor)
 	{
 		this.ropa = ropa;
 		this.categoria = categoria;
 		this.materialesNoCompatibles = materialesNoCompatibles;
 		this.ropasCompatibles = ropasCompatibles;
+		this.nivelDeCalor = nivelDeCalor;
 	}
 	
+	public int Abrigar()
+	{
+		return this.nivelDeCalor;
+	}
 	public List<Material> getMaterialesNoCompatible(){
 		return this.materialesNoCompatibles;
 	}
@@ -25,7 +30,6 @@ public class TipoPrenda {
 	public Categoria getCategoria() {
 		return categoria;
 	}
-	
 	
 	
 	

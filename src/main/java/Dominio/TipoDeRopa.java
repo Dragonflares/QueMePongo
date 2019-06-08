@@ -1,6 +1,6 @@
 package Dominio;
 
-public enum Ropa {
+public enum TipoDeRopa {
 	REMERA,
 	MUSCULOSA,
 	PANTALONLARGO,
@@ -16,5 +16,6 @@ public enum Ropa {
 	PIERCINGS,
 	ZAPATOS,
 	OJOTAS,
-	PANTUFLAS
+	PANTUFLAS, 
+	POLERA
 }
