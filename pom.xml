@@ -1,7 +1,7 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>pruebaTp</groupId>
-  <artifactId>pruebaTp</artifactId>
+  <groupId>2019-ma-ma-group-06</groupId>
+  <artifactId>2019-ma-ma-group-06</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
   <dependencies>
