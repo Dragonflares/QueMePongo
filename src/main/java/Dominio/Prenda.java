@@ -1,14 +1,20 @@
 package Dominio;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+
+import javax.imageio.ImageIO;
+
 public class Prenda {
 	private TipoPrenda tipoPrenda;
 	private Color colorPrimario;
 	private Color colorSecundario;
 	private Material material;
-	private String imagen;
+	Graphics2D imagenGraphics;
 
 
-	public Prenda(TipoPrenda tipoPrenda, Color colorPrimario, Color colorSecundario, Material material, String imagen) throws Exception {
+	public Prenda(TipoPrenda tipoPrenda, Color colorPrimario, Color colorSecundario, Material material, String imagenPath) throws Exception {
 		this.tipoPrenda = tipoPrenda;
 
 		if (!colorPrimario.equals(colorSecundario)) {
@@ -23,7 +29,9 @@ public class Prenda {
 		} else {
 			throw new Exception("Ingreso un tipo de prenda no compatible.");
 		}
-		this.imagen = imagen;
+		BufferedImage myPicture = ImageIO.read(new File(imagenPath));
+		imagenGraphics = (Graphics2D) myPicture.getGraphics();
+		imagenGraphics.drawRect(0, 0, 200, 200);
 	}
 
 	public TipoPrenda getTipoPrenda() {
@@ -33,8 +41,5 @@ public class Prenda {
 	public Categoria getCategoria() { 
 		return this.tipoPrenda.getCategoria();
 	} 
-//	public Boolean esDeTalCategoria(Categoria categoria)
-//	{
-//		return this.getTipoPrenda().getCategoria() == categoria;
-//	}
+	
 }

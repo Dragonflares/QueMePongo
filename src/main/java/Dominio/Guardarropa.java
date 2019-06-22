@@ -8,6 +8,7 @@ public class Guardarropa {
 
 	private List<Prenda> prendas;
 	private APIClimatica climaHelp;
+	private List<Atuendo> atuendosQueNoHayQueSugerir;
 	
 	public Guardarropa(List<Prenda> prendas) {
 		this.prendas = prendas;
@@ -61,7 +62,18 @@ public class Guardarropa {
 		prendasDeAtuendo.add(calzado);
 		Atuendo atuendo = new Atuendo(prendasDeAtuendo);
 		return atuendo;
-	}	
+	}
+	
+	public void rechazar(Atuendo atuendo)
+	{
+		atuendosQueNoHayQueSugerir.add(atuendo);
+	}
+	
+	public void deshacer(Atuendo atuendo)
+	{
+		if(atuendosQueNoHayQueSugerir.contains(atuendo))
+			atuendosQueNoHayQueSugerir.remove(atuendo);
+	}
 }
 
 
