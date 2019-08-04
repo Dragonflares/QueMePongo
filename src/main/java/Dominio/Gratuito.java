@@ -2,7 +2,8 @@ package Dominio;
 
 public class Gratuito implements TipoDeUsuario{
 	private int tamanioMaximoGuardarropa;
-
+	private String configGratuito;
+	
 	public int getTamanioMaximoGuardarropa() {
 		return tamanioMaximoGuardarropa;
 	}
