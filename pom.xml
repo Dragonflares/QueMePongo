@@ -3,7 +3,11 @@
   <groupId>2019-ma-ma-group-06</groupId>
   <artifactId>2019-ma-ma-group-06</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-
+  <scm>
+	<connection>scm:svn:http://foo.googlecode.com/svn/trunk/</connection>
+	<developerConnection>scm:svn:https://foo.googlecode.com/svn/trunk/</developerConnection>
+	<url>http://foo.googlecode.com/svn/trunk/</url>
+  </scm>
   <dependencies>
 
       <dependency>
@@ -17,7 +21,13 @@
     	<artifactId>ij</artifactId>
     	<version>1.51h</version>
 	  </dependency>
-
+	  
+	  <dependency>
+		<groupId>net.aksingh</groupId>
+		<artifactId>owm-japis</artifactId>
+		<version>2.5.3.0</version>
+	  </dependency>
+	  
    </dependencies>
 
   <build>
