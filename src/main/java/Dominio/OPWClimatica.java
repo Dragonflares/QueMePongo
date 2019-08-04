@@ -1,4 +1,8 @@
 package Dominio;
+import net.aksingh.owmjapis.core.OWM;
+import net.aksingh.owmjapis.api.APIException;
+import net.aksingh.owmjapis.model.CurrentWeather;
+
 
 public class OPWClimatica {
 	public static final void darTemperaturaActual() {
