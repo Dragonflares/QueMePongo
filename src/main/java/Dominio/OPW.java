@@ -14,7 +14,8 @@ import org.openweathermap.api.query.forecast.daily.ByCityName;
 public class OPW {
 	private static final String API_KEY = "16f235a56d673331a2e0adcda0544ba5";
 
-	public final float darTemperaturaActual(int day) {
+	public final float darTemperaturaActual(int day)
+	{
 		DataWeatherClient client = new UrlConnectionDataWeatherClient(API_KEY);
 		ByCityName byCityNameForecast = QueryBuilderPicker.pick()
 				.forecast()                                         
@@ -27,11 +28,13 @@ public class OPW {
 		ForecastInformation<DailyForecast> forecastInformation = client.getForecastInformation(byCityNameForecast);
 		int a = 1;
 		float sender = -404;
-		for (DailyForecast forecast : forecastInformation.getForecasts()) {
-			if(a == day)
+		for (DailyForecast forecast : forecastInformation.getForecasts()) 
+		{
+			if(a == day || a == 5)
 			{
 				String auxiliary = forecast.getTemperature().toString();
-				 sender = Float.parseFloat(auxiliary);
+				sender = Float.parseFloat(auxiliary);
+				break;
 			}
 			else
 			{
