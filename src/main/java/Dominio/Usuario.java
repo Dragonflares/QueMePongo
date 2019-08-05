@@ -45,4 +45,8 @@ public class Usuario {
 		
 	}
 	
+	public Atuendo generarRecomendacion() throws Exception{
+		
+	}
+	
 }

@@ -7,7 +7,7 @@ public class OPWAdaptado implements WeatherAdapter{
 		this.openWeather = openWeather;
 	}
 	
-	public int darTemperaturaActual(Int day) {
-		openWeather.darTemperaturaActual(day);
+	public int darTemperaturaActual(int day) {
+		return openWeather.darTemperaturaActual(day);
 	}
 }
