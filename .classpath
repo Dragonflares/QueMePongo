@@ -23,4 +23,5 @@
   <classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-lang3/3.9/commons-lang3-3.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openweathermap/java-api/api-common/1.2.3/api-common-1.2.3.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/openweathermap/java-api/api-model/1.2.3/api-model-1.2.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/openweathermap/java-api/api-core/1.2.3/api-core-1.2.3.jar"/>
 </classpath>

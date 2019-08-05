@@ -12,9 +12,9 @@ public class GestorClimatico{
 		this.weatherAdapters = weatherAdapters;
 	}
 
-	public int obtenerTemperatura(int date)
+	public float obtenerTemperatura(int date)
 	{
-		int temp = -404;
+		float temp = -404;
 		int actualForecaster = 0;
 		while(temp == -404 && weatherAdapters.size() != actualForecaster)
 		{
