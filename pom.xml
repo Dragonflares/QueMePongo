@@ -63,6 +63,13 @@
 			<version>1.2.3</version>
 			<type>pom</type>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/tk.plogitech/darksky-forecast-api -->
+		<dependency>
+			<groupId>ch.rasc</groupId>
+			<artifactId>darksky</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+
 	</dependencies>
 
 
