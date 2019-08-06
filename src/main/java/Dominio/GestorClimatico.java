@@ -1,5 +1,6 @@
 package Dominio;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,14 +13,14 @@ public class GestorClimatico{
 		this.weatherAdapters = weatherAdapters;
 	}
 
-	public float obtenerTemperatura(int date)
+	public double obtenerTemperatura(int date, int time) throws IOException
 	{
-		float temp = -404;
+		double temp = -404;
 		int actualForecaster = 0;
 		while(temp == -404 && weatherAdapters.size() != actualForecaster)
 		{
 			WeatherAdapter forecaster = this.weatherAdapters.get(actualForecaster);
-			temp = forecaster.darTemperaturaActual(date);
+			temp = forecaster.darTemperaturaActual(date, time);
 		}
 		return temp;
 	}

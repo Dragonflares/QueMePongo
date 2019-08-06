@@ -1,5 +1,7 @@
 package Dominio;
 
+import java.io.IOException;
+
 public interface WeatherAdapter {
-	public float darTemperaturaActual(int day);
+	public double darTemperaturaActual(int day, int time)throws IOException;
 }
