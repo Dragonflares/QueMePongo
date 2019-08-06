@@ -27,7 +27,27 @@ public class RepoMaterial extends Repositorio{
     }
 
    
+    
+   // unaPrenda.setTela(RepoTelas.getInstance().findByName(“algodon”));
+    
+    public Material findByName(String nombre) throws ProcessingDataFailedException {
+        try {
+            FileReader file = new FileReader(getJsonFile());
+            BufferedReader bufferedReader = new BufferedReader(file);
+            Gson gson = new Gson();
+            Object jsonObject = gson.fromJson(bufferedReader, Object.class);
+            String json = jsonObject.toString();
+            Type tipoListaMateriales = new TypeToken<List<Material>>() {}.getType();
 
+            List<Material> materiales = gson.fromJson(json, tipoListaMateriales);
+            
+           return materiales.stream().filter(material -> material.compararNombres(nombre)).findAny().orElse(null);
+      
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new ProcessingDataFailedException(e.getLocalizedMessage());
+        }
+    }
     public List<Material> obtenerMateriales() throws ProcessingDataFailedException {
 
         try {
