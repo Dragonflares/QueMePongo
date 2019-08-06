@@ -40,10 +40,10 @@ public class DarkSkyAPI {
 	public String darCondicionClimatica(int day, int hora) throws IOException{
 		DsClient client = new DsClient("9ee9579e309df4f7c0806b5e60b90e71");
 		DsTimeMachineRequest request = DsTimeMachineRequest.builder()
-				.includeBlock(DsBlock.HOURLY)
+				.includeBlock(DsBlock.HOURLY, DsBlock.DAILY, DsBlock.ALERTS)
 				.latitude("-34.6157437").longitude("-58.5733854").unit(DsUnit.SI)
 				.time(ZonedDateTime.now().plusDays(day).toEpochSecond()).build();
-
+// clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night
 		List<String> result = new ArrayList<String>();
 		DsResponse response = client.sendTimeMachineRequest(request);
 		for (DsDataPoint dataPoint : response.hourly().data()) {
