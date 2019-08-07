@@ -1,0 +1,12 @@
+*.class
+*.sql
+*.jar
+target
+bin
+.classpath
+.project
+.metadata
+local.properties
+.settings
+/.apt_generated/
+/.apt_generated_tests/
