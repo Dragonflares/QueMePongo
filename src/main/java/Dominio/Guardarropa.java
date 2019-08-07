@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Guardarropa {
-
+	
+	private Estilo estilo;
 	private List<Prenda> prendas;
 	private GestorClimatico climaHelp;
 	private List<Atuendo> atuendosQueNoHayQueSugerir;
 
-	public Guardarropa(List<Prenda> prendas, GestorClimatico climaHelp) {
+	public Guardarropa(Estilo estilo, List<Prenda> prendas, GestorClimatico climaHelp) {
+		this.estilo = estilo;
 		this.prendas = prendas;
 		this.climaHelp = climaHelp;
 	}
