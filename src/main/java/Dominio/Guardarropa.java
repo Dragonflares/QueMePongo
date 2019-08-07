@@ -9,7 +9,6 @@ public class Guardarropa {
 	private Estilo estilo;
 	private List<Prenda> prendas;
 	private GestorClimatico climaHelp;
-	private List<Atuendo> atuendosQueNoHayQueSugerir;
 
 	public Guardarropa(Estilo estilo, List<Prenda> prendas, GestorClimatico climaHelp) {
 		this.estilo = estilo;
@@ -42,6 +41,10 @@ public class Guardarropa {
 	public List<Prenda> getCalzados(){
 		return  prendas.stream().filter(p -> p.getCategoria() == Categoria.CALZADO).collect(Collectors.toList());
 	}
+	public Estilo getEstilo()
+	{
+		return this.estilo;
+	}
 
 	public Atuendo generarRecomendacion() throws Exception
 	{
@@ -70,22 +73,9 @@ public class Guardarropa {
 		}
 		else
 		{
-			System.out.println("No hay suficientes prendas "
-					+ "n este guardarropas para generar un atuendo");
 			atuendo = null;
 		}
 		return atuendo;
-	}
-
-	public void rechazar(Atuendo atuendo)
-	{
-		atuendosQueNoHayQueSugerir.add(atuendo);
-	}
-
-	public void deshacer(Atuendo atuendo)
-	{
-		if(atuendosQueNoHayQueSugerir.contains(atuendo))
-			atuendosQueNoHayQueSugerir.remove(atuendo);
 	}
 }
 

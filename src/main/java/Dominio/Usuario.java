@@ -3,11 +3,13 @@ package Dominio;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Usuario {
 	private String username;
 	private TipoDeUsuario tipoDeCuenta;
 	public List<Guardarropa> guardarropas;
+	private List<Atuendo> atuendosRechazados;
 
 	public Usuario(String username){
 		this.username = username;
@@ -45,14 +47,27 @@ public class Usuario {
 		}
 
 	}
+	
+	public void agregarARechazados(Atuendo atuendo)
+	{
+		this.atuendosRechazados.add(atuendo);
+	}
+	
+	public void eliminarDeRechazados(Atuendo atuendo)
+	{
+		this.atuendosRechazados.remove(atuendo);
+	}
 
-	public Atuendo pedirRecomendacion() throws Exception{
+	public Atuendo pedirRecomendacion(Estilo estilo) throws Exception{
+		List<Guardarropa> guardarropasConEstilo = 
+				this.guardarropas.stream().filter(g -> g.getEstilo() == estilo).collect(Collectors.toList());
+		
 		Atuendo atuendoFinal = null;
 		Random rand = new Random();
-		int cantGuardarropas = guardarropas.size();
+		int cantGuardarropas = guardarropasConEstilo.size();
 		while(atuendoFinal != null)
 		{
-			Guardarropa guardarropa =  guardarropas.get(rand.nextInt(cantGuardarropas));
+			Guardarropa guardarropa =  guardarropasConEstilo.get(rand.nextInt(cantGuardarropas));
 			atuendoFinal = guardarropa.generarRecomendacion();
 		}
 		return atuendoFinal;

@@ -7,7 +7,6 @@ public class Evento {
 	private String direccion;
 	private Estilo estilo;
 	
-	
 	public Evento (Date fecha, String direccion, Estilo estilo)
 	{
 		this.fecha = fecha;
