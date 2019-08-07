@@ -1,4 +1,4 @@
-package Dominio;
+package Dominio.ClothingClasses;
 
 public enum TipoDeRopa {
 	REMERA,

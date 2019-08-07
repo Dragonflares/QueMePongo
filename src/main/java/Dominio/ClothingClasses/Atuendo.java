@@ -1,4 +1,4 @@
-package Dominio;
+package Dominio.ClothingClasses;
 
 import java.util.ArrayList;
 import java.util.List;

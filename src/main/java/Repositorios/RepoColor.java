@@ -5,8 +5,8 @@ import entities.ProcessingDataFailedException;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import Dominio.Color;
-import Dominio.Material;
+import Dominio.ClothingClasses.Color;
+import Dominio.ClothingClasses.Material;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

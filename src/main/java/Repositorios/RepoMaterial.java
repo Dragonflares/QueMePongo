@@ -6,7 +6,7 @@ import entities.ProcessingDataFailedException;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import Dominio.Material;
+import Dominio.ClothingClasses.Material;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -28,7 +28,7 @@ public class RepoMaterial extends Repositorio{
 
    
     
-   // unaPrenda.setTela(RepoTelas.getInstance().findByName(“algodon”));
+   // unaPrenda.setTela(RepoTelas.getInstance().findByName(algodon);
     
     public Material findByName(String nombre) throws ProcessingDataFailedException {
         try {

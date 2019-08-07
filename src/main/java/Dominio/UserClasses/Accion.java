@@ -1,6 +1,10 @@
-package Dominio;
+package Dominio.UserClasses;
 
 import java.util.List;
+
+import Dominio.ClothingClasses.Atuendo;
+import Dominio.ClothingClasses.Estilo;
+import Dominio.WardrobeClasses.Guardarropa;
 
 public class Accion { // Aceptar/Rechazar
 	public List<Paso> pasosAAplicar;

@@ -1,10 +1,11 @@
-package Dominio;
+package Dominio.ClothingClasses;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
 import javax.imageio.ImageIO;
+import Dominio.ClothingClasses.Material;
 
 public class Prenda {
 	private TipoPrenda tipoPrenda;

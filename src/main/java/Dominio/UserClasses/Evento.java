@@ -1,6 +1,8 @@
-package Dominio;
+package Dominio.UserClasses;
 
 import java.util.Date;
+
+import Dominio.ClothingClasses.Estilo;
 
 public class Evento {
 	private Date fecha;

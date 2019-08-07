@@ -3,7 +3,7 @@ package TestDeDominio;
 import org.junit.Before;
 import org.junit.Test;
 
-import Dominio.Usuario;
+import Dominio.UserClasses.Usuario;
 
 public class TestEjemplo {
 	private Usuario usuario;

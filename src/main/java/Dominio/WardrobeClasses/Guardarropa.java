@@ -1,9 +1,13 @@
-package Dominio;
+package Dominio.WardrobeClasses;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import Dominio.ClothingClasses.Atuendo;
+import Dominio.ClothingClasses.Categoria;
+import Dominio.ClothingClasses.Estilo;
+import Dominio.ClothingClasses.Prenda;
 import Dominio.WeatherAPIClasses.GestorClimatico;
 
 public class Guardarropa {

@@ -1,9 +1,14 @@
-package Dominio;
+package Dominio.UserClasses;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
+
+import Dominio.ClothingClasses.Atuendo;
+import Dominio.ClothingClasses.Estilo;
+import Dominio.ClothingClasses.Prenda;
+import Dominio.WardrobeClasses.Guardarropa;
 
 public class Usuario {
 	private String username;

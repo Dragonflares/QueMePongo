@@ -1,5 +1,8 @@
-package Dominio;
+package Dominio.ClothingClasses;
 import java.util.List;
+
+import Dominio.ClothingClasses.Material;
+
 import java.util.ArrayList;
 @SuppressWarnings("unused")
 
