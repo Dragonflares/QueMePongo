@@ -1,4 +1,4 @@
-package Dominio;
+package Dominio.WeatherAPIClasses;
 
 import java.io.IOException;
 import java.util.ArrayList;

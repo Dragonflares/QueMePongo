@@ -1,4 +1,4 @@
-package Dominio;
+package Dominio.WeatherAPIClasses;
 
 import org.openweathermap.api.DataWeatherClient;
 import org.openweathermap.api.UrlConnectionDataWeatherClient;
