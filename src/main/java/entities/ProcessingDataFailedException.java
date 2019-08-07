@@ -2,6 +2,7 @@ package entities;
 
 import java.io.IOException;
 
+@SuppressWarnings("serial")
 public class ProcessingDataFailedException extends IOException {
 
 	
