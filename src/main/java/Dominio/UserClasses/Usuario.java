@@ -15,7 +15,9 @@ public class Usuario {
 	private TipoDeUsuario tipoDeCuenta;
 	public List<Guardarropa> guardarropas;
 	private List<Atuendo> atuendosRechazados;
-
+	private Atuendo ultimoAtuendo;
+	
+	
 	public Usuario(String username){
 		this.username = username;
 		this.guardarropas = new ArrayList<Guardarropa>();
@@ -75,6 +77,7 @@ public class Usuario {
 			Guardarropa guardarropa =  guardarropasConEstilo.get(rand.nextInt(cantGuardarropas));
 			atuendoFinal = guardarropa.generarRecomendacion();
 		}
+		this.ultimoAtuendo = atuendoFinal;
 		return atuendoFinal;
 	}
 

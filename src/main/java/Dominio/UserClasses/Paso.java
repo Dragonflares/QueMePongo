@@ -5,5 +5,5 @@ import Dominio.ClothingClasses.Estilo;
 import Dominio.WardrobeClasses.Guardarropa;
 
 public interface Paso {
-	public void ejecutar(Usuario usuario, Atuendo atuendo, Guardarropa guardarropas, Estilo estilo) throws Exception;
+	public void ejecutar() throws Exception;
 }

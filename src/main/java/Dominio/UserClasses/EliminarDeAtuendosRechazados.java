@@ -4,9 +4,23 @@ import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Estilo;
 import Dominio.WardrobeClasses.Guardarropa;
 
-public class EliminarDeAtuendosRechazados {
-	public void ejecutar(Usuario usuario, Atuendo atuendo, Guardarropa guardarropa, Estilo estilo)
-	{
+public class EliminarDeAtuendosRechazados implements Paso {
+
+
+	private Usuario usuario;
+	private Atuendo atuendo;
+
+
+	public EliminarDeAtuendosRechazados(Usuario usuario,Atuendo atuendo) {
+
+		this.usuario = usuario;
+		this.atuendo = atuendo;
+	}
+
+	public void ejecutar(){
+
 		usuario.eliminarDeRechazados(atuendo);
 	}
+
+
 }

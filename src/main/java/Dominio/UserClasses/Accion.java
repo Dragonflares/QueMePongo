@@ -10,22 +10,22 @@ public class Accion { // Aceptar/Rechazar
 	public List<Paso> pasosAAplicar;
 	public List<Paso> pasosADeshacer;
 	
-	public void aplicar(Usuario usuario, Atuendo atuendo, Guardarropa guardarropa, Estilo estilo)
+	public void aplicar()
 	{
 		pasosAAplicar.stream().forEach(paso -> {
 			try {
-				paso.ejecutar(usuario, atuendo, guardarropa, estilo);
+				paso.ejecutar();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		});
 	}
 	
-	public void deshacer(Usuario usuario, Atuendo atuendo, Guardarropa guardarropa, Estilo estilo)
+	public void deshacer()
 	{
 		pasosADeshacer.stream().forEach(paso -> {
 			try {
-				paso.ejecutar(usuario, atuendo, guardarropa, estilo);
+				paso.ejecutar();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

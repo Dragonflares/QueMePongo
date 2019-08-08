@@ -5,8 +5,44 @@ import Dominio.ClothingClasses.Estilo;
 import Dominio.WardrobeClasses.Guardarropa;
 
 public class AgregarAAtuendosRechazados implements Paso{
-	public void ejecutar(Usuario usuario, Atuendo atuendo, Guardarropa guardarropa, Estilo estilo)
+	
+	private Usuario usuario;
+	private Atuendo atuendo;
+	
+	
+	public AgregarAAtuendosRechazados(Usuario usuario,Atuendo atuendo) {
+		
+		this.usuario = usuario;
+		this.atuendo = atuendo;
+	}
+	
+	
+	
+	public void ejecutar()
 	{
 		usuario.agregarARechazados(atuendo);
 	}
 }
+
+
+
+//public class DevolverUltimaRecomendacion implements Paso{
+//	
+//	private Usuario usuario;
+//	
+//	
+//	
+//	public DevolverUltimaRecomendacion(Usuario usuario) {
+//		
+//		this.usuario = usuario;
+//		
+//	}
+//	
+//	
+//	
+//	public void ejecutar()
+//	{
+//		usuario.getUltimoAtuendo();
+//	}
+//}
+

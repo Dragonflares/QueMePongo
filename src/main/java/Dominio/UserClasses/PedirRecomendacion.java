@@ -5,9 +5,24 @@ import Dominio.ClothingClasses.Estilo;
 import Dominio.WardrobeClasses.Guardarropa;
 
 public class PedirRecomendacion implements Paso{
-	
-	public void ejecutar(Usuario usuario, Atuendo atuendo, Guardarropa guardarropas, Estilo estilo) throws Exception
-	{
+
+
+
+	private Usuario usuario;
+	private Estilo estilo;
+
+
+	public PedirRecomendacion(Usuario usuario,Estilo estilo) {
+
+		this.usuario = usuario;
+		this.estilo = estilo;
+	}
+
+
+
+	public void ejecutar() throws Exception {
 		usuario.pedirRecomendacion(estilo);
 	}
+
+
 }
