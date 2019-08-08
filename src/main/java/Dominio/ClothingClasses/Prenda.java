@@ -3,6 +3,8 @@ package Dominio.ClothingClasses;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import Dominio.ClothingClasses.Material;
@@ -12,10 +14,10 @@ public class Prenda {
 	private Color colorPrimario;
 	private Color colorSecundario;
 	private Material material;
-	Graphics2D imagenGraphics;
+	private List<Graphics2D> imagenGraphics;
+	 
 
-
-	public Prenda(TipoPrenda tipoPrenda, Color colorPrimario, Color colorSecundario, Material material, String imagenPath) throws Exception {
+	public Prenda(TipoPrenda tipoPrenda, Color colorPrimario, Color colorSecundario, Material material) throws Exception {
 		this.tipoPrenda = tipoPrenda;
 
 		if (!colorPrimario.equals(colorSecundario)) {
@@ -30,17 +32,42 @@ public class Prenda {
 		} else {
 			throw new Exception("Ingreso un tipo de prenda no compatible.");
 		}
-		BufferedImage myPicture = ImageIO.read(new File(imagenPath));
-		imagenGraphics = (Graphics2D) myPicture.getGraphics();
-		imagenGraphics.drawRect(0, 0, 200, 200);
+		
+
+		
+	
 	}
 
 	public TipoPrenda getTipoPrenda() {
 		return this.tipoPrenda;
 	}
 
+	
+	public void setearListaImagenes(List<String> imagenes) {
+
+		imagenes.forEach(una -> this.imagenGraphics.add(this.crearImagen(una)));
+	}
+	
+	
+	public Graphics2D crearImagen (String path) {
+		
+		Imagen creator = new Imagen();
+		return creator.crearImagen(path);
+		
+		
+	}
+	
+	
 	public Categoria getCategoria() { 
 		return this.tipoPrenda.getCategoria();
+	}
+
+	public List<Graphics2D> getImagenGraphics() {
+		return imagenGraphics;
+	}
+
+	private void setImagenGraphics(List<Graphics2D> imagenGraphics) {
+		this.imagenGraphics = imagenGraphics;
 	} 
 	
 }
