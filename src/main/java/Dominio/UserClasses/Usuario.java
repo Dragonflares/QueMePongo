@@ -16,6 +16,7 @@ public class Usuario {
 	public List<Guardarropa> guardarropas;
 	private List<Atuendo> atuendosRechazados;
 	private Atuendo ultimoAtuendo;
+	private List<Evento> eventos;
 	
 	
 	public Usuario(String username){

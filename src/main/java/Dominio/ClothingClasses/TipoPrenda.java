@@ -12,7 +12,7 @@ public class TipoPrenda implements Abrigo{
 	private Categoria categoria;
 	private List<Material> materialesNoCompatibles;
 	private List<TipoDeRopa> ropasCompatibles;
-	private int nivelDeCalor;
+	private int nivelDeCalor; 
 	public TipoPrenda(TipoDeRopa ropa, Categoria categoria, List<Material> materialesNoCompatibles, List<TipoDeRopa> ropasCompatibles, int nivelDeCalor)
 	{
 		this.ropa = ropa;

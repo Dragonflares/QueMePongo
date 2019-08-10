@@ -5,14 +5,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Atuendo {
-	private List<Prenda> prendas = new ArrayList<Prenda>();
+	private ArrayList<Prenda> prendas = new ArrayList<Prenda>();
 	
-	public Atuendo(List<Prenda> prendas) throws Exception {
+	public Atuendo(ArrayList<Prenda> prendas) throws Exception {
 		if(sonDeDistintoTipo(prendas))
 			this.prendas = prendas;
 		else 
-			throw new Exception("No son del mismo tipo.");
-		
+			throw new Exception("No son del mismo tipo.");	
 	}
 	
 	public Atuendo() {}
@@ -45,5 +44,18 @@ public class Atuendo {
 	
 	public List<Prenda> getPrendas() {
 		return this.prendas;
+	}
+	
+	public List<Prenda> getPrendasSuperiores(){
+		return  prendas.stream().filter(p -> p.getCategoria() == Categoria.PARTE_SUPERIOR).collect(Collectors.toList());
+	}
+	public List<Prenda> getPrendasInferiores(){
+		return  prendas.stream().filter(p -> p.getCategoria() == Categoria.PARTE_INFERIOR).collect(Collectors.toList());
+	}
+	public List<Prenda> getAccesorios(){
+		return  prendas.stream().filter(p -> p.getCategoria() == Categoria.ACCESORIOS).collect(Collectors.toList());
+	}
+	public List<Prenda> getCalzados(){
+		return  prendas.stream().filter(p -> p.getCategoria() == Categoria.CALZADO).collect(Collectors.toList());
 	}
 }
