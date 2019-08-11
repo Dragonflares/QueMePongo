@@ -10,16 +10,22 @@ import Dominio.ClothingClasses.Categoria;
 import Dominio.ClothingClasses.Estilo;
 import Dominio.ClothingClasses.Prenda;
 import Dominio.UserClasses.Evento;
+import Dominio.UserClasses.Usuario;
 import Dominio.WeatherAPIClasses.GestorClimatico;
 
 public class Guardarropa {
 	
+	private Usuario creador;
+	private List<Usuario> usuariosConAcceso;
 	private Estilo estilo;
 	private List<Prenda> prendasDisponibles;
 	private List<Prenda> prendasNoDisponibles;
 	private GestorClimatico climaHelp;
 
-	public Guardarropa(Estilo estilo, List<Prenda> prendas, GestorClimatico climaHelp) {
+	public Guardarropa(Usuario creador, List<Usuario> compartidos,
+			Estilo estilo, List<Prenda> prendas, GestorClimatico climaHelp) {
+		this.creador = creador;
+		this.usuariosConAcceso = compartidos;
 		this.estilo = estilo;
 		this.prendasDisponibles = prendas;
 		this.prendasNoDisponibles = null;
@@ -31,6 +37,10 @@ public class Guardarropa {
 		return prendasDisponibles.size();
 	}
 
+	public void permitirAccesoaUsuario (Usuario usuario) {
+		usuariosConAcceso.add(usuario);
+	}
+	
 	public void agregarPrenda(Prenda prenda) {
 
 		prendasDisponibles.add(prenda);
@@ -55,8 +65,6 @@ public class Guardarropa {
 	{
 		return this.estilo;
 	}
-	
-	
 	
 	public Atuendo generarRecomendacion(Evento evento) throws Exception
 	{

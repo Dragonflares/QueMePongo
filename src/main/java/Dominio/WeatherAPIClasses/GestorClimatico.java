@@ -10,7 +10,7 @@ public class GestorClimatico{
 
 	public GestorClimatico (List<WeatherAdapter> weatherAdapters)
 	{
-		this.weatherAdapters = weatherAdapters;
+		GestorClimatico.weatherAdapters = weatherAdapters;
 	}
 
 	public static double obtenerTemperatura(int date, int time) throws IOException
