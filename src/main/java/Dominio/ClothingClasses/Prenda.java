@@ -15,9 +15,10 @@ public class Prenda {
 	private Color colorSecundario;
 	private Material material;
 	private List<Graphics2D> imagenGraphics;
-	private List<Integer> capasEnDondePuedeEstar;
 
-	public Prenda(TipoPrenda tipoPrenda, Color colorPrimario, Color colorSecundario, Material material) throws Exception {
+
+	public Prenda(TipoPrenda tipoPrenda, Color colorPrimario,
+			Color colorSecundario, Material material) throws Exception {
 		this.tipoPrenda = tipoPrenda;
 
 		if (!colorPrimario.equals(colorSecundario)) {

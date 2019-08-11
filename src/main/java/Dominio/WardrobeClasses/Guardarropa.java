@@ -14,17 +14,15 @@ import Dominio.UserClasses.Usuario;
 import Dominio.WeatherAPIClasses.GestorClimatico;
 
 public class Guardarropa {
-	
-	private Usuario creador;
+
 	private List<Usuario> usuariosConAcceso;
 	private Estilo estilo;
 	private List<Prenda> prendasDisponibles;
 	private List<Prenda> prendasNoDisponibles;
 	private GestorClimatico climaHelp;
 
-	public Guardarropa(Usuario creador, List<Usuario> compartidos,
+	public Guardarropa(List<Usuario> compartidos,
 			Estilo estilo, List<Prenda> prendas, GestorClimatico climaHelp) {
-		this.creador = creador;
 		this.usuariosConAcceso = compartidos;
 		this.estilo = estilo;
 		this.prendasDisponibles = prendas;
@@ -40,7 +38,7 @@ public class Guardarropa {
 	public void permitirAccesoaUsuario (Usuario usuario) {
 		usuariosConAcceso.add(usuario);
 	}
-	
+
 	public void agregarPrenda(Prenda prenda) {
 
 		prendasDisponibles.add(prenda);
@@ -65,7 +63,7 @@ public class Guardarropa {
 	{
 		return this.estilo;
 	}
-	
+
 	public Atuendo generarRecomendacion(Evento evento) throws Exception
 	{
 		Atuendo atuendo = null;
@@ -73,26 +71,38 @@ public class Guardarropa {
 		int limitInf = getPrendasInferioresDisponibles().size();
 		int limitAccesorios = getAccesoriosDisponibles().size();
 		int limitCalzados = getCalzadosDisponibles().size();
-	
+
 		double temperatura = GestorClimatico.obtenerTemperatura(evento.getFecha().get(Calendar.DAY_OF_MONTH) , evento.getFecha().get(Calendar.HOUR_OF_DAY));
-		
-		if(limitSup != 0 && limitInf !=0 && limitCalzados != 0)
+
+		if(limitSup != 0 && limitInf != 0 && limitCalzados != 0)
 		{
 			Random rand = new Random();
-			int indexSuperior = rand.nextInt(limitSup);
-			Prenda prendaSuperior = getPrendasSuperioresDisponibles().get(indexSuperior);
-			int indexInferior = rand.nextInt(limitInf);
-			Prenda prendaInferior = getPrendasInferioresDisponibles().get(indexInferior);
-			int indexAccesorios = rand.nextInt(limitAccesorios);
-			Prenda accesorio = getAccesoriosDisponibles().get(indexAccesorios);
-			int indexCalzados = rand.nextInt(limitCalzados);
-			Prenda calzado = getCalzadosDisponibles().get(indexCalzados);
-			ArrayList<Prenda> prendasDeAtuendo = new ArrayList<Prenda>();
-			prendasDeAtuendo.add(prendaSuperior);
-			prendasDeAtuendo.add(prendaInferior);
-			prendasDeAtuendo.add(accesorio);
-			prendasDeAtuendo.add(calzado);
-			atuendo = new Atuendo(prendasDeAtuendo);
+			if(temperatura >= 27)
+			{
+				//TODO Hacer con lo del builder que ponga remeramangacorta/musculosa, pantalon corto.
+			}
+			else
+			{
+				ArrayList<Prenda> prendasSuperiores = new ArrayList<Prenda>();
+				int calorActual = evento.obtenerCreador().getOffset() + (prendasSuperiores.stream()
+						.mapToInt(p -> p.getTipoPrenda().getRopa().abrigar()).sum());
+				while(calorActual < (3 + 27 - temperatura) && calorActual > (27 - temperatura - 3))					
+				{
+					int indexSuperior = rand.nextInt(limitSup);
+					Prenda prendaSuperior = getPrendasSuperioresDisponibles().get(indexSuperior);
+				}
+				int indexInferior = rand.nextInt(limitInf);
+				Prenda prendaInferior = getPrendasInferioresDisponibles().get(indexInferior);
+				int indexAccesorios = rand.nextInt(limitAccesorios);
+				Prenda accesorio = getAccesoriosDisponibles().get(indexAccesorios);
+				int indexCalzados = rand.nextInt(limitCalzados);
+				Prenda calzado = getCalzadosDisponibles().get(indexCalzados);
+				ArrayList<Prenda> prendasDeAtuendo = new ArrayList<Prenda>();
+				prendasDeAtuendo.add(prendaInferior);
+				prendasDeAtuendo.add(accesorio);
+				prendasDeAtuendo.add(calzado);
+				atuendo = new Atuendo(prendasDeAtuendo);
+			}
 		}
 		else
 		{
@@ -100,7 +110,7 @@ public class Guardarropa {
 		}
 		return atuendo;
 	}
-	
+
 	public void marcarNoDiponible(Atuendo atuendo)
 	{
 		atuendo.getPrendas().forEach(prenda -> {

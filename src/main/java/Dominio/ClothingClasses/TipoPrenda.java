@@ -6,25 +6,24 @@ import Dominio.ClothingClasses.Material;
 import java.util.ArrayList;
 @SuppressWarnings("unused")
 
-public class TipoPrenda implements Abrigo{
+public class TipoPrenda{
 
 	private TipoDeRopa ropa;
 	private Categoria categoria;
 	private List<Material> materialesNoCompatibles;
 	private List<TipoDeRopa> ropasCompatibles;
-	private int nivelDeCalor; 
-	public TipoPrenda(TipoDeRopa ropa, Categoria categoria, List<Material> materialesNoCompatibles, List<TipoDeRopa> ropasCompatibles, int nivelDeCalor)
+	public TipoPrenda(TipoDeRopa ropa, Categoria categoria, 
+			List<Material> materialesNoCompatibles, List<TipoDeRopa> ropasCompatibles)
 	{
 		this.ropa = ropa;
 		this.categoria = categoria;
 		this.materialesNoCompatibles = materialesNoCompatibles;
 		this.ropasCompatibles = ropasCompatibles;
-		this.nivelDeCalor = nivelDeCalor;
 	}
 	
 	public int Abrigar()
 	{
-		return this.nivelDeCalor;
+		return this.ropa.abrigar();
 	}
 	public List<Material> getMaterialesNoCompatible(){
 		return this.materialesNoCompatibles;
@@ -32,6 +31,10 @@ public class TipoPrenda implements Abrigo{
 	
 	public Categoria getCategoria() {
 		return categoria;
+	}
+	
+	public TipoDeRopa getRopa() {
+		return this.ropa;
 	}
 	
 	

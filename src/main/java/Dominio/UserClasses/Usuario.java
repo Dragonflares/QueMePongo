@@ -17,6 +17,7 @@ public class Usuario {
 	private List<Atuendo> atuendosRechazados;
 	private Atuendo ultimoAtuendo;
 	private List<Evento> eventos;
+	private int offset;
 	
 	
 	public Usuario(String username){
@@ -81,5 +82,10 @@ public class Usuario {
 		this.ultimoAtuendo = atuendoFinal;
 		return atuendoFinal;
 	}
+
+	public int getOffset() {
+		return this.offset;
+	}
+
 
 }
