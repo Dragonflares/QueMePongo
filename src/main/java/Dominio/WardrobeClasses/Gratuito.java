@@ -26,7 +26,7 @@ public class Gratuito implements TipoDeUsuario{
 
 	public void agregarPrendaAGuardarropa(Guardarropa guardarropa, Prenda prenda) throws Exception
 	{
-		if(this.tamanioMaximoGuardarropa > guardarropa.cantidadDePrendas())
+		if(this.tamanioMaximoGuardarropa > guardarropa.cantidadDePrendasDisponibles())
 		{
 			guardarropa.agregarPrenda(prenda);
 		} else 

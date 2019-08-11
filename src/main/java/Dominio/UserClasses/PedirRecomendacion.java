@@ -9,19 +9,19 @@ public class PedirRecomendacion implements Paso{
 
 
 	private Usuario usuario;
-	private Estilo estilo;
+	private Evento evento;
 
 
-	public PedirRecomendacion(Usuario usuario,Estilo estilo) {
+	public PedirRecomendacion(Usuario usuario,Evento evento) {
 
 		this.usuario = usuario;
-		this.estilo = estilo;
+		this.evento = evento;
 	}
 
 
 
 	public void ejecutar() throws Exception {
-		usuario.pedirRecomendacion(estilo);
+		usuario.pedirRecomendacion(evento);
 	}
 
 

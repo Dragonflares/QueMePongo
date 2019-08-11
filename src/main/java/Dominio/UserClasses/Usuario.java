@@ -48,7 +48,7 @@ public class Usuario {
 
 	public void agregarPrendaAGuardarropa(Guardarropa guardarropa, Prenda prenda) throws Exception {
 
-		if(!this.guardarropas.stream().anyMatch(p -> p.getPrendas().contains(prenda))) {
+		if(!this.guardarropas.stream().anyMatch(p -> p.getPrendasDisponibles().contains(prenda))) {
 			tipoDeCuenta.agregarPrendaAGuardarropa(guardarropa, prenda);
 		} else {
 			throw new Exception("Ya tenes la prenda en otro guardarropa");
@@ -66,9 +66,9 @@ public class Usuario {
 		this.atuendosRechazados.remove(atuendo);
 	}
 
-	public Atuendo pedirRecomendacion(Estilo estilo) throws Exception{
+	public Atuendo pedirRecomendacion(Evento evento) throws Exception{
 		List<Guardarropa> guardarropasConEstilo = 
-				this.guardarropas.stream().filter(g -> g.getEstilo() == estilo).collect(Collectors.toList());
+				this.guardarropas.stream().filter(g -> g.getEstilo() == evento.getEstilo()).collect(Collectors.toList());
 		
 		Atuendo atuendoFinal = null;
 		Random rand = new Random();
@@ -76,7 +76,7 @@ public class Usuario {
 		while(atuendoFinal != null)
 		{
 			Guardarropa guardarropa =  guardarropasConEstilo.get(rand.nextInt(cantGuardarropas));
-			atuendoFinal = guardarropa.generarRecomendacion();
+			atuendoFinal = guardarropa.generarRecomendacion(evento);
 		}
 		this.ultimoAtuendo = atuendoFinal;
 		return atuendoFinal;
