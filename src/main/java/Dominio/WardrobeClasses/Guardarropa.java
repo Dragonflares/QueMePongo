@@ -67,8 +67,7 @@ public class Guardarropa {
 	public Atuendo generarRecomendacion(Evento evento) throws Exception
 	{
 		Atuendo atuendo = null;
-		int limitSup = getPrendasSuperioresDisponibles().size();
-		int limitInf = getPrendasInferioresDisponibles().size();
+
 		int limitAccesorios = getAccesoriosDisponibles().size();
 		int limitCalzados = getCalzadosDisponibles().size();
 
@@ -85,16 +84,23 @@ public class Guardarropa {
 			int a = 0;
 			do{
 				final int b = a;
-				int indexSuperior = rand.nextInt(limitSup);
+
 				List<Prenda> prendasSuperioresPosibles = getPrendasSuperioresDisponibles()
 						.stream()
 						.filter(p -> p.getTipoPrenda().getRopa().esDeEsaCapa(b))
 						.collect(Collectors.toList());
-				Prenda prendaSuperior = prendasSuperioresPosibles.get(indexSuperior);
-				prendasSuperiores.add(prendaSuperior);
-				calorActual = evento.obtenerCreador().getOffset() + (prendasSuperiores.stream()
-						.mapToInt(p -> p.getTipoPrenda().getRopa().abrigar()).sum());
-				a++;
+				int limitSup = prendasSuperioresPosibles.size();
+				if(!(a == 0 && limitSup != 0)) {
+					int indexSuperior = rand.nextInt(limitSup);
+					Prenda prendaSuperior = prendasSuperioresPosibles.get(indexSuperior);
+					prendasSuperiores.add(prendaSuperior);
+					calorActual = evento.obtenerCreador().getOffset() + (prendasSuperiores.stream()
+							.mapToInt(p -> p.getTipoPrenda().getRopa().abrigar()).sum());
+					a++;
+				}
+				else {
+					throw new Exception("No hay suficientes prendas para generar el atuendo");
+				}
 			}
 			while(calorActual < (27 - temperatura - 3) && a < 6);
 			if(calorActual > (27 - temperatura + 3))
@@ -104,31 +110,56 @@ public class Guardarropa {
 			else
 			{
 				Prenda prendaInferior;
-				if(temperatura > 18)
+				if(temperatura > (18 - evento.obtenerCreador().getOffset()))
 				{
-					int indexInferior = rand.nextInt(limitInf);
+
 					List<Prenda> prendasInferioresPosibles = getPrendasSuperioresDisponibles()
 							.stream()
 							.filter(p -> p.getTipoPrenda().getRopa().abrigar() == 0)
 							.collect(Collectors.toList());
-					prendaInferior = prendasInferioresPosibles.get(indexInferior);
+					int limitInf = prendasInferioresPosibles.size();
+					if(limitInf > 0) {
+						int indexInferior = rand.nextInt(limitInf);
+						prendaInferior = prendasInferioresPosibles.get(indexInferior);
+					}
+					else {
+						throw new Exception("No hay suficientes prendas inferiores "
+								+ "para crear el atuendo");
+					}
 				}
 				else
 				{
-					int indexInferior = rand.nextInt(limitInf);
 					List<Prenda> prendasInferioresPosibles = getPrendasSuperioresDisponibles()
 							.stream()
 							.filter(p -> p.getTipoPrenda().getRopa().abrigar() == 1)
 							.collect(Collectors.toList());
-					prendaInferior = prendasInferioresPosibles.get(indexInferior);
+					int limitInf = prendasInferioresPosibles.size();
+					if(limitInf > 0) {
+						int indexInferior = rand.nextInt(limitInf);
+						prendaInferior = prendasInferioresPosibles.get(indexInferior);
+					}
+					else {
+						throw new Exception("No hay suficientes prendas inferiores "
+								+ "para crear el atuendo");
+					}
 				}
-				int indexAccesorios = rand.nextInt(limitAccesorios);
-				Prenda accesorio = getAccesoriosDisponibles().get(indexAccesorios);
-				int indexCalzados = rand.nextInt(limitCalzados);
-				Prenda calzado = getCalzadosDisponibles().get(indexCalzados);
+				Prenda calzado;
+				if(limitCalzados != 0) {
+					int indexCalzados = rand.nextInt(limitCalzados);
+					calzado = getCalzadosDisponibles().get(indexCalzados);
+				}
+				else {
+					throw new Exception("No hay suficientes calzados "
+							+ "para crear el atuendo");
+				}
+				//int indexAccesorios = rand.nextInt(limitAccesorios);
+				//Prenda accesorio = getAccesoriosDisponibles().get(indexAccesorios);
+				//TODO preguntar sobre si los accesorios van a depender de la condicion 
+				//climática unicamente
 				ArrayList<Prenda> prendasDeAtuendo = new ArrayList<Prenda>();
+				prendasDeAtuendo.addAll(prendasSuperiores);
 				prendasDeAtuendo.add(prendaInferior);
-				prendasDeAtuendo.add(accesorio);
+				//				prendasDeAtuendo.add(accesorio);
 				prendasDeAtuendo.add(calzado);
 				atuendo = new Atuendo(prendasDeAtuendo);
 			}
