@@ -73,26 +73,55 @@ public class Guardarropa {
 		int limitCalzados = getCalzadosDisponibles().size();
 
 		double temperatura = GestorClimatico.obtenerTemperatura(evento.getFecha().get(Calendar.DAY_OF_MONTH) , evento.getFecha().get(Calendar.HOUR_OF_DAY));
-
-		if(limitSup != 0 && limitInf != 0 && limitCalzados != 0)
+		Random rand = new Random();
+		if(temperatura >= 27)
 		{
-			Random rand = new Random();
-			if(temperatura >= 27)
+			//TODO Hacer con lo del builder que ponga remeramangacorta/musculosa, pantalon corto.
+		}
+		else
+		{
+			List<Prenda> prendasSuperiores = new ArrayList<Prenda>();
+			int calorActual;
+			int a = 0;
+			do{
+				final int b = a;
+				int indexSuperior = rand.nextInt(limitSup);
+				List<Prenda> prendasSuperioresPosibles = getPrendasSuperioresDisponibles()
+						.stream()
+						.filter(p -> p.getTipoPrenda().getRopa().esDeEsaCapa(b))
+						.collect(Collectors.toList());
+				Prenda prendaSuperior = prendasSuperioresPosibles.get(indexSuperior);
+				prendasSuperiores.add(prendaSuperior);
+				calorActual = evento.obtenerCreador().getOffset() + (prendasSuperiores.stream()
+						.mapToInt(p -> p.getTipoPrenda().getRopa().abrigar()).sum());
+				a++;
+			}
+			while(calorActual < (27 - temperatura - 3) && a < 6);
+			if(calorActual > (27 - temperatura + 3))
 			{
-				//TODO Hacer con lo del builder que ponga remeramangacorta/musculosa, pantalon corto.
+				//TODO Poner que vuelva a generar parte superior
 			}
 			else
 			{
-				ArrayList<Prenda> prendasSuperiores = new ArrayList<Prenda>();
-				int calorActual = evento.obtenerCreador().getOffset() + (prendasSuperiores.stream()
-						.mapToInt(p -> p.getTipoPrenda().getRopa().abrigar()).sum());
-				while(calorActual < (3 + 27 - temperatura) && calorActual > (27 - temperatura - 3))					
+				Prenda prendaInferior;
+				if(temperatura > 18)
 				{
-					int indexSuperior = rand.nextInt(limitSup);
-					Prenda prendaSuperior = getPrendasSuperioresDisponibles().get(indexSuperior);
+					int indexInferior = rand.nextInt(limitInf);
+					List<Prenda> prendasInferioresPosibles = getPrendasSuperioresDisponibles()
+							.stream()
+							.filter(p -> p.getTipoPrenda().getRopa().abrigar() == 0)
+							.collect(Collectors.toList());
+					prendaInferior = prendasInferioresPosibles.get(indexInferior);
 				}
-				int indexInferior = rand.nextInt(limitInf);
-				Prenda prendaInferior = getPrendasInferioresDisponibles().get(indexInferior);
+				else
+				{
+					int indexInferior = rand.nextInt(limitInf);
+					List<Prenda> prendasInferioresPosibles = getPrendasSuperioresDisponibles()
+							.stream()
+							.filter(p -> p.getTipoPrenda().getRopa().abrigar() == 1)
+							.collect(Collectors.toList());
+					prendaInferior = prendasInferioresPosibles.get(indexInferior);
+				}
 				int indexAccesorios = rand.nextInt(limitAccesorios);
 				Prenda accesorio = getAccesoriosDisponibles().get(indexAccesorios);
 				int indexCalzados = rand.nextInt(limitCalzados);
@@ -103,10 +132,6 @@ public class Guardarropa {
 				prendasDeAtuendo.add(calzado);
 				atuendo = new Atuendo(prendasDeAtuendo);
 			}
-		}
-		else
-		{
-			atuendo = null;
 		}
 		return atuendo;
 	}

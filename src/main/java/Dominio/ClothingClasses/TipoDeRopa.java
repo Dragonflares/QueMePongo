@@ -15,7 +15,7 @@ public class TipoDeRopa {
 		return this.abrigo;
 	}
 	
-	public Boolean esDeEsaCapa(int capa){
+	public boolean esDeEsaCapa(final int capa){
 		return capasEnDondePuedeEstar.stream().anyMatch(p -> p.equals(capa));
 	}
 //	REMERAMANGACORTA 3,
