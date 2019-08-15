@@ -164,10 +164,11 @@ public class Guardarropa {
 				atuendo = new Atuendo(prendasDeAtuendo);
 			}
 		}
+		this.marcarNoDisponible(atuendo);
 		return atuendo;
 	}
 
-	public void marcarNoDiponible(Atuendo atuendo)
+	public void marcarNoDisponible(Atuendo atuendo)
 	{
 		atuendo.getPrendas().forEach(prenda -> {
 			this.prendasDisponibles.remove(prenda);
