@@ -1,6 +1,7 @@
 package Dominio.UserClasses;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -87,5 +88,10 @@ public class Usuario {
 		return this.offset;
 	}
 
+	public void crearEvento(Calendar fecha, String direccion, Estilo estilo) {
+		this.eventos.add(new Evento(fecha, direccion, estilo, this));
+	}
+	
+//	public void crearNuevoGuardarropas() TODO Hacer que climahelp sea un singleton
 
 }

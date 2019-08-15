@@ -174,6 +174,14 @@ public class Guardarropa {
 			this.prendasNoDisponibles.add(prenda);
 		});
 	}
+	
+	public void devolverAtuendo(Atuendo atuendo)
+	{
+		atuendo.getPrendas().forEach(prenda -> {
+			this.prendasDisponibles.add(prenda);
+			this.prendasNoDisponibles.remove(prenda);
+		});
+	}
 }
 
 
