@@ -9,7 +9,7 @@ public class PonerAtuendoNoDisponible implements Paso{
 	
 	@Override
 	public void ejecutar() throws Exception {
-		guardarropa.marcarNoDiponible(atuendo);
+		guardarropa.marcarNoDisponible(atuendo);
 	}
 
 }

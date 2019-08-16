@@ -21,7 +21,21 @@ public class GestorClimatico{
 		{
 			WeatherAdapter forecaster = weatherAdapters.get(actualForecaster);
 			temp = forecaster.darTemperaturaActual(date, time);
+			actualForecaster++;
 		}
 		return temp;
+	}
+	
+	public static String darCondicionClimatica(int date, int time) throws IOException
+	{
+		String condicion = null;
+		int actualForecaster = 0;
+		while(condicion == null && weatherAdapters.size() != actualForecaster)
+		{
+			WeatherAdapter forecaster = weatherAdapters.get(actualForecaster);
+			condicion = forecaster.darCondicionClimatica(date, time);
+			actualForecaster++;
+		}
+		return condicion;
 	}
 }
