@@ -20,15 +20,12 @@ public class Guardarropa {
 	private Estilo estilo;
 	private List<Prenda> prendasDisponibles;
 	private List<Prenda> prendasNoDisponibles;
-	private GestorClimatico climaHelp;
 
-	public Guardarropa(List<Usuario> compartidos,
-			Estilo estilo, List<Prenda> prendas, GestorClimatico climaHelp) {
+	public Guardarropa(List<Usuario> compartidos, Estilo estilo, List<Prenda> prendas) {
 		this.usuariosConAcceso = compartidos;
 		this.estilo = estilo;
 		this.prendasDisponibles = prendas;
 		this.prendasNoDisponibles = null;
-		this.climaHelp = climaHelp;
 	}
 
 	public int cantidadDePrendasDisponibles()
@@ -127,7 +124,6 @@ public class Guardarropa {
 			return prendasSuperiores;
 		}
 	}
-
 	public Prenda obtenerParteInferior(Evento evento, double temperatura) throws Exception {
 		Prenda prendaInferior;
 
@@ -139,7 +135,6 @@ public class Guardarropa {
 		}
 		return prendaInferior;
 	}
-
 	public Prenda obtenerPrendaInf(int nivelAbrigo) throws Exception {
 		Prenda prendaInferior;
 		Random rand = new Random();
@@ -158,7 +153,6 @@ public class Guardarropa {
 		}
 		return prendaInferior;
 	}
-
 	public Prenda obtenerCalzado(Evento evento, double temperatura) throws Exception {
 		Prenda calzado;
 		Random rand = new Random();
@@ -173,7 +167,6 @@ public class Guardarropa {
 		}
 		return calzado;
 	}
-
 	public List<Prenda> obtenerAccesorios(Evento evento) throws IOException{
 		List<Prenda> accesorios = new ArrayList<Prenda>();
 		int limitAccesorios = getAccesoriosDisponibles().size();
