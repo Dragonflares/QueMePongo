@@ -14,7 +14,7 @@ public class GestorClimatico{
 		weatherAdapters.add(new OPWAdaptado());
 	}
 
-	public static double obtenerTemperatura(int date, int time) throws IOException
+	public double obtenerTemperatura(int date, int time) throws IOException
 	{
 		double temp = -404;
 		int actualForecaster = 0;

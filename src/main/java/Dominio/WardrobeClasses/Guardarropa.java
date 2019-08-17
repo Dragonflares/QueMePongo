@@ -16,16 +16,18 @@ import Dominio.WeatherAPIClasses.GestorClimatico;
 
 public class Guardarropa {
 
-	private List<Usuario> usuariosConAcceso;
+	private List<Usuario> usuariosConAcceso = new ArrayList<Usuario>();
 	private Estilo estilo;
-	private List<Prenda> prendasDisponibles;
-	private List<Prenda> prendasNoDisponibles;
+	private List<Prenda> prendasDisponibles = new ArrayList<Prenda>();
+	private List<Prenda> prendasNoDisponibles = new ArrayList<Prenda>();
+	private GestorClimatico climaHelp;
 
-	public Guardarropa(List<Usuario> compartidos, Estilo estilo, List<Prenda> prendas) {
-		this.usuariosConAcceso = compartidos;
+	public Guardarropa(Usuario creador, Estilo estilo) {
+		this.usuariosConAcceso.add(creador);
 		this.estilo = estilo;
-		this.prendasDisponibles = prendas;
+		this.prendasDisponibles = null;
 		this.prendasNoDisponibles = null;
+		this.climaHelp = new GestorClimatico();
 	}
 
 	public int cantidadDePrendasDisponibles()
@@ -62,11 +64,16 @@ public class Guardarropa {
 		return this.estilo;
 	}
 
+	public double pedirTemperatura(int dia, int hora) throws IOException {
+		@SuppressWarnings("unused")
+		double temperatura;
+		return temperatura = this.climaHelp.obtenerTemperatura( dia, hora);
+	}
 	public Atuendo generarRecomendacion(Evento evento) throws Exception
 	{
 		Atuendo atuendo = null;
 
-		double temperatura = GestorClimatico.obtenerTemperatura(evento.getFecha().get(Calendar.DAY_OF_MONTH) , evento.getFecha().get(Calendar.HOUR_OF_DAY));
+		double temperatura = pedirTemperatura(evento.getFecha().get(Calendar.DAY_OF_MONTH), evento.getFecha().get(Calendar.HOUR_OF_DAY));
 		if(temperatura >= 27)
 		{
 			//TODO Hacer con lo del "PROTOTYPE" que ponga remeramangacorta/musculosa, pantalon corto.

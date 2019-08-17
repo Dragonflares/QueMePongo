@@ -92,6 +92,8 @@ public class Usuario {
 		this.eventos.add(new Evento(fecha, direccion, estilo, this));
 	}
 	
-//	public void crearNuevoGuardarropas() TODO Hacer que climahelp sea un singleton
+	public void crearNuevoGuardarropas(Estilo estilo) {
+		this.guardarropas.add(new Guardarropa(this, estilo));
+	}
 
 }
