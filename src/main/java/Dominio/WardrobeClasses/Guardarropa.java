@@ -80,23 +80,29 @@ public class Guardarropa {
 		}
 		else
 		{
-			List<Prenda> prendasSuperiores = obtenerParteSuperior(evento, temperatura);
+			List<Prenda> prendasSuperiores = obtenerParteSuperior(evento, temperatura, 0);
 			Prenda prendaInferior = obtenerParteInferior(evento, temperatura);
 			Prenda calzado = obtenerCalzado(evento, temperatura);
 			List<Prenda> accesorios = obtenerAccesorios(evento);
 			ArrayList<Prenda> prendasDeAtuendo = new ArrayList<Prenda>();
-			prendasDeAtuendo.addAll(prendasSuperiores);
-			prendasDeAtuendo.add(prendaInferior);
-			prendasDeAtuendo.addAll(accesorios);
-			prendasDeAtuendo.add(calzado);
-			atuendo = new Atuendo(prendasDeAtuendo);
+			if(prendasSuperiores.isEmpty() || prendaInferior.equals(null) || calzado.equals(null))
+			{
+				atuendo = null;
+			}
+			else {
+				prendasDeAtuendo.addAll(prendasSuperiores);
+				prendasDeAtuendo.add(prendaInferior);
+				prendasDeAtuendo.addAll(accesorios);
+				prendasDeAtuendo.add(calzado);
+				atuendo = new Atuendo(prendasDeAtuendo);
+			}
 		}
 
 		this.marcarNoDisponible(atuendo);
 		return atuendo;
 	}
 
-	public List<Prenda> obtenerParteSuperior(Evento evento, double temperatura) throws Exception{
+	public List<Prenda> obtenerParteSuperior(Evento evento, double temperatura, int intento) throws Exception{
 		List<Prenda> prendasSuperiores = new ArrayList<Prenda>();
 		Random rand = new Random();
 		int calorActual;
@@ -124,10 +130,15 @@ public class Guardarropa {
 		while(calorActual < (27 - temperatura - 3) && a < 6);
 		if(calorActual > (27 - temperatura + 3))
 		{
-			return prendasSuperiores = obtenerParteSuperior(evento, temperatura);
+			if(intento == 10) {
+				return null;
+			}
+			else {
+				intento++;
+				return prendasSuperiores = obtenerParteSuperior(evento, temperatura, intento);
+			}
 		}
-		else
-		{
+		else {
 			return prendasSuperiores;
 		}
 	}
