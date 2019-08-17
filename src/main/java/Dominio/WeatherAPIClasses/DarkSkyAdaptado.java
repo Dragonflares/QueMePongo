@@ -5,8 +5,8 @@ import java.io.IOException;
 public class DarkSkyAdaptado implements WeatherAdapter{
 	private DarkSkyAPI DarkSky;
 	
-	public DarkSkyAdaptado (DarkSkyAPI DarkSky) {
-		this.DarkSky = DarkSky;
+	public DarkSkyAdaptado () {
+		this.DarkSky = new DarkSkyAPI();
 	}
 	
 	public double darTemperaturaActual(int day, int hora) throws IOException {

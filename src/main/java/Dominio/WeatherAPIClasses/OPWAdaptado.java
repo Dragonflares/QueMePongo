@@ -5,8 +5,8 @@ import java.io.IOException;
 public class OPWAdaptado implements WeatherAdapter{
 	private OPW openWeather;
 	
-	public OPWAdaptado (OPW openWeather) {
-		this.openWeather = openWeather;
+	public OPWAdaptado () {
+		this.openWeather = new OPW();
 	}
 	
 	public double darTemperaturaActual(int day, int time) {

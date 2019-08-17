@@ -8,9 +8,10 @@ public class GestorClimatico{
 
 	private static List<WeatherAdapter> weatherAdapters = new ArrayList<WeatherAdapter>();
 
-	public GestorClimatico (List<WeatherAdapter> weatherAdapters)
+	public GestorClimatico ()
 	{
-		GestorClimatico.weatherAdapters = weatherAdapters;
+		weatherAdapters.add(new DarkSkyAdaptado());
+		weatherAdapters.add(new OPWAdaptado());
 	}
 
 	public static double obtenerTemperatura(int date, int time) throws IOException
