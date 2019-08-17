@@ -24,6 +24,7 @@ public class Usuario {
 	public Usuario(String username){
 		this.username = username;
 		this.guardarropas = new ArrayList<Guardarropa>();
+		this.eventos = new ArrayList<Evento>();
 	}
 
 	public Usuario(String username, Guardarropa guardarropa) {
@@ -95,5 +96,8 @@ public class Usuario {
 	public void crearNuevoGuardarropas(Estilo estilo) {
 		this.guardarropas.add(new Guardarropa(this, estilo));
 	}
-
+	
+	public List<Evento> getEventos(){
+		return this.eventos;
+	}
 }
