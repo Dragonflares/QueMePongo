@@ -65,9 +65,7 @@ public class Guardarropa {
 	}
 
 	public double pedirTemperatura(int dia, int hora) throws IOException {
-		@SuppressWarnings("unused")
-		double temperatura;
-		return temperatura = this.climaHelp.obtenerTemperatura( dia, hora);
+		return this.climaHelp.obtenerTemperatura( dia, hora);
 	}
 	public Atuendo generarRecomendacion(Evento evento) throws Exception
 	{

@@ -6,6 +6,7 @@ import java.util.List;
 public class TipoDeRopa {
 	private int abrigo;
 	private ArrayList<Integer> capasEnDondePuedeEstar;
+	private List<Material> materialesNoCompatibles;
 	
 	public TipoDeRopa(int abrigo) {
 		this.abrigo = abrigo;
@@ -13,6 +14,10 @@ public class TipoDeRopa {
 	
 	public int abrigar() {
 		return this.abrigo;
+	}
+	
+	public List<Material> getMaterialesNoCompatible(){
+		return this.materialesNoCompatibles;
 	}
 	
 	public boolean esDeEsaCapa(final int capa){
