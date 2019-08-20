@@ -21,6 +21,13 @@ public void setNombre(String nombre) {
 		
 		
 	}
+	
+	
+	public boolean compararNombres(String otroNombre){
+
+
+		return this.getNombre().equals(otroNombre);
+	}
 
 
 }

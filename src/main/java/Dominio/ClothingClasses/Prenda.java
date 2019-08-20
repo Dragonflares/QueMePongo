@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 import Dominio.ClothingClasses.Material;
+import Repositorios.RepoColor;
+import Repositorios.RepoMaterial;
 
 public class Prenda {
 	private TipoPrenda tipoPrenda;
@@ -17,19 +19,20 @@ public class Prenda {
 	private List<Graphics2D> imagenGraphics;
 
 
-	public Prenda(TipoPrenda tipoPrenda, Color colorPrimario,
-			Color colorSecundario, Material material) throws Exception {
+	public Prenda(TipoPrenda tipoPrenda, String colorPrimario,
+		String colorSecundario, String material) throws Exception {
 		this.tipoPrenda = tipoPrenda;
-
+		Material nuevoMaterial = RepoMaterial.getInstance().findByName(material);
+		
 		if (!colorPrimario.equals(colorSecundario)) {
-			this.colorPrimario =  colorPrimario;
-			this.colorSecundario = colorSecundario;
+			this.colorPrimario =  RepoColor.getInstance().findByName(colorPrimario);
+			this.colorSecundario = RepoColor.getInstance().findByName(colorSecundario);
 		} else {
 			throw new Exception("No pueden ser del mismo color."); 
 		}
 		
-		if(!tipoPrenda.getMaterialesNoCompatible().contains(material)) {
-			this.material = material;
+		if(!tipoPrenda.getMaterialesNoCompatible().contains(nuevoMaterial)) {
+			this.material = nuevoMaterial;
 		} else {
 			throw new Exception("Ingreso un tipo de prenda no compatible.");
 		}

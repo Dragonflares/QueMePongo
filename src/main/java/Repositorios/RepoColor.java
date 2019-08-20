@@ -27,6 +27,28 @@ public class RepoColor extends Repositorio{
     }
 
    
+    
+    public Color findByName(String nombre) throws ProcessingDataFailedException {
+        try {
+            FileReader file = new FileReader(getJsonFile());
+            BufferedReader bufferedReader = new BufferedReader(file);
+            Gson gson = new Gson();
+            Object jsonObject = gson.fromJson(bufferedReader, Object.class);
+            String json = jsonObject.toString();
+            Type tipoListaColores = new TypeToken<List<Material>>() {}.getType();
+
+            List<Color> colores = gson.fromJson(json, tipoListaColores);
+            
+           return colores.stream().filter(color -> color.compararNombres(nombre)).findAny().orElse(null);
+      
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new ProcessingDataFailedException(e.getLocalizedMessage());
+        }
+    }
+    
+    
+    
 
     public List<Color> obtenerColores() throws ProcessingDataFailedException {
 
