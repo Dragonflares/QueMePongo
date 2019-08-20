@@ -23,6 +23,15 @@ public class ParametersPaso {
 
 
 
+	public void nuevoParametersPasoSeteado (ParametersPasoBuilder builder) {
+		this.usuario = builder.usuario;
+		this.atuendo = builder.atuendo;
+		this.evento = builder.evento;
+		this.guardarropa = builder.guardarropa;
+	}
+	
+	
+	
 
 	public Usuario getUsuario() {
 		return usuario;
