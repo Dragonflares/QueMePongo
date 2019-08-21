@@ -1,34 +1,45 @@
 package entities;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
+
+import Dominio.UserClasses.Usuario;
+import Repositorios.RepoEvento;
+
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Timer;
 
 class CrearSugerenciaTask extends TimerTask{
 
-	private final static int TWO_AM = 2;
-    private final static int ZERO_MINUTES = 0;
+	private final static int HORA = 2;
+    private final static int MINUTOS = 0;
 	
 	@Override
-	public void run() {
-		 long currennTime = System.currentTimeMillis();
-		 long stopTime = currennTime + 2000; //provide the 2hrs time it should execute 1000*60*60*2
-		 while(stopTime != System.currentTimeMillis()){
-	            // TODO crear la sugerencia
-	     }
-		
+	public void run()
+	{
+		RepoEvento.getInstance().getEventosProximos()
+			.forEach(e -> 
+			{
+				Usuario creador = e.getCreador();
+					try {
+						creador.agregarSugerencia(creador.pedirRecomendacion(e)); // TODO ver cuando hagamos lo de notificacion
+					} catch (Exception e1) {
+						// Auto-generated catch block
+						e1.printStackTrace();
+					} 
+			});
 	}
-	
-	public static Date getTomorrowMorning2AM(){
-
-	        Date date2am = new java.util.Date(); 
-	           date2am.setHours(TWO_AM); 
-	           date2am.setMinutes(ZERO_MINUTES); 
-
-	           return date2am;
-	      }
-	/*
-	 * main
-	  CrearSugerenciaTask crearSugerenciatask = new CrearSugerenciaTask();
-        Timer timer = new Timer();  
-        timer.schedule(crearSugerenciatask,getTomorrowMorning2AM(),1000*60*60*24);
-	 * */
+			
+	public void empezar()
+	{
+		Calendar today = Calendar.getInstance();
+		today.set(Calendar.HOUR_OF_DAY, HORA);
+		today.set(Calendar.MINUTE, MINUTOS);
+		today.set(Calendar.SECOND, 0);
+		
+		Timer timer = new Timer();
+		
+		timer.schedule(this, today.getTime(), TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS)); // period: 1 day
+	}
 }
