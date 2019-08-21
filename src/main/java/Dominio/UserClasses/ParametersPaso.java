@@ -1,6 +1,7 @@
 package Dominio.UserClasses;
 
 import Dominio.ClothingClasses.Atuendo;
+import Dominio.EventClasses.Evento;
 import Dominio.WardrobeClasses.Guardarropa;
 
 public class ParametersPaso {

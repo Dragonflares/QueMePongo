@@ -3,7 +3,7 @@ package Repositorios;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import Dominio.UserClasses.Evento;
+import Dominio.EventClasses.Evento;
 
 public class RepoEvento extends Repositorio{
 	private List<Evento> eventos;

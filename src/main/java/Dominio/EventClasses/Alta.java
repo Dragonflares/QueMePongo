@@ -1,4 +1,4 @@
-package Dominio.UserClasses;
+package Dominio.EventClasses;
 
 import java.util.Calendar;
 

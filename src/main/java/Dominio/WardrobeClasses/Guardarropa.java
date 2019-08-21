@@ -10,7 +10,7 @@ import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Categoria;
 import Dominio.ClothingClasses.Estilo;
 import Dominio.ClothingClasses.Prenda;
-import Dominio.UserClasses.Evento;
+import Dominio.EventClasses.Evento;
 import Dominio.UserClasses.Usuario;
 import Dominio.WeatherAPIClasses.GestorClimatico;
 

@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Estilo;
 import Dominio.ClothingClasses.Prenda;
+import Dominio.EventClasses.Evento;
 import Dominio.WardrobeClasses.Guardarropa;
 
 public class Usuario {

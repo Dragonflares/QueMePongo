@@ -1,9 +1,10 @@
-package Dominio.UserClasses;
+package Dominio.EventClasses;
 
 import java.util.Calendar;
 import java.util.Date;
 
 import Dominio.ClothingClasses.Estilo;
+import Dominio.UserClasses.Usuario;
 
 public class Evento {
 	private Calendar fecha;
