@@ -10,6 +10,8 @@ public class Evento {
 	private String direccion;
 	private Estilo estilo;
 	private Usuario creador;
+	private int frecuencia; //diaria: 1, semanal: 7, mensual: 30
+	private ImportanciaEvento importancia;
 	
 	public Evento (Calendar fecha, String direccion, Estilo estilo, Usuario creador)
 	{
@@ -31,5 +33,10 @@ public class Evento {
 	
 	public Usuario obtenerCreador() {
 		return this.creador;
+	}
+	
+	public boolean estaProximo()
+	{
+		return importancia.estaProximo(this);
 	}
 }
