@@ -1,4 +1,4 @@
-package entities;
+package CRON;
 
 public class Main {
 	public static void main(String[] args)

@@ -1,5 +1,6 @@
 package Repositorios;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,5 +20,10 @@ public class RepoUsuario extends Repositorio{
 	public List<Usuario> getUsuariosConEventosProximos()
 	{
 		return usuarios.stream().filter(u -> u.tieneEventosProximos()).collect(Collectors.toList());
+	}
+	
+	public List<Usuario> getUsuariosConEventosOcurridoFrecuentemente(Calendar fecha)
+	{	
+		return usuarios.stream().filter(u -> u.tieneEventosOcurridoFrecuentemente(fecha)).collect(Collectors.toList());
 	}
 }

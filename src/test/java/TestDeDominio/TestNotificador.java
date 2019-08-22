@@ -11,10 +11,11 @@ public class TestNotificador {
 	
 	@Before
 	public void init() {
-		usuario = new Usuario("nombre", "melisarodrig@hotmail.com");
+		usuario = new Usuario("nombre", "melisarodrig@hotmail.com", "+541134603850");
 	}
 	@Test
-	public void mandarMail() {
+	public void notificarUsuario() {
 		Notificador.getInstance().notificarSugerencia(usuario);
 	}
+	
 }

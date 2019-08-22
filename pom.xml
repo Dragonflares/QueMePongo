@@ -74,6 +74,13 @@
             <artifactId>javax.mail</artifactId>
             <version>1.6.0</version>
         </dependency>
+        
+        <dependency>
+        	<groupId>com.twilio.sdk</groupId>
+		  	<artifactId>twilio</artifactId>
+		  	<version>7.41.1</version>
+		</dependency>
+        
 
 	</dependencies>
 

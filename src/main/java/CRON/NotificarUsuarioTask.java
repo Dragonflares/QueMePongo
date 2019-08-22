@@ -1,4 +1,4 @@
-package entities;
+package CRON;
 
 import java.util.Calendar;
 import java.util.Timer;
@@ -11,14 +11,13 @@ import Repositorios.RepoUsuario;
 public class NotificarUsuarioTask extends TimerTask{
 // https://stackoverflow.com/questions/9375882/how-i-can-run-my-timertask-everyday-2-pm
 	
-	private final static int HORA = 7; // TODO ver que hora fijamos
-	// Creo que la notificación habría que enviarla a la mañana como hace facebook para los cumpleaños
+	private final static int HORA = 7; 
 	private final static int MINUTOS = 0;
 	
 	@Override
 	public void run() { 
 		RepoUsuario.getInstance().getUsuariosConEventosProximos()
-			.forEach(u -> Notificador.getInstance().notificarSugerencia(u));;
+			.forEach(u -> Notificador.getInstance().notificarSugerencia(u));
 	}
 			
 	public void empezar()

@@ -21,17 +21,16 @@ public class Usuario {
 	private List<Evento> eventos;
 	private int offset;
 	private String mail;
-	private Atuendo sugerencia; //TODO ver esto porque tiene mucha pinta de que está mal, solo está de forma temporal.
-	// Lo puse porque en el CRON CrearSugerenciaTask necesitamos crear las sugerencias de forma masiva a las 3 am 
-	// de los eventos que estan próximos. Entonces puse este atributo porque en algun lado hay que guardar la sugerencia, 
-	// pero puede que cuando se haga lo de la notificación se cambie de lugar. VER cuando ya tengamos lo de enviar notificación.
+	private String numeroCelular;
+	private List<Recomendacion> recomendaciones; 	
 	
-	
-	public Usuario(String username, String mail){
+	public Usuario(String username, String mail, String numeroCelular){
 		this.username = username;
 		this.guardarropas = new ArrayList<Guardarropa>();
 		this.eventos = new ArrayList<Evento>();
+		this.recomendaciones = new ArrayList<Recomendacion>();
 		this.mail = mail;
+		this.numeroCelular = numeroCelular;
 	}
 
 	public Usuario(String username, Guardarropa guardarropa) {
@@ -113,19 +112,33 @@ public class Usuario {
 		return this.mail;
 	}
 	
+	public String getNumeroCelular()
+	{
+		return this.numeroCelular;
+	}
+	
 	public boolean tieneEventosProximos()
 	{
 		return eventos.stream().anyMatch(e -> e.estaProximo());
 	}
 	
-	//TODO sacar? cuando se haya resuelto lo del atributo de suguerencia
-	public void agregarSugerencia(Atuendo sugerencia)
+	public List<Evento> getEventosProximos()
 	{
-		this.sugerencia = sugerencia;
+		return eventos.stream().filter(e -> e.estaProximo()).collect(Collectors.toList());
 	}
 	
-	public Atuendo getSugerencia()
+	public void agregarRecomendacion(Recomendacion recomendacion)
 	{
-		return this.sugerencia;
+		this.recomendaciones.add(recomendacion);
+	}
+	
+	public boolean tieneEventosOcurridoFrecuentemente(Calendar fecha)
+	{
+		return eventos.stream().anyMatch(e -> e.ocurre(fecha) && e.esFrecuente());
+	}
+	
+	public List<Evento> getEventosOcurriodoFrecuentemente(Calendar fecha)
+	{
+		return eventos.stream().filter(e -> e.ocurre(fecha) && e.esFrecuente()).collect(Collectors.toList());
 	}
 }

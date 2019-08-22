@@ -45,4 +45,19 @@ public class Evento {
 	{
 		return this.creador;
 	}
+	
+	public boolean ocurre(Calendar fechaInteres)
+	{
+		return this.fecha.compareTo(fechaInteres) == 0;
+	}
+	
+	public boolean esFrecuente() 
+	{
+		return this.frecuencia > 0;
+	}
+	
+	public void actualizarFecha()
+	{
+		fecha.add(Calendar.DAY_OF_YEAR, this.frecuencia); // TODO PROBAR
+	}
 }
