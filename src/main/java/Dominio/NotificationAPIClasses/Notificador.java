@@ -3,12 +3,26 @@ package Dominio.NotificationAPIClasses;
 import java.util.ArrayList;
 import java.util.List;
 
+import Dominio.UserClasses.Usuario;
+import Repositorios.RepoUsuario;
+
 public class Notificador {
 	private static List<NotificadorAdapter> notificadoresAdapters = new ArrayList<NotificadorAdapter>();
+	private static Notificador instance = new Notificador();
 	
-	public Notificador()
+	private Notificador() // dejar en privado para que no puedan hacer otra instancia
 	{
 		notificadoresAdapters.add(new MailAdaptado());
 		notificadoresAdapters.add(new SMSAdaptado());
+	}
+	
+	public static Notificador getInstance()
+	{
+		return instance;
+	}
+	
+	public void notificarSugerencia(Usuario usuario)
+	{
+		notificadoresAdapters.forEach(n -> n.notificarSugerencia(usuario));
 	}
 }

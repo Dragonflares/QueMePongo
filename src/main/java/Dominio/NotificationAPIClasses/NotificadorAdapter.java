@@ -1,5 +1,7 @@
 package Dominio.NotificationAPIClasses;
 
-public interface NotificadorAdapter {
+import Dominio.UserClasses.Usuario;
 
+public interface NotificadorAdapter {
+	public void notificarSugerencia(Usuario usuario);
 }

@@ -18,6 +18,8 @@ class CrearSugerenciaTask extends TimerTask{
 	@Override
 	public void run()
 	{
+		// TODO creo no es necesario hacer un repoEventos, solo basta con repoUsuario porque podes hacer unafuncion que
+		// te devuelva una lista con los eventos proximos de todos los usuarios
 		RepoEvento.getInstance().getEventosProximos()
 			.forEach(e -> 
 			{

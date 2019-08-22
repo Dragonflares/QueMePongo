@@ -1,10 +1,12 @@
 package entities;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
+
+import Dominio.NotificationAPIClasses.Notificador;
+import Repositorios.RepoUsuario;
 
 public class NotificarUsuarioTask extends TimerTask{
 // https://stackoverflow.com/questions/9375882/how-i-can-run-my-timertask-everyday-2-pm
@@ -15,7 +17,8 @@ public class NotificarUsuarioTask extends TimerTask{
 	
 	@Override
 	public void run() { 
-			 // TODO notificar al usuario que sugerencia que puede usar 
+		RepoUsuario.getInstance().getUsuariosConEventosProximos()
+			.forEach(u -> Notificador.getInstance().notificarSugerencia(u));;
 	}
 			
 	public void empezar()
@@ -29,6 +32,4 @@ public class NotificarUsuarioTask extends TimerTask{
 		
 		timer.schedule(this, today.getTime(), TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS)); // period: 1 day
 	}
-	
-
 }

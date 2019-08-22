@@ -20,16 +20,18 @@ public class Usuario {
 	private Atuendo ultimoAtuendo;
 	private List<Evento> eventos;
 	private int offset;
+	private String mail;
 	private Atuendo sugerencia; //TODO ver esto porque tiene mucha pinta de que está mal, solo está de forma temporal.
 	// Lo puse porque en el CRON CrearSugerenciaTask necesitamos crear las sugerencias de forma masiva a las 3 am 
 	// de los eventos que estan próximos. Entonces puse este atributo porque en algun lado hay que guardar la sugerencia, 
 	// pero puede que cuando se haga lo de la notificación se cambie de lugar. VER cuando ya tengamos lo de enviar notificación.
 	
 	
-	public Usuario(String username){
+	public Usuario(String username, String mail){
 		this.username = username;
 		this.guardarropas = new ArrayList<Guardarropa>();
 		this.eventos = new ArrayList<Evento>();
+		this.mail = mail;
 	}
 
 	public Usuario(String username, Guardarropa guardarropa) {
@@ -104,6 +106,16 @@ public class Usuario {
 	
 	public List<Evento> getEventos(){
 		return this.eventos;
+	}
+	
+	public String getMail()
+	{
+		return this.mail;
+	}
+	
+	public boolean tieneEventosProximos()
+	{
+		return eventos.stream().anyMatch(e -> e.estaProximo());
 	}
 	
 	//TODO sacar? cuando se haya resuelto lo del atributo de suguerencia

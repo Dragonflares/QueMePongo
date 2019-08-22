@@ -7,7 +7,7 @@ import Dominio.ClothingClasses.Estilo;
 import Dominio.UserClasses.Usuario;
 
 public class TestWeather {
-	private static Usuario juan = new Usuario("Juan");
+	private static Usuario juan = new Usuario("Juan", "juan@hotmail.com");
 	private static Estilo formal = Estilo.FORMAL;
 	
 
