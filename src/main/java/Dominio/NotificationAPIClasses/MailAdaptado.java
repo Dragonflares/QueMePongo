@@ -12,10 +12,9 @@ public class MailAdaptado implements NotificadorAdapter{
 	
 	public void notificarSugerencia(Usuario usuario)
 	{
-		/*
 		String subject = "Ya se tiene lista una sugerencia!";
 		String body = "Se ha creado la sugerencia para un evento creado. Para verlo tiene que abrir la aplicación.";
-		this.enviarMail(usuario, subject, body);*/
+		this.enviarMail(usuario, subject, body);
 	}
 	
 	public void enviarMail(Usuario usuario, String subject, String body)

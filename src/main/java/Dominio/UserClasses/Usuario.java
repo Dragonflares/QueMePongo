@@ -22,13 +22,12 @@ public class Usuario {
 	private int offset;
 	private String mail;
 	private String numeroCelular;
-	private List<Recomendacion> recomendaciones; 	
+	private List<Atuendo> sugerenciasQueFaltanCalificar;
 	
 	public Usuario(String username, String mail, String numeroCelular){
 		this.username = username;
 		this.guardarropas = new ArrayList<Guardarropa>();
 		this.eventos = new ArrayList<Evento>();
-		this.recomendaciones = new ArrayList<Recomendacion>();
 		this.mail = mail;
 		this.numeroCelular = numeroCelular;
 	}
@@ -85,7 +84,7 @@ public class Usuario {
 		while(atuendoFinal != null)
 		{
 			Guardarropa guardarropa =  guardarropasConEstilo.get(rand.nextInt(cantGuardarropas));
-			atuendoFinal = guardarropa.generarRecomendacion(evento);
+			atuendoFinal = guardarropa.generarRecomendacion(evento, this);
 		}
 		this.ultimoAtuendo = atuendoFinal;
 		return atuendoFinal;
@@ -95,8 +94,8 @@ public class Usuario {
 		return this.offset;
 	}
 
-	public void crearEvento(Calendar fecha, String direccion, Estilo estilo) {
-		this.eventos.add(new Evento(fecha, direccion, estilo, this));
+	public void crearEvento(Calendar fecha, String direccion, Estilo estilo, int frecuencia) {
+		this.eventos.add(new Evento(fecha, direccion, estilo, frecuencia));
 	}
 	
 	public void crearNuevoGuardarropas(Estilo estilo) {
@@ -127,18 +126,31 @@ public class Usuario {
 		return eventos.stream().filter(e -> e.estaProximo()).collect(Collectors.toList());
 	}
 	
-	public void agregarRecomendacion(Recomendacion recomendacion)
-	{
-		this.recomendaciones.add(recomendacion);
-	}
-	
 	public boolean tieneEventosOcurridoFrecuentemente(Calendar fecha)
 	{
 		return eventos.stream().anyMatch(e -> e.ocurre(fecha) && e.esFrecuente());
 	}
 	
-	public List<Evento> getEventosOcurriodoFrecuentemente(Calendar fecha)
+	public List<Evento> getEventosOcurridoFrecuentemente(Calendar fecha)
 	{
 		return eventos.stream().filter(e -> e.ocurre(fecha) && e.esFrecuente()).collect(Collectors.toList());
 	}
+	
+	public List<Atuendo> getSugerenciasQueFaltanCalificar()
+	{
+		List<Atuendo> sugerencias = new ArrayList<Atuendo>();
+		
+		List<Evento> eventosQueEstanProximosYNoSeSugirioLaRecomendacion = 
+				this.eventos.stream().filter(e -> e.estaProximo() && !e.getSeNotificoSugerencia()).collect(Collectors.toList());
+		
+		if(eventosQueEstanProximosYNoSeSugirioLaRecomendacion != null)
+			eventosQueEstanProximosYNoSeSugirioLaRecomendacion
+				.stream().forEach(e -> sugerencias.add(e.getSugerencia()));
+		
+		return sugerencias;
+	}
+	
+	//TODO
+	//modificar notificar y crearSugerencia Task (porque no tiene en cuenta si ya se notifico)
+	// y ver que devuelve el filter si nadie cumple la condicion
 }

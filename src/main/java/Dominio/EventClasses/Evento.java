@@ -1,25 +1,26 @@
 package Dominio.EventClasses;
 
 import java.util.Calendar;
-import java.util.Date;
 
+import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Estilo;
-import Dominio.UserClasses.Usuario;
 
 public class Evento {
 	private Calendar fecha;
 	private String direccion;
 	private Estilo estilo;
-	private Usuario creador;
-	private int frecuencia; //diaria: 1, semanal: 7, mensual: 30 // TODO pensar con Martin. Ver tipo y tenemos que tenerlo en cuenta en estaProximo
+	private int frecuencia; //diaria: 1, semanal: 7, mensual: 30 
 	private ImportanciaEvento importancia;
+	private Atuendo sugerencia;
+	private boolean sugerenciaNotificada;
 	
-	public Evento (Calendar fecha, String direccion, Estilo estilo, Usuario creador)
+	public Evento (Calendar fecha, String direccion, Estilo estilo, int frecuencia)
 	{
-		this.creador = creador;
 		this.fecha = fecha;
 		this.direccion = direccion;
 		this.estilo = estilo;
+		this.frecuencia = frecuencia;
+		this.sugerenciaNotificada = false;
 	}
 	
 	public Estilo getEstilo()
@@ -32,18 +33,9 @@ public class Evento {
 		return this.fecha;
 	}
 	
-	public Usuario obtenerCreador() {
-		return this.creador;
-	}
-	
 	public boolean estaProximo()
 	{
 		return importancia.estaProximo(this);
-	}
-	
-	public Usuario getCreador()
-	{
-		return this.creador;
 	}
 	
 	public boolean ocurre(Calendar fechaInteres)
@@ -58,6 +50,21 @@ public class Evento {
 	
 	public void actualizarFecha()
 	{
-		fecha.add(Calendar.DAY_OF_YEAR, this.frecuencia); // TODO PROBAR
+		fecha.add(Calendar.DAY_OF_YEAR, this.frecuencia); 
+	}
+	
+	public void agregarSugerencia(Atuendo sugerencia)
+	{
+		this.sugerencia = sugerencia;
+	}
+	
+	public Atuendo getSugerencia()
+	{
+		return this.sugerencia;
+	}
+	
+	public boolean getSeNotificoSugerencia()
+	{
+		return sugerenciaNotificada;
 	}
 }

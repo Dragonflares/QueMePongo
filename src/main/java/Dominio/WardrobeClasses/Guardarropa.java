@@ -67,7 +67,7 @@ public class Guardarropa {
 	public double pedirTemperatura(int dia, int hora) throws IOException {
 		return this.climaHelp.obtenerTemperatura( dia, hora);
 	}
-	public Atuendo generarRecomendacion(Evento evento) throws Exception
+	public Atuendo generarRecomendacion(Evento evento, Usuario creador) throws Exception
 	{
 		Atuendo atuendo = null;
 
@@ -78,8 +78,8 @@ public class Guardarropa {
 		}
 		else
 		{
-			List<Prenda> prendasSuperiores = obtenerParteSuperior(evento, temperatura, 0);
-			Prenda prendaInferior = obtenerParteInferior(evento, temperatura);
+			List<Prenda> prendasSuperiores = obtenerParteSuperior(evento, temperatura, 0, creador);
+			Prenda prendaInferior = obtenerParteInferior(evento, temperatura, creador);
 			Prenda calzado = obtenerCalzado(evento, temperatura);
 			List<Prenda> accesorios = obtenerAccesorios(evento);
 			ArrayList<Prenda> prendasDeAtuendo = new ArrayList<Prenda>();
@@ -100,7 +100,7 @@ public class Guardarropa {
 		return atuendo;
 	}
 
-	public List<Prenda> obtenerParteSuperior(Evento evento, double temperatura, int intento) throws Exception{
+	public List<Prenda> obtenerParteSuperior(Evento evento, double temperatura, int intento, Usuario creador) throws Exception{
 		List<Prenda> prendasSuperiores = new ArrayList<Prenda>();
 		Random rand = new Random();
 		int calorActual;
@@ -117,7 +117,7 @@ public class Guardarropa {
 				int indexSuperior = rand.nextInt(limitSup);
 				Prenda prendaSuperior = prendasSuperioresPosibles.get(indexSuperior);
 				prendasSuperiores.add(prendaSuperior);
-				calorActual = evento.obtenerCreador().getOffset() + (prendasSuperiores.stream()
+				calorActual = creador.getOffset() + (prendasSuperiores.stream()
 						.mapToInt(p -> p.getTipoPrenda().getRopa().abrigar()).sum());
 				a++;
 			}
@@ -133,17 +133,17 @@ public class Guardarropa {
 			}
 			else {
 				intento++;
-				return prendasSuperiores = obtenerParteSuperior(evento, temperatura, intento);
+				return prendasSuperiores = obtenerParteSuperior(evento, temperatura, intento, creador);
 			}
 		}
 		else {
 			return prendasSuperiores;
 		}
 	}
-	public Prenda obtenerParteInferior(Evento evento, double temperatura) throws Exception {
+	public Prenda obtenerParteInferior(Evento evento, double temperatura, Usuario creador) throws Exception {
 		Prenda prendaInferior;
 
-		if(temperatura > (18 - evento.obtenerCreador().getOffset())) {
+		if(temperatura > (18 - creador.getOffset())) {
 			prendaInferior = obtenerPrendaInf(0);
 		}
 		else {

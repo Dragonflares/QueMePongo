@@ -6,7 +6,6 @@ import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 import Dominio.ClothingClasses.Atuendo;
-import Dominio.UserClasses.Recomendacion;
 import Dominio.UserClasses.Usuario;
 import Repositorios.RepoUsuario;
 
@@ -30,9 +29,8 @@ class CrearSugerenciaTask extends TimerTask{
 							Atuendo sugerencia;
 							try {
 								sugerencia = u.pedirRecomendacion(e);
-							 
-								Recomendacion recomendacion = new Recomendacion(e.getFecha(), sugerencia);
-								u.agregarRecomendacion(recomendacion);
+								
+								e.agregarSugerencia(sugerencia);
 							}
 							catch (Exception e1) {
 								e1.printStackTrace();

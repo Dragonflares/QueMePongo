@@ -5,8 +5,10 @@ public class Main {
 	{
 		CrearSugerenciaTask crearSugerenciatask = new CrearSugerenciaTask();
         NotificarUsuarioTask notificarUsuariotask = new NotificarUsuarioTask();
+        ActualizarFechaEventosTask fechaEventoTask = new ActualizarFechaEventosTask();
         
         crearSugerenciatask.empezar();
         notificarUsuariotask.empezar();
+        fechaEventoTask.empezar();
     }
 }

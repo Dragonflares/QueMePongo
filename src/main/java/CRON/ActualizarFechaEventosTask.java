@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 import Dominio.UserClasses.Usuario;
 import Repositorios.RepoUsuario;
 
-public class ActualizarFechaEventos extends TimerTask{
+public class ActualizarFechaEventosTask extends TimerTask{
 
 	private final static int HORA = 00;
     private final static int MINUTOS = 00;
@@ -17,13 +17,13 @@ public class ActualizarFechaEventos extends TimerTask{
 	@Override
 	public void run() {
 		Calendar ayer = Calendar.getInstance();
-		ayer.add(Calendar.DATE, -1); // le resto un dia a la fecha actual // TODO PROBAR
+		ayer.add(Calendar.DATE, -1); // le resto un dia a la fecha actual 
 		
 		List<Usuario> usuarios = RepoUsuario.getInstance().getUsuariosConEventosOcurridoFrecuentemente(ayer);
 		
 		usuarios.stream().forEach
 		(
-				u ->  u.getEventosOcurriodoFrecuentemente(ayer).forEach
+				u ->  u.getEventosOcurridoFrecuentemente(ayer).forEach
 				(
 						e ->
 						e.actualizarFecha()
