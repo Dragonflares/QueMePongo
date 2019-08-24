@@ -8,7 +8,7 @@ public class TipoDeRopa {
 	private String nombre;
 	private Categoria categoria;
 	private ArrayList<Capas> capasEnDondePuedeEstar = new ArrayList<Capas>();
-	private List<Material> materialesNoCompatibles = new ArrayList<Material>();
+	private ArrayList<Material> materialesNoCompatibles = new ArrayList<Material>();
 	
 	public TipoDeRopa(Integer abrigo,String nombre,Categoria categoria, ArrayList<Capas> capas,
 			ArrayList<Material> materialesNoCompatibles) {
