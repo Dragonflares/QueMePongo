@@ -10,8 +10,8 @@ import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Estilo;
 import Dominio.ClothingClasses.Prenda;
 import Dominio.EventClasses.Evento;
+import Dominio.EventClasses.Frecuencia;
 import Dominio.WardrobeClasses.Guardarropa;
-import Dominio.WardrobeClasses.Premium;
 
 public class Usuario {
 	private String username;
@@ -95,7 +95,7 @@ public class Usuario {
 		return this.offset;
 	}
 
-	public void crearEvento(Calendar fecha, String direccion, Estilo estilo, int frecuencia) {
+	public void crearEvento(Calendar fecha, String direccion, Estilo estilo, Frecuencia frecuencia) {
 		this.eventos.add(new Evento(fecha, direccion, estilo, frecuencia));
 	}
 	
@@ -144,7 +144,7 @@ public class Usuario {
 		List<Evento> eventosQueEstanProximosYNoSeSugirioLaRecomendacion = 
 				this.eventos.stream().filter(e -> e.estaProximo() && !e.getSeNotificoSugerencia()).collect(Collectors.toList());
 		
-		if(eventosQueEstanProximosYNoSeSugirioLaRecomendacion != null)
+		if(!eventosQueEstanProximosYNoSeSugirioLaRecomendacion.isEmpty())
 			eventosQueEstanProximosYNoSeSugirioLaRecomendacion
 				.stream().forEach(e -> sugerencias.add(e.getSugerencia()));
 		
@@ -153,7 +153,11 @@ public class Usuario {
 
 	public void cambiarCategoria(TipoDeUsuario tipo) {
 		this.tipoDeCuenta = tipo;
-		
+	}
+	
+	public boolean tieneEventoSinNotificar()
+	{
+		return eventos.stream().anyMatch(e -> !e.getSeNotificoSugerencia());
 	}
 	
 	//TODO

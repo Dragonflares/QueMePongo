@@ -9,12 +9,12 @@ public class Evento {
 	private Calendar fecha;
 	private String direccion;
 	private Estilo estilo;
-	private int frecuencia; //diaria: 1, semanal: 7, mensual: 30 
+	private Frecuencia frecuencia; 
 	private ImportanciaEvento importancia;
 	private Atuendo sugerencia;
 	private boolean sugerenciaNotificada;
 	
-	public Evento (Calendar fecha, String direccion, Estilo estilo, int frecuencia)
+	public Evento (Calendar fecha, String direccion, Estilo estilo, Frecuencia frecuencia)
 	{
 		this.fecha = fecha;
 		this.direccion = direccion;
@@ -45,12 +45,17 @@ public class Evento {
 	
 	public boolean esFrecuente() 
 	{
-		return this.frecuencia > 0;
+		return this.frecuencia != null;
 	}
 	
 	public void actualizarFecha()
 	{
-		fecha.add(Calendar.DAY_OF_YEAR, this.frecuencia); 
+		this.frecuencia.actualizarFecha(this);
+	}
+	
+	public void sumarDias(int dias)
+	{
+		this.fecha.add(Calendar.DAY_OF_YEAR, dias);
 	}
 	
 	public void agregarSugerencia(Atuendo sugerencia)
@@ -66,5 +71,10 @@ public class Evento {
 	public boolean getSeNotificoSugerencia()
 	{
 		return sugerenciaNotificada;
+	}
+	
+	public void setFecha(Calendar fecha)
+	{
+		this.fecha = fecha;
 	}
 }

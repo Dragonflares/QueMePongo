@@ -19,7 +19,7 @@ class CrearSugerenciaTask extends TimerTask{
 	{
 		// TODO contemplar el caso en el que no se genero la recomendacion. 
 		// Deberiamos poner en algun lado de que no se tiene que generar la notificacion
-		List<Usuario> usuarios = RepoUsuario.getInstance().getUsuariosConEventosProximos();
+		List<Usuario> usuarios = RepoUsuario.getInstance().getUsuariosConEventosProximosYSinNotificar();
 		usuarios.stream().forEach
 		(
 				u -> u.getEventosProximos().forEach
