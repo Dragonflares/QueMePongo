@@ -110,7 +110,7 @@ public class Guardarropa {
 
 			List<Prenda> prendasSuperioresPosibles = getPrendasSuperioresDisponibles()
 					.stream()
-					.filter(p -> p.getTipoPrenda().getRopa().esDeEsaCapa(b))
+					.filter(p -> p.getTipoRopa().esDeEsaCapa(b))
 					.collect(Collectors.toList());
 			int limitSup = prendasSuperioresPosibles.size();
 			if(limitSup != 0) {
@@ -118,7 +118,7 @@ public class Guardarropa {
 				Prenda prendaSuperior = prendasSuperioresPosibles.get(indexSuperior);
 				prendasSuperiores.add(prendaSuperior);
 				calorActual = creador.getOffset() + (prendasSuperiores.stream()
-						.mapToInt(p -> p.getTipoPrenda().getRopa().abrigar()).sum());
+						.mapToInt(p -> p.getTipoRopa().abrigar()).sum());
 				a++;
 			}
 			else {
@@ -156,7 +156,7 @@ public class Guardarropa {
 		Random rand = new Random();
 		List<Prenda> prendasInferioresPosibles = getPrendasSuperioresDisponibles()
 				.stream()
-				.filter(p -> p.getTipoPrenda().getRopa().abrigar() == nivelAbrigo)
+				.filter(p -> p.getTipoRopa().abrigar() == nivelAbrigo)
 				.collect(Collectors.toList());
 		int limitInf = prendasInferioresPosibles.size();
 		if(limitInf > 0) {

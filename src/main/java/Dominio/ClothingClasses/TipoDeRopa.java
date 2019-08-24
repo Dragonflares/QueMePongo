@@ -6,12 +6,17 @@ import java.util.List;
 public class TipoDeRopa {
 	private Integer abrigo;
 	private String nombre;
-	private ArrayList<Integer> capasEnDondePuedeEstar;
-	private List<Material> materialesNoCompatibles;
+	private Categoria categoria;
+	private ArrayList<Capas> capasEnDondePuedeEstar = new ArrayList<Capas>();
+	private List<Material> materialesNoCompatibles = new ArrayList<Material>();
 	
-	public TipoDeRopa(Integer abrigo,String nombre) {
+	public TipoDeRopa(Integer abrigo,String nombre,Categoria categoria, ArrayList<Capas> capas,
+			ArrayList<Material> materialesNoCompatibles) {
 		this.abrigo = abrigo;
 		this.nombre = nombre;
+		this.categoria = categoria;
+		this.capasEnDondePuedeEstar = capas;
+		this.materialesNoCompatibles = materialesNoCompatibles;
 	}
 	
 	public Integer abrigar() {
@@ -35,6 +40,14 @@ public class TipoDeRopa {
 
 	public String getNombre() {
 		return nombre;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 
 

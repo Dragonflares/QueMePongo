@@ -4,7 +4,8 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import Dominio.ClothingClasses.Prenda;
-import Dominio.UserClasses.TipoDeUsuario; 
+import Dominio.UserClasses.TipoDeUsuario;
+import Dominio.UserClasses.Usuario; 
 
 public class Gratuito implements TipoDeUsuario{
 	private int tamanioMaximoGuardarropa;
@@ -34,5 +35,16 @@ public class Gratuito implements TipoDeUsuario{
 			throw new Exception("Ya tenes la prenda en otro guardarropa");
 		}
 
+	}
+
+	@Override
+	public void cambiarCategoria(Usuario usuario) {
+		this.pasarAPremium(usuario);
+		
+	}
+	
+	public void pasarAPremium(Usuario usuario) {
+		Premium premium = new Premium();
+		usuario.cambiarCategoria(premium);
 	}
 }

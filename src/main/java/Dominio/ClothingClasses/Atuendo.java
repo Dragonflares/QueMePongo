@@ -39,7 +39,7 @@ public class Atuendo {
 	
 	
 	public boolean sonIgualTipo(Prenda prenda1, Prenda prenda2) {
-		return prenda1.getTipoPrenda().equals(prenda2.getTipoPrenda());
+		return prenda1.getTipoRopa().getNombre().equals(prenda2.getTipoRopa().getNombre());
 	}
 	
 	public List<Prenda> getPrendas() {

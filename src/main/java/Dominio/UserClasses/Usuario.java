@@ -11,6 +11,7 @@ import Dominio.ClothingClasses.Estilo;
 import Dominio.ClothingClasses.Prenda;
 import Dominio.EventClasses.Evento;
 import Dominio.WardrobeClasses.Guardarropa;
+import Dominio.WardrobeClasses.Premium;
 
 public class Usuario {
 	private String username;
@@ -148,6 +149,11 @@ public class Usuario {
 				.stream().forEach(e -> sugerencias.add(e.getSugerencia()));
 		
 		return sugerencias;
+	}
+
+	public void cambiarCategoria(TipoDeUsuario tipo) {
+		this.tipoDeCuenta = tipo;
+		
 	}
 	
 	//TODO
