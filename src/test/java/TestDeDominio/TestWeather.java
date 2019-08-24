@@ -18,7 +18,7 @@ public class TestWeather {
 		juan.crearEvento(new Calendar.Builder().setCalendarType("iso8601")
                 .setDate(2019, 7, 18).setTimeOfDay(15, 00, 0).build(),
                 "Profesor Vidal 3875", 
-                Estilo.FORMAL);
+                Estilo.FORMAL,7);
 		
 		System.out.print(juan.getEventos().get(0).getFecha().get(Calendar.DAY_OF_MONTH));
 		System.out.print("/");

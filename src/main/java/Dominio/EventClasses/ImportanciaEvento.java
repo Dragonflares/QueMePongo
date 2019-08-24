@@ -17,10 +17,10 @@ public abstract class ImportanciaEvento {
 	
 	private Date convertirDate(Calendar fecha)
 	{
-		int año = fecha.get(Calendar.YEAR); 
+		int anio = fecha.get(Calendar.YEAR); 
 		int mes = fecha.get(Calendar.MONTH); 
 		int dia = fecha.get(Calendar.DAY_OF_MONTH); 
-		Calendar calendar = new GregorianCalendar(año, mes-1, dia); 
+		Calendar calendar = new GregorianCalendar(anio, mes-1, dia); 
 		return new Date(calendar.getTimeInMillis());
 	}
 	

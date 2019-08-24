@@ -113,7 +113,7 @@ public class Guardarropa {
 					.filter(p -> p.getTipoPrenda().getRopa().esDeEsaCapa(b))
 					.collect(Collectors.toList());
 			int limitSup = prendasSuperioresPosibles.size();
-			if(!(a == 0 && limitSup != 0)) {
+			if(limitSup != 0) {
 				int indexSuperior = rand.nextInt(limitSup);
 				Prenda prendaSuperior = prendasSuperioresPosibles.get(indexSuperior);
 				prendasSuperiores.add(prendaSuperior);

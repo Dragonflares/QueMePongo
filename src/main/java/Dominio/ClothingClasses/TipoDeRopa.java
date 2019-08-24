@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TipoDeRopa {
-	private int abrigo;
+	private Integer abrigo;
+	private String nombre;
 	private ArrayList<Integer> capasEnDondePuedeEstar;
 	private List<Material> materialesNoCompatibles;
 	
-	public TipoDeRopa(int abrigo) {
+	public TipoDeRopa(Integer abrigo,String nombre) {
 		this.abrigo = abrigo;
+		this.nombre = nombre;
 	}
 	
-	public int abrigar() {
+	public Integer abrigar() {
 		return this.abrigo;
 	}
 	
@@ -20,9 +22,23 @@ public class TipoDeRopa {
 		return this.materialesNoCompatibles;
 	}
 	
-	public boolean esDeEsaCapa(final int capa){
+	public Boolean esDeEsaCapa(final int capa){
 		return capasEnDondePuedeEstar.stream().anyMatch(p -> p.equals(capa));
 	}
+	
+	
+	public boolean compararNombres(String otroNombre){
+
+
+		return this.getNombre().equals(otroNombre);
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+
+	
 //	REMERAMANGACORTA 3,
 //	REMERAMANGALARGA 4,
 //	CAMISA 4,
