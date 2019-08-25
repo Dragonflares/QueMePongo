@@ -1,19 +1,19 @@
-package TestDeDominio;
-
-import java.io.IOException;
-import java.util.Calendar;
-
-import Dominio.ClothingClasses.Estilo;
-import Dominio.UserClasses.Usuario;
-
-public class TestWeather {
-	private static Usuario juan = new Usuario("Juan", "juan@hotmail.com", "+1111111");
-	private static Estilo formal = Estilo.FORMAL;
-	
-
-	public static void main(String[] args) throws IOException {
-		juan.crearNuevoGuardarropas(formal);
-		System.out.println(juan.guardarropas.get(0).pedirTemperatura(6, 5));
+//package TestDeDominio;
+//
+//import java.io.IOException;
+//import java.util.Calendar;
+//
+//import Dominio.ClothingClasses.Estilo;
+//import Dominio.UserClasses.Usuario;
+//
+//public class TestWeather {
+////	private static Usuario juan = new Usuario("Juan", "juan@hotmail.com", "+1111111");
+////	private static Estilo formal = Estilo.FORMAL;
+//	
+//
+//	public static void main(String[] args) throws IOException {
+//		juan.crearNuevoGuardarropas(formal);
+//		System.out.println(juan.guardarropas.get(0).pedirTemperatura(6, 5));
 		
 //		juan.crearEvento(new Calendar.Builder().setCalendarType("iso8601")
 //                .setDate(2019, 7, 18).setTimeOfDay(15, 00, 0).build(),
@@ -28,7 +28,7 @@ public class TestWeather {
 //		System.out.print(" at ");
 //		System.out.print(juan.getEventos().get(0).getFecha().get(Calendar.HOUR_OF_DAY));
 //		System.out.print(" hours, ");
-//		System.out.print(juan.getEventos().get(0).getFecha().get(Calendar.MINUTE));
-//		System.out.print(" minutes.");
-	}
-}
+////		System.out.print(juan.getEventos().get(0).getFecha().get(Calendar.MINUTE));
+////		System.out.print(" minutes.");
+//	}
+//}

@@ -20,7 +20,7 @@ public class Atuendo {
 		prendas.add(prenda);
 	}
 	
-	public boolean sonDeDistintoTipo(List<Prenda> prendas) {
+	public Boolean sonDeDistintoTipo(List<Prenda> prendas) {
 		
 		int i;
 		for(i= 0; i<prendas.size(); i++) {
@@ -38,7 +38,7 @@ public class Atuendo {
 	}
 	
 	
-	public boolean sonIgualTipo(Prenda prenda1, Prenda prenda2) {
+	public Boolean sonIgualTipo(Prenda prenda1, Prenda prenda2) {
 		return prenda1.getTipoRopa().getNombre().equals(prenda2.getTipoRopa().getNombre());
 	}
 	
@@ -57,5 +57,9 @@ public class Atuendo {
 	}
 	public List<Prenda> getCalzados(){
 		return  prendas.stream().filter(p -> p.getCategoria() == Categoria.CALZADO).collect(Collectors.toList());
+	}
+	
+	public Boolean esElMismoAtuendo(Atuendo atuendo) {
+		return this.prendas.equals(atuendo.prendas);
 	}
 }
