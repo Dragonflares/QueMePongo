@@ -19,6 +19,6 @@ public class MailAdaptado implements NotificadorAdapter{
 	
 	public void enviarMail(Usuario usuario, String subject, String body)
 	{
-		mailAPI.enviarMail(usuario.getMail(), subject, body);
+		/*mailAPI.enviarMail(usuario.getMail(), subject, body);*/
 	}
 }

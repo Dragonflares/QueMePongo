@@ -22,6 +22,11 @@ public class RepoUsuario extends Repositorio{
 		return usuarios.stream().filter(u -> u.tieneEventosProximos() && u.tieneEventoSinNotificar()).collect(Collectors.toList());
 	}
 	
+	public List<Usuario> getUsuariosConEventosProximosYnotificados()
+	{
+		return usuarios.stream().filter(u -> u.tieneEventosProximos() && !u.tieneEventoSinNotificar()).collect(Collectors.toList());
+	}
+	
 	public List<Usuario> getUsuariosConEventosOcurridoFrecuentemente(Calendar fecha)
 	{	
 		return usuarios.stream().filter(u -> u.tieneEventosOcurridoFrecuentemente(fecha)).collect(Collectors.toList());

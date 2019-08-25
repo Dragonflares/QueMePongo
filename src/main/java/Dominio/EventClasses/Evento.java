@@ -51,6 +51,7 @@ public class Evento {
 	public void actualizarFecha()
 	{
 		this.frecuencia.actualizarFecha(this);
+		this.sugerenciaNotificada = false;
 	}
 	
 	public void sumarDias(int dias)
@@ -76,5 +77,10 @@ public class Evento {
 	public void setFecha(Calendar fecha)
 	{
 		this.fecha = fecha;
+	}
+	
+	public void setSeNotificoSugerencia(Boolean bool)
+	{
+		this.sugerenciaNotificada = bool;
 	}
 }

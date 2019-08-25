@@ -1,4 +1,5 @@
 package CRON;
+
 import java.util.Calendar;
 import java.util.List;
 import java.util.Timer;
@@ -9,35 +10,27 @@ import Dominio.ClothingClasses.Atuendo;
 import Dominio.UserClasses.Usuario;
 import Repositorios.RepoUsuario;
 
-class CrearSugerenciaTask extends TimerTask{
-
-	private final static int HORA = 3;
+public class ActualizarAtuendoPorClimaTask extends TimerTask {
+	
+	private final static int HORA = 2;
     private final static int MINUTOS = 0;
 	
 	@Override
 	public void run()
 	{
-		List<Usuario> usuarios = RepoUsuario.getInstance().getUsuariosConEventosProximosYSinNotificar();
+		List<Usuario> usuarios = RepoUsuario.getInstance().getUsuariosConEventosProximosYnotificados();
 		usuarios.stream().forEach
 		(
-				u -> u.getEventosProximosYsinNotificar().forEach
-				(
-						e -> 
-						{
-							Atuendo sugerencia;
-							try {
-								sugerencia = u.pedirRecomendacion(e);
-								
-								e.agregarSugerencia(sugerencia);
-							}
-							catch (Exception e1) {
-								e1.printStackTrace();
-							}
-						}
-				)
+			u -> u.getEventosProximosYnotificados().forEach
+			(
+					e ->
+					{
+							e.setSeNotificoSugerencia(false);
+					}
+			)
 		);
 	}
-			
+	
 	public void empezar()
 	{
 		Calendar today = Calendar.getInstance();

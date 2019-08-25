@@ -12,7 +12,6 @@ import Dominio.UserClasses.Usuario;
 import Repositorios.RepoUsuario;
 
 public class NotificarUsuarioTask extends TimerTask{
-// https://stackoverflow.com/questions/9375882/how-i-can-run-my-timertask-everyday-2-pm
 	
 	private final static int HORA = 7; 
 	private final static int MINUTOS = 0;
@@ -23,7 +22,13 @@ public class NotificarUsuarioTask extends TimerTask{
 				
 		
 		if(!usuarios.isEmpty())
-			usuarios.forEach(u -> Notificador.getInstance().notificarSugerencia(u));
+			usuarios.forEach
+			(
+					u -> u.getEventosProximosYsinNotificar().forEach
+					(
+							e -> Notificador.getInstance().notificarSugerencia(u,e)
+					)
+			);
 	}
 			
 	public void empezar()

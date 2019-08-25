@@ -11,7 +11,7 @@ public class TestNotificador {
 	
 	@Before
 	public void init() {
-		usuario = new Usuario("nombre", "melisarodrig@hotmail.com", "+541134603850");
+		usuario = new Usuario("nombre", "jm98olivera@gmail.com", "+541153786146");
 	}
 	@Test
 	public void notificarUsuario() {

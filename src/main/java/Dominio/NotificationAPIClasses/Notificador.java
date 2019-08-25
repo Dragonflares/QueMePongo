@@ -3,6 +3,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import Dominio.EventClasses.Evento;
 import Dominio.UserClasses.Usuario;
 import Repositorios.RepoUsuario;
 
@@ -21,8 +22,9 @@ public class Notificador {
 		return instance;
 	}
 	
-	public void notificarSugerencia(Usuario usuario)
+	public void notificarSugerencia(Usuario usuario, Evento evento)
 	{
 		notificadoresAdapters.forEach(n -> n.notificarSugerencia(usuario));
+		evento.setSeNotificoSugerencia(true);
 	}
 }

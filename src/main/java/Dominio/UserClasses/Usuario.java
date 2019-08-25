@@ -122,6 +122,7 @@ public class Usuario {
 		return eventos.stream().anyMatch(e -> e.estaProximo());
 	}
 	
+	//Me parece que esta funcion no la usamos pero la dejo por las dudas porque no se si puede romper en otros lados!
 	public List<Evento> getEventosProximos()
 	{
 		return eventos.stream().filter(e -> e.estaProximo()).collect(Collectors.toList());
@@ -160,7 +161,13 @@ public class Usuario {
 		return eventos.stream().anyMatch(e -> !e.getSeNotificoSugerencia());
 	}
 	
-	//TODO
-	//modificar notificar y crearSugerencia Task (porque no tiene en cuenta si ya se notifico)
-	// y ver que devuelve el filter si nadie cumple la condicion
+	public List<Evento> getEventosProximosYsinNotificar()
+	{
+		return eventos.stream().filter(e -> e.estaProximo() && !e.getSeNotificoSugerencia()).collect(Collectors.toList());
+	}
+	
+	public List<Evento> getEventosProximosYnotificados()
+	{
+		return eventos.stream().filter(e -> e.estaProximo() && e.getSeNotificoSugerencia()).collect(Collectors.toList());
+	}
 }
