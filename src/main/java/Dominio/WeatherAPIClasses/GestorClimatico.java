@@ -10,6 +10,7 @@ public class GestorClimatico{
 
 	public GestorClimatico ()
 	{
+
 		weatherAdapters.add(new DarkSkyAdaptado());
 		weatherAdapters.add(new OPWAdaptado());
 	}

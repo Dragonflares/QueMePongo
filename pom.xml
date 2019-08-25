@@ -32,37 +32,6 @@
 			<artifactId>owm-japis</artifactId>
 			<version>2.5.3.0</version>
 		</dependency>
-
-		<dependency>
-			<groupId>org.openweathermap.java-api</groupId>
-			<artifactId>api-core</artifactId>
-			<version>1.2.3</version>
-			<type>pom</type>
-		</dependency>
-		<dependency>
-			<groupId>org.openweathermap.java-api</groupId>
-			<artifactId>api-common</artifactId>
-			<version>1.2.3</version>
-			<type>pom</type>
-		</dependency>
-		<dependency>
-			<groupId>org.openweathermap.java-api</groupId>
-			<artifactId>api-model</artifactId>
-			<version>1.2.3</version>
-			<type>pom</type>
-		</dependency>
-		<dependency>
-			<groupId>org.openweathermap.java-api</groupId>
-			<artifactId>api-query</artifactId>
-			<version>1.2.3</version>
-			<type>pom</type>
-		</dependency>
-		<dependency>
-			<groupId>org.openweathermap.java-api</groupId>
-			<artifactId>api-examples</artifactId>
-			<version>1.2.3</version>
-			<type>pom</type>
-		</dependency>
 		<!-- https://mvnrepository.com/artifact/tk.plogitech/darksky-forecast-api -->
 		<dependency>
 			<groupId>ch.rasc</groupId>
@@ -70,17 +39,22 @@
 			<version>2.0.0</version>
 		</dependency>
 		<dependency>
-            <groupId>com.sun.mail</groupId>
-            <artifactId>javax.mail</artifactId>
-            <version>1.6.0</version>
-        </dependency>
-        
-        <dependency>
-        	<groupId>com.twilio.sdk</groupId>
-		  	<artifactId>twilio</artifactId>
-		  	<version>7.41.1</version>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.0</version>
 		</dependency>
-        
+
+		<dependency>
+			<groupId>com.twilio.sdk</groupId>
+			<artifactId>twilio</artifactId>
+			<version>7.41.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.github.prominence</groupId>
+			<artifactId>openweathermap-api</artifactId>
+			<version>1.2</version>
+		</dependency>
 
 	</dependencies>
 
