@@ -117,7 +117,7 @@ public class Guardarropa {
 				int indexSuperior = rand.nextInt(limitSup);
 				Prenda prendaSuperior = prendasSuperioresPosibles.get(indexSuperior);
 				prendasSuperiores.add(prendaSuperior);
-				calorActual = creador.getOffset() + (prendasSuperiores.stream()
+				calorActual = creador.getOffsetSuperior() + (prendasSuperiores.stream()
 						.mapToInt(p -> p.getTipoRopa().abrigar()).sum());
 				a++;
 			}
@@ -143,7 +143,7 @@ public class Guardarropa {
 	public Prenda obtenerParteInferior(Evento evento, double temperatura, Usuario creador) throws Exception {
 		Prenda prendaInferior;
 
-		if(temperatura > (18 - creador.getOffset())) {
+		if(temperatura > (18 - creador.getOffsetInferior())) {
 			prendaInferior = obtenerPrendaInf(0);
 		}
 		else {

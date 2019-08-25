@@ -1,5 +1,6 @@
 package Dominio.UserClasses;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -11,6 +12,7 @@ import Dominio.ClothingClasses.Estilo;
 import Dominio.ClothingClasses.Prenda;
 import Dominio.EventClasses.Evento;
 import Dominio.EventClasses.Frecuencia;
+import Dominio.WardrobeClasses.Gratuito;
 import Dominio.WardrobeClasses.Guardarropa;
 
 public class Usuario {
@@ -20,23 +22,22 @@ public class Usuario {
 	private List<Atuendo> atuendosRechazados;
 	private Atuendo ultimoAtuendo;
 	private List<Evento> eventos;
-	private int offset;
+	private int offsetSuperior;
+	private int offsetInferior;
 	private String mail;
 	private String numeroCelular;
 	private List<Atuendo> sugerenciasQueFaltanCalificar;
 	
-	public Usuario(String username, String mail, String numeroCelular){
+	public Usuario(String username, String mail, String numeroCelular) throws FileNotFoundException{
 		this.username = username;
 		this.guardarropas = new ArrayList<Guardarropa>();
 		this.eventos = new ArrayList<Evento>();
 		this.mail = mail;
 		this.numeroCelular = numeroCelular;
-	}
-
-	public Usuario(String username, Guardarropa guardarropa) {
-		this.username = username;
-		this.guardarropas = new ArrayList<Guardarropa>();
-		this.inicializarGuardarropa(guardarropa);
+		this.offsetInferior = 0;
+		this.offsetSuperior = 0;
+		this.ultimoAtuendo = null;
+		this.tipoDeCuenta = new Gratuito();
 	}
 
 	public String getUsername() {
@@ -45,10 +46,6 @@ public class Usuario {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	private void inicializarGuardarropa(Guardarropa guardarropa) {
-		this.guardarropas.add(guardarropa);
 	}
 
 	public void agregarGuardarropa(Guardarropa guardarropa) {
@@ -91,8 +88,12 @@ public class Usuario {
 		return atuendoFinal;
 	}
 
-	public int getOffset() {
-		return this.offset;
+	public int getOffsetSuperior() {
+		return this.offsetSuperior;
+	}
+	
+	public int getOffsetInferior() {
+		return this.offsetInferior;
 	}
 
 	public void crearEvento(Calendar fecha, String direccion, Estilo estilo, Frecuencia frecuencia) {
