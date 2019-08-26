@@ -8,12 +8,12 @@ public class EliminarDeAtuendosRechazados implements Paso {
 
 	private Usuario usuario;
 	private Atuendo atuendo;
+	private ParametersPaso parametros;
 
+	public EliminarDeAtuendosRechazados(ParametersPaso parametros) {
 
-	public EliminarDeAtuendosRechazados(Usuario usuario) {
-
-		this.usuario = usuario;
-		this.atuendo = usuario.getUltimoAtuendo();
+		this.parametros = parametros;
+		this.parametros.setAtuendo(parametros.getUsuario().getUltimoAtuendo());
 	}
 
 	public void ejecutar(){
