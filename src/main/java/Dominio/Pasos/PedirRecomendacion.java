@@ -1,9 +1,8 @@
-package Dominio.UserClasses;
+package Dominio.Pasos;
 
-import Dominio.ClothingClasses.Atuendo;
-import Dominio.ClothingClasses.Estilo;
 import Dominio.EventClasses.Evento;
-import Dominio.WardrobeClasses.Guardarropa;
+import Dominio.UserClasses.Usuario;
+
 
 public class PedirRecomendacion implements Paso{
 	private Usuario usuario;

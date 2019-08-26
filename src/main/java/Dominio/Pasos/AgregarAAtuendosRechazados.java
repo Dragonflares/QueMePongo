@@ -1,7 +1,8 @@
-package Dominio.UserClasses;
+package Dominio.Pasos;
 
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Estilo;
+import Dominio.UserClasses.Usuario;
 import Dominio.WardrobeClasses.Guardarropa;
 
 public class AgregarAAtuendosRechazados implements Paso{

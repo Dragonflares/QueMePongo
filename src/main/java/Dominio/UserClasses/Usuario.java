@@ -36,7 +36,7 @@ public class Usuario {
 		this.numeroCelular = numeroCelular;
 		this.offsetInferior = 0;
 		this.offsetSuperior = 0;
-		this.ultimoAtuendo = null;
+		this.setUltimoAtuendo(null);
 		this.tipoDeCuenta = new Gratuito();
 	}
 
@@ -84,7 +84,7 @@ public class Usuario {
 			Guardarropa guardarropa =  guardarropasConEstilo.get(rand.nextInt(cantGuardarropas));
 			atuendoFinal = guardarropa.generarRecomendacion(evento, this);
 		}
-		this.ultimoAtuendo = atuendoFinal;
+		this.setUltimoAtuendo(atuendoFinal);
 		return atuendoFinal;
 	}
 
@@ -164,5 +164,13 @@ public class Usuario {
 	public List<Evento> getEventosProximosYnotificados()
 	{
 		return eventos.stream().filter(e -> e.estaProximo() && e.getSeNotificoSugerencia()).collect(Collectors.toList());
+	}
+
+	public Atuendo getUltimoAtuendo() {
+		return ultimoAtuendo;
+	}
+
+	public void setUltimoAtuendo(Atuendo ultimoAtuendo) {
+		this.ultimoAtuendo = ultimoAtuendo;
 	}
 }

@@ -1,4 +1,4 @@
-package Dominio.UserClasses;
+package Dominio.Pasos;
 
 import java.util.List;
 

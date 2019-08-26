@@ -1,7 +1,8 @@
-package Dominio.UserClasses;
+package Dominio.Pasos;
 
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Estilo;
+import Dominio.UserClasses.Usuario;
 import Dominio.WardrobeClasses.Guardarropa;
 
 public class EliminarDeAtuendosRechazados implements Paso {
@@ -11,10 +12,10 @@ public class EliminarDeAtuendosRechazados implements Paso {
 	private Atuendo atuendo;
 
 
-	public EliminarDeAtuendosRechazados(Usuario usuario,Atuendo atuendo) {
+	public EliminarDeAtuendosRechazados(Usuario usuario) {
 
 		this.usuario = usuario;
-		this.atuendo = atuendo;
+		this.atuendo = usuario.getUltimoAtuendo();
 	}
 
 	public void ejecutar(){

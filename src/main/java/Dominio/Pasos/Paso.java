@@ -1,4 +1,4 @@
-package Dominio.UserClasses;
+package Dominio.Pasos;
 
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Estilo;
