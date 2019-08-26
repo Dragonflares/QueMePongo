@@ -68,14 +68,18 @@ public class Atuendo {
 	
 	public Boolean abrigaLoNecesario(double temperatura, Usuario usuario)
 	{
-		if(temperatura >= 27)
+		if(temperatura >= 27 - usuario.getOffsetSuperior())
 		{
-			// TODO cuando este hecho el "prototype"
-			return true;
+			return this.veraniegoSuperiorAbrigaBien(temperatura, usuario);
 		}
 		return this.superioresAbriganLoSuficiente(temperatura, usuario) && this.inferiorAbrigaLoSuficiente(temperatura, usuario);
 	}
 	
+	private Boolean veraniegoSuperiorAbrigaBien(double temperatura, Usuario usuario) {
+		int calorActual = this.calorActualSuperiores(usuario);
+		return (27 - temperatura - 3) < calorActual;
+	}
+
 	private Boolean superioresAbriganLoSuficiente(double temperatura, Usuario usuario)
 	{
 		int calorActual = this.calorActualSuperiores(usuario);
