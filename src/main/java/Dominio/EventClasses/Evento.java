@@ -14,6 +14,7 @@ public class Evento {
 	private Atuendo sugerencia;
 	private boolean sugerenciaNotificada;
 	
+	
 	public Evento (Calendar fecha, String direccion, Estilo estilo, Frecuencia frecuencia)
 	{
 		this.fecha = fecha;

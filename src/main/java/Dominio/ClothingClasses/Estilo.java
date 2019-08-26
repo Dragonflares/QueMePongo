@@ -1,7 +1,16 @@
 package Dominio.ClothingClasses;
 
-public enum Estilo {
-	FORMAL, 
-	DEPORTIVO,
-	CASUAL
+import Dominio.WardrobeClasses.Guardarropa;
+
+public interface Estilo {
+//	FORMAL, 
+//	DEPORTIVO,
+//	CASUAL
+	
+	public Atuendo generarAtuendoVerano (Guardarropa guardarropa);
+	
+	
+	public Atuendo generarAtuendoInvierno (Guardarropa guardarropa);
+
+	
 }
