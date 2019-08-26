@@ -1,10 +1,9 @@
-package Dominio.WardrobeClasses;
+package Dominio.UserClasses;
 
 import java.io.FileNotFoundException;
 
 import Dominio.ClothingClasses.Prenda;
-import Dominio.UserClasses.TipoDeUsuario;
-import Dominio.UserClasses.Usuario;
+import Dominio.WardrobeClasses.Guardarropa;
 
 public class Premium implements TipoDeUsuario {
 	public void agregarPrendaAGuardarropa(Guardarropa guardarropa, Prenda prenda)

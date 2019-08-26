@@ -12,7 +12,6 @@ import Dominio.ClothingClasses.Estilo;
 import Dominio.ClothingClasses.Prenda;
 import Dominio.EventClasses.Evento;
 import Dominio.EventClasses.Frecuencia;
-import Dominio.WardrobeClasses.Gratuito;
 import Dominio.WardrobeClasses.Guardarropa;
 
 public class Usuario {

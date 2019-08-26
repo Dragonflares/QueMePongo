@@ -79,7 +79,7 @@ public class Guardarropa {
 			List<Prenda> prendasSuperiores = obtenerParteSuperior(evento, temperatura, 0, creador);
 			Prenda prendaInferior = obtenerParteInferior(evento, temperatura, creador);
 			Prenda calzado = obtenerCalzado(evento, temperatura);
-			List<Prenda> accesorios = obtenerAccesorios(evento);
+//			List<Prenda> accesorios = obtenerAccesorios(evento);
 			ArrayList<Prenda> prendasDeAtuendo = new ArrayList<Prenda>();
 			if(prendasSuperiores.isEmpty() || prendaInferior.equals(null) || calzado.equals(null))
 			{
@@ -88,7 +88,7 @@ public class Guardarropa {
 			else {
 				prendasDeAtuendo.addAll(prendasSuperiores);
 				prendasDeAtuendo.add(prendaInferior);
-				prendasDeAtuendo.addAll(accesorios);
+//				prendasDeAtuendo.addAll(accesorios);
 				prendasDeAtuendo.add(calzado);
 				atuendo = new Atuendo(prendasDeAtuendo);
 			}

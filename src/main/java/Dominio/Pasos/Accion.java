@@ -2,10 +2,6 @@ package Dominio.Pasos;
 
 import java.util.List;
 
-import Dominio.ClothingClasses.Atuendo;
-import Dominio.ClothingClasses.Estilo;
-import Dominio.WardrobeClasses.Guardarropa;
-
 public class Accion { // Aceptar/Rechazar
 	public List<Paso> pasosAAplicar;
 	public List<Paso> pasosADeshacer;

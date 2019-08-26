@@ -1,11 +1,10 @@
-package Dominio.WardrobeClasses;
+package Dominio.UserClasses;
 import java.io.File; 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import Dominio.ClothingClasses.Prenda;
-import Dominio.UserClasses.TipoDeUsuario;
-import Dominio.UserClasses.Usuario; 
+import Dominio.WardrobeClasses.Guardarropa; 
 
 public class Gratuito implements TipoDeUsuario{
 	private int tamanioMaximoGuardarropa;

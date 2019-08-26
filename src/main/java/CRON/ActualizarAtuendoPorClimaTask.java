@@ -7,7 +7,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
-import Dominio.ClothingClasses.Atuendo;
 import Dominio.UserClasses.Usuario;
 import Dominio.WeatherAPIClasses.GestorClimatico;
 import Repositorios.RepoUsuario;
