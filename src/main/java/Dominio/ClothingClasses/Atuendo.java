@@ -66,7 +66,7 @@ public class Atuendo {
 				&& this.prendas.size() == atuendo.prendas.size();
 	}
 	
-	public Boolean abrigaLoSuficiente(double temperatura, Usuario usuario)
+	public Boolean abrigaLoNecesario(double temperatura, Usuario usuario)
 	{
 		if(temperatura >= 27)
 		{
@@ -85,12 +85,12 @@ public class Atuendo {
 	private int calorActualSuperiores(Usuario usuario)
 	{
 		return usuario.getOffsetSuperior() + (this.getPrendasSuperiores().stream()
-				.mapToInt(p -> p.getTipoRopa().getNivelAbrigo()).sum());
+				.mapToInt(p -> p.getNivelAbrigo()).sum());
 	}
 	
 	private Boolean inferiorAbrigaLoSuficiente(double temperatura, Usuario usuario)
 	{
-		int nivelAbrigo = this.getPrendasInferiores().get(0).getTipoRopa().getNivelAbrigo();
+		int nivelAbrigo = this.getPrendasInferiores().get(0).getNivelAbrigo();
 		if(temperatura > (18 - usuario.getOffsetInferior()))
 			return nivelAbrigo == 0;
 		return nivelAbrigo == 1;

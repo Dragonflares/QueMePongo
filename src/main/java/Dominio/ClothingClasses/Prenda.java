@@ -76,6 +76,11 @@ public class Prenda {
 	public void setNombrePrenda(String nombrePrenda) {
 		this.nombrePrenda = nombrePrenda;
 	} 
+	
+	public int getNivelAbrigo()
+	{
+		return this.tipoRopa.getNivelAbrigo();
+	}
 
 
 	public static class PrendaBuilder {

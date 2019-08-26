@@ -43,4 +43,8 @@
   <classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.2/commons-logging-1.2.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/github/prominence/openweathermap-api/1.2/openweathermap-api-1.2.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/alibaba/fastjson/1.2.44/fastjson-1.2.44.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/mockito/mockito-core/2.8.9/mockito-core-2.8.9.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/bytebuddy/byte-buddy/1.6.14/byte-buddy-1.6.14.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/bytebuddy/byte-buddy-agent/1.6.14/byte-buddy-agent-1.6.14.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/objenesis/objenesis/2.5/objenesis-2.5.jar"/>
 </classpath>

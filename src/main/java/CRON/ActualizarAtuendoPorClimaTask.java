@@ -29,9 +29,9 @@ public class ActualizarAtuendoPorClimaTask extends TimerTask {
 					{
 						
 						try {
-							double temperatura = pedirTemperatura(e.getFecha().get(Calendar.DAY_OF_MONTH), e.getFecha().get(Calendar.HOUR_OF_DAY));
+							double temperatura = pedirTemperatura(e.getFecha().get(Calendar.DATE), e.getFecha().get(Calendar.HOUR_OF_DAY));
 							
-							if(e.getSugerencia().abrigaLoSuficiente(temperatura, u))
+							if(!e.getSugerencia().abrigaLoNecesario(temperatura, u))
 								e.setSeNotificoSugerencia(false);
 							
 						} catch (IOException e1) {
@@ -44,8 +44,11 @@ public class ActualizarAtuendoPorClimaTask extends TimerTask {
 	}
 	
 	private double pedirTemperatura(int dia, int hora) throws IOException {
-		return GestorClimatico.getInstance().obtenerTemperatura(dia, hora);
+		int diferenciaDias = Calendar.getInstance().get(Calendar.DATE) - dia;
+		return GestorClimatico.getInstance().obtenerTemperatura(diferenciaDias, hora);
 	}
+	
+	
 	
 	public void empezar()
 	{
