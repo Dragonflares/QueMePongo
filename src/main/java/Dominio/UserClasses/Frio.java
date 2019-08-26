@@ -1,8 +1,10 @@
 package Dominio.UserClasses;
 
+import Dominio.Property;
+
 public class Frio {
 
-	private static Integer calificacion = -1 ;//Obtener de properties
+	private static Integer calificacion = Integer.parseInt(Property.getSpecifiedProperty("CalificacionFrio"));
 
 
 

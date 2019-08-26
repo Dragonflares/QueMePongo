@@ -11,7 +11,6 @@ import Dominio.Property;
 
 public class Imagen {
 
-
 	public Graphics2D crearImagen (String path) {
 
 		Graphics2D imagenGraphics;
@@ -22,11 +21,10 @@ public class Imagen {
 			e.printStackTrace();
 		}
 		imagenGraphics = (Graphics2D) myPicture.getGraphics();
-		Property object = new Property("properties.properties");
-		int x = Integer.parseInt(object.getSpecifiedProperty("positionX_Image"));
-		int y = Integer.parseInt(object.getSpecifiedProperty("positionY_Image"));
-		int width = Integer.parseInt(object.getSpecifiedProperty("width_Image")); 
-		int height = Integer.parseInt(object.getSpecifiedProperty("height_Image"));
+		int x = Integer.parseInt(Property.getSpecifiedProperty("positionX_Image"));
+		int y = Integer.parseInt(Property.getSpecifiedProperty("positionY_Image"));
+		int width = Integer.parseInt(Property.getSpecifiedProperty("width_Image")); 
+		int height = Integer.parseInt(Property.getSpecifiedProperty("height_Image"));
 		imagenGraphics.drawRect(x, y, width, height);
 		return imagenGraphics;
 

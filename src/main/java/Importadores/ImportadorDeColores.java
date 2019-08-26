@@ -10,16 +10,16 @@ import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
+import Dominio.Property;
 import Dominio.ClothingClasses.Color;
 import Repositorios.RepoColor;
-
-
 
 public class ImportadorDeColores {
 
     RepoColor repo = new RepoColor();
+    String path = Property.getSpecifiedProperty("RutaRepoColor");
 
-    public List<Color> levantarColoresDePath(String path)
+    public List<Color> levantarColoresDePath()
             throws JsonIOException, JsonSyntaxException, FileNotFoundException {
 
         Gson gson = new Gson();
