@@ -193,6 +193,23 @@ public class Usuario {
 		this.modificarOffSetSuperior(superior.darCalificacion());	
 	}
 
+	public boolean tieneEventosOcurridos(Calendar fecha)
+	{
+		return eventos.stream().anyMatch(e -> e.ocurre(fecha));
+	}
+
+	public List<Evento> getEventosOcurridos(Calendar fecha) {
+		return eventos.stream().filter(e -> e.ocurre(fecha)).collect(Collectors.toList());
+ 
+	}
+
+	
+	
+	public void agregarSugerenciaSinCalificar(Atuendo sugerencia) {
+		this.sugerenciasQueFaltanCalificar.add(sugerencia);
+		
+	}
+
 
 
 }

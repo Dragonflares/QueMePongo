@@ -31,4 +31,13 @@ public class RepoUsuario extends Repositorio{
 	{	
 		return usuarios.stream().filter(u -> u.tieneEventosOcurridoFrecuentemente(fecha)).collect(Collectors.toList());
 	}
+	
+	public List<Usuario> getUsuariosConEventosOcurridos(Calendar fecha){
+		
+		
+		return usuarios.stream().filter(u -> u.tieneEventosOcurridos(fecha)).collect(Collectors.toList());
+
+	}
+	
+	
 }
