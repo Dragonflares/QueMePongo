@@ -44,26 +44,8 @@ public class ActualizarAtuendoPorClimaTask extends TimerTask {
 		);
 	}
 	
-	private double pedirTemperatura(Calendar dia, int hora) throws IOException {
-		long diferenciaDias = diasEntre(dia, Calendar.getInstance());
-		return GestorClimatico.getInstance().obtenerTemperatura(diferenciaDias, hora);
-	}
-	
-	public long diasEntre(Calendar diaMenor, Calendar diaMayor)
-	{ 	
-		Date diaMenorDate = this.convertirDate(diaMenor);
-		Date diaMayorDate = this.convertirDate(diaMayor);
-
-		return ( diaMayorDate.getTime() - diaMenorDate.getTime() )/(24 * 60 * 60 * 1000); 		
-	}
-	
-	private Date convertirDate(Calendar fecha)
-	{
-		int anio = fecha.get(Calendar.YEAR); 
-		int mes = fecha.get(Calendar.MONTH); 
-		int dia = fecha.get(Calendar.DAY_OF_MONTH); 
-		Calendar calendar = new GregorianCalendar(anio, mes-1, dia); 
-		return new Date(calendar.getTimeInMillis());
+	private double pedirTemperatura(Calendar fecha, int hora) throws IOException {
+		return GestorClimatico.getInstance().obtenerTemperatura(fecha, hora);
 	}
 	
 	public void empezar()
