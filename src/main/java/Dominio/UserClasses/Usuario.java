@@ -26,6 +26,7 @@ public class Usuario {
 	private String mail;
 	private String numeroCelular;
 	private List<Atuendo> sugerenciasQueFaltanCalificar;
+
 	
 	public Usuario(String username, String mail, String numeroCelular) throws FileNotFoundException{
 		this.username = username;
@@ -60,12 +61,12 @@ public class Usuario {
 		}
 
 	}
-	
+
 	public void agregarARechazados(Atuendo atuendo)
 	{
 		this.atuendosRechazados.add(atuendo);
 	}
-	
+
 	public void eliminarDeRechazados(Atuendo atuendo)
 	{
 		this.atuendosRechazados.remove(atuendo);
@@ -74,7 +75,7 @@ public class Usuario {
 	public Atuendo pedirRecomendacion(Evento evento) throws Exception{
 		List<Guardarropa> guardarropasConEstilo = 
 				this.guardarropas.stream().filter(g -> g.getEstilo() == evento.getEstilo()).collect(Collectors.toList());
-		
+
 		Atuendo atuendoFinal = null;
 		Random rand = new Random();
 		int cantGuardarropas = guardarropasConEstilo.size();
@@ -90,7 +91,7 @@ public class Usuario {
 	public int getOffsetSuperior() {
 		return this.offsetSuperior;
 	}
-	
+
 	public int getOffsetInferior() {
 		return this.offsetInferior;
 	}
@@ -98,68 +99,68 @@ public class Usuario {
 	public void crearEvento(Calendar fecha, String direccion, Estilo estilo, Frecuencia frecuencia) {
 		this.eventos.add(new Evento(fecha, direccion, estilo, frecuencia));
 	}
-	
+
 	public void crearNuevoGuardarropas(Estilo estilo) {
 		this.guardarropas.add(new Guardarropa(this, estilo));
 	}
-	
+
 	public List<Evento> getEventos(){
 		return this.eventos;
 	}
-	
+
 	public String getMail()
 	{
 		return this.mail;
 	}
-	
+
 	public String getNumeroCelular()
 	{
 		return this.numeroCelular;
 	}
-	
+
 	public boolean tieneEventosProximos()
 	{
 		return eventos.stream().anyMatch(e -> e.estaProximo());
 	}
-	
+
 	public boolean tieneEventosOcurridoFrecuentemente(Calendar fecha)
 	{
 		return eventos.stream().anyMatch(e -> e.ocurre(fecha) && e.esFrecuente());
 	}
-	
+
 	public List<Evento> getEventosOcurridoFrecuentemente(Calendar fecha)
 	{
 		return eventos.stream().filter(e -> e.ocurre(fecha) && e.esFrecuente()).collect(Collectors.toList());
 	}
-	
+
 	public List<Atuendo> getSugerenciasQueFaltanCalificar()
 	{
 		List<Atuendo> sugerencias = new ArrayList<Atuendo>();
-		
+
 		List<Evento> eventosQueEstanProximosYNoSeSugirioLaRecomendacion = 
 				this.eventos.stream().filter(e -> e.estaProximo() && !e.getSeNotificoSugerencia()).collect(Collectors.toList());
-		
+
 		if(!eventosQueEstanProximosYNoSeSugirioLaRecomendacion.isEmpty())
 			eventosQueEstanProximosYNoSeSugirioLaRecomendacion
-				.stream().forEach(e -> sugerencias.add(e.getSugerencia()));
-		
+			.stream().forEach(e -> sugerencias.add(e.getSugerencia()));
+
 		return sugerencias;
 	}
 
 	public void cambiarCategoria(TipoDeUsuario tipo) {
 		this.tipoDeCuenta = tipo;
 	}
-	
+
 	public boolean tieneEventoSinNotificar()
 	{
 		return eventos.stream().anyMatch(e -> !e.getSeNotificoSugerencia());
 	}
-	
+
 	public List<Evento> getEventosProximosYsinNotificar()
 	{
 		return eventos.stream().filter(e -> e.estaProximo() && !e.getSeNotificoSugerencia()).collect(Collectors.toList());
 	}
-	
+
 	public List<Evento> getEventosProximosYnotificados()
 	{
 		return eventos.stream().filter(e -> e.estaProximo() && e.getSeNotificoSugerencia()).collect(Collectors.toList());
@@ -172,4 +173,26 @@ public class Usuario {
 	public void setUltimoAtuendo(Atuendo ultimoAtuendo) {
 		this.ultimoAtuendo = ultimoAtuendo;
 	}
+
+	public void modificarOffSetSuperior(Integer cantidad) {
+
+		this.offsetSuperior += cantidad;
+
+	}
+
+	public void modificarOffSetInferior(Integer cantidad) {
+
+		this.offsetInferior += cantidad;
+
+	}
+	
+	public void calificar(Atuendo atuendo,Calificadores superior, Calificadores inferior) {
+
+		this.getSugerenciasQueFaltanCalificar().remove(atuendo);
+		this.modificarOffSetInferior(inferior.darCalificacion());
+		this.modificarOffSetSuperior(superior.darCalificacion());	
+	}
+
+
+
 }
