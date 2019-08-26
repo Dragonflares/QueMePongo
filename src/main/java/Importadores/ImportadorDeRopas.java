@@ -10,14 +10,16 @@ import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
+import Dominio.Property;
 import Dominio.ClothingClasses.TipoDeRopa;
 import Repositorios.RepoRopa;
 
 public class ImportadorDeRopas {
 
     RepoRopa repo = new RepoRopa();
+    String path = Property.getSpecifiedProperty("RutaRepoRopa");
 
-    public List<TipoDeRopa> levantarTipoDeRopasDePath(String path)
+    public List<TipoDeRopa> levantarTipoDeRopasDePath()
             throws JsonIOException, JsonSyntaxException, FileNotFoundException {
 
         Gson gson = new Gson();
