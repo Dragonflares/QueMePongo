@@ -60,6 +60,7 @@ public class Atuendo {
 	}
 	
 	public Boolean esElMismoAtuendo(Atuendo atuendo) {
-		return this.prendas.equals(atuendo.prendas);
+		return this.prendas.containsAll(atuendo.prendas)
+				&& this.prendas.size() == atuendo.prendas.size();
 	}
 }

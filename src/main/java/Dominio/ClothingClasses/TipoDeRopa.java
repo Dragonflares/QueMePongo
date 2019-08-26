@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TipoDeRopa {
-	private Integer abrigo;
 	private String nombre;
+	private Integer abrigo;
 	private Categoria categoria;
 	private ArrayList<Capas> capasEnDondePuedeEstar = new ArrayList<Capas>();
 	private ArrayList<Material> materialesNoCompatibles = new ArrayList<Material>();

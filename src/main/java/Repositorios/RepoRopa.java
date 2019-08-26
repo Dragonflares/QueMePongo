@@ -36,7 +36,7 @@ public class RepoRopa extends Repositorio {
 	            Gson gson = new Gson();
 	            Object jsonObject = gson.fromJson(bufferedReader, Object.class);
 	            String json = jsonObject.toString();
-	            Type tipoListaDeRopas = new TypeToken<List<Material>>() {}.getType();
+	            Type tipoListaDeRopas = new TypeToken<List<TipoDeRopa>>() {}.getType();
 
 	            List<TipoDeRopa> ropas = gson.fromJson(json, tipoListaDeRopas);
 	            
@@ -59,7 +59,7 @@ public class RepoRopa extends Repositorio {
 	            Gson gson = new Gson();
 	            Object jsonObject = gson.fromJson(bufferedReader, Object.class);
 	            String json = jsonObject.toString();
-	            Type tipoListaDeRopas = new TypeToken<List<Material>>() {}.getType();
+	            Type tipoListaDeRopas = new TypeToken<List<TipoDeRopa>>() {}.getType();
 
 	            List<TipoDeRopa> ropas = gson.fromJson(json, tipoListaDeRopas);
 

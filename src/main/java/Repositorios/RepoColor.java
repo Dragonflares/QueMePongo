@@ -35,7 +35,7 @@ public class RepoColor extends Repositorio{
             Gson gson = new Gson();
             Object jsonObject = gson.fromJson(bufferedReader, Object.class);
             String json = jsonObject.toString();
-            Type tipoListaColores = new TypeToken<List<Material>>() {}.getType();
+            Type tipoListaColores = new TypeToken<List<Color>>() {}.getType();
 
             List<Color> colores = gson.fromJson(json, tipoListaColores);
             
@@ -58,7 +58,7 @@ public class RepoColor extends Repositorio{
             Gson gson = new Gson();
             Object jsonObject = gson.fromJson(bufferedReader, Object.class);
             String json = jsonObject.toString();
-            Type tipoListaColores = new TypeToken<List<Material>>() {}.getType();
+            Type tipoListaColores = new TypeToken<List<Color>>() {}.getType();
 
             List<Color> colores = gson.fromJson(json, tipoListaColores);
 

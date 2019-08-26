@@ -1,9 +1,8 @@
 [
 	{
 		"nombre": "Remera manga corta", 
-		"abrigo": "3",
-		"categoria": 
-			{"categoria:" "PARTE_SUPERIOR"},
+		"abrigo": 3,
+		"categoria": {"categoria": "PARTE_SUPERIOR"},
 		"capasEnDondePuedeEstar":
 		[
 			{"capasEnDondePuedeEstar": "CAPA1"}
@@ -21,9 +20,9 @@
 	},
 	{
 		"nombre": "Remera manga larga", 
-		"abrigo": "4", 
+		"abrigo": 4, 
 		"categoria": 
-			{"categoria:" "PARTE_SUPERIOR"},
+			{"categoria": "PARTE_SUPERIOR"},
 		"capasEnDondePuedeEstar":
 		[
 			{"capasEnDondePuedeEstar": "CAPA1"}
@@ -41,9 +40,9 @@
 		]
 	},
 	{
-		"nombre": "Chomba", "abrigo": "4",
+		"nombre": "Chomba", "abrigo": 4,
 		"categoria": 
-			{"categoria:" "PARTE_SUPERIOR"},
+			{"categoria": "PARTE_SUPERIOR"},
 		"capasEnDondePuedeEstar":
 		[
 			{"capasEnDondePuedeEstar": "CAPA1"}
@@ -61,9 +60,9 @@
 		]
 	},
 	{
-		"nombre": "Camisa", "abrigo": "4", 
+		"nombre": "Camisa", "abrigo": 4, 
 		"categoria": 
-			{"categoria:" "PARTE_SUPERIOR"},
+			{"categoria": "PARTE_SUPERIOR"},
 		"capasEnDondePuedeEstar":
 		[
 			{"capasEnDondePuedeEstar": "CAPA1"},
@@ -81,9 +80,9 @@
 		]
 	},
 	{
-		"nombre": "Musculosa", "abrigo": "1", 
+		"nombre": "Musculosa", "abrigo": 1, 
 		"categoria": 
-			{"categoria:" "PARTE_SUPERIOR"},
+			{"categoria": "PARTE_SUPERIOR"},
 		"capasEnDondePuedeEstar":
 		[
 			{"capasEnDondePuedeEstar": "CAPA1"}
@@ -101,9 +100,9 @@
 		]
 	},
 	{
-		"nombre": "Buzo", "abrigo": "6", 
+		"nombre": "Buzo", "abrigo": 6, 
 		"categoria": 
-			{"categoria:" "PARTE_SUPERIOR"},
+			{"categoria": "PARTE_SUPERIOR"},
 		"capasEnDondePuedeEstar":
 		[
 			{"capasEnDondePuedeEstar": "CAPA2"},
@@ -119,9 +118,9 @@
 		]
 	},
 	{
-		"nombre": "Pulover", "abrigo": "7", 
+		"nombre": "Pulover", "abrigo": 7, 
 		"categoria": 
-			{"categoria:" "PARTE_SUPERIOR"},
+			{"categoria": "PARTE_SUPERIOR"},
 		"capasEnDondePuedeEstar":
 		[
 			{"capasEnDondePuedeEstar": "CAPA2"},
@@ -139,9 +138,9 @@
 		]
 	},
 	{
-		"nombre": "Polera", "abrigo": "8",
+		"nombre": "Polera", "abrigo": 8,
 		"categoria": 
-			{"categoria:" "PARTE_SUPERIOR"},
+			{"categoria": "PARTE_SUPERIOR"},
 		"capasEnDondePuedeEstar":
 		[
 			{"capasEnDondePuedeEstar": "CAPA2"},
@@ -159,9 +158,9 @@
 		]
 	},
 	{
-		"nombre": "Campera finita", "abrigo": "5",
+		"nombre": "Campera finita", "abrigo": 5,
 		"categoria": 
-			{"categoria:" "PARTE_SUPERIOR"},
+			{"categoria": "PARTE_SUPERIOR"},
 		"capasEnDondePuedeEstar":
 		[
 			{"capasEnDondePuedeEstar": "CAPA2"}
@@ -174,9 +173,9 @@
 		]
 	},
 	{
-		"nombre": "Campera media", "abrigo": "7", 
+		"nombre": "Campera media", "abrigo": 7, 
 		"categoria": 
-			{"categoria:" "PARTE_SUPERIOR"},
+			{"categoria": "PARTE_SUPERIOR"},
 		"capasEnDondePuedeEstar":
 		[
 			{"capasEnDondePuedeEstar": "CAPA2"},
@@ -193,9 +192,9 @@
 		]
 	},
 	{
-		"nombre": "Campera gruesa", "abrigo": "10", 
+		"nombre": "Campera gruesa", "abrigo": 10, 
 		"categoria": 
-			{"categoria:" "PARTE_SUPERIOR"},
+			{"categoria": "PARTE_SUPERIOR"},
 		"capasEnDondePuedeEstar":
 		[
 			{"capasEnDondePuedeEstar": "CAPA2"},
@@ -214,9 +213,9 @@
 		]
 	},
 	{
-		"nombre": "Pantalon largo", "abrigo": "1", 
+		"nombre": "Pantalon largo", "abrigo": 1, 
 		"categoria": 
-			{"categoria:" "PARTE_INFERIOR"},
+			{"categoria": "PARTE_INFERIOR"},
 		"capasEnDondePuedeEstar":[], 
 		"materialesNoCompatibles": 
 		[
@@ -227,9 +226,9 @@
 		]
 	},
 	{
-		"nombre": "Pantalon corto", "abrigo": "0",
+		"nombre": "Pantalon corto", "abrigo": 0,
 		"categoria": 
-			{"categoria:" "PARTE_INFERIOR"},
+			{"categoria": "PARTE_INFERIOR"},
 		"capasEnDondePuedeEstar":[], 
 		"materialesNoCompatibles": 
 		[
@@ -241,9 +240,9 @@
 		]
 	},
 	{
-		"nombre": "Pollera", "abrigo": "0",
+		"nombre": "Pollera", "abrigo": 0,
 		"categoria": 
-			{"categoria:" "PARTE_INFERIOR"},
+			{"categoria": "PARTE_INFERIOR"},
 		"capasEnDondePuedeEstar":[], 
 		"materialesNoCompatibles": 
 		[
@@ -255,9 +254,9 @@
 		]
 	},
 	{
-		"nombre": "Gorro invernal", "abrigo": "1",
+		"nombre": "Gorro invernal", "abrigo": 1,
 		"categoria": 
-			{"categoria:" "ACCESORIOS"},
+			{"categoria": "ACCESORIOS"},
 		"capasEnDondePuedeEstar":[], 
 		"materialesNoCompatibles": 
 		[
@@ -272,9 +271,9 @@
 		]
 	},
 	{
-		"nombre": "Gorra", "abrigo": "0", 
+		"nombre": "Gorra", "abrigo": 0, 
 		"categoria": 
-			{"categoria:" "ACCESORIOS"},
+			{"categoria": "ACCESORIOS"},
 		"capasEnDondePuedeEstar":[], 
 		"materialesNoCompatibles": 
 		[
@@ -289,9 +288,9 @@
 		]
 	},
 	{
-		"nombre": "Paraguas", "abrigo": "0",
+		"nombre": "Paraguas", "abrigo": 0,
 		"categoria": 
-			{"categoria:" "ACCESORIOS"},
+			{"categoria": "ACCESORIOS"},
 		"capasEnDondePuedeEstar":[], 
 		"materialesNoCompatibles": 
 		[
@@ -305,9 +304,9 @@
 		]
 	},
 	{
-		"nombre": "Lentes de sol", "abrigo": "0",
+		"nombre": "Lentes de sol", "abrigo": 0,
 				"categoria": 
-			{"categoria:" "ACCESORIOS"},
+			{"categoria": "ACCESORIOS"},
 		"capasEnDondePuedeEstar":[], 
 		"materialesNoCompatibles": 
 		[
@@ -323,9 +322,9 @@
 		]
 	},
 	{
-		"nombre": "Guantes", "abrigo": "1", 
+		"nombre": "Guantes", "abrigo": 1, 
 		"categoria": 
-			{"categoria:" "ACCESORIOS"},
+			{"categoria": "ACCESORIOS"},
 		"capasEnDondePuedeEstar":[], 
 		"materialesNoCompatibles": 
 		[
@@ -336,9 +335,9 @@
 		]
 	},
 	{
-		"nombre": "Pilotín", "abrigo": "0", 
+		"nombre": "Pilotín", "abrigo": 0, 
 		"categoria": 
-			{"categoria:" "ACCESORIOS"},
+			{"categoria": "ACCESORIOS"},
 		"capasEnDondePuedeEstar":[], 
 		"materialesNoCompatibles": 
 		[
@@ -352,9 +351,9 @@
 		]
 	},
 	{
-		"nombre": "Zapatos", "abrigo": "0",
+		"nombre": "Zapatos", "abrigo": 0,
 		"categoria": 
-			{"categoria:" "CALZADO"},
+			{"categoria": "CALZADO"},
 		"capasEnDondePuedeEstar":[], 
 		"materialesNoCompatibles": 
 		[
@@ -368,9 +367,9 @@
 		]
 	},
 	{
-		"nombre": "Zapatillas", "abrigo": "0", 
+		"nombre": "Zapatillas", "abrigo": 0, 
 		"categoria": 
-			{"categoria:" "CALZADO"},
+			{"categoria": "CALZADO"},
 		"capasEnDondePuedeEstar":[], 
 		"materialesNoCompatibles": 
 		[
@@ -383,9 +382,9 @@
 		]
 	},
 	{
-		"nombre": "Sandalias", "abrigo": "0",
+		"nombre": "Sandalias", "abrigo": 0,
 		"categoria": 
-			{"categoria:" "CALZADO"},
+			{"categoria": "CALZADO"},
 		"capasEnDondePuedeEstar":[], 
 		"materialesNoCompatibles": 
 		[
@@ -401,9 +400,9 @@
 		]
 	},
 	{
-		"nombre": "Crocs", "abrigo": "0",
+		"nombre": "Crocs", "abrigo": 0,
 		"categoria": 
-			{"categoria:" "CALZADO"},
+			{"categoria": "CALZADO"},
 		"capasEnDondePuedeEstar":[], 
 		"materialesNoCompatibles": 
 		[
@@ -419,9 +418,9 @@
 		]
 	},
 	{
-		"nombre": "Tacos", "abrigo": "0",
+		"nombre": "Tacos", "abrigo": 0,
 		"categoria": 
-			{"categoria:" "CALZADO"},
+			{"categoria": "CALZADO"},
 		"capasEnDondePuedeEstar":[], 
 		"materialesNoCompatibles": 
 		[

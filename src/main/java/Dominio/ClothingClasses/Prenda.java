@@ -27,9 +27,9 @@ public class Prenda {
 	private List<Graphics2D> imagenGraphics;
 	private String nombrePrenda;
 
-	
-	
-	
+
+
+
 	public Prenda (PrendaBuilder builder) {
 		this.tipoRopa = builder.tipoRopa;
 		this.nombrePrenda = builder.nombrePrenda;
@@ -37,8 +37,8 @@ public class Prenda {
 		this.colorSecundario = builder.colorSecundario;
 		this.material = builder.material;
 	}
-	
-	
+
+
 	public void nuevaPrenda (PrendaBuilder builder) {
 		this.tipoRopa = builder.tipoRopa;
 		this.nombrePrenda = builder.nombrePrenda;
@@ -53,22 +53,22 @@ public class Prenda {
 		return this.tipoRopa;
 	}
 
-	
+
 	public void setearListaImagenes(List<String> imagenes) {
 
 		imagenes.forEach(una -> this.imagenGraphics.add(this.crearImagen(una)));
 	}
-	
-	
+
+
 	public Graphics2D crearImagen (String path) {
-		
+
 		Imagen creator = new Imagen();
 		return creator.crearImagen(path);
-		
-		
+
+
 	}
-	
-	
+
+
 	public Categoria getCategoria() { 
 		return this.tipoRopa.getCategoria();
 	}
@@ -88,28 +88,28 @@ public class Prenda {
 	public void setNombrePrenda(String nombrePrenda) {
 		this.nombrePrenda = nombrePrenda;
 	} 
-	
-	
+
+
 	public static class PrendaBuilder {
-		
+
 		private TipoDeRopa tipoRopa;
 		private Color colorPrimario;
 		private Color colorSecundario;
 		private Material material;
 		private List<Graphics2D> imagenGraphics;
 		private String nombrePrenda;
-		
+
 		public PrendaBuilder () {
 
 		}
-		
-		public PrendaBuilder tipoRopa(TipoDeRopa tipoRopa) {
-			this.tipoRopa = tipoRopa;
+
+		public PrendaBuilder tipoRopa(String tipoRopa) throws ProcessingDataFailedException {
+			this.tipoRopa = RepoRopa.getInstance().findByName(tipoRopa);
 			return this;
 		}
 
-		public PrendaBuilder material (Material material) {
-			this.material = material;
+		public PrendaBuilder material (String material) throws ProcessingDataFailedException {
+			this.material = RepoMaterial.getInstance().findByName(material);
 			return this;
 		}
 
@@ -121,7 +121,7 @@ public class Prenda {
 		public PrendaBuilder imagen(List<String> imagenes) {
 			this.imagenGraphics = imagenes.stream().map(p -> this.crearImagen(p))
 					.collect(Collectors.toList());;
-			return this;
+					return this;
 		}
 
 		public PrendaBuilder setearColores(String colorPrimario, String colorSecundario) throws Exception{
@@ -134,42 +134,13 @@ public class Prenda {
 			return this;
 		}
 
-		
-		
-		
-		
-		
-		
 		public Graphics2D crearImagen (String path) {
 			Imagen creator = new Imagen();
 			return creator.crearImagen(path);	
 		}
-		
+
 		public Prenda build() {
-
 			return new Prenda(this);
-
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
