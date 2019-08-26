@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class Property {
-	static String path;
+	static String path = "properties.properties";
 
 	public Property (String path) {
 		Property.path = path;
