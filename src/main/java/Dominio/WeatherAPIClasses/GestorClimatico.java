@@ -11,12 +11,14 @@ public class GestorClimatico{
 
 	private static List<WeatherAdapter> weatherAdapters = new ArrayList<WeatherAdapter>();
 	private static GestorClimatico instance = new GestorClimatico();
-
+	private WeatherAdapter principal;
+	
 	private GestorClimatico ()
 	{
-
 		weatherAdapters.add(new DarkSkyAdaptado());
 		weatherAdapters.add(new OPWAdaptado());
+		this.principal = weatherAdapters.get(0);
+
 	}
 	
 	public static GestorClimatico getInstance()
@@ -38,7 +40,7 @@ public class GestorClimatico{
 		return temp;
 	}
 	
-	public static String darCondicionClimatica(int date, int time) throws IOException
+	public  String darCondicionClimatica(int date, int time) throws IOException
 	{
 		String condicion = null;
 		int actualForecaster = 0;
@@ -48,6 +50,9 @@ public class GestorClimatico{
 			condicion = forecaster.darCondicionClimatica(date, time);
 			actualForecaster++;
 		}
+		
+		setPrincipal(weatherAdapters.get(actualForecaster));
+		
 		return condicion;
 	}
 	
@@ -66,5 +71,21 @@ public class GestorClimatico{
 		int dia = fecha.get(Calendar.DAY_OF_MONTH); 
 		Calendar calendar = new GregorianCalendar(anio, mes-1, dia); 
 		return new Date(calendar.getTimeInMillis());
+	}
+
+	public static List<WeatherAdapter> getWeatherAdapters() {
+		return weatherAdapters;
+	}
+
+	public static void setWeatherAdapters(List<WeatherAdapter> weatherAdapters) {
+		GestorClimatico.weatherAdapters = weatherAdapters;
+	}
+
+	public WeatherAdapter getPrincipal() {
+		return principal;
+	}
+
+	public void setPrincipal(WeatherAdapter principal) {
+		this.principal = principal;
 	}
 }

@@ -177,7 +177,7 @@ public class Guardarropa {
 	public List<Prenda> obtenerAccesorios(Evento evento) throws IOException{
 		List<Prenda> accesorios = new ArrayList<Prenda>();
 		int limitAccesorios = getAccesoriosDisponibles().size();
-		String condicionClimatica = GestorClimatico.darCondicionClimatica(evento.getFecha()
+		String condicionClimatica = GestorClimatico.getInstance().darCondicionClimatica(evento.getFecha()
 				.get(Calendar.DAY_OF_MONTH) , evento.getFecha().get(Calendar.HOUR_OF_DAY));
 		switch(condicionClimatica) {
 		case "rain":{
