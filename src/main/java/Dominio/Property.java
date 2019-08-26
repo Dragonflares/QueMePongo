@@ -33,7 +33,7 @@ public class Property {
 	Properties pro = new Properties();
 	FileInputStream in = null;
 	try {
-		in = new FileInputStream("D:/prop/prop.properties");
+		in = new FileInputStream(this.path);
 	} catch (FileNotFoundException e) {
 		e.printStackTrace();
 	}
@@ -44,7 +44,7 @@ public class Property {
 	}
 	
 	// getting values from property file
-	String finalProperty = pro.getProperty("property");//key value in prop file 
+	String finalProperty = pro.getProperty(property);//key value in prop file 
 //	String password = pro.getProperty("passwordv3");//eg. username="zub"
 	//String delimiter = ",";                         //password="abc"
 //	temp1=username.split(delimiter);
