@@ -5,43 +5,19 @@ import Dominio.UserClasses.Usuario;
 
 public class AgregarAAtuendosRechazados implements Paso{
 	
-	private Usuario usuario;
-	private Atuendo atuendo;
+	private ParametersPaso parametros;
 	
-	
-	public AgregarAAtuendosRechazados(Usuario usuario,Atuendo atuendo) {
+	public AgregarAAtuendosRechazados(ParametersPaso parametros) {
 		
-		this.usuario = usuario;
-		this.atuendo = atuendo;
+		this.parametros = parametros;
+		
 	}
 	
 	
 	
 	public void ejecutar()
 	{
-		usuario.agregarARechazados(atuendo);
+		parametros.getUsuario().agregarARechazados(parametros.getAtuendo());
 	}
 }
-
-
-
-//public class DevolverUltimaRecomendacion implements Paso{
-//	
-//	private Usuario usuario;
-//	
-//	
-//	
-//	public DevolverUltimaRecomendacion(Usuario usuario) {
-//		
-//		this.usuario = usuario;
-//		
-//	}
-//	
-//	
-//	
-//	public void ejecutar()
-//	{
-//		usuario.getUltimoAtuendo();
-//	}
-//}
 

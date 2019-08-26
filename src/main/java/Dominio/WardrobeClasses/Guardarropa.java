@@ -62,14 +62,14 @@ public class Guardarropa {
 		return this.estilo;
 	}
 
-	private double pedirTemperatura(long dia, int hora) throws IOException {
-		return GestorClimatico.getInstance().obtenerTemperatura(dia, hora);
+	private double pedirTemperatura(Calendar fecha, int hora) throws IOException {
+		return GestorClimatico.getInstance().obtenerTemperatura(fecha, hora);
 	}
 	public Atuendo generarRecomendacion(Evento evento, Usuario creador) throws Exception
 	{
 		Atuendo atuendo = null;
 
-		double temperatura = pedirTemperatura(evento.getFecha().get(Calendar.DAY_OF_MONTH), evento.getFecha().get(Calendar.HOUR_OF_DAY));
+		double temperatura = pedirTemperatura(evento.getFecha(), evento.getFecha().get(Calendar.HOUR_OF_DAY));
 		if(temperatura >= 27)
 		{
 			//TODO Hacer con lo del "PROTOTYPE" que ponga remeramangacorta/musculosa, pantalon corto.

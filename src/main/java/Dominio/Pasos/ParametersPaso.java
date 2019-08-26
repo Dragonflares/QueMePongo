@@ -12,7 +12,7 @@ public class ParametersPaso {
 	private Atuendo atuendo;
 	private Evento evento;
 	private Guardarropa guardarropa;
-
+	private Integer calificacion;
 
 
 	public ParametersPaso (ParametersPasoBuilder builder) {

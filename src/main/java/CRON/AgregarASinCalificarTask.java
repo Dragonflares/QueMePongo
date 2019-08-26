@@ -9,27 +9,28 @@ import java.util.concurrent.TimeUnit;
 import Dominio.UserClasses.Usuario;
 import Repositorios.RepoUsuario;
 
-public class ActualizarFechaEventosTask extends TimerTask{
+public class AgregarASinCalificarTask extends TimerTask{
 
-	private final static int HORA = 01;
-    private final static int MINUTOS = 00;
-    
+	private final static int HORA = 00;
+    private final static int MINUTOS = 00;	
+	
 	@Override
 	public void run() {
 		Calendar ayer = Calendar.getInstance();
 		ayer.add(Calendar.DATE, -1); // le resto un dia a la fecha actual 
 		
-		List<Usuario> usuarios = RepoUsuario.getInstance().getUsuariosConEventosOcurridoFrecuentemente(ayer);
+		List<Usuario> usuarios = RepoUsuario.getInstance().getUsuariosConEventosOcurridos(ayer);
 		
 		usuarios.stream().forEach
 		(
-				u ->  u.getEventosOcurridoFrecuentemente(ayer).forEach
+				u ->  u.getEventosOcurridos(ayer).forEach
 				(
 						e ->
-						e.actualizarFecha()
+						u.agregarSugerenciaSinCalificar(e.getSugerencia())
 				)
 		);
 	}
+	
 	
 	public void empezar()
 	{
@@ -42,5 +43,8 @@ public class ActualizarFechaEventosTask extends TimerTask{
 		
 		timer.schedule(this, today.getTime(), TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS)); // period: 1 day
 	}
+	
+	
+	
 	
 }

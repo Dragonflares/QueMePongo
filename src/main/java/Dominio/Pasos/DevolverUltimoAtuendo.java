@@ -4,18 +4,18 @@ import Dominio.ClothingClasses.Atuendo;
 import Dominio.UserClasses.Usuario;
 
 public class DevolverUltimoAtuendo implements Paso{
-	private Usuario usuario;
-	private Atuendo atuendo;
 
+	private ParametersPaso parametros;
 
-	public DevolverUltimoAtuendo(Usuario usuario) {
+	public DevolverUltimoAtuendo(ParametersPaso parametros) {
 
-		this.usuario = usuario;
-		this.atuendo = usuario.getUltimoAtuendo();
+		
+		this.parametros = parametros;
+		this.parametros.setAtuendo(parametros.getUsuario().getUltimoAtuendo());
 	}
 
 	public void ejecutar(){
 
-		usuario.eliminarDeRechazados(atuendo);
+		this.parametros.getUsuario().eliminarDeRechazados(parametros.getAtuendo());
 	}
 }

@@ -5,19 +5,19 @@ import Dominio.EventClasses.Evento;
 
 
 public class AceptarAtuendo implements Paso{
-	private Evento evento;
-	private Atuendo atuendo;
+	
+	ParametersPaso parametrosUsados;
 
 
-	public AceptarAtuendo(Evento evento, Atuendo atuendo) {
+	public AceptarAtuendo(ParametersPaso parametros) {
 
-		this.evento = evento;
-		this.atuendo = atuendo;
+		this.parametrosUsados = parametros;
+		
 	}
 
 	public void ejecutar(){
 
-		evento.agregarSugerencia(atuendo);
+		this.parametrosUsados.getEvento().agregarSugerencia(this.parametrosUsados.getAtuendo());
 	}
 
 }
