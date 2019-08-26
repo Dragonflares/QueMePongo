@@ -1,28 +1,16 @@
 package TestDeDominio;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import Dominio.UserClasses.Usuario;
 import Importadores.ImportadorDeColores;
 import Importadores.ImportadorDeMateriales;
 import Importadores.ImportadorDeRopas;
-import Repositorios.RepoColor;
-import Repositorios.RepoMaterial;
-import Repositorios.RepoRopa;
-import entities.ProcessingDataFailedException;
-import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Color;
 import Dominio.ClothingClasses.Material;
-import Dominio.ClothingClasses.Prenda;
-import Dominio.ClothingClasses.Prenda.PrendaBuilder;
 import Dominio.ClothingClasses.TipoDeRopa;
 
 public class TestRepositorios {

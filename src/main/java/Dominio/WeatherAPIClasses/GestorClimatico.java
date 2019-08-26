@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Repositorios.RepoUsuario;
-
 public class GestorClimatico{
 
 	private static List<WeatherAdapter> weatherAdapters = new ArrayList<WeatherAdapter>();

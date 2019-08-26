@@ -2,17 +2,8 @@ package Repositorios;
 
 
 
-import entities.ProcessingDataFailedException;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 import Dominio.ClothingClasses.Material;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 

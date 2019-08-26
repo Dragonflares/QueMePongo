@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
-
 import Dominio.NotificationAPIClasses.Notificador;
 import Dominio.UserClasses.Usuario;
 import Repositorios.RepoUsuario;

@@ -5,7 +5,6 @@ import java.util.List;
 
 import Dominio.EventClasses.Evento;
 import Dominio.UserClasses.Usuario;
-import Repositorios.RepoUsuario;
 
 public class Notificador {
 	private static List<NotificadorAdapter> notificadoresAdapters = new ArrayList<NotificadorAdapter>();

@@ -1,22 +1,10 @@
 package Dominio.ClothingClasses;
 
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.imageio.ImageIO;
 import Dominio.ClothingClasses.Material;
-import Dominio.EventClasses.Evento;
-import Dominio.UserClasses.ParametersPaso;
-import Dominio.UserClasses.Usuario;
-import Dominio.UserClasses.ParametersPaso.ParametersPasoBuilder;
-import Dominio.WardrobeClasses.Guardarropa;
-import Repositorios.RepoColor;
-import Repositorios.RepoMaterial;
-import Repositorios.RepoRopa;
 import entities.ProcessingDataFailedException;
 
 public class Prenda {

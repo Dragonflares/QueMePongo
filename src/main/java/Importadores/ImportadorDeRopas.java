@@ -10,9 +10,7 @@ import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
-import Dominio.ClothingClasses.Material;
 import Dominio.ClothingClasses.TipoDeRopa;
-import Repositorios.RepoMaterial;
 import Repositorios.RepoRopa;
 
 public class ImportadorDeRopas {
