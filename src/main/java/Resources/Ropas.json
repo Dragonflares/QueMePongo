@@ -5,7 +5,7 @@
 		"categoria": {"categoria": "PARTE_SUPERIOR"},
 		"capasEnDondePuedeEstar":
 		[
-			{"capasEnDondePuedeEstar": "CAPA1"}
+			{"capa":"CAPA1"}
 		], 
 		"materialesNoCompatibles": 
 		[
@@ -21,11 +21,10 @@
 	{
 		"nombre": "Remera manga larga", 
 		"abrigo": 4, 
-		"categoria": 
-			{"categoria": "PARTE_SUPERIOR"},
+		"categoria": ["PARTE_SUPERIOR"],
 		"capasEnDondePuedeEstar":
 		[
-			{"capasEnDondePuedeEstar": "CAPA1"}
+			["CAPA1"]
 		], 
 		"materialesNoCompatibles": 
 		[

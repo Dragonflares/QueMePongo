@@ -109,7 +109,7 @@ public class Prenda {
 		}
 
 		public PrendaBuilder material (String material) throws ProcessingDataFailedException {
-			this.material = RepoMaterial.getInstance().findByName(material);
+			//this.material = RepoMaterial.getInstance().findByName(material);
 			return this;
 		}
 

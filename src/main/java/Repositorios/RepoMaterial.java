@@ -12,63 +12,26 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class RepoMaterial extends Repositorio{
-
-    public static RepoMaterial getInstance() {
-        return instance;
+	
+	private List<Material> materiales;
+	
+    public List<Material> getMateriales() {
+        return this.materiales;
     }
 
-    private static RepoMaterial instance = new RepoMaterial();
-
-    private RepoMaterial() { //dejar en privado para que no puedan hacer otra instancia
+    public void agregarAlRepositorio(List<Material> unosMateriales) {
+        this.materiales = unosMateriales;
     }
 
-   
-    
-   // unaPrenda.setTela(RepoTelas.getInstance().findByName(algodon);
-    
-    public Material findByName(String nombre) throws ProcessingDataFailedException {
-        try {
-            FileReader file = new FileReader(getJsonFile());
-            BufferedReader bufferedReader = new BufferedReader(file);
-            Gson gson = new Gson();
-            Object jsonObject = gson.fromJson(bufferedReader, Object.class);
-            String json = jsonObject.toString();
-            Type tipoListaMateriales = new TypeToken<List<Material>>() {}.getType();
-
-            List<Material> materiales = gson.fromJson(json, tipoListaMateriales);
-            
-           return materiales.stream().filter(material -> material.compararNombres(nombre)).findAny().orElse(null);
-      
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new ProcessingDataFailedException(e.getLocalizedMessage());
-        }
+    public Material buscarPorNombre(String nombre) {
+       return this.materiales.stream().filter(m -> m.compararNombres(nombre)).collect(Collectors.toList()).get(0);
     }
-    public List<Material> obtenerMateriales() throws ProcessingDataFailedException {
-
-        try {
-            FileReader file = new FileReader(getJsonFile());
-            BufferedReader bufferedReader = new BufferedReader(file);
-            Gson gson = new Gson();
-            Object jsonObject = gson.fromJson(bufferedReader, Object.class);
-            String json = jsonObject.toString();
-            Type tipoListaMateriales = new TypeToken<List<Material>>() {}.getType();
-
-            List<Material> materiales = gson.fromJson(json, tipoListaMateriales);
-
-
-            return materiales;
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new ProcessingDataFailedException(e.getLocalizedMessage());
-        }
-
-    }
-
+	
     
 }

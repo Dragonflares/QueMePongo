@@ -13,64 +13,23 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class RepoColor extends Repositorio{
 
-    public static RepoColor getInstance() {
-        return instance;
+	private List<Color> colores;
+	
+    public List<Color> getColores() {
+        return this.colores;
     }
 
-    private static RepoColor instance = new RepoColor();
-
-    private RepoColor() { //dejar en privado para que no puedan hacer otra instancia
+    public void agregarAlRepositorio(List<Color> unosColores) {
+        this.colores = unosColores;
     }
 
-   
-    
-    public Color findByName(String nombre) throws ProcessingDataFailedException {
-        try {
-            FileReader file = new FileReader(getJsonFile());
-            BufferedReader bufferedReader = new BufferedReader(file);
-            Gson gson = new Gson();
-            Object jsonObject = gson.fromJson(bufferedReader, Object.class);
-            String json = jsonObject.toString();
-            Type tipoListaColores = new TypeToken<List<Color>>() {}.getType();
-
-            List<Color> colores = gson.fromJson(json, tipoListaColores);
-            
-           return colores.stream().filter(color -> color.compararNombres(nombre)).findAny().orElse(null);
-      
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new ProcessingDataFailedException(e.getLocalizedMessage());
-        }
-    }
-    
-    
-    
-
-    public List<Color> obtenerColores() throws ProcessingDataFailedException {
-
-        try {
-            FileReader file = new FileReader(getJsonFile());
-            BufferedReader bufferedReader = new BufferedReader(file);
-            Gson gson = new Gson();
-            Object jsonObject = gson.fromJson(bufferedReader, Object.class);
-            String json = jsonObject.toString();
-            Type tipoListaColores = new TypeToken<List<Color>>() {}.getType();
-
-            List<Color> colores = gson.fromJson(json, tipoListaColores);
-
-
-            return colores;
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new ProcessingDataFailedException(e.getLocalizedMessage());
-        }
-
+    public Color buscarPorNombre(String nombre) {
+       return this.colores.stream().filter(c -> c.compararNombres(nombre)).collect(Collectors.toList()).get(0);
     }
 
-    
 }

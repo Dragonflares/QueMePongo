@@ -4,11 +4,11 @@ public class Material {
 
 	String nombre;
 
-	private String getNombre() {
+	public String getNombre() {
 		return nombre;
 	}
 
-	private void setNombre(String nombre) {
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}	
 
@@ -17,7 +17,7 @@ public class Material {
 		setNombre(nuevoNombre);
 
 	}
-
+	
 
 
 	public boolean compararNombres(String otroNombre){

@@ -10,10 +10,10 @@ public class TipoDeRopa {
 	private ArrayList<Capas> capasEnDondePuedeEstar = new ArrayList<Capas>();
 	private ArrayList<Material> materialesNoCompatibles = new ArrayList<Material>();
 	
-	public TipoDeRopa(Integer abrigo,String nombre,Categoria categoria, ArrayList<Capas> capas,
+	public TipoDeRopa(String nombre,Integer abrigo,Categoria categoria, ArrayList<Capas> capas,
 			ArrayList<Material> materialesNoCompatibles) {
-		this.abrigo = abrigo;
 		this.nombre = nombre;
+		this.abrigo = abrigo;
 		this.categoria = categoria;
 		this.capasEnDondePuedeEstar = capas;
 		this.materialesNoCompatibles = materialesNoCompatibles;
