@@ -6,7 +6,7 @@ import java.util.Calendar;
 import org.junit.Before;
 import org.junit.Test;
 
-import Dominio.ClothingClasses.Estilo;
+import Dominio.Estilish.Estilo;
 import Dominio.EventClasses.Anualmente;
 import Dominio.EventClasses.Diario;
 import Dominio.EventClasses.DiarioPersonalizado;

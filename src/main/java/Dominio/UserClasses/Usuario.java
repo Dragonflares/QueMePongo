@@ -8,8 +8,8 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 import Dominio.ClothingClasses.Atuendo;
-import Dominio.ClothingClasses.Estilo;
 import Dominio.ClothingClasses.Prenda;
+import Dominio.Estilish.Estilo;
 import Dominio.EventClasses.Evento;
 import Dominio.EventClasses.Frecuencia;
 import Dominio.WardrobeClasses.Guardarropa;

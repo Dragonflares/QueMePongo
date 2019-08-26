@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Categoria;
-import Dominio.ClothingClasses.Estilo;
 import Dominio.ClothingClasses.Prenda;
+import Dominio.Estilish.Estilo;
 import Dominio.EventClasses.Evento;
 import Dominio.UserClasses.Usuario;
 import Dominio.WeatherAPIClasses.GestorClimatico;
@@ -19,13 +19,11 @@ public class Guardarropa {
 	private List<Usuario> usuariosConAcceso = new ArrayList<Usuario>();
 	private Estilo estilo;
 	private List<Prenda> prendasDisponibles = new ArrayList<Prenda>();
-	private List<Prenda> prendasNoDisponibles = new ArrayList<Prenda>();
 
 	public Guardarropa(Usuario creador, Estilo estilo) {
 		this.usuariosConAcceso.add(creador);
 		this.estilo = estilo;
 		this.prendasDisponibles = null;
-		this.prendasNoDisponibles = null;
 	}
 
 	public int cantidadDePrendasDisponibles()
@@ -68,19 +66,17 @@ public class Guardarropa {
 	public Atuendo generarRecomendacion(Evento evento, Usuario creador) throws Exception
 	{
 		Atuendo atuendo = null;
-
+		ArrayList<Prenda> prendasDeAtuendo = new ArrayList<Prenda>();
 		double temperatura = pedirTemperatura(evento.getFecha(), evento.getFecha().get(Calendar.HOUR_OF_DAY));
-		if(temperatura >= 27)
+		if(temperatura >= 27 - creador.getOffsetSuperior())
 		{
-			//TODO Hacer con lo del "PROTOTYPE" que ponga remeramangacorta/musculosa, pantalon corto.
+			atuendo = this.estilo.generarAtuendoVerano(this);
 		}
 		else
 		{
 			List<Prenda> prendasSuperiores = obtenerParteSuperior(evento, temperatura, 0, creador);
 			Prenda prendaInferior = obtenerParteInferior(evento, temperatura, creador);
 			Prenda calzado = obtenerCalzado(evento, temperatura);
-//			List<Prenda> accesorios = obtenerAccesorios(evento);
-			ArrayList<Prenda> prendasDeAtuendo = new ArrayList<Prenda>();
 			if(prendasSuperiores.isEmpty() || prendaInferior.equals(null) || calzado.equals(null))
 			{
 				atuendo = null;
@@ -88,13 +84,10 @@ public class Guardarropa {
 			else {
 				prendasDeAtuendo.addAll(prendasSuperiores);
 				prendasDeAtuendo.add(prendaInferior);
-//				prendasDeAtuendo.addAll(accesorios);
 				prendasDeAtuendo.add(calzado);
-				atuendo = new Atuendo(prendasDeAtuendo);
 			}
 		}
-
-		this.marcarNoDisponible(atuendo);
+		atuendo = new Atuendo(prendasDeAtuendo);
 		return atuendo;
 	}
 
@@ -197,22 +190,6 @@ public class Guardarropa {
 		}
 		}
 		return accesorios;
-	}
-
-	public void marcarNoDisponible(Atuendo atuendo)
-	{
-		atuendo.getPrendas().forEach(prenda -> {
-			this.prendasDisponibles.remove(prenda);
-			this.prendasNoDisponibles.add(prenda);
-		});
-	}
-
-	public void devolverAtuendo(Atuendo atuendo)
-	{
-		atuendo.getPrendas().forEach(prenda -> {
-			this.prendasDisponibles.add(prenda);
-			this.prendasNoDisponibles.remove(prenda);
-		});
 	}
 }
 

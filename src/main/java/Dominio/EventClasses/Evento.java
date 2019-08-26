@@ -3,7 +3,7 @@ package Dominio.EventClasses;
 import java.util.Calendar;
 
 import Dominio.ClothingClasses.Atuendo;
-import Dominio.ClothingClasses.Estilo;
+import Dominio.Estilish.Estilo;
 
 public class Evento {
 	private Calendar fecha;

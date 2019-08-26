@@ -3,7 +3,7 @@ package TestDeDominio;
 import java.io.IOException;
 import java.util.Calendar;
 
-import Dominio.ClothingClasses.Estilo;
+import Dominio.Estilish.Estilo;
 import Dominio.UserClasses.Usuario;
 
 public class TestWeather {
