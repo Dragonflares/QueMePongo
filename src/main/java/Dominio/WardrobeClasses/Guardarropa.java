@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+import Dominio.Property;
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Categoria;
 import Dominio.ClothingClasses.Prenda;
@@ -68,7 +69,7 @@ public class Guardarropa {
 		Atuendo atuendo = null;
 		ArrayList<Prenda> prendasDeAtuendo = new ArrayList<Prenda>();
 		double temperatura = pedirTemperatura(evento.getFecha(), evento.getFecha().get(Calendar.HOUR_OF_DAY));
-		if(temperatura >= 27 - creador.getOffsetSuperior())
+		if(temperatura >= Integer.parseInt(Property.getSpecifiedProperty("TemperaturaBase")) - creador.getOffsetSuperior())
 		{
 			atuendo = this.estilo.generarAtuendoVerano(this);
 		}
@@ -106,7 +107,11 @@ public class Guardarropa {
 			int limitSup = prendasSuperioresPosibles.size();
 			if(limitSup != 0) {
 				int indexSuperior = rand.nextInt(limitSup);
-				Prenda prendaSuperior = prendasSuperioresPosibles.get(indexSuperior);
+				Prenda prendaSuperior;
+				do {
+					prendaSuperior = prendasSuperioresPosibles.get(indexSuperior);
+				}
+				while(prendasSuperiores.contains(prendaSuperior));
 				prendasSuperiores.add(prendaSuperior);
 				calorActual = creador.getOffsetSuperior() + (prendasSuperiores.stream()
 						.mapToInt(p -> p.getTipoRopa().getNivelAbrigo()).sum());
@@ -116,10 +121,12 @@ public class Guardarropa {
 				throw new Exception("No hay suficientes prendas para generar el atuendo");
 			}
 		}
-		while(calorActual < (27 - temperatura - 3) && a < 6);
-		if(calorActual > (27 - temperatura + 3))
+		while(calorActual < (Integer.parseInt(Property.getSpecifiedProperty("TemperaturaBase")) - temperatura - 3) && a < 6);
+		if(calorActual > (Integer.parseInt(Property.getSpecifiedProperty("TemperaturaBase"))
+				- temperatura 
+				+ Integer.parseInt(Property.getSpecifiedProperty("VariacionTemperatura"))))
 		{
-			if(intento == 10) {
+			if(intento ==  Integer.parseInt(Property.getSpecifiedProperty("CantIntentos"))) {
 				return null;
 			}
 			else {
@@ -134,7 +141,7 @@ public class Guardarropa {
 	public Prenda obtenerParteInferior(Evento evento, double temperatura, Usuario creador) throws Exception {
 		Prenda prendaInferior;
 
-		if(temperatura > (18 - creador.getOffsetInferior())) {
+		if(temperatura > (Integer.parseInt(Property.getSpecifiedProperty("TemperaturaInferiorBase")) - creador.getOffsetInferior())) {
 			prendaInferior = obtenerPrendaInf(0);
 		}
 		else {
