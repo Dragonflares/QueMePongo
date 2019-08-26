@@ -16,7 +16,7 @@ import com.github.prominence.openweathermap.api.model.response.HourlyForecast;
 public class OPW {
 	private static final String API_KEY = "a4de44d5100ae4a5b069a611b132dd4d";
 
-	public final double darTemperaturaActual(int day, int time)
+	public final double darTemperaturaActual(long day, int time)
 	{
 		if(day < 5) {
 			return darTemperatura5dias(day, time);
@@ -28,12 +28,12 @@ public class OPW {
 
 	
 	
-	private double darTemperatura16dias(int day, int time) {
+	private double darTemperatura16dias(long day, int time) {
 		OpenWeatherMapManager openWeatherManager = new OpenWeatherMapManager(API_KEY);
 		DailyForecastRequester forecastRequester = openWeatherManager.getDailyForecastRequester();
 		DailyForecast forecastResponse;
 		if(day < 16) {
-			forecastResponse = forecastRequester.setAmountOfDays(day)
+			forecastResponse = forecastRequester.setAmountOfDays((int) day)
 				    .getByCoordinates(-34.6157437, -58.5733854);
 		}
 		else {
@@ -54,7 +54,7 @@ public class OPW {
 			return -404;
 	}
 
-	private double darTemperatura5dias(int day, int time) {
+	private double darTemperatura5dias(long day, int time) {
 		OpenWeatherMapManager openWeatherManager = new OpenWeatherMapManager(API_KEY);
 		HourlyForecastRequester forecastRequester = openWeatherManager.getHourlyForecastRequester();
 		HourlyForecast forecastResponse = forecastRequester
@@ -67,12 +67,12 @@ public class OPW {
 		return forecasts.get(neededForecast).getWeatherInfo().getTemperature();
 	}
 
-	private int obtainForecastId(int day, int time) {
+	private int obtainForecastId(long day, int time) {
 		if(((day*24 + time)%3) == 0 )
-			return ((day*24 + time) / 3);
+			return (int) ((day*24 + time) / 3);
 		else if (((day*24 + time)%3) == 1) 
-			return ((day*24 + time - 1) / 3);
+			return (int) ((day*24 + time - 1) / 3);
 		else
-			return ((day*24 + time + 1) / 3);
+			return (int) ((day*24 + time + 1) / 3);
 	}
 }

@@ -9,12 +9,12 @@ public class OPWAdaptado implements WeatherAdapter{
 		this.openWeather = new OPW();
 	}
 	
-	public double darTemperaturaActual(int day, int time) {
+	public double darTemperaturaActual(long day, int time) {
 		return openWeather.darTemperaturaActual(day, time);
 	}
 
 
-	public String darCondicionClimatica(int day, int hora) throws IOException {
+	public String darCondicionClimatica(long day, int hora) throws IOException {
 		return null;
 	}
 }

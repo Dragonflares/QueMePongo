@@ -9,11 +9,11 @@ public class DarkSkyAdaptado implements WeatherAdapter{
 		this.DarkSky = new DarkSkyAPI();
 	}
 	
-	public double darTemperaturaActual(int day, int hora) throws IOException {
+	public double darTemperaturaActual(long day, int hora) throws IOException {
 		return DarkSky.darTemperaturaActual(day, hora);
 	}
 	
-	public String darCondicionClimatica(int day, int hora) throws IOException
+	public String darCondicionClimatica(long day, int hora) throws IOException
 	{
 		return DarkSky.darCondicionClimatica(day, hora);
 	}
