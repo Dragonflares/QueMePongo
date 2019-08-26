@@ -9,6 +9,7 @@ import org.junit.Test;
 import Importadores.ImportadorDeColores;
 import Importadores.ImportadorDeMateriales;
 import Importadores.ImportadorDeRopas;
+import Dominio.ClothingClasses.Categoria;
 import Dominio.ClothingClasses.Color;
 import Dominio.ClothingClasses.Material;
 import Dominio.ClothingClasses.TipoDeRopa;
@@ -66,9 +67,9 @@ public class TestRepositorios {
 		importadorRopas = new ImportadorDeRopas();
 		ropas = importadorRopas.levantarTipoDeRopasDePath("C:\\Users\\JoseMartinOlivera\\Documents\\Facultad\\Diseño19\\2019-ma-ma-group-06\\src\\main\\java\\Resources\\Ropas.json");
 		primerRopa = ropas.get(0); //comente las otras ropas porque habia hecho un json con un solo tipoDeRopa
-		/*segundaRopa = ropas.get(1);
+		segundaRopa = ropas.get(1);
 		tercerRopa = ropas.get(2);
-		ultimaRopa = ropas.get(ropas.size()-1);*/
+		ultimaRopa = ropas.get(ropas.size()-1);
 		
 		
 		/*
@@ -122,9 +123,14 @@ public class TestRepositorios {
 	public void pruebaRopasEnRepo() {
 	
 		Assert.assertEquals(primerRopa.getNombre(), "Remera manga corta");
-		/*Assert.assertEquals(segundaRopa.getNombre(), "Remera manga larga");
+		Assert.assertEquals(segundaRopa.getNombre(), "Remera manga larga");
 		Assert.assertEquals(tercerRopa.getNombre(), "Chomba");
-		Assert.assertEquals(ultimaRopa.getNombre(), "Camisa");*/
+		Assert.assertEquals(ultimaRopa.getNombre(), "Tacos");
+		
+		Assert.assertEquals(primerRopa.getCategoria(), Categoria.PARTE_SUPERIOR);
+		Assert.assertEquals(segundaRopa.getCategoria(), Categoria.PARTE_SUPERIOR);
+		Assert.assertEquals(tercerRopa.getCategoria(), Categoria.PARTE_SUPERIOR);
+		Assert.assertEquals(ultimaRopa.getCategoria(), Categoria.CALZADO);
 	
 	}
 }
