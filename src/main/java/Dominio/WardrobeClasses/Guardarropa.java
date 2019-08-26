@@ -62,7 +62,7 @@ public class Guardarropa {
 		return this.estilo;
 	}
 
-	private double pedirTemperatura(int dia, int hora) throws IOException {
+	private double pedirTemperatura(long dia, int hora) throws IOException {
 		return GestorClimatico.getInstance().obtenerTemperatura(dia, hora);
 	}
 	public Atuendo generarRecomendacion(Evento evento, Usuario creador) throws Exception

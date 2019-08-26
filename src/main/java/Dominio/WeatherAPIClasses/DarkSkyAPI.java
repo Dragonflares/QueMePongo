@@ -16,7 +16,7 @@ import ch.rasc.darksky.model.DsUnit;
 
 
 public class DarkSkyAPI {
-	public final double darTemperaturaActual(int day, int hora) throws IOException
+	public final double darTemperaturaActual(long day, int hora) throws IOException
 	{
 		DsClient client = new DsClient("9ee9579e309df4f7c0806b5e60b90e71");
 		DsTimeMachineRequest request = DsTimeMachineRequest.builder()
@@ -37,7 +37,7 @@ public class DarkSkyAPI {
 		return result[hora];
 	}
 
-	public String darCondicionClimatica(int day, int hora) throws IOException{
+	public String darCondicionClimatica(long day, int hora) throws IOException{
 		DsClient client = new DsClient("9ee9579e309df4f7c0806b5e60b90e71");
 		DsTimeMachineRequest request = DsTimeMachineRequest.builder()
 				.includeBlock(DsBlock.HOURLY, DsBlock.DAILY, DsBlock.ALERTS)

@@ -21,14 +21,14 @@ public class GestorClimatico{
 		return instance;
 	}
 
-	public double obtenerTemperatura(int date, int time) throws IOException
+	public double obtenerTemperatura(long diferenciaDias, int time) throws IOException
 	{
 		double temp = -404;
 		int actualForecaster = 0;
 		while(temp == -404 && weatherAdapters.size() != actualForecaster)
 		{
 			WeatherAdapter forecaster = weatherAdapters.get(actualForecaster);
-			temp = forecaster.darTemperaturaActual(date, time);
+			temp = forecaster.darTemperaturaActual(diferenciaDias, time);
 			actualForecaster++;
 		}
 		return temp;
