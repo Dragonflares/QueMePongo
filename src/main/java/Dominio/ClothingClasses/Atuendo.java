@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import Dominio.Property;
 import Dominio.UserClasses.Usuario;
 
 public class Atuendo {
@@ -68,7 +69,7 @@ public class Atuendo {
 	
 	public Boolean abrigaLoNecesario(double temperatura, Usuario usuario)
 	{
-		if(temperatura >= 27 - usuario.getOffsetSuperior())
+		if(temperatura >= Integer.parseInt(Property.getSpecifiedProperty("TemperaturaBase")) - usuario.getOffsetSuperior())
 		{
 			return this.veraniegoSuperiorAbrigaBien(temperatura, usuario);
 		}
@@ -77,13 +78,17 @@ public class Atuendo {
 	
 	private Boolean veraniegoSuperiorAbrigaBien(double temperatura, Usuario usuario) {
 		int calorActual = this.calorActualSuperiores(usuario);
-		return (27 - temperatura - 3) < calorActual;
+		return Integer.parseInt(Property.getSpecifiedProperty("TemperaturaBase")) - 
+				temperatura - Integer.parseInt(Property.getSpecifiedProperty("VariacionTemperatura")) < calorActual;
 	}
 
 	private Boolean superioresAbriganLoSuficiente(double temperatura, Usuario usuario)
 	{
 		int calorActual = this.calorActualSuperiores(usuario);
-		return (27 - temperatura - 3)< calorActual && calorActual < (27 - temperatura + 3);
+		return Integer.parseInt(Property.getSpecifiedProperty("TemperaturaBase")) - 
+					temperatura - Integer.parseInt(Property.getSpecifiedProperty("VariacionTemperatura")) < calorActual 
+				&& calorActual < Integer.parseInt(Property.getSpecifiedProperty("TemperaturaBase")) - 
+					temperatura + Integer.parseInt(Property.getSpecifiedProperty("VariacionTemperatura"));
 	}
 	
 	private int calorActualSuperiores(Usuario usuario)
@@ -93,9 +98,9 @@ public class Atuendo {
 	}
 	
 	private Boolean inferiorAbrigaLoSuficiente(double temperatura, Usuario usuario)
-	{
+	{		
 		int nivelAbrigo = this.getPrendasInferiores().get(0).getNivelAbrigo();
-		if(temperatura > (18 - usuario.getOffsetInferior()))
+		if(temperatura > (Integer.parseInt(Property.getSpecifiedProperty("TemperaturaInferiorBase")) - usuario.getOffsetInferior()))
 			return nivelAbrigo == 0;
 		return nivelAbrigo == 1;
 	}

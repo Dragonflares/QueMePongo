@@ -5,7 +5,7 @@ import Dominio.ClothingClasses.Prenda;
 import Dominio.WardrobeClasses.Guardarropa; 
 
 public class Gratuito implements TipoDeUsuario{
-	private int tamanioMaximoGuardarropa = Integer.parseInt(Property.getSpecifiedProperty("PrendasMaximasUsuario"));
+	private Integer tamanioMaximoGuardarropa = Integer.parseInt(Property.getSpecifiedProperty("PrendasMaximasUsuario"));
 
 	public void agregarPrendaAGuardarropa(Guardarropa guardarropa, Prenda prenda) throws Exception
 	{
