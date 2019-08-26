@@ -1,4 +1,0 @@
-positionX_Image=0;
-positionY_Image=0;
-width_Image=200;
-height_Image=200;

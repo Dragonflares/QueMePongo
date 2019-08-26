@@ -22,7 +22,7 @@ public class Imagen {
 			e.printStackTrace();
 		}
 		imagenGraphics = (Graphics2D) myPicture.getGraphics();
-		Property object = new Property("path_config");
+		Property object = new Property("properties.properties");
 		int x = Integer.parseInt(object.getSpecifiedProperty("positionX_Image"));
 		int y = Integer.parseInt(object.getSpecifiedProperty("positionY_Image"));
 		int width = Integer.parseInt(object.getSpecifiedProperty("width_Image")); 
