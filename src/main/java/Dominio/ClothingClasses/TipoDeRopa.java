@@ -19,7 +19,7 @@ public class TipoDeRopa {
 		this.materialesNoCompatibles = materialesNoCompatibles;
 	}
 	
-	public Integer abrigar() {
+	public Integer getNivelAbrigo() {
 		return this.abrigo;
 	}
 	

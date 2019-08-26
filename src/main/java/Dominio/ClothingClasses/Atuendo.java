@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import Dominio.UserClasses.Usuario;
+
 public class Atuendo {
 	private ArrayList<Prenda> prendas = new ArrayList<Prenda>();
 	
@@ -62,5 +64,35 @@ public class Atuendo {
 	public Boolean esElMismoAtuendo(Atuendo atuendo) {
 		return this.prendas.containsAll(atuendo.prendas)
 				&& this.prendas.size() == atuendo.prendas.size();
+	}
+	
+	public Boolean abrigaLoSuficiente(double temperatura, Usuario usuario)
+	{
+		if(temperatura >= 27)
+		{
+			// TODO cuando este hecho el "prototype"
+			return true;
+		}
+		return this.superioresAbriganLoSuficiente(temperatura, usuario) && this.inferiorAbrigaLoSuficiente(temperatura, usuario);
+	}
+	
+	private Boolean superioresAbriganLoSuficiente(double temperatura, Usuario usuario)
+	{
+		int calorActual = this.calorActualSuperiores(usuario);
+		return (27 - temperatura - 3)< calorActual && calorActual < (27 - temperatura + 3);
+	}
+	
+	private int calorActualSuperiores(Usuario usuario)
+	{
+		return usuario.getOffsetSuperior() + (this.getPrendasSuperiores().stream()
+				.mapToInt(p -> p.getTipoRopa().getNivelAbrigo()).sum());
+	}
+	
+	private Boolean inferiorAbrigaLoSuficiente(double temperatura, Usuario usuario)
+	{
+		int nivelAbrigo = this.getPrendasInferiores().get(0).getTipoRopa().getNivelAbrigo();
+		if(temperatura > (18 - usuario.getOffsetInferior()))
+			return nivelAbrigo == 0;
+		return nivelAbrigo == 1;
 	}
 }

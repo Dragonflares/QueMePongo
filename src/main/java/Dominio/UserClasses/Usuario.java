@@ -123,12 +123,6 @@ public class Usuario {
 		return eventos.stream().anyMatch(e -> e.estaProximo());
 	}
 	
-	//Me parece que esta funcion no la usamos pero la dejo por las dudas porque no se si puede romper en otros lados!
-	public List<Evento> getEventosProximos()
-	{
-		return eventos.stream().filter(e -> e.estaProximo()).collect(Collectors.toList());
-	}
-	
 	public boolean tieneEventosOcurridoFrecuentemente(Calendar fecha)
 	{
 		return eventos.stream().anyMatch(e -> e.ocurre(fecha) && e.esFrecuente());

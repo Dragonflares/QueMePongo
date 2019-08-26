@@ -1,5 +1,6 @@
 package CRON;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Timer;
@@ -8,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.UserClasses.Usuario;
+import Dominio.WeatherAPIClasses.GestorClimatico;
 import Repositorios.RepoUsuario;
 
 public class ActualizarAtuendoPorClimaTask extends TimerTask {
@@ -25,10 +27,24 @@ public class ActualizarAtuendoPorClimaTask extends TimerTask {
 			(
 					e ->
 					{
-							e.setSeNotificoSugerencia(false);
+						
+						try {
+							double temperatura = pedirTemperatura(e.getFecha().get(Calendar.DAY_OF_MONTH), e.getFecha().get(Calendar.HOUR_OF_DAY));
+							
+							if(e.getSugerencia().abrigaLoSuficiente(temperatura, u))
+								e.setSeNotificoSugerencia(false);
+							
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
+						
 					}
 			)
 		);
+	}
+	
+	private double pedirTemperatura(int dia, int hora) throws IOException {
+		return GestorClimatico.getInstance().obtenerTemperatura(dia, hora);
 	}
 	
 	public void empezar()

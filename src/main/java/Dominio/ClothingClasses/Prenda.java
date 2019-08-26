@@ -104,7 +104,7 @@ public class Prenda {
 		}
 
 		public PrendaBuilder tipoRopa(String tipoRopa) throws ProcessingDataFailedException {
-			this.tipoRopa = RepoRopa.getInstance().findByName(tipoRopa);
+			//this.tipoRopa = RepoRopa.getInstance().findByName(tipoRopa);
 			return this;
 		}
 
@@ -126,8 +126,8 @@ public class Prenda {
 
 		public PrendaBuilder setearColores(String colorPrimario, String colorSecundario) throws Exception{
 			if (!colorPrimario.equals(colorSecundario)) {
-				this.colorPrimario =  RepoColor.getInstance().findByName(colorPrimario);
-				this.colorSecundario = RepoColor.getInstance().findByName(colorSecundario);
+				//this.colorPrimario =  RepoColor.getInstance().findByName(colorPrimario);
+				//this.colorSecundario = RepoColor.getInstance().findByName(colorSecundario);
 			} else {
 				throw new Exception("No pueden ser del mismo color."); 
 			}

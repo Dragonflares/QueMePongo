@@ -4,15 +4,23 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Repositorios.RepoUsuario;
+
 public class GestorClimatico{
 
 	private static List<WeatherAdapter> weatherAdapters = new ArrayList<WeatherAdapter>();
+	private static GestorClimatico instance = new GestorClimatico();
 
-	public GestorClimatico ()
+	private GestorClimatico ()
 	{
 
 		weatherAdapters.add(new DarkSkyAdaptado());
 		weatherAdapters.add(new OPWAdaptado());
+	}
+	
+	public static GestorClimatico getInstance()
+	{
+		return instance;
 	}
 
 	public double obtenerTemperatura(int date, int time) throws IOException

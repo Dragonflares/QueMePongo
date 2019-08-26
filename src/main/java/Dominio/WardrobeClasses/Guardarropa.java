@@ -20,14 +20,12 @@ public class Guardarropa {
 	private Estilo estilo;
 	private List<Prenda> prendasDisponibles = new ArrayList<Prenda>();
 	private List<Prenda> prendasNoDisponibles = new ArrayList<Prenda>();
-	private GestorClimatico climaHelp;
 
 	public Guardarropa(Usuario creador, Estilo estilo) {
 		this.usuariosConAcceso.add(creador);
 		this.estilo = estilo;
 		this.prendasDisponibles = null;
 		this.prendasNoDisponibles = null;
-		this.climaHelp = new GestorClimatico();
 	}
 
 	public int cantidadDePrendasDisponibles()
@@ -64,8 +62,8 @@ public class Guardarropa {
 		return this.estilo;
 	}
 
-	public double pedirTemperatura(int dia, int hora) throws IOException {
-		return this.climaHelp.obtenerTemperatura( dia, hora);
+	private double pedirTemperatura(int dia, int hora) throws IOException {
+		return GestorClimatico.getInstance().obtenerTemperatura(dia, hora);
 	}
 	public Atuendo generarRecomendacion(Evento evento, Usuario creador) throws Exception
 	{
@@ -118,7 +116,7 @@ public class Guardarropa {
 				Prenda prendaSuperior = prendasSuperioresPosibles.get(indexSuperior);
 				prendasSuperiores.add(prendaSuperior);
 				calorActual = creador.getOffsetSuperior() + (prendasSuperiores.stream()
-						.mapToInt(p -> p.getTipoRopa().abrigar()).sum());
+						.mapToInt(p -> p.getTipoRopa().getNivelAbrigo()).sum());
 				a++;
 			}
 			else {
@@ -156,7 +154,7 @@ public class Guardarropa {
 		Random rand = new Random();
 		List<Prenda> prendasInferioresPosibles = getPrendasSuperioresDisponibles()
 				.stream()
-				.filter(p -> p.getTipoRopa().abrigar() == nivelAbrigo)
+				.filter(p -> p.getTipoRopa().getNivelAbrigo() == nivelAbrigo)
 				.collect(Collectors.toList());
 		int limitInf = prendasInferioresPosibles.size();
 		if(limitInf > 0) {
