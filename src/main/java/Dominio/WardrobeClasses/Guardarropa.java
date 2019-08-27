@@ -181,23 +181,23 @@ public class Guardarropa {
 		}
 		return calzado;
 	}
-	public List<Prenda> obtenerAccesorios(Evento evento) throws IOException{
-		List<Prenda> accesorios = new ArrayList<Prenda>();
-		int limitAccesorios = getAccesoriosDisponibles().size();
-		String condicionClimatica = GestorClimatico.getInstance().darCondicionClimatica(evento.getFecha()
-				.get(Calendar.DAY_OF_MONTH) , evento.getFecha().get(Calendar.HOUR_OF_DAY));
-		switch(condicionClimatica) {
-		case "rain":{
-			//TODO verificar que tenga un Paraguas
-			break;	
-		}
-		case "clear-day":{
-			//TODO verificar que tenga lentes de sol
-			break;
-		}
-		}
-		return accesorios;
-	}
+//	public List<Prenda> obtenerAccesorios(Evento evento) throws IOException{
+//		List<Prenda> accesorios = new ArrayList<Prenda>();
+//		int limitAccesorios = getAccesoriosDisponibles().size();
+//		String condicionClimatica = GestorClimatico.getInstance().darCondicionClimatica(evento.getFecha()
+//				.get(Calendar.DAY_OF_MONTH) , evento.getFecha().get(Calendar.HOUR_OF_DAY));
+//		switch(condicionClimatica) {
+//		case "rain":{
+//			//TODO verificar que tenga un Paraguas
+//			break;	
+//		}
+//		case "clear-day":{
+//			//TODO verificar que tenga lentes de sol
+//			break;
+//		}
+//		}
+//		return accesorios;
+//	}
 }
 
 
