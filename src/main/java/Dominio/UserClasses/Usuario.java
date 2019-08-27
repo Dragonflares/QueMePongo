@@ -28,7 +28,7 @@ public class Usuario {
 	private List<Atuendo> sugerenciasQueFaltanCalificar;
 
 	
-	public Usuario(String username, String mail, String numeroCelular) throws FileNotFoundException{
+	public Usuario(String username, String mail, String numeroCelular){
 		this.username = username;
 		this.guardarropas = new ArrayList<Guardarropa>();
 		this.eventos = new ArrayList<Evento>();
