@@ -17,12 +17,21 @@ import Dominio.WardrobeClasses.Guardarropa;
 public class Usuario {
 	private String username;
 	private TipoDeUsuario tipoDeCuenta;
-	public List<Guardarropa> guardarropas;
+	private List<Guardarropa> guardarropas;
 	private List<Atuendo> atuendosRechazados;
 	private Atuendo ultimoAtuendo;
 	private List<Evento> eventos;
 	private int offsetSuperior;
 	private int offsetInferior;
+	
+	public List<Atuendo> getAtuendosRechazados() {
+		return atuendosRechazados;
+	}
+
+	public void setAtuendosRechazados(List<Atuendo> atuendosRechazados) {
+		this.atuendosRechazados = atuendosRechazados;
+	}
+
 	private String mail;
 	private String numeroCelular;
 	private List<Atuendo> sugerenciasQueFaltanCalificar;
