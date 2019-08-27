@@ -1,8 +1,5 @@
 package Dominio.Pasos;
 
-import Dominio.ClothingClasses.Atuendo;
-import Dominio.UserClasses.Usuario;
-
 public class DevolverUltimoAtuendo implements Paso{
 
 	private ParametersPaso parametros;

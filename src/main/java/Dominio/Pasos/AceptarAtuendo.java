@@ -1,8 +1,5 @@
 package Dominio.Pasos;
 
-import Dominio.ClothingClasses.Atuendo;
-import Dominio.EventClasses.Evento;
-
 
 public class AceptarAtuendo implements Paso{
 	
