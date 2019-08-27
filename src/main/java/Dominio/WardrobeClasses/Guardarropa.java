@@ -107,11 +107,18 @@ public class Guardarropa {
 			int limitSup = prendasSuperioresPosibles.size();
 			if(limitSup != 0) {
 				int indexSuperior = rand.nextInt(limitSup);
-				Prenda prendaSuperior;
-				do {
-					prendaSuperior = prendasSuperioresPosibles.get(indexSuperior);
+				Prenda prendaSuperior = null;
+				int c = 0;
+				while(c != Integer.parseInt(Property.getSpecifiedProperty("CantIntentos"))){
+					final Prenda nuevaPrendaSuperior = prendasSuperioresPosibles.get(indexSuperior);
+					if(prendasSuperiores.stream().anyMatch(p -> p.getTipoRopa().compararNombres(nuevaPrendaSuperior.getTipoRopa().getNombre())))
+					{	
+						c++;
+						prendaSuperior = nuevaPrendaSuperior;
+					}
+					else
+						break;
 				}
-				while(prendasSuperiores.contains(prendaSuperior));
 				prendasSuperiores.add(prendaSuperior);
 				calorActual = creador.getOffsetSuperior() + (prendasSuperiores.stream()
 						.mapToInt(p -> p.getTipoRopa().getNivelAbrigo()).sum());
@@ -181,23 +188,23 @@ public class Guardarropa {
 		}
 		return calzado;
 	}
-//	public List<Prenda> obtenerAccesorios(Evento evento) throws IOException{
-//		List<Prenda> accesorios = new ArrayList<Prenda>();
-//		int limitAccesorios = getAccesoriosDisponibles().size();
-//		String condicionClimatica = GestorClimatico.getInstance().darCondicionClimatica(evento.getFecha()
-//				.get(Calendar.DAY_OF_MONTH) , evento.getFecha().get(Calendar.HOUR_OF_DAY));
-//		switch(condicionClimatica) {
-//		case "rain":{
-//			//TODO verificar que tenga un Paraguas
-//			break;	
-//		}
-//		case "clear-day":{
-//			//TODO verificar que tenga lentes de sol
-//			break;
-//		}
-//		}
-//		return accesorios;
-//	}
+	//	public List<Prenda> obtenerAccesorios(Evento evento) throws IOException{
+	//		List<Prenda> accesorios = new ArrayList<Prenda>();
+	//		int limitAccesorios = getAccesoriosDisponibles().size();
+	//		String condicionClimatica = GestorClimatico.getInstance().darCondicionClimatica(evento.getFecha()
+	//				.get(Calendar.DAY_OF_MONTH) , evento.getFecha().get(Calendar.HOUR_OF_DAY));
+	//		switch(condicionClimatica) {
+	//		case "rain":{
+	//			//TODO verificar que tenga un Paraguas
+	//			break;	
+	//		}
+	//		case "clear-day":{
+	//			//TODO verificar que tenga lentes de sol
+	//			break;
+	//		}
+	//		}
+	//		return accesorios;
+	//	}
 }
 
 
