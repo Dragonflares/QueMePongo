@@ -31,6 +31,10 @@ public class Guardarropa {
 	{
 		return prendasDisponibles.size();
 	}
+	
+	public List<Usuario> getUsuariosConAcceso(){
+		return this.usuariosConAcceso;
+	}
 
 	public void permitirAccesoaUsuario (Usuario usuario) {
 		usuariosConAcceso.add(usuario);
@@ -86,9 +90,10 @@ public class Guardarropa {
 				prendasDeAtuendo.addAll(prendasSuperiores);
 				prendasDeAtuendo.add(prendaInferior);
 				prendasDeAtuendo.add(calzado);
+				atuendo = new Atuendo(prendasDeAtuendo);
 			}
 		}
-		atuendo = new Atuendo(prendasDeAtuendo);
+		
 		return atuendo;
 	}
 

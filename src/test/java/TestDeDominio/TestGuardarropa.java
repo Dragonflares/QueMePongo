@@ -1,9 +1,12 @@
 package TestDeDominio;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+
+import java.util.Calendar;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,70 +14,88 @@ import org.junit.Test;
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Categoria;
 import Dominio.ClothingClasses.Prenda;
+import Dominio.Estilish.Casual;
 import Dominio.Estilish.Estilo;
+import Dominio.Estilish.Formal;
+import Dominio.EventClasses.Evento;
 import Dominio.UserClasses.Usuario;
 import Dominio.WardrobeClasses.Guardarropa;
 
 public class TestGuardarropa {
 
-	private Usuario usuario1;
+	private Usuario usuario;
 	private Usuario usuario2;
 	private Guardarropa guardarropa1;
 	private Guardarropa guardarropa2;
-	private Estilo estiloFormal;
+	private Formal estiloFormal;
 	private Atuendo atuendoMedio;
 	private Atuendo atuendoPocoAbrigado;
 	private Prenda remeraMangaCorta;
 	private Prenda camperaFinita;
 	private Prenda pantalonLargo;
 	private Prenda pantalonCorto;
+	private Casual estiloCasual;
+	private Evento eventoFormal;
+	private Evento eventoCasual;
+	private Calendar date;
+	private Prenda zapatilla;
 	
 	@Before
 	public void init() throws Exception{
+
+		usuario = mock(Usuario.class);
+		usuario2 = mock(Usuario.class);
 		
-		usuario1 = new Usuario("usuario1", "usuario1", "28937029487");
+		date = Calendar.getInstance();
+		date.add(Calendar.DATE, -2);
+
+		when(usuario.getOffsetSuperior()).thenReturn(0);
+		when(usuario.getOffsetInferior()).thenReturn(0);
 		
-		atuendoMedio = mock(Atuendo.class);
-		atuendoPocoAbrigado = mock(Atuendo.class);
+		estiloFormal = mock(Formal.class);
+		estiloCasual = mock(Casual.class);
+		
+		guardarropa1 = new Guardarropa(usuario, estiloCasual);
+		guardarropa2 = new Guardarropa(usuario2, estiloFormal);
+		
+		eventoCasual = mock(Evento.class);
+		when(eventoCasual.getFecha()).thenReturn(date);
 		
 		remeraMangaCorta = mock(Prenda.class);
 		camperaFinita = mock(Prenda.class);
 		pantalonLargo = mock(Prenda.class);
 		pantalonCorto = mock(Prenda.class);
-		
-		guardarropa1 = mock(Guardarropa.class);
-		guardarropa2 = mock(Guardarropa.class);
+		zapatilla = mock(Prenda.class);
 		
 		when(remeraMangaCorta.getNivelAbrigo()).thenReturn(3);
 		when(camperaFinita.getNivelAbrigo()).thenReturn(4);
 		when(pantalonLargo.getNivelAbrigo()).thenReturn(1);
 		when(pantalonCorto.getNivelAbrigo()).thenReturn(0);
+		when(zapatilla.getNivelAbrigo()).thenReturn(0);
+		
 		
 		when(remeraMangaCorta.getCategoria()).thenReturn(Categoria.PARTE_SUPERIOR);
 		when(camperaFinita.getCategoria()).thenReturn(Categoria.PARTE_SUPERIOR);
 		when(pantalonLargo.getCategoria()).thenReturn(Categoria.PARTE_INFERIOR);
 		when(pantalonCorto.getCategoria()).thenReturn(Categoria.PARTE_INFERIOR);
+		when(zapatilla.getCategoria()).thenReturn(Categoria.CALZADO);
+
+		usuario.agregarGuardarropa(guardarropa1);
+		usuario.agregarPrendaAGuardarropa(guardarropa1, camperaFinita);
+		usuario.agregarPrendaAGuardarropa(guardarropa1, remeraMangaCorta);
+		usuario.agregarPrendaAGuardarropa(guardarropa1, pantalonCorto);
+		usuario.agregarPrendaAGuardarropa(guardarropa1, pantalonLargo);
+		usuario.agregarPrendaAGuardarropa(guardarropa1, zapatilla);
 		
-		atuendoMedio.agregar(remeraMangaCorta);
-		atuendoMedio.agregar(camperaFinita);
-		atuendoMedio.agregar(pantalonLargo);
-		
-		atuendoPocoAbrigado.agregar(remeraMangaCorta);
-		atuendoPocoAbrigado.agregar(pantalonCorto);
-		
-		usuario1.agregarGuardarropa(guardarropa1);
-		usuario1.agregarPrendaAGuardarropa(guardarropa1, camperaFinita);
-		usuario1.agregarPrendaAGuardarropa(guardarropa1, remeraMangaCorta);
-		usuario1.agregarPrendaAGuardarropa(guardarropa1, pantalonCorto);
-		usuario1.agregarPrendaAGuardarropa(guardarropa1, pantalonLargo);
-		
-		
+		guardarropa1.permitirAccesoaUsuario(usuario);
 	}
 	
 	@Test
-	public void puedeAgregarARechazados() {
-		usuario1.agregarARechazados(atuendoMedio);
-		assertNotEquals(0, usuario1.getAtuendosRechazados().size());
+	public void puedeAgregarAccesoAUsuarios() {
+		assertTrue(guardarropa1.getUsuariosConAcceso().contains(usuario));
+	}
+	public void puedegenerarRecomendacion() throws Exception {
+		assertTrue(guardarropa1.generarRecomendacion(eventoCasual, usuario).getPrendas().contains(zapatilla));
 	}
 }
 
