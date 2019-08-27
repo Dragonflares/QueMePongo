@@ -40,14 +40,15 @@ public class GestorClimatico{
 		return temp;
 	}
 	
-	public  String darCondicionClimatica(int date, int time) throws IOException
+	public  String darCondicionClimatica(Calendar dia, int time) throws IOException
 	{
+		long diferenciaDias = this.diasEntre(Calendar.getInstance(), dia);
 		String condicion = null;
 		int actualForecaster = 0;
 		while(condicion == null && weatherAdapters.size() != actualForecaster)
 		{
 			WeatherAdapter forecaster = weatherAdapters.get(actualForecaster);
-			condicion = forecaster.darCondicionClimatica(date, time);
+			condicion = forecaster.darCondicionClimatica(diferenciaDias, time);
 			actualForecaster++;
 		}
 		
