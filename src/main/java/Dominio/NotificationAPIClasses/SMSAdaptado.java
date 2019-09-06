@@ -10,12 +10,7 @@ public class SMSAdaptado implements NotificadorAdapter{
 		this.sms = new SMS();
 	}
 
-	public void notificarSugerencia(Usuario usuario) {
-		String mensaje = "Se ha creado la sugerencia para un evento creado. Para verlo tiene que abrir la aplicación.";
-		this.enviarSMS(usuario.getNumeroCelular(), mensaje);
-	}
-	
-	public void enviarSMS(String numeroCelular, String mensaje) {
-		sms.enviarSMS(mensaje, numeroCelular);
+	public void notificar(NotificacionDataObject notificacion) {
+		sms.enviarSMS(notificacion.getEmisorNumero(), notificacion.getDestinatarioNumero(), notificacion.getMensaje());
 	}
 }

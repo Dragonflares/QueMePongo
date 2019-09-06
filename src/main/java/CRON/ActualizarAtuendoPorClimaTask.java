@@ -30,8 +30,8 @@ public class ActualizarAtuendoPorClimaTask extends TimerTask {
 						try {
 							double temperatura = pedirTemperatura(e.getFecha(), e.getFecha().get(Calendar.HOUR_OF_DAY));
 							
-							if(!e.getSugerencia().abrigaLoNecesario(temperatura, u))
-								e.setSeNotificoSugerencia(false);
+							if(!e.getUltimaSugerencia().abrigaLoNecesario(temperatura, u))
+								e.setSeNotificoUltimaSugerencia(false);
 							
 						} catch (IOException e1) {
 							e1.printStackTrace();

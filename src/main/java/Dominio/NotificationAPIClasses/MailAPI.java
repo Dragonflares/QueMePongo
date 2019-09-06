@@ -10,16 +10,15 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class MailAPI {
-	final String senderEmailID = "melisarodrig2@gmail.com";
-	final String senderPassword = "PGM191418";
+	private String senderEmailID;
+	private String senderPassword;
 	final String emailSMTPserver = "smtp.gmail.com";
 	final String emailServerPort = "465";
-	String receiverEmailID = null;
 	 
-	public void enviarMail(String correo, String subject, String body)
+	public void enviarMail(String emisor, String contrasenia, String destinatario, String subject, String body)
 	{	    
 		   Properties props = new Properties();
-		   props.put("mail.smtp.user",senderEmailID);
+		   props.put("mail.smtp.user",emisor);
 		   props.put("mail.smtp.host", emailSMTPserver);
 		   props.put("mail.smtp.port", emailServerPort);
 		   props.put("mail.smtp.starttls.enable", "true");
@@ -27,6 +26,8 @@ public class MailAPI {
 		   props.put("mail.smtp.socketFactory.port", emailServerPort);
 		   props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		   props.put("mail.smtp.socketFactory.fallback", "false");
+		   this.senderEmailID = emisor;
+		   this.senderPassword = contrasenia;
 		   
 		   try{  
 			   Authenticator auth = new SMTPAuthenticator();
@@ -34,9 +35,9 @@ public class MailAPI {
 			   MimeMessage msg = new MimeMessage(session);
 			   msg.setText(body);
 			   msg.setSubject(subject);
-			   msg.setFrom(new InternetAddress(senderEmailID));
+			   msg.setFrom(new InternetAddress(emisor));
 			   msg.addRecipient(Message.RecipientType.TO,
-					   new InternetAddress(correo));
+					   new InternetAddress(destinatario));
 			   Transport.send(msg);
 		   }
 		   
@@ -48,10 +49,9 @@ public class MailAPI {
 		   
 	public class SMTPAuthenticator extends javax.mail.Authenticator
 	{
-		   public PasswordAuthentication getPasswordAuthentication()
-		   {
-			   return new PasswordAuthentication(senderEmailID, senderPassword);
-		   }
-		   
+		public PasswordAuthentication getPasswordAuthentication()
+		{
+			return new PasswordAuthentication(senderEmailID, senderPassword);
+		}   
 	}
 }

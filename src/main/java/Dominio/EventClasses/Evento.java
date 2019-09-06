@@ -1,27 +1,35 @@
 package Dominio.EventClasses;
 
 import java.util.Calendar;
+import java.util.List;
 
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.Estilish.Estilo;
 
 public class Evento {
+	private String nombre;
 	private Calendar fecha;
 	private String direccion;
 	private Estilo estilo;
 	private Frecuencia frecuencia; 
 	private ImportanciaEvento importancia;
-	private Atuendo sugerencia;
+	private List<Atuendo> sugerencias;
 	private boolean sugerenciaNotificada;
 	
 	
-	public Evento (Calendar fecha, String direccion, Estilo estilo, Frecuencia frecuencia)
+	public Evento (String nombre, Calendar fecha, String direccion, Estilo estilo, Frecuencia frecuencia)
 	{
+		this.nombre = nombre;
 		this.fecha = fecha;
 		this.direccion = direccion;
 		this.estilo = estilo;
 		this.frecuencia = frecuencia;
 		this.sugerenciaNotificada = false;
+	}
+	
+	public String getNombre()
+	{
+		return this.nombre;
 	}
 	
 	public Estilo getEstilo()
@@ -62,15 +70,16 @@ public class Evento {
 	
 	public void agregarSugerencia(Atuendo sugerencia)
 	{
-		this.sugerencia = sugerencia;
+		this.sugerencias.add(sugerencia);
 	}
 	
-	public Atuendo getSugerencia()
+	public Atuendo getUltimaSugerencia()
 	{
-		return this.sugerencia;
+		return sugerencias.get(sugerencias.size() - 1); 
+		// TODO VER si está bien, lo puse por Usuario.getSugerenciasQueFaltanCalificar(), ActualizarAtuendoPorClimaTask, AgregarASinCalificarTask
 	}
 	
-	public boolean getSeNotificoSugerencia()
+	public boolean getSeNotificoUltimaSugerencia()
 	{
 		return sugerenciaNotificada;
 	}
@@ -80,7 +89,7 @@ public class Evento {
 		this.fecha = fecha;
 	}
 	
-	public void setSeNotificoSugerencia(Boolean bool)
+	public void setSeNotificoUltimaSugerencia(Boolean bool)
 	{
 		this.sugerenciaNotificada = bool;
 	}

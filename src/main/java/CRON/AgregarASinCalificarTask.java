@@ -26,7 +26,7 @@ public class AgregarASinCalificarTask extends TimerTask{
 				u ->  u.getEventosOcurridos(ayer).forEach
 				(
 						e ->
-						u.agregarSugerenciaSinCalificar(e.getSugerencia())
+						u.agregarSugerenciaSinCalificar(e.getUltimaSugerencia())
 				)
 		);
 	}
@@ -43,8 +43,4 @@ public class AgregarASinCalificarTask extends TimerTask{
 		
 		timer.schedule(this, today.getTime(), TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS)); // period: 1 day
 	}
-	
-	
-	
-	
 }

@@ -21,9 +21,9 @@ public class Notificador {
 		return instance;
 	}
 	
-	public void notificarSugerencia(Usuario usuario, Evento evento)
+	public void notificar(NotificacionDataObject notificacion)
 	{
-		notificadoresAdapters.forEach(n -> n.notificarSugerencia(usuario));
-		evento.setSeNotificoSugerencia(true);
+		notificadoresAdapters.forEach(n -> n.notificar(notificacion));
+		notificacion.getEvento().setSeNotificoUltimaSugerencia(true);
 	}
 }
