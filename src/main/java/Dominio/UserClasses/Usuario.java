@@ -105,8 +105,8 @@ public class Usuario {
 		return this.offsetInferior;
 	}
 
-	public void crearEvento(Calendar fecha, String direccion, Estilo estilo, Frecuencia frecuencia) {
-		this.eventos.add(new Evento(fecha, direccion, estilo, frecuencia));
+	public void agregarEvento(Evento evento) {
+		this.eventos.add(evento);
 	}
 
 	public void crearNuevoGuardarropas(Estilo estilo) {
@@ -147,11 +147,11 @@ public class Usuario {
 		List<Atuendo> sugerencias = new ArrayList<Atuendo>();
 
 		List<Evento> eventosQueEstanProximosYNoSeSugirioLaRecomendacion = 
-				this.eventos.stream().filter(e -> e.estaProximo() && !e.getSeNotificoSugerencia()).collect(Collectors.toList());
+				this.eventos.stream().filter(e -> e.estaProximo() && !e.getSeNotificoUltimaSugerencia()).collect(Collectors.toList());
 
 		if(!eventosQueEstanProximosYNoSeSugirioLaRecomendacion.isEmpty())
 			eventosQueEstanProximosYNoSeSugirioLaRecomendacion
-			.stream().forEach(e -> sugerencias.add(e.getSugerencia()));
+			.stream().forEach(e -> sugerencias.add(e.getUltimaSugerencia()));
 
 		return sugerencias;
 	}
@@ -162,17 +162,17 @@ public class Usuario {
 
 	public boolean tieneEventoSinNotificar()
 	{
-		return eventos.stream().anyMatch(e -> !e.getSeNotificoSugerencia());
+		return eventos.stream().anyMatch(e -> !e.getSeNotificoUltimaSugerencia());
 	}
 
 	public List<Evento> getEventosProximosYsinNotificar()
 	{
-		return eventos.stream().filter(e -> e.estaProximo() && !e.getSeNotificoSugerencia()).collect(Collectors.toList());
+		return eventos.stream().filter(e -> e.estaProximo() && !e.getSeNotificoUltimaSugerencia()).collect(Collectors.toList());
 	}
 
 	public List<Evento> getEventosProximosYnotificados()
 	{
-		return eventos.stream().filter(e -> e.estaProximo() && e.getSeNotificoSugerencia()).collect(Collectors.toList());
+		return eventos.stream().filter(e -> e.estaProximo() && e.getSeNotificoUltimaSugerencia()).collect(Collectors.toList());
 	}
 
 	public Atuendo getUltimoAtuendo() {

@@ -10,15 +10,8 @@ public class MailAdaptado implements NotificadorAdapter{
 		this.mailAPI = new MailAPI();
 	}
 	
-	public void notificarSugerencia(Usuario usuario)
+	public void notificar(NotificacionDataObject notificacion)
 	{
-		String subject = "Ya se tiene lista una sugerencia!";
-		String body = "Se ha creado la sugerencia para un evento creado. Para verlo tiene que abrir la aplicación.";
-		this.enviarMail(usuario, subject, body);
-	}
-	
-	public void enviarMail(Usuario usuario, String subject, String body)
-	{
-		/*mailAPI.enviarMail(usuario.getMail(), subject, body);*/
+		mailAPI.enviarMail(notificacion.getEmisorMail(), notificacion.getContrasenia(), notificacion.getDestinatarioMail(), notificacion.getSubject(), notificacion.getMensaje());
 	}
 }

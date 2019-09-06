@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
+
+import Dominio.EventClasses.Evento;
+import Dominio.NotificationAPIClasses.NotificacionDataObject;
 import Dominio.NotificationAPIClasses.Notificador;
 import Dominio.UserClasses.Usuario;
 import Repositorios.RepoUsuario;
@@ -24,10 +27,26 @@ public class NotificarUsuarioTask extends TimerTask{
 			(
 					u -> u.getEventosProximosYsinNotificar().forEach
 					(
-							e -> Notificador.getInstance().notificarSugerencia(u,e)
+							e -> 
+							{
+								NotificacionDataObject notificacion = new NotificacionDataObject();
+								
+								notificacion.setEmisorMail("melisarodrig2@gmail.com");
+								notificacion.setContrasenia("contra");
+								notificacion.setDestinatarioMail(u.getMail());
+								notificacion.setSubject("Ya se tiene lista una sugerencia!");
+								notificacion.setMensaje("Se ha creado la sugerencia para el evento" + e.getNombre() +". Para verlo tiene que abrir la aplicación.");
+								notificacion.setEmisorNumero("+13343262392");
+								notificacion.setDestinatarioNumero(u.getNumeroCelular());
+								notificacion.setEvento(e);
+								
+								Notificador.getInstance().notificar(notificacion);
+							}
 					)
 			);
 	}
+	
+	
 			
 	public void empezar()
 	{
