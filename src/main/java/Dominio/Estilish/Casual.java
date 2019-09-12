@@ -27,9 +27,7 @@ public class Casual implements Estilo{
 		Integer cantShorts = shorts.size();
 		Prenda unShort = shorts.get(rand.nextInt(cantShorts));
 		List<Prenda> zapatillas = guardarropa.getPrendasDisponibles().stream()
-				.filter(p -> p.getTipoRopa().getNombre().contentEquals("Zapatillas")
-						|| p.getTipoRopa().getNombre().contentEquals("Sandalias")
-						|| p.getTipoRopa().getNombre().contentEquals("Crocs"))
+				.filter(p -> !p.getTipoRopa().getNombre().contentEquals("Botas"))
 				.collect(Collectors.toList());
 		Integer cantZapatillas = zapatillas.size();
 		Prenda zapatilla = zapatillas.get(rand.nextInt(cantZapatillas));

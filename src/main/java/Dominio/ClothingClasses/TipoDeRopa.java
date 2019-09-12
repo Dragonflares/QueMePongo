@@ -50,6 +50,10 @@ public class TipoDeRopa {
 		this.categoria = categoria;
 	}
 
+	public Boolean sirveParaLluvia() {
+		return false;
+	}
+
 
 	
 //	REMERAMANGACORTA 3,
