@@ -18,7 +18,15 @@ public class ImportadorDeColores {
 
     RepoColor repo = new RepoColor();
     String path = Property.getSpecifiedProperty("RutaRepoColor");
-
+	private static ImportadorDeColores instance = new ImportadorDeColores();
+	
+	private ImportadorDeColores () {
+	} 
+	
+	public static ImportadorDeColores getInstance()
+	{
+		return instance;
+	}
     public List<Color> levantarColoresDePath()
             throws JsonIOException, JsonSyntaxException, FileNotFoundException {
 

@@ -50,22 +50,19 @@ public class TestRepositorios {
 		//repoColor = RepoColor.getInstance();
 		//repoRopa= RepoRopa.getInstance();
 		
-		importadorMateriales = new ImportadorDeMateriales();
-		materiales = importadorMateriales.levantarMaterialesDePath();
+		materiales = ImportadorDeMateriales.getInstance().levantarMaterialesDePath();
 		primerMaterial = materiales.get(0);
 		segundoMaterial = materiales.get(1);
 		tercerMaterial = materiales.get(2);
 		ultimoMaterial = materiales.get(materiales.size()-1);
 		
-		importadorColores = new ImportadorDeColores();
-		colores = importadorColores.levantarColoresDePath();
+		colores = ImportadorDeColores.getInstance().levantarColoresDePath();
 		primerColor = colores.get(0);
 		segundoColor = colores.get(1);
 		tercerColor = colores.get(2);
 		ultimoColor = colores.get(colores.size()-1);
 		
-		importadorRopas = new ImportadorDeRopas();
-		ropas = importadorRopas.levantarTipoDeRopasDePath();
+		ropas = ImportadorDeRopas.getInstance().levantarTipoDeRopasDePath();
 		primerRopa = ropas.get(0); //comente las otras ropas porque habia hecho un json con un solo tipoDeRopa
 		segundaRopa = ropas.get(1);
 		tercerRopa = ropas.get(2);

@@ -17,7 +17,7 @@ public class RepoRopa extends Repositorio {
         this.ropas = unosTiposDeRopa;
     }
 
-    public TipoDeRopa buscarPorNombre(String nombre) {
+    public TipoDeRopa findByName(String nombre) {
        return this.ropas.stream().filter(r -> r.compararNombres(nombre)).collect(Collectors.toList()).get(0);
     }
 	

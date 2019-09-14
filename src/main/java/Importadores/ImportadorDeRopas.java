@@ -18,7 +18,16 @@ public class ImportadorDeRopas {
 
     RepoRopa repo = new RepoRopa();
     String path = Property.getSpecifiedProperty("RutaRepoRopa");
-
+	private static ImportadorDeRopas instance = new ImportadorDeRopas();
+	
+	private ImportadorDeRopas () {
+	} 
+	
+	public static ImportadorDeRopas getInstance()
+	{
+		return instance;
+	}
+	
     public List<TipoDeRopa> levantarTipoDeRopasDePath()
             throws JsonIOException, JsonSyntaxException, FileNotFoundException {
 

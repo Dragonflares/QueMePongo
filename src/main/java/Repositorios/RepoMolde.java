@@ -16,7 +16,7 @@ public class RepoMolde extends Repositorio{
         this.moldesDeAtuendo = unosMoldes;
     }
 
-    public MoldeDeAtuendo buscarPorNombre(String nombre) {
+    public MoldeDeAtuendo findByName(String nombre) {
        return this.moldesDeAtuendo.stream().filter(r -> r.compararNombres(nombre)).collect(Collectors.toList()).get(0);
     }
 	

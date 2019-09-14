@@ -20,7 +20,7 @@ public class RepoMaterial extends Repositorio{
         this.materiales = unosMateriales;
     }
 
-    public Material buscarPorNombre(String nombre) {
+    public Material findByName(String nombre) {
        return this.materiales.stream().filter(m -> m.compararNombres(nombre)).collect(Collectors.toList()).get(0);
     }
 	

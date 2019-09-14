@@ -12,12 +12,26 @@ import com.google.gson.reflect.TypeToken;
 
 import Dominio.Property;
 import Dominio.ClothingClasses.MoldeDeAtuendo;
+import Dominio.WeatherAPIClasses.DarkSkyAdaptado;
+import Dominio.WeatherAPIClasses.GestorClimatico;
+import Dominio.WeatherAPIClasses.OPWAdaptado;
+import Dominio.WeatherAPIClasses.WeatherAdapter;
 import Repositorios.RepoMolde;
 
 public class ImportadorDeMoldes {
     RepoMolde repo = new RepoMolde();
     String path = Property.getSpecifiedProperty("RutaRepoMoldes");
 
+	private static ImportadorDeMoldes instance = new ImportadorDeMoldes();
+	
+	private ImportadorDeMoldes () {
+	} 
+	
+	public static ImportadorDeMoldes getInstance()
+	{
+		return instance;
+	}
+	
     public List<MoldeDeAtuendo> levantarMoldesDePath()
             throws JsonIOException, JsonSyntaxException, FileNotFoundException {
         Gson gson = new Gson();

@@ -18,7 +18,16 @@ public class ImportadorDeMateriales {
 
     RepoMaterial repo = new RepoMaterial();
     String path = Property.getSpecifiedProperty("RutaRepoMaterial");
-
+    
+	private static ImportadorDeMateriales instance = new ImportadorDeMateriales();
+	
+	private ImportadorDeMateriales () {
+	} 
+	
+	public static ImportadorDeMateriales getInstance()
+	{
+		return instance;
+	}
     public List<Material> levantarMaterialesDePath()
             throws JsonIOException, JsonSyntaxException, FileNotFoundException {
 
