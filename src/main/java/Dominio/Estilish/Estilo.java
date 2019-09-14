@@ -1,10 +1,10 @@
 package Dominio.Estilish;
 
-import Dominio.ClothingClasses.Atuendo;
-import Dominio.WardrobeClasses.Guardarropa;
+public enum Estilo {
+	FORMAL,
+	CASUAL,
+	DEPORTIVO,
+	ELEGANTE,
+	ELEGANTE_SPORT,
 
-public interface Estilo {
-	
-	public Atuendo generarAtuendoVerano (Guardarropa guardarropa) throws Exception;
-	
 }
