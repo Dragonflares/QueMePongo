@@ -77,7 +77,7 @@ public class Prenda {
 		this.nombrePrenda = nombrePrenda;
 	} 
 	
-	public int getNivelAbrigo()
+	public Integer getNivelAbrigo()
 	{
 		return this.tipoRopa.getNivelAbrigo();
 	}

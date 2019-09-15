@@ -73,7 +73,7 @@ public class Guardarropa {
 			Usuario creador) throws Exception {
 		Atuendo atuendo = null;
 		double temperatura = pedirTemperatura(evento.getFecha(), evento.getFecha().get(Calendar.HOUR_OF_DAY));
-		atuendo = Vestidor.getInstance().obtenerAtuendo(this, temperatura, 0);
+		atuendo = Vestidor.getInstance().obtenerAtuendo(this, temperatura, 0, creador);
 		if(atuendo.equals(null))
 			atuendo = new Atuendo(generarAtuendoRandom(evento, temperatura, creador));
 		return atuendo;
