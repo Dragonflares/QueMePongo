@@ -170,7 +170,7 @@ public class Guardarropa {
 			prendasInferiores.add(obtenerPrendaInf(capa, prendasInferiores));
 			calorActual = creador.getOffsetSuperior() + (prendasInferiores.stream()
 					.mapToInt(p -> p.getTipoRopa().getNivelAbrigo()).sum());
-			capa++;
+			capa--;
 		}
 		while(calorActual < 
 				(Integer.parseInt(Property.getSpecifiedProperty("TemperaturaBase"))
@@ -238,7 +238,7 @@ public class Guardarropa {
 			calzado.add(obtenerParteDeCalzado(capa, calzado));
 			calorActual = creador.getOffsetSuperior() + (calzado.stream()
 					.mapToInt(p -> p.getTipoRopa().getNivelAbrigo()).sum());
-			capa++;
+			capa--;
 		}
 		while(calorActual < 
 				(Integer.parseInt(Property.getSpecifiedProperty("TemperaturaBase"))

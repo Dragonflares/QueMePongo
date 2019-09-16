@@ -9,18 +9,9 @@ public class MoldeDeAtuendo {
 	private String nombre;
 	private Estilo estilo;
 	private List<TipoDeRopa> ropasMolde = new ArrayList<TipoDeRopa>();
-	private Integer nivelCalorSup;
-	private Integer nivelCalorInf;
-	private Integer nivelDeCalorCalzado;
 	
 	public MoldeDeAtuendo (List<TipoDeRopa> ropasMolde, Estilo estilo) {
 		this.ropasMolde = ropasMolde;
-		this.nivelCalorSup = ropasMolde.stream()
-				.filter(p -> p.getCategoria() == Categoria.PARTE_SUPERIOR)
-				.mapToInt(p -> p.getNivelAbrigo()).sum(); 
-		this.nivelCalorInf = ropasMolde.stream()
-				.filter(p -> p.getCategoria() == Categoria.PARTE_INFERIOR)
-				.mapToInt(p -> p.getNivelAbrigo()).sum();
 		this.estilo = estilo;
 	}
 	
@@ -36,15 +27,21 @@ public class MoldeDeAtuendo {
 	}
 	
 	public Boolean cumpleConCalorSuperior(double nivelesDeCalor) {
-		return this.nivelCalorSup >= nivelesDeCalor;
+		return ropasMolde.stream()
+				.filter(p -> p.getCategoria() == Categoria.PARTE_SUPERIOR)
+				.mapToInt(p -> p.getNivelAbrigo()).sum() >= nivelesDeCalor;
 	}
 	
 	public Boolean cumpleConCalorInferior(double nivelesDeCalor) {
-		return this.nivelCalorInf >= nivelesDeCalor;
+		return ropasMolde.stream()
+				.filter(p -> p.getCategoria() == Categoria.PARTE_INFERIOR)
+				.mapToInt(p -> p.getNivelAbrigo()).sum() >= nivelesDeCalor;
 	}
 
 	public Boolean cumpleConCalorCalzado(double nivelesDeCalor) {
-		return this.nivelDeCalorCalzado >= nivelesDeCalor;
+		return ropasMolde.stream()
+				.filter(p -> p.getCategoria() == Categoria.CALZADO)
+				.mapToInt(p -> p.getNivelAbrigo()).sum() >= nivelesDeCalor;
 	}
 	
 	public Boolean compararNombres(String otroNombre) {
