@@ -6,19 +6,30 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-import Dominio.Property;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Categoria;
 import Dominio.ClothingClasses.Prenda;
 import Dominio.Estilish.Estilo;
 import Dominio.EventClasses.Evento;
+import Dominio.UserClasses.Property;
 import Dominio.UserClasses.Usuario;
 import Dominio.WeatherAPIClasses.GestorClimatico;
+import db.EntidadPersistente;
 
-public class Guardarropa {
-
+@Entity
+@Table(name = "guardarropa")
+public class Guardarropa extends EntidadPersistente{
+	@Transient
 	private List<Usuario> usuariosConAcceso = new ArrayList<Usuario>();
+	
+	@Transient
 	private Estilo estilo;
+	
+	@Transient
 	private List<Prenda> prendasDisponibles = new ArrayList<Prenda>();
 
 	public Guardarropa(Usuario creador, Estilo estilo) {

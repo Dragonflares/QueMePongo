@@ -1,6 +1,5 @@
 package Dominio.UserClasses;
 
-import Dominio.Property;
 import Dominio.ClothingClasses.Prenda;
 import Dominio.WardrobeClasses.Guardarropa; 
 

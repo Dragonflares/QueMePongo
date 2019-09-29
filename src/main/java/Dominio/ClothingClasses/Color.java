@@ -1,33 +1,30 @@
 package Dominio.ClothingClasses;
 
-public class Color {
-	
-String nombre;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-public String getNombre() {
-	return nombre;
-}
+import db.EntidadPersistente;
 
-public void setNombre(String nombre) {
-	this.nombre = nombre;
-}
+@Entity
+@Table(name = "color")
+public class Color extends EntidadPersistente{
+	@Column(name = "nombre")
+	String nombre;
 	
-	
-
-	public Color(String nuevoNombre) {
-		
-		
+	public Color(String nuevoNombre) {	
 		setNombre(nuevoNombre);
-		
-		
 	}
 	
+	public String getNombre() {
+		return nombre;
+	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 	
 	public boolean compararNombres(String otroNombre){
-
-
 		return this.getNombre().equals(otroNombre);
 	}
-
-
 }

@@ -4,19 +4,34 @@ import java.awt.Graphics2D;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import Dominio.ClothingClasses.Material;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import db.EntidadPersistente;
 import entities.ProcessingDataFailedException;
 
-public class Prenda {
+@Entity
+@Table(name = "aporte")
+public class Prenda extends EntidadPersistente{
+	@Transient
 	private TipoDeRopa tipoRopa;
+	
+	@Transient
 	private Color colorPrimario;
+	
+	@Transient
 	private Color colorSecundario;
+	
+	@Transient
 	private Material material;
+	
+	@Transient
 	private List<Graphics2D> imagenGraphics;
+	
+	@Column(name = "nombrePrenda")
 	private String nombrePrenda;
-
-
-
 
 	public Prenda (PrendaBuilder builder) {
 		this.tipoRopa = builder.tipoRopa;
@@ -26,36 +41,18 @@ public class Prenda {
 		this.material = builder.material;
 	}
 
-
-	public void nuevaPrenda (PrendaBuilder builder) {
-		this.tipoRopa = builder.tipoRopa;
-		this.nombrePrenda = builder.nombrePrenda;
-		this.colorPrimario = builder.colorPrimario;
-		this.colorSecundario = builder.colorSecundario;
-		this.material = builder.material;
-	}
-
-
-
 	public TipoDeRopa getTipoRopa() {
 		return this.tipoRopa;
 	}
 
-
 	public void setearListaImagenes(List<String> imagenes) {
-
 		imagenes.forEach(una -> this.imagenGraphics.add(this.crearImagen(una)));
 	}
 
-
 	public Graphics2D crearImagen (String path) {
-
 		Imagen creator = new Imagen();
 		return creator.crearImagen(path);
-
-
 	}
-
 
 	public Categoria getCategoria() { 
 		return this.tipoRopa.getCategoria();

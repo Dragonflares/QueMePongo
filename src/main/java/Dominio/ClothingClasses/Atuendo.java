@@ -4,10 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import Dominio.Property;
-import Dominio.UserClasses.Usuario;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
-public class Atuendo {
+import Dominio.UserClasses.Property;
+import Dominio.UserClasses.Usuario;
+import db.EntidadPersistente;
+
+@Entity
+@Table(name = "atuendo")
+public class Atuendo extends EntidadPersistente{
+	@Transient
 	private ArrayList<Prenda> prendas = new ArrayList<Prenda>();
 	
 	public Atuendo(ArrayList<Prenda> prendas) throws Exception {

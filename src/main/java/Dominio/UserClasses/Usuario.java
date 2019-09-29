@@ -1,41 +1,59 @@
 package Dominio.UserClasses;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Prenda;
 import Dominio.Estilish.Estilo;
 import Dominio.EventClasses.Evento;
-import Dominio.EventClasses.Frecuencia;
 import Dominio.WardrobeClasses.Guardarropa;
 
-public class Usuario {
+import db.EntidadPersistente;
+
+@Entity
+@Table(name = "usuario")
+public class Usuario extends EntidadPersistente{
+	@Column(name = "username")
 	private String username;
+	
+	@Transient
 	private TipoDeUsuario tipoDeCuenta;
+	
+	@Transient
 	private List<Guardarropa> guardarropas;
+	
+	@Transient
 	private List<Atuendo> atuendosRechazados;
+	
+	@Transient
 	private Atuendo ultimoAtuendo;
+	
+	@Transient
 	private List<Evento> eventos;
+	
+	@Column(name = "offsetSuperior")
 	private int offsetSuperior;
+	
+	@Column(name = "offsetInferior")
 	private int offsetInferior;
 	
-	public List<Atuendo> getAtuendosRechazados() {
-		return atuendosRechazados;
-	}
-
-	public void setAtuendosRechazados(List<Atuendo> atuendosRechazados) {
-		this.atuendosRechazados = atuendosRechazados;
-	}
-
+	@Column(name = "mail")
 	private String mail;
+	
+	@Column(name = "numeroCelular")
 	private String numeroCelular;
+	
+	@Transient
 	private List<Atuendo> sugerenciasQueFaltanCalificar;
-
 	
 	public Usuario(String username, String mail, String numeroCelular){
 		this.username = username;
@@ -47,6 +65,14 @@ public class Usuario {
 		this.offsetSuperior = 0;
 		this.setUltimoAtuendo(null);
 		this.tipoDeCuenta = new Gratuito();
+	}
+	
+	public void setAtuendosRechazados(List<Atuendo> atuendosRechazados) {
+		this.atuendosRechazados = atuendosRechazados;
+	}
+	
+	public List<Atuendo> getAtuendosRechazados() {
+		return atuendosRechazados;
 	}
 
 	public String getUsername() {

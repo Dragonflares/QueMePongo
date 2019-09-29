@@ -1,7 +1,15 @@
 package Dominio.ClothingClasses;
 
-public class Material {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+import db.EntidadPersistente;
+
+@Entity
+@Table(name = "material")
+public class Material extends EntidadPersistente{
+	@Column(name = "nombre")
 	String nombre;
 
 	public String getNombre() {
@@ -13,18 +21,10 @@ public class Material {
 	}	
 
 	public Material (String nuevoNombre) {
-
 		setNombre(nuevoNombre);
-
 	}
 	
-
-
 	public boolean compararNombres(String otroNombre){
-
-
 		return this.getNombre().equals(otroNombre);
 	}
-
-
 }

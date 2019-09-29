@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import Dominio.Property;
+import Dominio.UserClasses.Property;
 
 public class Imagen {
 
@@ -29,8 +29,4 @@ public class Imagen {
 		return imagenGraphics;
 
 	}
-
-
-
-
 }

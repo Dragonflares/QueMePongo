@@ -10,8 +10,8 @@ import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
-import Dominio.Property;
 import Dominio.ClothingClasses.Color;
+import Dominio.UserClasses.Property;
 import Repositorios.RepoColor;
 
 public class ImportadorDeColores {

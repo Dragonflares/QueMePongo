@@ -9,13 +9,13 @@ import java.util.stream.Collectors;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 
-import Dominio.Property;
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Categoria;
 import Dominio.ClothingClasses.MoldeDeAtuendo;
 import Dominio.ClothingClasses.Prenda;
 import Dominio.ClothingClasses.TipoDeRopa;
 import Dominio.Estilish.Estilo;
+import Dominio.UserClasses.Property;
 import Dominio.UserClasses.Usuario;
 import Importadores.ImportadorDeMoldes;
 

@@ -3,17 +3,40 @@ package Dominio.EventClasses;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.Estilish.Estilo;
+import db.EntidadPersistente;
 
-public class Evento {
+@Entity
+@Table(name = "evento")
+public class Evento extends EntidadPersistente{
+	@Column(name = "nombre")
 	private String nombre;
+	
+	@Column(name = "fecha")
 	private Calendar fecha;
+	
+	@Column(name = "direccion")
 	private String direccion;
+	
+	@Transient
 	private Estilo estilo;
+	
+	@Transient
 	private Frecuencia frecuencia; 
+	
+	@Transient
 	private ImportanciaEvento importancia;
+	
+	@Transient
 	private List<Atuendo> sugerencias;
+	
+	@Column(name = "sugerenciaNotificada")
 	private boolean sugerenciaNotificada;
 	
 	
