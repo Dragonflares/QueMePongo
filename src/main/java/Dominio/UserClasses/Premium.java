@@ -2,10 +2,15 @@ package Dominio.UserClasses;
 
 import java.io.FileNotFoundException;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 import Dominio.ClothingClasses.Prenda;
 import Dominio.WardrobeClasses.Guardarropa;
 
-public class Premium implements TipoDeUsuario {
+@Entity
+@DiscriminatorValue("premium")
+public class Premium extends TipoDeUsuario {
 	public void agregarPrendaAGuardarropa(Guardarropa guardarropa, Prenda prenda)
 	{
 		guardarropa.agregarPrenda(prenda);

@@ -10,11 +10,13 @@
     	
     	<class>Dominio.ClothingClasses.Atuendo</class>
     	<class>Dominio.ClothingClasses.Color</class>
+    	<class>Dominio.ClothingClasses.MoldeDeAtuendo</class>
     	<class>Dominio.ClothingClasses.Material</class>
     	<class>Dominio.ClothingClasses.Prenda</class>
     	<class>Dominio.ClothingClasses.TipoDeRopa</class>
     	<class>Dominio.EventClasses.Evento</class>
     	<class>Dominio.UserClasses.Usuario</class>
+    	<class>Dominio.UserClasses.TipoDeUsuario</class>
     	<class>Dominio.WardrobeClasses.Guardarropa</class>
     	 
         <properties> 

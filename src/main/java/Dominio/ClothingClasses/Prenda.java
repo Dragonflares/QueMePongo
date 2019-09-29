@@ -6,6 +6,10 @@ import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -15,16 +19,19 @@ import entities.ProcessingDataFailedException;
 @Entity
 @Table(name = "aporte")
 public class Prenda extends EntidadPersistente{
-	@Transient
+	@ManyToOne
+	@JoinColumn(name = "tipo_id", referencedColumnName = "id")
 	private TipoDeRopa tipoRopa;
 	
-	@Transient
+	@ManyToOne
+	@JoinColumn(name = "color_primario_id", referencedColumnName = "id")
 	private Color colorPrimario;
 	
-	@Transient
+	@ManyToOne
+	@JoinColumn(name = "color_secundario_id", referencedColumnName = "id")
 	private Color colorSecundario;
 	
-	@Transient
+	@Enumerated(EnumType.ORDINAL)
 	private Material material;
 	
 	@Transient

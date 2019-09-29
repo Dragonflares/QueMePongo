@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import Dominio.UserClasses.Property;
 import Dominio.UserClasses.Usuario;
@@ -15,7 +17,7 @@ import db.EntidadPersistente;
 @Entity
 @Table(name = "atuendo")
 public class Atuendo extends EntidadPersistente{
-	@Transient
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private ArrayList<Prenda> prendas = new ArrayList<Prenda>();
 	
 	public Atuendo(ArrayList<Prenda> prendas) throws Exception {

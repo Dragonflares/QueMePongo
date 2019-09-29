@@ -3,11 +3,28 @@ package Dominio.ClothingClasses;
 import java.util.ArrayList;
 import java.util.List;
 
-import Dominio.Estilish.Estilo;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
-public class MoldeDeAtuendo {
+import Dominio.Estilish.Estilo;
+import db.EntidadPersistente;
+
+@Entity
+@Table(name = "molde")
+public class MoldeDeAtuendo extends EntidadPersistente{
+	@Column(name = "nombre")
 	private String nombre;
+	
+	@Enumerated(EnumType.ORDINAL)
 	private Estilo estilo;
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<TipoDeRopa> ropasMolde = new ArrayList<TipoDeRopa>();
 	
 	public MoldeDeAtuendo (List<TipoDeRopa> ropasMolde, Estilo estilo) {

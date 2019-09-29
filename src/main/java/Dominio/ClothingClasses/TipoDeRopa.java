@@ -3,8 +3,13 @@ package Dominio.ClothingClasses;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -19,13 +24,13 @@ public class TipoDeRopa extends EntidadPersistente{
 	@Column(name = "abrigp")
 	private Integer abrigo;
 	 
-	@Transient
+	@Enumerated(EnumType.ORDINAL)
 	private Categoria categoria;
 	
 	@Transient
 	private ArrayList<Capas> capasEnDondePuedeEstar = new ArrayList<Capas>();
 	
-	@Transient
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private ArrayList<Material> materialesNoCompatibles = new ArrayList<Material>();
 	
 	public TipoDeRopa(String nombre,Integer abrigo,Categoria categoria, ArrayList<Capas> capas,

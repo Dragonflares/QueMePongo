@@ -3,8 +3,13 @@ package Dominio.EventClasses;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -24,7 +29,7 @@ public class Evento extends EntidadPersistente{
 	@Column(name = "direccion")
 	private String direccion;
 	
-	@Transient
+	@Enumerated(EnumType.ORDINAL)
 	private Estilo estilo;
 	
 	@Transient
@@ -33,7 +38,7 @@ public class Evento extends EntidadPersistente{
 	@Transient
 	private ImportanciaEvento importancia;
 	
-	@Transient
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Atuendo> sugerencias;
 	
 	@Column(name = "sugerenciaNotificada")

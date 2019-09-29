@@ -6,8 +6,14 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -25,19 +31,20 @@ public class Usuario extends EntidadPersistente{
 	@Column(name = "username")
 	private String username;
 	
-	@Transient
+	@ManyToOne
+    @JoinColumn(name = "aporte_id", referencedColumnName = "id")
 	private TipoDeUsuario tipoDeCuenta;
 	
-	@Transient
+	@ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
 	private List<Guardarropa> guardarropas;
 	
-	@Transient
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Atuendo> atuendosRechazados;
 	
 	@Transient
 	private Atuendo ultimoAtuendo;
 	
-	@Transient
+	@OneToMany(mappedBy = "evento", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 	private List<Evento> eventos;
 	
 	@Column(name = "offsetSuperior")
@@ -52,7 +59,7 @@ public class Usuario extends EntidadPersistente{
 	@Column(name = "numeroCelular")
 	private String numeroCelular;
 	
-	@Transient
+	@OneToMany(mappedBy = "evento", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 	private List<Atuendo> sugerenciasQueFaltanCalificar;
 	
 	public Usuario(String username, String mail, String numeroCelular){

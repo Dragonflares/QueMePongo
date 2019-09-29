@@ -1,9 +1,14 @@
 package Dominio.UserClasses;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 import Dominio.ClothingClasses.Prenda;
 import Dominio.WardrobeClasses.Guardarropa; 
 
-public class Gratuito implements TipoDeUsuario{
+@Entity
+@DiscriminatorValue("gratuito")
+public class Gratuito extends TipoDeUsuario{
 	private Integer tamanioMaximoGuardarropa = Integer.parseInt(Property.getSpecifiedProperty("PrendasMaximasUsuario"));
 
 	public void agregarPrendaAGuardarropa(Guardarropa guardarropa, Prenda prenda) throws Exception

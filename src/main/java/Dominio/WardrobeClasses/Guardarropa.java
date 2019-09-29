@@ -6,7 +6,13 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -23,13 +29,13 @@ import db.EntidadPersistente;
 @Entity
 @Table(name = "guardarropa")
 public class Guardarropa extends EntidadPersistente{
-	@Transient
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Usuario> usuariosConAcceso = new ArrayList<Usuario>();
 	
-	@Transient
+	@Enumerated(EnumType.ORDINAL)
 	private Estilo estilo;
 	
-	@Transient
+	@OneToMany(mappedBy = "usuario", cascade = {CascadeType.ALL})
 	private List<Prenda> prendasDisponibles = new ArrayList<Prenda>();
 
 	public Guardarropa(Usuario creador, Estilo estilo) {
