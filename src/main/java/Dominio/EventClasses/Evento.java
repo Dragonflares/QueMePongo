@@ -76,7 +76,6 @@ public class Evento {
 	public Atuendo getUltimaSugerencia()
 	{
 		return sugerencias.get(sugerencias.size() - 1); 
-		// TODO VER si está bien, lo puse por Usuario.getSugerenciasQueFaltanCalificar(), ActualizarAtuendoPorClimaTask, AgregarASinCalificarTask
 	}
 	
 	public boolean getSeNotificoUltimaSugerencia()

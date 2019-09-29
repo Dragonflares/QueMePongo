@@ -15,7 +15,6 @@ import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Categoria;
 import Dominio.ClothingClasses.Prenda;
 import Dominio.Estilish.Estilo;
-import Dominio.Estilish.Formal;
 import Dominio.UserClasses.Usuario;
 import Dominio.WardrobeClasses.Guardarropa;
 

@@ -8,7 +8,7 @@ import java.util.Calendar;
 import org.junit.Before;
 import org.junit.Test;
 
-import Dominio.Estilish.Formal;
+import Dominio.Estilish.Estilo;
 import Dominio.EventClasses.Anualmente;
 import Dominio.EventClasses.Diario;
 import Dominio.EventClasses.DiarioPersonalizado;
@@ -28,25 +28,25 @@ public class TestActualizarFecha {
 		Calendar ayer = Calendar.getInstance();
 		ayer.add(Calendar.DATE, -1); // le resto un dia a la fecha actual 
 		
-		eventoOcurrioYesFrecuente1 = new Evento("Ir a trabajar", ayer, "dire", new Formal(), new Diario());
+		eventoOcurrioYesFrecuente1 = new Evento("Ir a trabajar", ayer, "dire", Estilo.FORMAL, new Diario());
 		
 		ArrayList<Integer> diasQueRepite = new ArrayList<Integer>();
 		diasQueRepite.add(Calendar.MONDAY);
 		diasQueRepite.add(Calendar.WEDNESDAY);
 		
-		eventoOcurrioYesFrecuente1Personalizado = new Evento("Ir a la facultad", ayer, "dire",new Formal(), new DiarioPersonalizado(diasQueRepite));
+		eventoOcurrioYesFrecuente1Personalizado = new Evento("Ir a la facultad", ayer, "dire", Estilo.FORMAL, new DiarioPersonalizado(diasQueRepite));
 		
 		Calendar unaSemana = Calendar.getInstance();
 		unaSemana.add(Calendar.DATE, -7); // le resto una semana a la fecha actual 
-		eventoOcurrioYesFrecuente7 = new Evento("Ir a bailar", unaSemana, "dire", new Formal(), new Semanalmente());
+		eventoOcurrioYesFrecuente7 = new Evento("Ir a bailar", unaSemana, "dire", Estilo.FORMAL, new Semanalmente());
 		
 		Calendar unMes = Calendar.getInstance();
 		unMes.add(Calendar.DATE, -31); // le resto un mes a la fecha actual 
-		eventoOcurrioYesFrecuente30 = new Evento("Salir con amigos", unMes, "dire", new Formal(), new Mensualmente());
+		eventoOcurrioYesFrecuente30 = new Evento("Salir con amigos", unMes, "dire", Estilo.FORMAL, new Mensualmente());
 		
 		Calendar unAnio = Calendar.getInstance();
 		unAnio.add(Calendar.DATE, -365); // le resto un año a la fecha actual 
-		eventoOcurrioYesFrecuente365 = new Evento("Cumpleaños", unAnio, "dire", new Formal(), new Anualmente());
+		eventoOcurrioYesFrecuente365 = new Evento("Cumpleaños", unAnio, "dire", Estilo.FORMAL, new Anualmente());
 
 	}
 	

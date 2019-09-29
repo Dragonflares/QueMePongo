@@ -6,5 +6,4 @@ public enum Estilo {
 	DEPORTIVO,
 	ELEGANTE,
 	ELEGANTE_SPORT,
-
 }

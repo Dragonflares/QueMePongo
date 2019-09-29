@@ -195,7 +195,7 @@ public class Usuario {
 
 	}
 	
-	public void calificar(Atuendo atuendo,Calificadores superior, Calificadores inferior) {
+	public void calificar(Atuendo atuendo, Calificadores superior, Calificadores inferior) {
 
 		this.getSugerenciasQueFaltanCalificar().remove(atuendo);
 		this.modificarOffSetInferior(inferior.darCalificacion());
@@ -211,14 +211,9 @@ public class Usuario {
 		return eventos.stream().filter(e -> e.ocurre(fecha)).collect(Collectors.toList());
  
 	}
-
-	
 	
 	public void agregarSugerenciaSinCalificar(Atuendo sugerencia) {
 		this.sugerenciasQueFaltanCalificar.add(sugerencia);
 		
 	}
-
-
-
 }

@@ -50,11 +50,8 @@ public class TestGuardarropa {
 		when(usuario.getOffsetSuperior()).thenReturn(0);
 		when(usuario.getOffsetInferior()).thenReturn(0);
 		
-		estiloFormal = mock(Formal.class);
-		estiloCasual = mock(Casual.class);
-		
-		guardarropa1 = new Guardarropa(usuario, estiloCasual);
-		guardarropa2 = new Guardarropa(usuario2, estiloFormal);
+		guardarropa1 = new Guardarropa(usuario, Estilo.CASUAL);
+		guardarropa2 = new Guardarropa(usuario2, Estilo.FORMAL);
 		
 		eventoCasual = mock(Evento.class);
 		when(eventoCasual.getFecha()).thenReturn(date);

@@ -16,5 +16,4 @@ public class AceptarAtuendo implements Paso{
 
 		this.parametrosUsados.getEvento().agregarSugerencia(this.parametrosUsados.getAtuendo());
 	}
-
 }

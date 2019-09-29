@@ -11,6 +11,6 @@ public class SMSAdaptado implements NotificadorAdapter{
 	}
 
 	public void notificar(NotificacionDataObject notificacion) {
-		sms.enviarSMS(notificacion.getEmisorNumero(), notificacion.getDestinatarioNumero(), notificacion.getMensaje());
+		sms.enviarSMS(notificacion.getEmisorNumero(), notificacion.getDestinatarioNumero(), notificacion.getMensaje()); 
 	}
 }
