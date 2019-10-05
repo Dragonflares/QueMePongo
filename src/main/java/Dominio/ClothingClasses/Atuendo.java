@@ -18,7 +18,7 @@ import db.EntidadPersistente;
 @Table(name = "atuendo")
 public class Atuendo extends EntidadPersistente{
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private ArrayList<Prenda> prendas = new ArrayList<Prenda>();
+	private List<Prenda> prendas = new ArrayList<Prenda>();
 	
 	public Atuendo(ArrayList<Prenda> prendas) throws Exception {
 		if(sonDeDistintoTipo(prendas))

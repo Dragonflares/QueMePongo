@@ -31,7 +31,7 @@ public class TipoDeRopa extends EntidadPersistente{
 	private ArrayList<Capas> capasEnDondePuedeEstar = new ArrayList<Capas>();
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private ArrayList<Material> materialesNoCompatibles = new ArrayList<Material>();
+	private List<Material> materialesNoCompatibles = new ArrayList<Material>();
 	
 	public TipoDeRopa(String nombre,Integer abrigo,Categoria categoria, ArrayList<Capas> capas,
 			ArrayList<Material> materialesNoCompatibles) {

@@ -10,6 +10,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -17,7 +18,7 @@ import db.EntidadPersistente;
 import entities.ProcessingDataFailedException;
 
 @Entity
-@Table(name = "aporte")
+@Table(name = "Prenda")
 public class Prenda extends EntidadPersistente{
 	@ManyToOne
 	@JoinColumn(name = "tipo_id", referencedColumnName = "id")
@@ -31,7 +32,8 @@ public class Prenda extends EntidadPersistente{
 	@JoinColumn(name = "color_secundario_id", referencedColumnName = "id")
 	private Color colorSecundario;
 	
-	@Enumerated(EnumType.ORDINAL)
+	@OneToOne
+	@JoinColumn(name = "material_id", referencedColumnName = "id")
 	private Material material;
 	
 	@Transient

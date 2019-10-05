@@ -35,7 +35,7 @@ public class Guardarropa extends EntidadPersistente{
 	@Enumerated(EnumType.ORDINAL)
 	private Estilo estilo;
 	
-	@OneToMany(mappedBy = "usuario", cascade = {CascadeType.ALL})
+	@OneToMany(mappedBy = "id", cascade = {CascadeType.ALL})
 	private List<Prenda> prendasDisponibles = new ArrayList<Prenda>();
 
 	public Guardarropa(Usuario creador, Estilo estilo) {

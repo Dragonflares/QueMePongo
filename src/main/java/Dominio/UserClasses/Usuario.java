@@ -44,7 +44,7 @@ public class Usuario extends EntidadPersistente{
 	@Transient
 	private Atuendo ultimoAtuendo;
 	
-	@OneToMany(mappedBy = "evento", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "creador", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 	private List<Evento> eventos;
 	
 	@Column(name = "offsetSuperior")
@@ -59,7 +59,7 @@ public class Usuario extends EntidadPersistente{
 	@Column(name = "numeroCelular")
 	private String numeroCelular;
 	
-	@OneToMany(mappedBy = "evento", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "id", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 	private List<Atuendo> sugerenciasQueFaltanCalificar;
 	
 	public Usuario() {}

@@ -9,12 +9,15 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.Estilish.Estilo;
+import Dominio.UserClasses.Usuario;
 import db.EntidadPersistente;
 
 @Entity
@@ -22,6 +25,10 @@ import db.EntidadPersistente;
 public class Evento extends EntidadPersistente{
 	@Column(name = "nombre")
 	private String nombre;
+	
+	@ManyToOne
+	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
+	private Usuario creador;
 	
 	@Column(name = "fecha")
 	private Calendar fecha;
