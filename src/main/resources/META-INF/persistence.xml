@@ -8,22 +8,13 @@
     <persistence-unit name="db" transaction-type="RESOURCE_LOCAL">
     	<provider>org.hibernate.ejb.HibernatePersistence</provider>
     	
-    	<class>Dominio.ClothingClasses.Atuendo</class>
-    	<class>Dominio.ClothingClasses.Color</class>
-    	<class>Dominio.ClothingClasses.MoldeDeAtuendo</class>
-    	<class>Dominio.ClothingClasses.Material</class>
-    	<class>Dominio.ClothingClasses.Prenda</class>
-    	<class>Dominio.ClothingClasses.TipoDeRopa</class>
-    	<class>Dominio.EventClasses.Evento</class>
-    	<class>Dominio.UserClasses.Usuario</class>
-    	<class>Dominio.UserClasses.TipoDeUsuario</class>
-    	<class>Dominio.WardrobeClasses.Guardarropa</class>
+    	<class></class>
     	 
         <properties> 
 	    <property name="hibernate.archive.autodetection" value="class"/>        
         
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" /> 
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/que_me_pongo" />
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/quemepongo" />
             <property name="hibernate.connection.username" value="root" /> 
             <property name="hibernate.connection.password" value="123456" />
                         

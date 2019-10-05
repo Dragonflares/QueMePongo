@@ -62,6 +62,8 @@ public class Usuario extends EntidadPersistente{
 	@OneToMany(mappedBy = "evento", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 	private List<Atuendo> sugerenciasQueFaltanCalificar;
 	
+	public Usuario() {}
+	
 	public Usuario(String username, String mail, String numeroCelular){
 		this.username = username;
 		this.guardarropas = new ArrayList<Guardarropa>();
