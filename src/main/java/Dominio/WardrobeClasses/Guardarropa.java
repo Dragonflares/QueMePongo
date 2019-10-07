@@ -313,6 +313,10 @@ public class Guardarropa extends EntidadPersistente{
 		}
 		return prendaDeCalzado;
 	}
+
+	public void cambiarEstilo(Estilo estilo) {
+		this.estilo = estilo;
+	}
 	
 	//	public List<Prenda> obtenerAccesorios(Evento evento) throws IOException{
 	//		List<Prenda> accesorios = new ArrayList<Prenda>();

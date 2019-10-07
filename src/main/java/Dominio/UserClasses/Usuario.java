@@ -35,17 +35,17 @@ public class Usuario extends EntidadPersistente{
     @JoinColumn(name = "aporte_id", referencedColumnName = "id")
 	private TipoDeUsuario tipoDeCuenta;
 	
-	@ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
-	private List<Guardarropa> guardarropas;
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<Guardarropa> guardarropas = new ArrayList<>();
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Atuendo> atuendosRechazados;
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<Atuendo> atuendosRechazados = new ArrayList<>();
 	
 	@Transient
 	private Atuendo ultimoAtuendo;
 	
 	@OneToMany(mappedBy = "creador", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-	private List<Evento> eventos;
+	private List<Evento> eventos = new ArrayList<>();
 	
 	@Column(name = "offsetSuperior")
 	private int offsetSuperior;
@@ -60,7 +60,7 @@ public class Usuario extends EntidadPersistente{
 	private String numeroCelular;
 	
 	@OneToMany(mappedBy = "id", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-	private List<Atuendo> sugerenciasQueFaltanCalificar;
+	private List<Atuendo> sugerenciasQueFaltanCalificar = new ArrayList<>();
 	
 	public Usuario() {}
 	
@@ -250,5 +250,21 @@ public class Usuario extends EntidadPersistente{
 	public void agregarSugerenciaSinCalificar(Atuendo sugerencia) {
 		this.sugerenciasQueFaltanCalificar.add(sugerencia);
 		
+	}
+	
+	public void modificarEstilo(Guardarropa guardarropa, Estilo estilo)
+	{
+		List<Guardarropa> guardarropas = this.guardarropas.stream().filter(g -> g.equals(guardarropa)).collect(Collectors.toList());
+		
+		guardarropas.get(0).cambiarEstilo(estilo);
+	}
+	
+	public List<Guardarropa> getGuardarropas()
+	{
+		return this.guardarropas;
+	}
+
+	public void eliminarEvento(Evento evento) {
+		this.eventos.remove(evento);
 	}
 }
