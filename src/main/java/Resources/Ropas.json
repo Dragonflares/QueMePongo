@@ -96,6 +96,24 @@
 		]
 	},
 	{
+		"nombre": "Blusa", "abrigo": 2,
+		"categoria": "PARTE_SUPERIOR",
+		"capasEnDondePuedeEstar":
+		[
+			"CAPA1",
+		],
+		"materialesNoCompatibles":
+		[
+			{"nombre": "Cuero"}, 
+			{"nombre": "Lana"}, 
+			{"nombre": "Jean"}, 
+			{"nombre": "Goma"}, 
+			{"nombre": "Plastico"}, 
+			{"nombre": "Gabardina"},
+			{"nombre": "Gamuza"}
+		]
+	},
+	{
 		"nombre": "Buzo", "abrigo": 6, 
 		"categoria": "PARTE_SUPERIOR",
 		"capasEnDondePuedeEstar":

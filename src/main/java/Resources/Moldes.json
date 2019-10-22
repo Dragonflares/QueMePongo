@@ -1,0 +1,375 @@
+[
+	{
+		"nombre": "Atuendo elegante 1",
+		"estilo": "ELEGANTE",
+		"ropasMolde":
+		[
+			{
+				"nombre": "Camisa", "abrigo": 4, 
+				"categoria": "PARTE_SUPERIOR",
+				"capasEnDondePuedeEstar":
+				[
+					"CAPA1",
+					"CAPA2"
+				], 
+				"materialesNoCompatibles": 
+				[
+					{"nombre": "Lycra"}, 
+					{"nombre": "Cuero"}, 
+					{"nombre": "Lana"}, 
+					{"nombre": "Jean"}, 
+					{"nombre": "Goma"}, 
+					{"nombre": "Plastico"}, 
+					{"nombre": "Gabardina"}
+				]
+			},
+			{
+				"nombre": "Pantalon largo", "abrigo": 1, 
+				"categoria": "PARTE_INFERIOR",
+				"capasEnDondePuedeEstar":[], 
+				"materialesNoCompatibles": 
+				[
+					{"nombre": "Cuero"}, 
+					{"nombre": "Lana"},  
+					{"nombre": "Goma"}, 
+					{"nombre": "Plastico"}
+				]
+			},
+			{
+				"nombre": "Zapatos", "abrigo": 0,
+				"categoria": "CALZADO",
+				"capasEnDondePuedeEstar":[], 
+				"materialesNoCompatibles": 
+				[
+					{"nombre": "Plastico"}, 
+					{"nombre": "Algodon"},
+					{"nombre": "Goma"}, 
+					{"nombre": "Lycra"},
+					{"nombre": "Lana"},
+					{"nombre": "Jean"},
+					{"nombre": "Seda"}
+				]
+			},
+			{
+				
+			}
+		]
+	},
+	{
+		"nombre": "Atuendo elegante 2",
+		"estilo": "ELEGANTE",
+		"ropasMolde":
+		[
+			{
+				"nombre": "Blusa", "abrigo": 2,
+				"categoria": "PARTE_SUPERIOR",
+				"capasEnDondePuedeEstar":
+				[
+					"CAPA1",
+				],
+				"materialesNoCompatibles":
+				[
+					{"nombre": "Cuero"}, 
+					{"nombre": "Lana"}, 
+					{"nombre": "Jean"}, 
+					{"nombre": "Goma"}, 
+					{"nombre": "Plastico"}, 
+					{"nombre": "Gabardina"},
+					{"nombre": "Gamuza"}
+				]
+			},
+			{
+				"nombre": "Pollera", "abrigo": 0,
+				"categoria": "PARTE_INFERIOR",
+				"capasEnDondePuedeEstar":[], 
+				"materialesNoCompatibles": 
+				[
+					{"nombre": "Cuero"}, 
+					{"nombre": "Lana"},  
+					{"nombre": "Goma"}, 
+					{"nombre": "Plastico"}, 
+					{"nombre": "Gabardina"}
+				]
+			},
+			{
+				"nombre": "Sandalias", "abrigo": 0,
+				"categoria": "CALZADO",
+				"capasEnDondePuedeEstar":[], 
+				"materialesNoCompatibles": 
+				[
+					{"nombre": "Cuero"}, 
+					{"nombre": "Algodon"},
+					{"nombre": "Goma"}, 
+					{"nombre": "Lycra"},
+					{"nombre": "Lana"},
+					{"nombre": "Gabardina"},
+					{"nombre": "Jean"},
+					{"nombre": "Gamuza"},
+					{"nombre": "Seda"}
+				]
+			}
+		]
+	},
+	{
+		"nombre": "Atuendo elegante 3",
+		"estilo": "ELEGANTE",
+		"ropasMolde":
+		[
+			{
+				"nombre": "Blusa", "abrigo": 2,
+				"categoria": "PARTE_SUPERIOR",
+				"capasEnDondePuedeEstar":
+				[
+					"CAPA1",
+				],
+				"materialesNoCompatibles":
+				[
+					{"nombre": "Cuero"}, 
+					{"nombre": "Lana"}, 
+					{"nombre": "Jean"}, 
+					{"nombre": "Goma"}, 
+					{"nombre": "Plastico"}, 
+					{"nombre": "Gabardina"},
+					{"nombre": "Gamuza"}
+				]
+			},
+			{
+				"nombre": "Pantalon largo", "abrigo": 1, 
+				"categoria": "PARTE_INFERIOR",
+				"capasEnDondePuedeEstar":[], 
+				"materialesNoCompatibles": 
+				[
+					{"nombre": "Cuero"}, 
+					{"nombre": "Lana"},  
+					{"nombre": "Goma"}, 
+					{"nombre": "Plastico"}
+				]
+			},
+			{
+				"nombre": "Tacos", "abrigo": 0,
+				"categoria": "CALZADO",
+				"capasEnDondePuedeEstar": [], 
+				"materialesNoCompatibles": 
+				[
+					{"nombre": "Cuero"}, 
+					{"nombre": "Algodon"},
+					{"nombre": "Goma"}, 
+					{"nombre": "Lycra"},
+					{"nombre": "Lana"},
+					{"nombre": "Gabardina"},
+					{"nombre": "Jean"},
+					{"nombre": "Gamuza"}
+				]
+			}
+		]
+	},
+	{
+		"nombre": "Atuendo elegante 4",
+		"estilo": "ELEGANTE",
+		"ropasMolde":
+		[
+			{
+				"nombre": "Blusa", "abrigo": 2,
+				"categoria": "PARTE_SUPERIOR",
+				"capasEnDondePuedeEstar":
+				[
+					"CAPA1",
+				],
+				"materialesNoCompatibles":
+				[
+					{"nombre": "Cuero"}, 
+					{"nombre": "Lana"}, 
+					{"nombre": "Jean"}, 
+					{"nombre": "Goma"}, 
+					{"nombre": "Plastico"}, 
+					{"nombre": "Gabardina"},
+					{"nombre": "Gamuza"}
+				]
+			},
+			{
+				"nombre": "Pantalon largo", "abrigo": 1, 
+				"categoria": "PARTE_INFERIOR",
+				"capasEnDondePuedeEstar":[], 
+				"materialesNoCompatibles": 
+				[
+					{"nombre": "Cuero"}, 
+					{"nombre": "Lana"},  
+					{"nombre": "Goma"}, 
+					{"nombre": "Plastico"}
+				]
+			},
+			{
+				"nombre": "Tacos", "abrigo": 0,
+				"categoria": "CALZADO",
+				"capasEnDondePuedeEstar": [], 
+				"materialesNoCompatibles": 
+				[
+					{"nombre": "Cuero"}, 
+					{"nombre": "Algodon"},
+					{"nombre": "Goma"}, 
+					{"nombre": "Lycra"},
+					{"nombre": "Lana"},
+					{"nombre": "Gabardina"},
+					{"nombre": "Jean"},
+					{"nombre": "Gamuza"}
+				]
+			},
+			{}
+		]
+	},
+	{
+		"nombre": "",
+		"estilo": "",
+		"ropasMolde":
+		[
+			{},
+			{},
+			{},
+			{}
+		]
+	},
+	{
+		"nombre": "",
+		"estilo": "",
+		"ropasMolde":
+		[
+			{},
+			{},
+			{},
+			{}
+		]
+	},
+	{
+		"nombre": "",
+		"estilo": "",
+		"ropasMolde":
+		[
+			{},
+			{},
+			{},
+			{}
+		]
+	},
+	{
+		"nombre": "",
+		"estilo": "",
+		"ropasMolde":
+		[
+			{},
+			{},
+			{},
+			{}
+		]
+	},
+	{
+		"nombre": "",
+		"estilo": "",
+		"ropasMolde":
+		[
+			{},
+			{},
+			{},
+			{}
+		]
+	},
+	{
+		"nombre": "",
+		"estilo": "",
+		"ropasMolde":
+		[
+			{},
+			{},
+			{},
+			{}
+		]
+	},
+	{
+		"nombre": "",
+		"estilo": "",
+		"ropasMolde":
+		[
+			{},
+			{},
+			{},
+			{}
+		]
+	},
+	{
+		"nombre": "",
+		"estilo": "",
+		"ropasMolde":
+		[
+			{},
+			{},
+			{},
+			{}
+		]
+	},
+	{
+		"nombre": "",
+		"estilo": "",
+		"ropasMolde":
+		[
+			{},
+			{},
+			{},
+			{}
+		]
+	},
+	{
+		"nombre": "",
+		"estilo": "",
+		"ropasMolde":
+		[
+			{},
+			{},
+			{},
+			{}
+		]
+	},
+	{
+		"nombre": "",
+		"estilo": "",
+		"ropasMolde":
+		[
+			{},
+			{},
+			{},
+			{}
+		]
+	},
+	{
+		"nombre": "",
+		"estilo": "",
+		"ropasMolde":
+		[
+			{},
+			{},
+			{},
+			{}
+		]
+	},
+	{
+		"nombre": "",
+		"estilo": "",
+		"ropasMolde":
+		[
+			{},
+			{},
+			{},
+			{}
+		]
+	},
+	{
+		"nombre": "",
+		"estilo": "",
+		"ropasMolde":
+		[
+			{},
+			{},
+			{},
+			{}
+		]
+	}
+]
+		
