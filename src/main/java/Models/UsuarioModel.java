@@ -1,6 +1,8 @@
 package Models;
 
 import java.util.List;
+
+import Dominio.ClothingClasses.TipoDeRopa;
 import Dominio.UserClasses.Usuario;
 import db.EntityManagerHelper;
 
@@ -22,5 +24,11 @@ public class UsuarioModel  extends Model {
     @Override
     public Usuario buscar(int id){
         return EntityManagerHelper.getEntityManager().find(Usuario.class, id);
+    }
+    
+    @Override
+    public List<Usuario> buscarPorQuery(String query)
+    {
+    	return EntityManagerHelper.createQuery(query).getResultList();
     }
 }

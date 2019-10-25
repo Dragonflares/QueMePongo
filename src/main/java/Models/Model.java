@@ -26,4 +26,6 @@ public abstract class Model {
     public abstract <T> List<T> buscarTodos();
 
     public abstract <T> T buscar(int id);
+    
+    public abstract <T> List<T> buscarPorQuery(String query);
 }

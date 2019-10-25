@@ -24,4 +24,10 @@ public class MaterialModel extends Model{
     public Material buscar(int id){
         return EntityManagerHelper.getEntityManager().find(Material.class, id);
     }
+    
+    @Override
+    public List<Material> buscarPorQuery(String query)
+    {
+    	return  (List<Material>) EntityManagerHelper.createQuery(query).getResultList();
+    }
 }

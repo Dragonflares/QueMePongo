@@ -2,7 +2,7 @@ package Models;
 import java.util.List;
 
 import db.EntityManagerHelper;
-
+import Dominio.ClothingClasses.MoldeDeAtuendo;
 import Dominio.ClothingClasses.TipoDeRopa;
 
 public class RopaModel extends Model{
@@ -23,5 +23,11 @@ public class RopaModel extends Model{
     @Override
     public TipoDeRopa buscar(int id){
         return EntityManagerHelper.getEntityManager().find(TipoDeRopa.class, id);
+    }
+    
+    @Override
+    public List<TipoDeRopa> buscarPorQuery(String query)
+    {
+    	return (List<TipoDeRopa>) EntityManagerHelper.createQuery(query).getResultList();
     }
 }

@@ -1,8 +1,10 @@
 package Repositorios.daos;
 
 
+import java.util.Calendar;
 import java.util.List;
 
+import Dominio.UserClasses.Usuario;
 import Models.Model;
 
 public class DAOMySQL implements DAO {
@@ -36,4 +38,28 @@ public class DAOMySQL implements DAO {
     public void eliminar(Object unObjeto) {
         this.model.eliminar(unObjeto);
     }
+    
+    @Override
+    public List<Usuario> getUsuariosConEventosProximosYSinNotificar()
+    {
+    	return model.buscarPorQuery("FROM Usuario u WHERE "); // TODO
+    }
+    
+    @Override
+    public List<Usuario> getUsuariosConEventosProximosYnotificados()
+    {
+    	return model.buscarPorQuery("FROM Usuario u WHERE "); // TODO
+    }
+    
+    @Override
+    public List<Usuario> getUsuariosConEventosOcurridoFrecuentemente(Calendar fecha)
+    {
+    	return model.buscarPorQuery("FROM Usuario u WHERE "); // TODO
+    }
+    @Override
+    public List<Usuario> getUsuariosConEventosOcurridos(Calendar fecha)
+    {
+    	return model.buscarPorQuery("FROM Usuario u WHERE "); // TODO
+    }
+
 }
