@@ -1,6 +1,6 @@
 package Repositorios.factories;
 
-import java.awt.image.ColorModel;
+import Models.ColorModel;
 
 import Repositorios.RepoColor;
 import Repositorios.daos.DAOMemoria;

@@ -17,7 +17,7 @@ public class ColorModel extends Model {
 
     @Override
     public List<Color> buscarTodos(){
-        return EntityManagerHelper.getEntityManager().createQuery("from Usuario").getResultList();
+        return EntityManagerHelper.getEntityManager().createQuery("from Color").getResultList();
     }
 
     @Override

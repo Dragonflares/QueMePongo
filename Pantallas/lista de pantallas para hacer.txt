@@ -1,26 +1,29 @@
 EVENTOS
-- crear evento ✔
-- editar evento ✔
-- info evento ✔
-- calendario (pantalla principal) ✔
-- lista de eventos ✔
+- crear evento 
+- editar evento 
+- info evento 
+- calendario (pantalla principal) 
+- lista de eventos 
+
+PRENDAS
+- crear prenda 
+- info prenda 
+- editar prenda 
+
+
+
 
 CUENTA
-- crear cuenta ✔
-- iniciar sesion ✔
+- crear cuenta 
+- iniciar sesion 
 - editar cuenta 
 - info cuenta (pantalla principal)
 
-CONFIGURACION
-- notificaciones
-- 
-
 GUARDARROPAS
-- crear guardaropas ✔
-- editar guardaropas ✔ 
-- pantalla principal ✔
+- crear guardaropas 
+- editar guardaropas 
+- pantalla principal 
 
-PRENDAS
-- crear prenda ✔
-- info prenda ✔
-- editar prenda ✔
+CONFIGURACION
+- notificaciones ????
+- 

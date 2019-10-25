@@ -4,9 +4,23 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import Dominio.ClothingClasses.TipoDeRopa;
+import Repositorios.daos.DAO;
 
 public class RepoRopa extends Repositorio {
 
+	private static RepoRopa instance;
+	
+	
+	public static RepoRopa getInstance(DAO dao) {
+        if(instance == null){
+            instance = new RepoRopa(dao);
+        }
+        return instance;
+    }
+	
+	private RepoRopa(DAO dao){
+        this.setDao(dao);
+	}
 	private List<TipoDeRopa> ropas;
 	
     public List<TipoDeRopa> getTipoDeRopas() {

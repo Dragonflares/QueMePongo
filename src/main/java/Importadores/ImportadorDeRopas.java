@@ -13,10 +13,11 @@ import com.google.gson.reflect.TypeToken;
 import Dominio.ClothingClasses.TipoDeRopa;
 import Dominio.UserClasses.Property;
 import Repositorios.RepoRopa;
+import Repositorios.factories.FactoryRepositorioRopa;
 
 public class ImportadorDeRopas {
 
-    RepoRopa repo = new RepoRopa();
+    RepoRopa repo = new FactoryRepositorioRopa().get();;
     String path = Property.getSpecifiedProperty("RutaRepoRopa");
 	private static ImportadorDeRopas instance = new ImportadorDeRopas();
 	

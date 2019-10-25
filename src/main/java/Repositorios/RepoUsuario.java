@@ -5,16 +5,22 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import Dominio.UserClasses.Usuario;
+import Repositorios.daos.DAO;
 
 public class RepoUsuario extends Repositorio{
-	private List<Usuario> usuarios;
-	private static RepoUsuario instance = new RepoUsuario();
+	private List<Usuario> usuarios; // TODO SACAR 
+	private static RepoUsuario instance;
 	
-	private RepoUsuario(){} // dejar en privado para que no puedan hacer otra instancia
-
-	public static RepoUsuario getInstance()
-	{
-		return instance;
+	
+	public static RepoUsuario getInstance(DAO dao) {
+        if(instance == null){
+            instance = new RepoUsuario(dao);
+        }
+        return instance;
+    }
+	
+	private RepoUsuario(DAO dao){
+        this.setDao(dao);
 	}
 	
 	public List<Usuario> getUsuariosConEventosProximosYSinNotificar()

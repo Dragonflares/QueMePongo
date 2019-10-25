@@ -13,10 +13,11 @@ import com.google.gson.reflect.TypeToken;
 import Dominio.ClothingClasses.Color;
 import Dominio.UserClasses.Property;
 import Repositorios.RepoColor;
+import Repositorios.factories.FactoryRepositorioColor;
 
 public class ImportadorDeColores {
 
-    RepoColor repo = new RepoColor();
+    RepoColor repo = new FactoryRepositorioColor().get();
     String path = Property.getSpecifiedProperty("RutaRepoColor");
 	private static ImportadorDeColores instance = new ImportadorDeColores();
 	

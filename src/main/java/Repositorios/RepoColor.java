@@ -2,6 +2,8 @@ package Repositorios;
 
 
 import Dominio.ClothingClasses.Color;
+import Repositorios.daos.DAO;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,6 +11,19 @@ import java.util.stream.Collectors;
 public class RepoColor extends Repositorio{
 
 	private List<Color> colores;
+	
+	private static RepoColor instance;
+	
+	public static RepoColor getInstance(DAO dao) {
+        if(instance == null){
+            instance = new RepoColor(dao);
+        }
+        return instance;
+    }
+	
+	private RepoColor(DAO dao){
+        this.setDao(dao);
+	}
 	
     public List<Color> getColores() {
         return this.colores;

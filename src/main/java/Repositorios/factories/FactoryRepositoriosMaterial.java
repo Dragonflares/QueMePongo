@@ -4,6 +4,8 @@ import Repositorios.RepoMaterial;
 import Repositorios.daos.DAOMemoria;
 import Repositorios.daos.DAOMySQL;
 import config.Config;
+import Models.MaterialModel;
+import Repositorios.testMemoData.DataMaterial;
 
 public class FactoryRepositoriosMaterial {
 	
@@ -20,4 +22,5 @@ public class FactoryRepositoriosMaterial {
             }
         }
         return repo;
+	}
 }

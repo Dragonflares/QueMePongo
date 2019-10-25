@@ -12,14 +12,11 @@ import com.google.gson.reflect.TypeToken;
 
 import Dominio.ClothingClasses.MoldeDeAtuendo;
 import Dominio.UserClasses.Property;
-import Dominio.WeatherAPIClasses.DarkSkyAdaptado;
-import Dominio.WeatherAPIClasses.GestorClimatico;
-import Dominio.WeatherAPIClasses.OPWAdaptado;
-import Dominio.WeatherAPIClasses.WeatherAdapter;
 import Repositorios.RepoMolde;
+import Repositorios.factories.FactoryRepositorioMolde;
 
 public class ImportadorDeMoldes {
-    RepoMolde repo = new RepoMolde();
+    RepoMolde repo = new FactoryRepositorioMolde().get();;
     String path = Property.getSpecifiedProperty("RutaRepoMoldes");
 
 	private static ImportadorDeMoldes instance = new ImportadorDeMoldes();
