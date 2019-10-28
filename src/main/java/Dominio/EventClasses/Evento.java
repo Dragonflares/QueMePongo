@@ -42,17 +42,18 @@ public class Evento extends EntidadPersistente{
 	@Transient
 	private Frecuencia frecuencia; 
 	
-	@Transient
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "importancia_id", referencedColumnName = "id", nullable = true)
 	private ImportanciaEvento importancia;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 	private List<Atuendo> sugerencias;
 	
 	@Column(name = "sugerenciaNotificada")
 	private boolean sugerenciaNotificada;
 	
 	
-	public Evento (String nombre, Calendar fecha, String direccion, Estilo estilo, Frecuencia frecuencia)
+	public Evento (String nombre, Calendar fecha, String direccion, Estilo estilo, Frecuencia frecuencia, ImportanciaEvento importancia)
 	{
 		this.nombre = nombre;
 		this.fecha = fecha;
@@ -60,6 +61,7 @@ public class Evento extends EntidadPersistente{
 		this.estilo = estilo;
 		this.frecuencia = frecuencia;
 		this.sugerenciaNotificada = false;
+		this.importancia = importancia;
 	}
 	
 	public String getNombre()

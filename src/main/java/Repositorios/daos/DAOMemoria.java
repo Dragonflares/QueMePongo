@@ -1,8 +1,11 @@
 package Repositorios.daos;
 
+import java.util.Calendar;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import Dominio.UserClasses.Usuario;
 import db.EntidadPersistente;
 
 public class DAOMemoria implements DAO {
@@ -39,5 +42,33 @@ public class DAOMemoria implements DAO {
     @Override
     public void eliminar(Object unObjeto) {
         this.entities.remove(unObjeto);
+    }
+    
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<Usuario> getUsuariosConEventosProximosYSinNotificar()
+    {
+    	return ((List<Usuario>)(List<?>) entities).stream().filter(u -> u.tieneEventosProximos() && u.tieneEventoSinNotificar()).collect(Collectors.toList());
+    }
+    
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<Usuario> getUsuariosConEventosProximosYnotificados()
+    {
+    	return ((List<Usuario>)(List<?>) entities).stream().filter(u -> u.tieneEventosProximos() && !u.tieneEventoSinNotificar()).collect(Collectors.toList());
+    }
+    
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<Usuario> getUsuariosConEventosOcurridoFrecuentemente(Calendar fecha)
+    {
+    	return ((List<Usuario>)(List<?>) entities).stream().filter(u -> u.tieneEventosOcurridoFrecuentemente(fecha)).collect(Collectors.toList());
+    }
+    
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<Usuario> getUsuariosConEventosOcurridos(Calendar fecha)
+    {
+    	return ((List<Usuario>)(List<?>) entities).stream().filter(u -> u.tieneEventosOcurridos(fecha)).collect(Collectors.toList());
     }
 }

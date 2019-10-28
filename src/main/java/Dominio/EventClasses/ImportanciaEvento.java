@@ -1,10 +1,28 @@
 package Dominio.EventClasses;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
-public abstract class ImportanciaEvento {
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import db.EntidadPersistente;
+
+@Entity
+@Table(name = "importanciaEvento")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipoEvento") // "baja", "media" y "alta"
+public abstract class ImportanciaEvento extends EntidadPersistente{
 	public abstract boolean estaProximo(Evento evento);
 	
 	public long diasEntre(Calendar diaMenor, Calendar diaMayor)
@@ -23,8 +41,4 @@ public abstract class ImportanciaEvento {
 		Calendar calendar = new GregorianCalendar(anio, mes-1, dia); 
 		return new Date(calendar.getTimeInMillis());
 	}
-
-	
-	
-	
 }

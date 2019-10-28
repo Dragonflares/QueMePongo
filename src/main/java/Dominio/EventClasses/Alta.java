@@ -2,6 +2,11 @@ package Dominio.EventClasses;
 
 import java.util.Calendar;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("alta")
 public class Alta extends ImportanciaEvento{
 	public boolean estaProximo(Evento evento)
 	{

@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 import Dominio.UserClasses.Usuario;
 import Dominio.WeatherAPIClasses.GestorClimatico;
-import Repositorios.RepoUsuario;
+import Repositorios.factories.FactoryRepositorioUsuario;
 
 public class ActualizarAtuendoPorClimaTask extends TimerTask {
 	
@@ -19,7 +19,7 @@ public class ActualizarAtuendoPorClimaTask extends TimerTask {
 	@Override
 	public void run()
 	{
-		List<Usuario> usuarios = RepoUsuario.getInstance().getUsuariosConEventosProximosYnotificados();
+		List<Usuario> usuarios = FactoryRepositorioUsuario.get().getUsuariosConEventosProximosYnotificados();
 		usuarios.stream().forEach
 		(
 			u -> u.getEventosProximosYnotificados().forEach

@@ -7,7 +7,7 @@ import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 import Dominio.UserClasses.Usuario;
-import Repositorios.RepoUsuario;
+import Repositorios.factories.FactoryRepositorioUsuario;
 
 public class AgregarASinCalificarTask extends TimerTask{
 
@@ -19,7 +19,7 @@ public class AgregarASinCalificarTask extends TimerTask{
 		Calendar ayer = Calendar.getInstance();
 		ayer.add(Calendar.DATE, -1); // le resto un dia a la fecha actual 
 		
-		List<Usuario> usuarios = RepoUsuario.getInstance().getUsuariosConEventosOcurridos(ayer);
+		List<Usuario> usuarios = FactoryRepositorioUsuario.get().getUsuariosConEventosOcurridos(ayer);
 		
 		usuarios.stream().forEach
 		(
@@ -30,7 +30,6 @@ public class AgregarASinCalificarTask extends TimerTask{
 				)
 		);
 	}
-	
 	
 	public void empezar()
 	{

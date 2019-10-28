@@ -6,11 +6,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
-import Dominio.EventClasses.Evento;
 import Dominio.NotificationAPIClasses.NotificacionDataObject;
 import Dominio.NotificationAPIClasses.Notificador;
 import Dominio.UserClasses.Usuario;
-import Repositorios.RepoUsuario;
+import Repositorios.factories.FactoryRepositorioUsuario;
 
 public class NotificarUsuarioTask extends TimerTask{
 	
@@ -19,7 +18,7 @@ public class NotificarUsuarioTask extends TimerTask{
 	
 	@Override
 	public void run() { 
-		List<Usuario> usuarios = RepoUsuario.getInstance().getUsuariosConEventosProximosYSinNotificar();
+		List<Usuario> usuarios = FactoryRepositorioUsuario.get().getUsuariosConEventosProximosYSinNotificar();
 				
 		
 		if(!usuarios.isEmpty())
@@ -45,8 +44,6 @@ public class NotificarUsuarioTask extends TimerTask{
 					)
 			);
 	}
-	
-	
 			
 	public void empezar()
 	{

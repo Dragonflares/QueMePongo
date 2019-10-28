@@ -7,7 +7,7 @@ import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 import Dominio.UserClasses.Usuario;
-import Repositorios.RepoUsuario;
+import Repositorios.factories.FactoryRepositorioUsuario;
 
 public class ActualizarFechaEventosTask extends TimerTask{
 
@@ -19,7 +19,7 @@ public class ActualizarFechaEventosTask extends TimerTask{
 		Calendar ayer = Calendar.getInstance();
 		ayer.add(Calendar.DATE, -1); // le resto un dia a la fecha actual 
 		
-		List<Usuario> usuarios = RepoUsuario.getInstance().getUsuariosConEventosOcurridoFrecuentemente(ayer);
+		List<Usuario> usuarios = FactoryRepositorioUsuario.get().getUsuariosConEventosOcurridoFrecuentemente(ayer);
 		
 		usuarios.stream().forEach
 		(

@@ -32,7 +32,7 @@ public class Usuario extends EntidadPersistente{
 	private String username;
 	
 	@ManyToOne
-    @JoinColumn(name = "aporte_id", referencedColumnName = "id")
+    @JoinColumn(name = "tipo_id", referencedColumnName = "id")
 	private TipoDeUsuario tipoDeCuenta;
 	
 	@ManyToMany(cascade = CascadeType.ALL)

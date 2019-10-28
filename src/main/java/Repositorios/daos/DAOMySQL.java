@@ -56,6 +56,7 @@ public class DAOMySQL implements DAO {
     {
     	return model.buscarPorQuery("FROM Usuario u WHERE "); // TODO
     }
+    
     @Override
     public List<Usuario> getUsuariosConEventosOcurridos(Calendar fecha)
     {

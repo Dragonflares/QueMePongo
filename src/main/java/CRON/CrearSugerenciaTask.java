@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.UserClasses.Usuario;
-import Repositorios.RepoUsuario;
+import Repositorios.factories.FactoryRepositorioUsuario;
 
 class CrearSugerenciaTask extends TimerTask{
 
@@ -17,7 +17,7 @@ class CrearSugerenciaTask extends TimerTask{
 	@Override
 	public void run()
 	{
-		List<Usuario> usuarios = RepoUsuario.getInstance().getUsuariosConEventosProximosYSinNotificar();
+		List<Usuario> usuarios = FactoryRepositorioUsuario.get().getUsuariosConEventosProximosYSinNotificar();
 		usuarios.stream().forEach
 		(
 				u -> u.getEventosProximosYsinNotificar().forEach
