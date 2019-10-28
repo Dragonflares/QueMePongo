@@ -26,10 +26,6 @@ public class Evento extends EntidadPersistente{
 	@Column(name = "nombre")
 	private String nombre;
 	
-	@ManyToOne
-	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
-	private Usuario creador;
-	
 	@Column(name = "fecha")
 	private Calendar fecha;
 	
@@ -38,6 +34,10 @@ public class Evento extends EntidadPersistente{
 	
 	@Enumerated(EnumType.ORDINAL)
 	private Estilo estilo;
+	
+	@ManyToOne
+	@JoinColumn(name = "creador_id", referencedColumnName = "id", insertable = true)
+	private Usuario creador;
 	
 	@Transient
 	private Frecuencia frecuencia; 
@@ -128,5 +128,10 @@ public class Evento extends EntidadPersistente{
 	public void setSeNotificoUltimaSugerencia(Boolean bool)
 	{
 		this.sugerenciaNotificada = bool;
+	}
+	
+	public void setCreador(Usuario creador)
+	{
+		this.creador = creador;
 	}
 }

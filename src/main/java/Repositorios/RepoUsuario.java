@@ -25,20 +25,22 @@ public class RepoUsuario extends Repositorio{
 	
 	public List<Usuario> getUsuariosConEventosProximosYSinNotificar()
 	{
-		return usuarios.stream().filter(u -> u.tieneEventosProximos() && u.tieneEventoSinNotificar()).collect(Collectors.toList());
+		return this.dao.getUsuariosConEventosProximosYSinNotificar();
 	}
 	
 	public List<Usuario> getUsuariosConEventosProximosYnotificados()
 	{
-		return usuarios.stream().filter(u -> u.tieneEventosProximos() && !u.tieneEventoSinNotificar()).collect(Collectors.toList());
+		return this.dao.getUsuariosConEventosProximosYnotificados();
 	}
 	
 	public List<Usuario> getUsuariosConEventosOcurridoFrecuentemente(Calendar fecha)
 	{	
+		// este no delega al dao porque segun la entrega 5 los repetitivos quedarán por ahora fuera de esta versión
 		return usuarios.stream().filter(u -> u.tieneEventosOcurridoFrecuentemente(fecha)).collect(Collectors.toList());
 	}
 	
-	public List<Usuario> getUsuariosConEventosOcurridos(Calendar fecha){	
-		return usuarios.stream().filter(u -> u.tieneEventosOcurridos(fecha)).collect(Collectors.toList());
+	public List<Usuario> getUsuariosConEventosOcurridos(Calendar fecha)
+	{
+		return this.dao.getUsuariosConEventosOcurridos(fecha);
 	}
 }

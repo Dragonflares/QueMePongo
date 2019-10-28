@@ -2,7 +2,8 @@ package Models;
 
 import java.util.List;
 
-import Dominio.ClothingClasses.TipoDeRopa;
+import org.hibernate.Query;
+
 import Dominio.UserClasses.Usuario;
 import db.EntityManagerHelper;
 

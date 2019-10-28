@@ -13,6 +13,5 @@ public interface DAO {
     public void eliminar(Object unObjeto);
     public List<Usuario> getUsuariosConEventosProximosYSinNotificar();
     public List<Usuario> getUsuariosConEventosProximosYnotificados();
-    public List<Usuario> getUsuariosConEventosOcurridoFrecuentemente(Calendar fecha);
     public List<Usuario> getUsuariosConEventosOcurridos(Calendar fecha);
 }

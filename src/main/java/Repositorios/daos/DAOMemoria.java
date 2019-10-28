@@ -60,13 +60,6 @@ public class DAOMemoria implements DAO {
     
     @SuppressWarnings("unchecked")
 	@Override
-    public List<Usuario> getUsuariosConEventosOcurridoFrecuentemente(Calendar fecha)
-    {
-    	return ((List<Usuario>)(List<?>) entities).stream().filter(u -> u.tieneEventosOcurridoFrecuentemente(fecha)).collect(Collectors.toList());
-    }
-    
-    @SuppressWarnings("unchecked")
-	@Override
     public List<Usuario> getUsuariosConEventosOcurridos(Calendar fecha)
     {
     	return ((List<Usuario>)(List<?>) entities).stream().filter(u -> u.tieneEventosOcurridos(fecha)).collect(Collectors.toList());
