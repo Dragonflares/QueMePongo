@@ -118,8 +118,6 @@ public class PersistenciaTest{
        List<Usuario> usuarios = FactoryRepositorioUsuario.get().getUsuariosConEventosProximosYSinNotificar();
 	   
        Assert.assertEquals(2, usuarios.size());
-	   
-	   //List<Usuario> usuarios = (List<Usuario>) EntityManagerHelper.createQuery("e.creador FROM Evento e").getResultList();
    }
    /*
    @Test

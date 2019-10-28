@@ -4,11 +4,6 @@ package Repositorios.daos;
 import java.util.Calendar;
 import java.util.List;
 
-import org.hibernate.Query; // antes hacia import xjava.query
-import org.hibernate.Session;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
 import Dominio.UserClasses.Usuario;
 import Models.Model;
@@ -50,16 +45,18 @@ public class DAOMySQL implements DAO {
     {
     	
     	String query = "SELECT u FROM Usuario u\r\n" +
-    "JOIN Evento e WHERE i.id = e.creador.id \r\n";// + 
-    //"JOIN Importanciaevento i \r\n" + 
-	//"WHERE e.sugerenciaNotificada = 0 ";//+
-	/* "AND\r\n" + 
-	"	CASE\r\n" + 
-	"		WHEN i.tipoEvento = 'baja' THEN (SELECT (DATEDIFF((SELECT fecha FROM quemepongo.evento ev WHERE ev.id = e.id), now()) <= 1))\r\n" + 
-	"        WHEN i.tipoEvento = 'media' THEN (SELECT (DATEDIFF((SELECT fecha FROM quemepongo.evento ev WHERE ev.id = e.id), now()) <= 7))\r\n" + 
-	"        WHEN i.tipoEvento = 'alta' THEN (SELECT (DATEDIFF((SELECT fecha FROM quemepongo.evento ev WHERE ev.id = e.id), now()) <= 31))\r\n" + 
-	"    END\r\n" ;
-    	*/		
+    "INNER JOIN u.eventos e \r\n"  + 
+    "JOIN e.importancia i \r\n" + 
+	"WHERE e.sugerenciaNotificada = 0 "+
+	"AND\r\n" + 
+	"	(CASE WHEN i.class = 'Baja' THEN (SELECT (DATEDIFF((SELECT fecha FROM Evento ev WHERE ev.id = e.id), now()) <= 1))\r\n" + 
+	"       ELSE ("+
+	"			(CASE WHEN i.class = 'Media' THEN (SELECT (DATEDIFF((SELECT fecha FROM Evento ev WHERE ev.id = e.id), now()) <= 7))\r\n" + 
+	"       		ELSE ( " +
+	"					(CASE WHEN i.class = 'Alta' THEN (SELECT (DATEDIFF((SELECT fecha FROM Evento ev WHERE ev.id = e.id), now()) <= 31)) \r\n"+ 
+	"						ELSE FALSE END) = TRUE) END) = TRUE \r\n"+
+	"       )END) = TRUE\r\n" ;
+    			
     /*
     			"WHERE exists\r\n" + 
     			"(\r\n" + 
