@@ -15,12 +15,14 @@ public class DAOMemoria implements DAO {
         this.entities = entidades;
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public <T> List<T> buscarTodos() {
         return (List<T>) this.entities;
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public <T> T buscar(int id) {
         return (T) this.entities
                 .stream()

@@ -72,7 +72,7 @@ public class TestUsuarios {
 	}
 	
 	@Test
-	public void tieneMásCalorArriba() {
+	public void tieneMasCalorArriba() {
 		assertTrue(0 < usuario1.getOffsetSuperior());
 	}
 	
