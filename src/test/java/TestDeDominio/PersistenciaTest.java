@@ -86,7 +86,7 @@ public class PersistenciaTest{
         
         List<Usuario> usuarios = FactoryRepositorioUsuario.get().buscarTodos();
         
-        Assert.assertEquals(5, usuarios.size());
+        Assert.assertEquals(6, usuarios.size());
     }
     
    @Test
@@ -123,7 +123,6 @@ public class PersistenciaTest{
    @Test
    public void usuariosConEventosProximosYnotificados()
    {
-	   // TODO
 	   Usuario ivan = new Usuario();
 	   ivan.setUsername("Ivan");
 	   Evento eventoNotificado = new Evento("cumpleanios", Calendar.getInstance(), "calle 123", Estilo.CASUAL, null, new Baja());
@@ -134,7 +133,7 @@ public class PersistenciaTest{
        
        List<Usuario> usuarios = FactoryRepositorioUsuario.get().getUsuariosConEventosProximosYnotificados();
 	   
-       Assert.assertEquals(2, usuarios.size());
+       Assert.assertEquals(1, usuarios.size());
    }
    
    @Test
