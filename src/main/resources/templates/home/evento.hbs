@@ -1,90 +1,59 @@
 {{#partial "contenido"}}
-  <div class="py-5">
-    <div class="container">
+
+  
+	<div class="container"> 
+	
+  		<div class="row">
+  			<ul class="nav nav-pills">
+            	<li class="nav-item"> <a class="nav-link active" href="#">Guardarropas</a> </li>
+            	<li class="nav-item"> <a class="nav-link" href="/admin/clientes/{{id}}/dispositivos?tipo=estandar" >Eventos</a> </li>
+        	</ul>
+		</div>
+			
+					
+	</div>
+	
+	<div class="container">
       <div class="row">
-        <div class="col-md-12">
-          <ul class="nav nav-pills">
-            <li        class="nav-item"> <a href="/admin" class="nav-link"> <i class="fa fa-home fa-home"></i>&nbsp;Home</a> </li>
-           
-           
-           
-            <li class="nav-item"> <a class="nav-link active" href="#">Inteligente</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="/admin/clientes/{{id}}/dispositivos?tipo=estandar" >Estandar</a> </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
- 
-  <div class="py-3">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-5 p-4" style="	box-shadow: 0px 0px 4px  black;	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url(https://pingendo.com/site-assets/cover.jpg);	background-position: top left, top left;	background-size: 100%, 100%;	background-repeat: repeat, repeat;"></div>
-        <div class="col-md-7 p-4">
-          <h3 class="mb-3">Editar evento</h3>
+        <div class="col-md-12 p-4" style="	box-shadow: 0px 0px 4px  black;	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url(https://pingendo.com/site-assets/cover.jpg);	background-position: top left, top left;	background-size: 100%, 100%;	background-repeat: repeat, repeat;"></div>
+	  </div>
+	</div>
+
+	<div class="form-group">
+		<h3 class="mb-3">Crear un nuevo evento</h3>
          
-         
-         
-          <form      action="/admin/clientes/{{id}}/dispositivos" method="post"     >
+          <form action="/clientes/{{id}}/eventos" method="post"     >
             <div class="form-row">
               <div class="form-group col-md-12">
-              <input type="hidden" name="nombre" >
+              	<input type="text" name="nombreEvento" class="form-control" placeholder="Nombre">
+              </div>
               
-              <input type="text" name="nombreEvento" class="form-control" placeholder="Nombre">
+              <div class="form-group col-md-12">
+              	<input type="text" name="estiloEvento" class="form-control" placeholder="Estilo">
+              </div>
               
+              <div class="form-group col-md-12">
+              	<input type="text" name="fechaEvento" class="form-control" placeholder="Fecha">
+              </div>
               
+              <div class="form-group col-md-12">
+              	<input type="text" name="horaEvento" class="form-control" placeholder="Hora">
+              </div>
+              
+              <div class="form-group col-md-12">
+              	<input type="text" name="direccionEvento" class="form-control" placeholder="Frecuencia">
               </div>
               
             </div>
             
-            <div class="form-group col-md-12">
-              <input type="hidden" name="estilo">
-              
-              <input type="text" name="estiloEvento" class="form-control" placeholder="Estilo">
-              
-              
-              </div>
-              
-             <div class="form-group col-md-12">
-              <input type="hidden" name="fecha">
-              
-              <input type="text" name="estiloEvento" class="form-control" placeholder="Fecha">
-              
-              
-              </div>
-              
-              <div class="form-group col-md-12">
-              <input type="hidden" name="hora" >
-              
-              <input type="text" name="horaEvento" class="form-control" placeholder="Hora">
-              
-              
-              </div>
-              
-              <div class="form-group col-md-12">
-              <input type="hidden" name="direccion">
-              
-              <input type="text" name="direccionEvento" class="form-control" placeholder="Estilo">
-              
-              
-              </div>
-              
-             
-              
-              
-              </div>
-            
           	
-          	<button type="submit" class="btn btn-primary">Aceptar
-          		</button>
+          	<button type="submit" class="btn btn-primary">Agregar</button>
+          	<button type="submit" class="btn btn-primary" onclick="location.href='/clientes/{{id}}'" >Cancelar</button>
           
-          </form> 
-          		<button type="submit" class="btn btn-primary" onclick="location.href='/admin/Clientes/{{id}}'" >Cancelar</button>
-          	
-        </div>
-      </div>
-    </div>
-  </div>
+          </form>
+	</div>	
+		
+		
   
 {{/partial}}
 
