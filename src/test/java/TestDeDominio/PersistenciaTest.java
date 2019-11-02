@@ -118,14 +118,12 @@ public class PersistenciaTest{
        List<Usuario> usuarios = FactoryRepositorioUsuario.get().getUsuariosConEventosProximosYSinNotificar();
 	   
        Assert.assertEquals(2, usuarios.size());
-	   
-	   //List<Usuario> usuarios = (List<Usuario>) EntityManagerHelper.createQuery("e.creador FROM Evento e").getResultList();
    }
-   /*
+   
    @Test
    public void usuariosConEventosProximosYnotificados()
    {
-	   // meli y giuli son usuarios con eventos proximos
+	   // TODO
 	   Usuario ivan = new Usuario();
 	   ivan.setUsername("Ivan");
 	   Evento eventoNotificado = new Evento("cumpleanios", Calendar.getInstance(), "calle 123", Estilo.CASUAL, null, new Baja());
@@ -137,22 +135,21 @@ public class PersistenciaTest{
        List<Usuario> usuarios = FactoryRepositorioUsuario.get().getUsuariosConEventosProximosYnotificados();
 	   
        Assert.assertEquals(2, usuarios.size());
-   }*/
-   /*
+   }
+   
    @Test
-   public void usuariosConEventosProximosYnotificados()
+   public void usuariosConOcurridos()
    {
-	   // meli y giuli son usuarios con eventos proximos
+	   // TODO
 	   Usuario ivan = new Usuario();
-	   ivan.setUsername("Ivan");
+	   ivan.setUsername("Ivancito");
 	   Evento eventoNotificado = new Evento("cumpleanios", Calendar.getInstance(), "calle 123", Estilo.CASUAL, null, new Baja());
-	   eventoNotificado.setSeNotificoUltimaSugerencia(true);
 	   ivan.agregarEvento(eventoNotificado);
 	   
 	   FactoryRepositorioUsuario.get().agregar(ivan);
        
-       List<Usuario> usuarios = FactoryRepositorioUsuario.get().getUsuariosConEventosProximosYnotificados();
+       List<Usuario> usuarios = FactoryRepositorioUsuario.get().getUsuariosConEventosOcurridos(Calendar.getInstance());
 	   
        Assert.assertEquals(2, usuarios.size());
-   }*/
+   }
 }
