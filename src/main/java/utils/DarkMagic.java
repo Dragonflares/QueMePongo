@@ -1,8 +1,8 @@
-package Spark.utils;
-
-import java.lang.reflect.Field;
+package utils;
 
 import org.apache.commons.lang3.reflect.FieldUtils;
+
+import java.lang.reflect.Field;
 
 public class DarkMagic {
 
