@@ -4,6 +4,7 @@ package server;
 import java.util.HashSet;
 import java.util.Set;
 
+import controllers.HomeController;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import utils.BooleanHelper;
