@@ -15,7 +15,7 @@ public class Server {
 		if (processBuilder.environment().get("9000") != null) {
 			return Integer.parseInt(processBuilder.environment().get("9000"));
 		}
-		return 9000; //return default port if saprk-port isn't set (i.e. on localhost)
+		return 9003; //return default port if saprk-port isn't set (i.e. on localhost)
 	}
 
 
