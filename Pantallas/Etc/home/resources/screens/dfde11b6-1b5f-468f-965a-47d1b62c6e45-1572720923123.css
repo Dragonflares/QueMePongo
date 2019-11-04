@@ -1,0 +1,15 @@
+#s-dfde11b6-1b5f-468f-965a-47d1b62c6e45 > #backgroundBox {
+  background-color: transparent;
+  background-image: none;
+  position: absolute;
+}
+#s-dfde11b6-1b5f-468f-965a-47d1b62c6e45 > #alignmentBox {
+  position: relative;
+  max-width: 1024px;
+  max-height: 768px;
+}
+#s-dfde11b6-1b5f-468f-965a-47d1b62c6e45 > #loadMark {
+  width: 1px;
+  visibility: hidden;
+  display: none;
+}
