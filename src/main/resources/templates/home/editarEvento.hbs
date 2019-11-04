@@ -1,0 +1,78 @@
+{{#partial "contenido"}}
+
+	
+	<div class="form-row">
+		<h3 class="mb-3">Editar el evento</h3>
+        <form action="/clientes/{{id}}/eventos" method="post">
+        <div class="form-group">
+        	<input type="text" name="nombreEvento" class="form-control" placeholder="Nombre" required>
+             
+            <br/>
+            
+           <label for="estilo"> <strong> <font size="3"> Estilo: </font> </strong> &nbsp &nbsp </label>
+            <br>
+            <select class="input-select" name="estilo">
+               <option>Formal</option>
+               <option>Casual</option>
+               <option>Deportivo</option>
+               <option>Elegante</option>
+               <option>Elegante Sport</option>
+            </select>
+            
+            <br/><br/>
+                
+            <div class="col-sm-6">
+              	<div class='input-group date' id='datetimepicker6'>
+	                <input type='text' class="form-control" />
+	                <span class="input-group-addon">
+	                    <span class="glyphicon glyphicon-calendar"></span>
+	                </span>
+	            </div>
+            </div>
+            
+            <div class="col-sm-6">
+              	<div class='input-group date' id='datetimepicker7'>
+	                <input type='text' class="form-control" />
+	                <span class="input-group-addon">
+	                    <span class="glyphicon glyphicon-calendar"></span>
+	                </span>
+	            </div>
+            </div>
+            
+	       	<script type="text/javascript">
+			    $(function () {
+			        $('#datetimepicker6').datetimepicker();
+			        $('#datetimepicker7').datetimepicker({
+			            useCurrent: false //Important! See issue #1075
+			        });
+			        $("#datetimepicker6").on("dp.change", function (e) {
+			            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+			        });
+			        $("#datetimepicker7").on("dp.change", function (e) {
+			            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+			        });
+	    		});
+			</script>
+			
+  		</div>
+  		
+  		<br/><br/>
+  		
+  		<div class="col-sm-6">
+              	<button type="submit" class="btn btn-secondary" onclick="location.href='/clientes/{{id}}'" >Cancelar</button>
+        </div>	
+  		
+  		<div class="col-sm-6">
+              	<button type="submit" class="btn btn-primary" formmethod="post">
+					Agregar
+				</button>
+		</div>
+	</form>
+	</div>
+		
+
+
+	
+{{/partial}}
+
+{{>layout.hbs}}
