@@ -1,7 +1,47 @@
 {{#partial "contenido"}}
 
-<div><p>
-<form>
+<style>
+header{
+  font-family: Arial, Helvetica, sans-serif;
+  background-color:  #ffcf7a;
+  position: center;
+  width: 100%;
+  padding: 10px;
+  height: 20xp;
+  box-shadow: 3px 5px 11px 1px rgba(0,0,0,0.75);
+  border: 5px solid white;
+}
+.button {
+font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffcf7a;
+  color: black;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+div {
+font-family: Arial, Helvetica, sans-serif;
+  background-color:  #e7e7e7;
+  width: 50%;
+  border: 5px solid #ffcf7a;
+  padding: 2%;
+  margin: 8%;
+}
+body{
+  background-image: url(https://images.clarin.com/2019/04/03/raz35kphT_1256x620__1.jpg);
+}
+	
+</style>
+
+<header>
+  <h1>Nueva Prenda</h1>
+</header>
+<p></p>
+
 <p>
 <label>Nombre</label></p>
 <p>
@@ -43,7 +83,7 @@
      </select> 
  </p>
 
- <span>Insertar Imagen</span>
+<label>Insertar Imagen</label></p>
 <p></p>
  <input type="file" class="custom-file-input" id="inputGroupFile01"
  aria-describedby="inputGroupFileAddon01">
@@ -52,9 +92,7 @@
 <button class="button">Cancelar</button>
 <button class="button"> Aceptar </button>
 
-</form>
 
-</div>
+
 {{/partial}}
-
 {{>layout.hbs}}
