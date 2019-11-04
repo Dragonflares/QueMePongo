@@ -1,60 +1,74 @@
 {{#partial "contenido"}}
 
-  
-	<div class="container"> 
-	
-  		<div class="row">
-  			<ul class="nav nav-pills">
-            	<li class="nav-item"> <a class="nav-link active" href="#">Guardarropas</a> </li>
-            	<li class="nav-item"> <a class="nav-link" href="/admin/clientes/{{id}}/dispositivos?tipo=estandar" >Eventos</a> </li>
-        	</ul>
-		</div>
-			
-					
-	</div>
-	
-	<div class="container">
-      <div class="row">
-        <div class="col-md-12 p-4" style="	box-shadow: 0px 0px 4px  black;	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url(https://pingendo.com/site-assets/cover.jpg);	background-position: top left, top left;	background-size: 100%, 100%;	background-repeat: repeat, repeat;"></div>
-	  </div>
-	</div>
-
-	<div class="form-group">
+  <div class="form-group">
 		<h3 class="mb-3">Crear un nuevo evento</h3>
          
           <form action="/clientes/{{id}}/eventos" method="post"     >
             <div class="form-row">
-              <div class="form-group col-md-12">
-              	<input type="text" name="nombreEvento" class="form-control" placeholder="Nombre">
+            	<div class="form-group col-md-12">
+              		<input type="text" name="nombreEvento" class="form-control" placeholder="Nombre" required>
+              		
+              		<br/>
+              		
+              		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+					<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+              		
+              		<label for="estilo"> <strong> <font size="3"> Estilo: </font> </strong> &nbsp &nbsp </label>
+	                <div class="dropdown">
+					  <button class="btn btn-default dropdown-toggle" type="button" id="estilo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					    Estilo
+					    <span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu" aria-labelledby="estilo">
+					    <li><a href="#">Formal</a></li>
+					    <li><a href="#">Casual</a></li>
+					    <li><a href="#">Elegante</a></li>
+					    <li><a href="#">Elegante Sport</a></li>
+					  </ul>
+	               
+	                <br/><br/>
+	                
+	                <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+					<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+					<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+					<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+
+					<label for="fechas"> <strong> <font size="3"> Rango de fechas: </font> </strong> &nbsp &nbsp </label>
+					<input type="text" name="fechas" required/>
+	
+					<script>
+						$(function() {
+	 						 $('input[name="fechas"]').daterangepicker({
+	    						timePicker: true,
+	    						startDate: moment().startOf('hour'),
+	    						endDate: moment().startOf('hour').add(32, 'hour'),
+	    						locale: {
+	    							format: 'MM/DD/YYYY hh:mm A'
+	    						}
+	    					});
+					});
+					</script>
+					
+					<br/><br/>
+            	</div>
+              
+              <div class="col-sm-6">
+              	<button type="submit" class="btn btn-primary" formmethod="post">
+					Agregar
+				</button>
               </div>
               
-              <div class="form-group col-md-12">
-              	<input type="text" name="estiloEvento" class="form-control" placeholder="Estilo">
+              <div class="col-sm-6">
+              	<button type="submit" class="btn btn-secondary" onclick="location.href='/clientes/{{id}}'" >Cancelar</button>
               </div>
               
-              <div class="form-group col-md-12">
-              	<input type="text" name="fechaEvento" class="form-control" placeholder="Fecha">
-              </div>
-              
-              <div class="form-group col-md-12">
-              	<input type="text" name="horaEvento" class="form-control" placeholder="Hora">
-              </div>
-              
-              <div class="form-group col-md-12">
-              	<input type="text" name="direccionEvento" class="form-control" placeholder="Frecuencia">
-              </div>
-              
-            </div>
-            
-          	
-          	<button type="submit" class="btn btn-primary">Agregar</button>
-          	<button type="submit" class="btn btn-primary" onclick="location.href='/clientes/{{id}}'" >Cancelar</button>
-          
+           	</div>
+          	  
           </form>
 	</div>	
-		
-		
-  
+	
 {{/partial}}
 
 {{>layout.hbs}}
