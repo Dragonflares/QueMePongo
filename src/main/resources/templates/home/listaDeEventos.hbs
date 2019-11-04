@@ -1,0 +1,39 @@
+{{#partial "contenido"}}
+        <header>
+            <h1>Que me pongo? - Eventos</h1>
+
+        </header>
+
+        <div><p>
+            <h2>Eventos <button class="button">Nuevo evento</button><br/></h2> </p> 
+            <form>
+                <table id="t01">
+                    <tr>
+                      <th>Evento</th> 
+                      <th>Estilo</th>
+                      <th>Fecha inicio</th>
+                      <th>Hora inicio</th>
+                      <th>Fecha fin</th>
+                      <th>Hora fin</th>
+                      <th>Frecuencia</th>
+                      <th>Direccion</th>
+                      <th> </th>
+                    </tr>
+                    <tr>
+                      <td>Cumple de 15</td>
+                      <td>Elegante</td>
+                      <td><input type="date" readonly></td>
+                      <td>21:30</td>
+                      <td><input type="date" readonly></td>
+                      <td>06:00</td>
+                      <td>Diario</td>
+                      <td>Medrano 123</td>
+                      <td><button>Editar</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    
+{{/partial}}
+
+{{>layout.hbs}}	
