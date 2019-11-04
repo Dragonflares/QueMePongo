@@ -4,9 +4,11 @@ package Repositorios.daos;
 import java.util.Calendar;
 import java.util.List;
 
-
+import Dominio.Estilish.Estilo;
 import Dominio.UserClasses.Usuario;
+import Dominio.WardrobeClasses.Guardarropa;
 import Models.Model;
+import db.EntityManagerHelper;
 
 public class DAOMySQL implements DAO {
     private Model model;
@@ -24,6 +26,8 @@ public class DAOMySQL implements DAO {
     public <T> T buscar(int id) {
         return this.model.buscar(id);
     }
+    
+    
 
     @Override
     public void agregar(Object unObjeto) {
@@ -80,5 +84,28 @@ public class DAOMySQL implements DAO {
 
 	return model.buscarPorQuery(query);
     }
+    
+    @Override
+    public boolean existeUsuario(String username, String password) {
+    	Usuario usuario = this.buscarUsuario(username, password);
+		if (usuario == null) {
+			// TODO tiene pinta que no esta bueno esto
+			Usuario usuarioNuevo = new Usuario(username, password);
+			usuarioNuevo.agregarGuardarropa(new Guardarropa(usuarioNuevo, Estilo.CASUAL));
+			usuarioNuevo.agregarGuardarropa(new Guardarropa(usuarioNuevo, Estilo.FORMAL));
+			try {
+				this.agregar(usuarioNuevo);
+			} catch (Exception x) {
+				return false;
+			}
+		}
+		return true;
+    }
+
+	@Override
+	public Usuario buscarUsuario(String username, String password) {
+		return  EntityManagerHelper.getEntityManager().createQuery("from Usuario c where c.usuario = :u and c.contraseña = :p", Usuario.class)
+    			.setParameter("u", username).setParameter("p", password).getSingleResult();
+	}
 
 }

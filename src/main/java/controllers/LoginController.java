@@ -1,64 +1,43 @@
 package controllers;
 
-import Dominio.UserClasses.VerificarUsuario;
+import Dominio.UserClasses.Usuario;
+import Repositorios.factories.FactoryRepositorioUsuario;
+
+import server.Cifrado;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
-import utils.RequestUtil;
-import spark.Session;
+import spark.Spark;
 
 public class LoginController {
 	
-	public static ModelAndView loginFailure(Request req, Response res) {
-		
-		return new ModelAndView(null,"/home/errorLogin.hbs");
+	public static ModelAndView validarLogin(Request req, Response res) {
+		if (req.session().attribute("username") == null) {
+			res.redirect("home/loginQmp.hbs");
+			Spark.halt();
+		}
+		return null;
 	}
-	
-	public static ModelAndView adminHome(Request req, Response res)
-	{
-		return new ModelAndView(null,"/admin/adminBase.hbs");
-	}
-	
-	public static ModelAndView userHome(Request req, Response res)
-	{
-		return new ModelAndView(null,"/home/usuario.hbs");
-	}
-	
-    public static Void login(Request req, Response res) {
-    	
-        if (VerificarUsuario.verificar(RequestUtil.getQueryUsername(req), RequestUtil.getQueryPassword(req)))
-        {	
-        	if(VerificarUsuario.verificar(RequestUtil.getQueryUsername(req), RequestUtil.getQueryPassword(req))) //validar por si el usuario se encuentra en la bd
-        	{	
-        		Session session = req.session(true);
-        		session.attribute("currentUser", req.queryParams("usuario"));
-        		session.attribute("role", "user");
-        		res.redirect("/usuario");
-        	}
-        	
-        	else
-        	{	
-        		Session session = req.session(true);
-        		session.attribute("currentUser", req.queryParams("usuario"));
-        		session.attribute("role", "admin");
-            	res.redirect("/admin");
-        	}
-        }
-        
-        else
-            {
-                res.redirect("/loginFailure");
-            }
-        
-        return null;
-    }
 
-    public static Void logout(Request req, Response res) {
-        Session session = req.session(true);
-        session.invalidate();
-        req.session().removeAttribute("currentUser");
-        req.session().removeAttribute("role");
-        res.redirect("/");
-        return null;
-    }
+	public static ModelAndView init(Request req, Response res) {
+		return new ModelAndView(null, "home/loginQmp.hbs");
+	}
+
+	public static ModelAndView processLogin(Request req, Response res) {
+		String username = req.queryParams("username");
+		String password = req.queryParams("password");
+		password = Cifrado.Encrypt(req.queryParams("password"));
+		if (!FactoryRepositorioUsuario.get().existeUsuario(username, password)) {
+			res.status(400);
+			res.redirect("home/loginQmp.hbs");
+		} else {
+			Usuario usuario = FactoryRepositorioUsuario.get().buscarUsuario(password, username);
+			res.status(200);
+			req.session().attribute("username", username);
+			
+			UserController.usuario = FactoryRepositorioUsuario.get().buscar(usuario.getId());
+			res.redirect("/user");
+		}
+		return null;
+	}
 }

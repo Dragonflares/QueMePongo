@@ -2,6 +2,7 @@ package Repositorios.daos;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Optional;
 
 import Dominio.UserClasses.Usuario;
 
@@ -14,4 +15,6 @@ public interface DAO {
     public List<Usuario> getUsuariosConEventosProximosYSinNotificar();
     public List<Usuario> getUsuariosConEventosProximosYnotificados();
     public List<Usuario> getUsuariosConEventosOcurridos(Calendar fecha);
+    public boolean existeUsuario(String username, String password);
+    public Usuario buscarUsuario(String username, String password);
 }

@@ -31,6 +31,9 @@ public class Usuario extends EntidadPersistente{
 	@Column(name = "username")
 	private String username;
 	
+	@Column(name = "password")
+	private String password;
+	
 	@ManyToOne
     @JoinColumn(name = "tipo_id", referencedColumnName = "id")
 	private TipoDeUsuario tipoDeCuenta;
@@ -65,6 +68,16 @@ public class Usuario extends EntidadPersistente{
 	private List<Atuendo> sugerenciasQueFaltanCalificar = new ArrayList<>();
 	
 	public Usuario() {}
+	public Usuario(String username, String password) {
+		this.username = username;
+		this.password = password;
+		this.guardarropas = new ArrayList<Guardarropa>();
+		this.eventos = new ArrayList<Evento>();
+		this.offsetInferior = 0;
+		this.offsetSuperior = 0;
+		this.setUltimoAtuendo(null);
+		this.tipoDeCuenta = new Gratuito();
+	}
 	
 	public Usuario(String username, String mail, String numeroCelular){
 		this.username = username;
@@ -269,5 +282,10 @@ public class Usuario extends EntidadPersistente{
 
 	public void eliminarEvento(Evento evento) {
 		this.eventos.remove(evento);
+	}
+	
+	public String getPassword()
+	{
+		return this.password;
 	}
 }

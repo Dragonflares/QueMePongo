@@ -2,7 +2,13 @@ package Repositorios;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
+
+import javax.persistence.EntityManager;
+
+import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import Dominio.UserClasses.Usuario;
 import Repositorios.daos.DAO;
@@ -42,5 +48,14 @@ public class RepoUsuario extends Repositorio{
 	public List<Usuario> getUsuariosConEventosOcurridos(Calendar fecha)
 	{
 		return this.dao.getUsuariosConEventosOcurridos(fecha);
+	}
+	
+	public boolean existeUsuario(String username, String password) {
+		return this.dao.existeUsuario(username, password);
+	}
+	
+	public Usuario buscarUsuario(String username, String password)
+	{
+		return this.dao.buscarUsuario(username, password);
 	}
 }

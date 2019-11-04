@@ -4,21 +4,14 @@ package server;
 import java.util.HashSet;
 import java.util.Set;
 
-import controllers.HomeController;
+import controllers.LoginController;
+import controllers.UserController;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
-import utils.BooleanHelper;
-import utils.HandlebarsTemplateEngineBuilder;
-import utils.SessionHandler;
 
 public class Router {
-	
-	static Set<String> publicRoutes = new HashSet<String>();
-	
-	public static Boolean isPublic(String route)
-	{
-		return publicRoutes.contains(route);
-	}
+
+static Set<String> publicRoutes = new HashSet<String>();
 	
 	private static void setPublicRoutes(Set<String> publicRoutes)
 	{	
@@ -27,22 +20,27 @@ public class Router {
 		publicRoutes.add("/loginFailure");
 		publicRoutes.add("/logout");
 	}
-
+	
 	public static void configure() {
-		HandlebarsTemplateEngine engine = HandlebarsTemplateEngineBuilder
-				.create()
-				.withDefaultHelpers()
-				.withHelper("isTrue", BooleanHelper.isTrue)
-				.build();
+		HandlebarsTemplateEngine transformer = new HandlebarsTemplateEngine();
+		
 		
 		Spark.staticFiles.location("/public");
 		setPublicRoutes(publicRoutes);
-		
-		Spark.before(SessionHandler.allowed());
-		
-		Spark.get("/", HomeController::showLoginForm, engine);
 
+		Spark.before("/user", LoginController::validarLogin);
+
+		Spark.get("/", LoginController::init, transformer); 
+
+		Spark.post("/login", LoginController::processLogin);
+		Spark.path("/user", () -> { 
+		Spark.get("", UserController::indexViewDatosGenerales, transformer);	
+		Spark.get("/guardarropas/:idGuardarropa", UserController::indexViewDatosDeUnGuardarropa, transformer);	
+		Spark.get("/guardarropas/:idGuardarropa/prendas", UserController::indexViewAgregarPrenda, transformer);	
+		Spark.post("/guardarropas/:idGuardarropa/prendas", UserController::registrarPrenda);
+		});
 		
+		Spark.get("/out", UserController::logOut, transformer);
 	}
 
 }

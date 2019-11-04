@@ -42,6 +42,10 @@ public class Prenda extends EntidadPersistente{
 	@Column(name = "nombrePrenda")
 	private String nombrePrenda;
 
+	public Prenda(String nombrePrenda) // TODO sacar cuando se haya hecho bien en el UserController
+	{
+		this.nombrePrenda = nombrePrenda;
+	}
 	public Prenda (PrendaBuilder builder) {
 		this.tipoRopa = builder.tipoRopa;
 		this.nombrePrenda = builder.nombrePrenda;
