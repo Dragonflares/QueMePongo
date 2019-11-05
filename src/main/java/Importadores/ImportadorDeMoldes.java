@@ -16,8 +16,8 @@ import Repositorios.RepoMolde;
 import Repositorios.factories.FactoryRepositorioMolde;
 
 public class ImportadorDeMoldes {
-    RepoMolde repo = new FactoryRepositorioMolde().get();;
-    String path = Property.getSpecifiedProperty("RutaRepoMoldes");
+    RepoMolde repo = FactoryRepositorioMolde.get();;
+    String path = Property.getSpecifiedProperty("RutaRepoMolde");
 
 	private static ImportadorDeMoldes instance = new ImportadorDeMoldes();
 	

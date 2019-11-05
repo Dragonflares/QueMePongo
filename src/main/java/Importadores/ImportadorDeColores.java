@@ -17,7 +17,7 @@ import Repositorios.factories.FactoryRepositorioColor;
 
 public class ImportadorDeColores {
 
-    RepoColor repo = new FactoryRepositorioColor().get();
+    RepoColor repo = FactoryRepositorioColor.get();
     String path = Property.getSpecifiedProperty("RutaRepoColor");
 	private static ImportadorDeColores instance = new ImportadorDeColores();
 	

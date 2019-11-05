@@ -2,8 +2,6 @@ package Models;
 
 import java.util.List;
 
-import org.hibernate.Query;
-
 import db.EntityManagerHelper;
 
 public abstract class Model {

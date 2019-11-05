@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import Dominio.ClothingClasses.Color;
 import Dominio.ClothingClasses.TipoDeRopa;
 import db.EntidadPersistente;
 
 public class DataRopa {
 private static List<TipoDeRopa> ropas = new ArrayList<>();
 	
+	@SuppressWarnings("unchecked")
 	public static List<EntidadPersistente> getList(){
 		if(ropas.size() == 0) {
 			

@@ -1,7 +1,5 @@
 package TestDeDominio;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -89,6 +87,7 @@ public class TestGuardarropa {
 	public void puedeAgregarAccesoAUsuarios() {
 		assertTrue(guardarropa1.getUsuariosConAcceso().contains(usuario));
 	}
+	@Test
 	public void puedegenerarRecomendacion() throws Exception {
 		assertTrue(guardarropa1.generarRecomendacion(eventoCasual, usuario).getPrendas().contains(zapatilla));
 	}

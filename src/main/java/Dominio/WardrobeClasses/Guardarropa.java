@@ -14,8 +14,6 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Categoria;
 import Dominio.ClothingClasses.Prenda;

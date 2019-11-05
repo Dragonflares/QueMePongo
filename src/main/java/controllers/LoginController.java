@@ -20,7 +20,7 @@ public class LoginController {
 	}
 
 	public static ModelAndView init(Request req, Response res) {
-		return new ModelAndView(null, "home/loginQmp.hbs");
+		return new ModelAndView(null, "home/calificaratuendo.hbs");
 	}
 
 	public static ModelAndView processLogin(Request req, Response res) {
