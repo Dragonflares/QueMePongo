@@ -40,7 +40,7 @@ static Set<String> publicRoutes = new HashSet<String>();
 		Spark.post("/guardarropas/:idGuardarropa/prendas", UserController::registrarPrenda);
 		});
 		
-		Spark.get("/out", UserController::logOut, transformer);
+		Spark.get("/out", UserController::logOut, transformer); // este boton no esta en nuestro tp, pero lo puse porque si
 	}
 
 }
