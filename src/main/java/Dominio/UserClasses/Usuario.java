@@ -34,8 +34,8 @@ public class Usuario extends EntidadPersistente{
 	@Column(name = "password")
 	private String password;
 	
-	@ManyToOne
-    @JoinColumn(name = "tipo_id", referencedColumnName = "id")
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "tipo_id", referencedColumnName = "id", nullable = true)
 	private TipoDeUsuario tipoDeCuenta;
 	
 	@ManyToMany(cascade = CascadeType.ALL)

@@ -20,7 +20,7 @@ public class UserController {
 	
 	
 	public static ModelAndView indexViewDatosGenerales(Request req, Response res) {
-		
+		System.out.println("EN INDEX"); // todo sacar
 		HashMap<String, Object> viewModel = new HashMap<>();
 			
 		// TODO esta harcodeado, cambiar
@@ -29,7 +29,7 @@ public class UserController {
 		viewModel.put("guardarropas", guardarropas);
 		return new ModelAndView(
 				viewModel, 
-				"guardarropas.hbs"); 
+				"home/guardarropas.hbs"); 
 	}
 	
 	public static ModelAndView indexViewDatosDeUnGuardarropa(Request req, Response res) {
@@ -46,7 +46,7 @@ public class UserController {
 	viewModel.put("guardarropa", guardarropaSeleccionado);
 	return new ModelAndView(
 			viewModel, 
-			"prendas.hbs");
+			"home/prendas.hbs");
 	}
 	
 	public static ModelAndView indexViewAgregarPrenda(Request req, Response res) {
@@ -56,7 +56,7 @@ public class UserController {
 
 		return new ModelAndView(
 					viewModel, 
-					"altaPrenda.hbs");
+					"home/altaPrenda.hbs");
 			
 	}
 	

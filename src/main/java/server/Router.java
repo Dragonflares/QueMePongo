@@ -10,27 +10,17 @@ import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
 public class Router {
-
-static Set<String> publicRoutes = new HashSet<String>();
-	
-	private static void setPublicRoutes(Set<String> publicRoutes)
-	{	
-		publicRoutes.add("/");
-		publicRoutes.add("/login");
-		publicRoutes.add("/loginFailure");
-		publicRoutes.add("/logout");
-	}
 	
 	public static void configure() {
 		HandlebarsTemplateEngine transformer = new HandlebarsTemplateEngine();
 		
 		
 		Spark.staticFiles.location("/public");
-		setPublicRoutes(publicRoutes);
+		
 
 		Spark.before("/user", LoginController::validarLogin);
 
-		Spark.get("/", LoginController::init, transformer); 
+		Spark.get("/", LoginController::init); 
 
 		Spark.post("/login", LoginController::processLogin);
 		Spark.path("/user", () -> { 

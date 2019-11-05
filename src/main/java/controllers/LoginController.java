@@ -13,25 +13,31 @@ public class LoginController {
 	
 	public static ModelAndView validarLogin(Request req, Response res) {
 		if (req.session().attribute("username") == null) {
-			res.redirect("home/loginQmp.hbs");
+			res.redirect("login/Login-View.html");
 			Spark.halt();
 		}
 		return null;
 	}
-
+	
 	public static ModelAndView init(Request req, Response res) {
-		return new ModelAndView(null, "home/calificaratuendo.hbs");
+		
+		res.redirect("login/Login-View.html");
+		return null;
 	}
 
 	public static ModelAndView processLogin(Request req, Response res) {
-		String username = req.queryParams("username");
-		String password = req.queryParams("password");
-		password = Cifrado.Encrypt(req.queryParams("password"));
+		String username = req.queryParams("usuario");
+		String password = req.queryParams("contrasenia");	
+
+		
+		//password = Cifrado.Encrypt(req.queryParams("password"));
 		if (!FactoryRepositorioUsuario.get().existeUsuario(username, password)) {
+			System.out.println("------------------NO EXISTE USUARIO------------------");
 			res.status(400);
-			res.redirect("home/loginQmp.hbs");
+			res.redirect("login/Login-View.html");
 		} else {
-			Usuario usuario = FactoryRepositorioUsuario.get().buscarUsuario(password, username);
+			System.out.println("------------------EXISTE USUARIO------------------");
+			Usuario usuario = FactoryRepositorioUsuario.get().buscarUsuario(username, password);
 			res.status(200);
 			req.session().attribute("username", username);
 			
