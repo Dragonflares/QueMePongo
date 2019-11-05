@@ -17,7 +17,7 @@ import Repositorios.factories.FactoryRepositorioRopa;
 
 public class ImportadorDeRopas {
 
-    RepoRopa repo = new FactoryRepositorioRopa().get();;
+    RepoRopa repo = FactoryRepositorioRopa.get();;
     String path = Property.getSpecifiedProperty("RutaRepoRopa");
 	private static ImportadorDeRopas instance = new ImportadorDeRopas();
 	

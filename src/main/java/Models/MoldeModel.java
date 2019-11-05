@@ -1,9 +1,7 @@
 package Models;
 import java.util.List;
 
-import config.Config;
 import db.EntityManagerHelper;
-import Dominio.ClothingClasses.Material;
 import Dominio.ClothingClasses.MoldeDeAtuendo;
 
 public class MoldeModel extends Model{
@@ -16,12 +14,14 @@ public class MoldeModel extends Model{
         return instance;
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<MoldeDeAtuendo> buscarTodos(){
         return EntityManagerHelper.getEntityManager().createQuery("from MoldeDeAtuendo").getResultList();
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public MoldeDeAtuendo buscar(int id){
         return EntityManagerHelper.getEntityManager().find(MoldeDeAtuendo.class, id);
     }

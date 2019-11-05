@@ -1,7 +1,5 @@
 package Dominio.NotificationAPIClasses;
 
-import Dominio.UserClasses.Usuario;
-
 public class SMSAdaptado implements NotificadorAdapter{
 	private SMS sms;
 	

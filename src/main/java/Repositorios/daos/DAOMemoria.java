@@ -1,15 +1,10 @@
 package Repositorios.daos;
 
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import javax.persistence.EntityManager;
-
-import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import Dominio.Estilish.Estilo;
 import Dominio.UserClasses.Usuario;

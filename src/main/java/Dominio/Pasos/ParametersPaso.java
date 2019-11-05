@@ -12,6 +12,7 @@ public class ParametersPaso {
 	private Atuendo atuendo;
 	private Evento evento;
 	private Guardarropa guardarropa;
+	@SuppressWarnings("unused")
 	private Integer calificacion;
 
 
