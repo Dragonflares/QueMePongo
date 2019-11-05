@@ -2,7 +2,6 @@ package Models;
 import java.util.List;
 
 import db.EntityManagerHelper;
-import Dominio.ClothingClasses.MoldeDeAtuendo;
 import Dominio.ClothingClasses.TipoDeRopa;
 
 public class RopaModel extends Model{
@@ -15,12 +14,14 @@ public class RopaModel extends Model{
         return instance;
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<TipoDeRopa> buscarTodos(){
         return EntityManagerHelper.getEntityManager().createQuery("from TipoDeRopa").getResultList();
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public TipoDeRopa buscar(int id){
         return EntityManagerHelper.getEntityManager().find(TipoDeRopa.class, id);
     }

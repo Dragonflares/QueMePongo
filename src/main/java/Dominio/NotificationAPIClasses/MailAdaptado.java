@@ -1,7 +1,5 @@
 package Dominio.NotificationAPIClasses;
 
-import Dominio.UserClasses.Usuario;
-
 public class MailAdaptado implements NotificadorAdapter{
 	private MailAPI mailAPI;
 	

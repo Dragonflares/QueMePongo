@@ -2,8 +2,6 @@ package Repositorios.daos;
 
 import java.util.Calendar;
 import java.util.List;
-import java.util.Optional;
-
 import Dominio.UserClasses.Usuario;
 
 public interface DAO {

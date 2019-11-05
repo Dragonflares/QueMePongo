@@ -1,14 +1,6 @@
 package Models;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-
-import javax.persistence.EntityManager;
-
-import org.hibernate.Query;
-import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
-
 import Dominio.UserClasses.Usuario;
 import db.EntityManagerHelper;
 
@@ -22,17 +14,20 @@ public class UsuarioModel  extends Model {
         return instance;
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<Usuario> buscarTodos(){
         return EntityManagerHelper.getEntityManager().createQuery("from Usuario").getResultList();
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public Usuario buscar(int id){
         return EntityManagerHelper.getEntityManager().find(Usuario.class, id);
     }
    
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<Usuario> buscarPorQuery(String query)
     {
     	return EntityManagerHelper.createQuery(query).getResultList();

@@ -2,7 +2,6 @@ package Models;
 
 import java.util.List;
 import Dominio.ClothingClasses.Color;
-import Dominio.UserClasses.Usuario;
 import db.EntityManagerHelper;
 
 public class ColorModel extends Model {
@@ -16,17 +15,20 @@ public class ColorModel extends Model {
         return instance;
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<Color> buscarTodos(){
         return EntityManagerHelper.getEntityManager().createQuery("from Color").getResultList();
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public Color buscar(int id){
         return EntityManagerHelper.getEntityManager().find(Color.class, id);
     }
     
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<Color> buscarPorQuery(String query)
     {
     	return EntityManagerHelper.createQuery(query).getResultList();

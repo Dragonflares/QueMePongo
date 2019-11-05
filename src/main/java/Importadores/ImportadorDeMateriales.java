@@ -17,7 +17,7 @@ import Repositorios.factories.FactoryRepositoriosMaterial;
 
 public class ImportadorDeMateriales {
 
-    RepoMaterial repo = new FactoryRepositoriosMaterial().get();
+    RepoMaterial repo = FactoryRepositoriosMaterial.get();
     String path = Property.getSpecifiedProperty("RutaRepoMaterial");
     
 	private static ImportadorDeMateriales instance = new ImportadorDeMateriales();

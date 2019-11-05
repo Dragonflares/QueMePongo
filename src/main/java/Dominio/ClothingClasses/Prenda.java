@@ -6,8 +6,6 @@ import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -75,6 +73,7 @@ public class Prenda extends EntidadPersistente{
 		return imagenGraphics;
 	}
 
+	@SuppressWarnings("unused")
 	private void setImagenGraphics(List<Graphics2D> imagenGraphics) {
 		this.imagenGraphics = imagenGraphics;
 	}
@@ -99,6 +98,7 @@ public class Prenda extends EntidadPersistente{
 		private Color colorPrimario;
 		private Color colorSecundario;
 		private Material material;
+		@SuppressWarnings("unused")
 		private List<Graphics2D> imagenGraphics;
 		private String nombrePrenda;
 

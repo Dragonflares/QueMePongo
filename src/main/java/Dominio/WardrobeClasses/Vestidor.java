@@ -110,13 +110,15 @@ public class Vestidor {
 			throws JsonIOException, JsonSyntaxException, FileNotFoundException {
 		Random rand = new Random();
 		List<MoldeDeAtuendo> moldesDisponibles =
-				ImportadorDeMoldes.getInstance().levantarMoldesDePath().stream()
-				.filter(p -> p.getEstilo().equals(estilo))
-				.filter(p -> p.cumpleConCondiciones(
-						(Integer.parseInt(Property.getSpecifiedProperty("TemperaturaBase"))
-								- temperatura 
-								- Integer.parseInt(Property.getSpecifiedProperty("VariacionTemperatura")))))
-				.collect(Collectors.toList());
+				ImportadorDeMoldes.getInstance().levantarMoldesDePath();
+				
+				
+		List<MoldeDeAtuendo> prefiltro1 = moldesDisponibles.stream()
+				.filter(p -> p.getEstilo().equals(estilo)).collect(Collectors.toList());;
+		List<MoldeDeAtuendo> prefiltro2 = prefiltro1.stream().filter(p -> p.cumpleConCondiciones(
+				(Integer.parseInt(Property.getSpecifiedProperty("TemperaturaBase"))
+						- temperatura 
+						- Integer.parseInt(Property.getSpecifiedProperty("VariacionTemperatura"))))).collect(Collectors.toList());
 		return moldesDisponibles.get(rand.nextInt(moldesDisponibles.size()));
 	}
 
