@@ -8,11 +8,10 @@ import controllers.LoginController;
 import controllers.UserController;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
-
-import controllers.*;
-
-
+import utils.BooleanHelper;
+import utils.HandlebarsTemplateEngineBuilder;
 import utils.SessionHandler;
+import controllers.*;
 
 
 public class Router {
@@ -27,7 +26,6 @@ public class Router {
 
 	private static void setPublicRoutes(Set<String> publicRoutes)
 	{	
-		publicRoutes.add("/");
 		publicRoutes.add("/login");
 		publicRoutes.add("/loginFailure");
 		publicRoutes.add("/logout");
@@ -36,26 +34,36 @@ public class Router {
 
 
 	public static void configure() {
-		HandlebarsTemplateEngine transformer = new HandlebarsTemplateEngine();
+	//	HandlebarsTemplateEngine transformer = new HandlebarsTemplateEngine();
 
-//		Spark.staticFileLocation("/home");
-
-
-//		Spark.before(LoginController::chequeoUsuarioEnsesion);
 		
 		
 		
-		Spark.get("/login", LoginController::init); 
-		Spark.get("/",WardrobeController::init);
-		Spark.post("/login", LoginController::processLogin);
+		Spark.staticFiles.location("/public");
+		setPublicRoutes(publicRoutes);
+		
+		HandlebarsTemplateEngine engine = HandlebarsTemplateEngineBuilder
+				.create()
+				.withDefaultHelpers()
+				.withHelper("isTrue", BooleanHelper.isTrue)
+				.build();
+	
+		
+		Spark.before("/", SessionHandler.allowed());
+		
+		
+		Spark.post("/login", LoginController::processLogin,engine);
+		
+		Spark.get("/login", LoginController::init,engine); 
+		Spark.get("/",WardrobeController::init,engine);
 
-		Spark.get("sdsdsd", UserController::indexViewDatosGenerales, transformer);	
-		Spark.get("/guardarropas/:idGuardarropa", UserController::indexViewDatosDeUnGuardarropa, transformer);	
-		Spark.get("/guardarropas/:idGuardarropa/prendas", UserController::indexViewAgregarPrenda, transformer);	
+		Spark.get("sdsdsd", UserController::indexViewDatosGenerales, engine);	
+		Spark.get("/guardarropas/:idGuardarropa", UserController::indexViewDatosDeUnGuardarropa, engine);	
+		Spark.get("/guardarropas/:idGuardarropa/prendas", UserController::indexViewAgregarPrenda, engine);	
 		Spark.post("/guardarropas/:idGuardarropa/prendas", UserController::registrarPrenda);
 
 
-		Spark.get("/out", UserController::logOut, transformer); // este boton no esta en nuestro tp, pero lo puse porque si
+		Spark.get("/out", UserController::logOut, engine); // este boton no esta en nuestro tp, pero lo puse porque si
 	}
 
 }

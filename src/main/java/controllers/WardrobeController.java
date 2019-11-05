@@ -12,9 +12,10 @@ public class WardrobeController {
 	
 	
 public static ModelAndView init(Request req, Response res) {
-		Map<String, Double> model = new HashMap<>();
-	
-		return new ModelAndView(model,"/guardarropas.hbs");
+		
+		HashMap<String, Object> model = new HashMap<>();
+
+		return new ModelAndView(model, "home/guardarropas.hbs");
 	}
 	
 	
