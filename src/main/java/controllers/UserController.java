@@ -19,11 +19,11 @@ public class UserController {
 	
 	
 	public static ModelAndView indexViewDatosGenerales(Request req, Response res) {
-		System.out.println("EN INDEX"); // todo sacar
+		System.out.println("EN INDEX"); 
 		HashMap<String, Object> viewModel = new HashMap<>();
 			
 		// TODO esta harcodeado, cambiar
-		guardarropas = ((Usuario) FactoryRepositorioUsuario.get().buscarTodos().get(0)).getGuardarropas();
+		guardarropas = ((Usuario) FactoryRepositorioUsuario.get().buscarPorId().get(req.session().attribute("username"))).getGuardarropas();
 		guardarropaSeleccionado = null;
 		viewModel.put("guardarropas", guardarropas);
 		return new ModelAndView(

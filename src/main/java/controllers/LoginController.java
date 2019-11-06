@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import Dominio.UserClasses.Usuario;
 import Repositorios.factories.FactoryRepositorioUsuario;
+import spark.Session;
 
 import server.Cifrado;
 import spark.ModelAndView;
@@ -27,6 +28,12 @@ public class LoginController {
 		return new ModelAndView(model, "home/login2.hbs");
 	}
 
+	public static ModelAndView loginFailure(Request req, Response res) {
+
+		return new ModelAndView(null,"/home/errorLogin.hbs");
+	}
+
+
 	public static ModelAndView processLogin(Request req, Response res) {
 
 
@@ -36,7 +43,7 @@ public class LoginController {
 		String password = req.queryParams("contrasenia");
 
 
-//		password = Cifrado.Encrypt(req.queryParams("password"));
+		//		password = Cifrado.Encrypt(req.queryParams("password"));
 		if (!FactoryRepositorioUsuario.get().existeUsuario(username, password)) {
 			res.status(400);
 			res.redirect("/login");
@@ -51,9 +58,19 @@ public class LoginController {
 		return null;
 	}
 
-
-
 	
+	
+	
+	public static Void logout(Request req, Response res) {
+        Session session = req.session(true);
+        session.invalidate();
+        req.session().removeAttribute("username");
+        res.redirect("/login");
+        return null;
+    }
+
+
+
 
 
 
