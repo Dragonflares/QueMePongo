@@ -112,12 +112,17 @@ public class Usuario extends EntidadPersistente{
 	}
 
 	public void agregarPrendaAGuardarropa(Guardarropa guardarropa, Prenda prenda) throws Exception {
-
-		if(!this.guardarropas.stream().anyMatch(p -> p.getPrendasDisponibles().contains(prenda))) {
+// TODO NO FUNCIONA, SI LAS PRENDAS DISPONIBLES ES NULL ME TIRA NULL PONTER EXCEPTION
+		
+		/*if(!this.guardarropas.stream().anyMatch(g ->{
+			if(g.getPrendasDisponibles() != null)
+				g.getPrendasDisponibles().contains(prenda);
+		})) */
+		/*{
 			tipoDeCuenta.agregarPrendaAGuardarropa(guardarropa, prenda);
 		} else {
 			throw new Exception("Ya tenes la prenda en otro guardarropa");
-		}
+		}*/
 
 	}
 

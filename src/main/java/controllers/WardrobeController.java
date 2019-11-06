@@ -15,11 +15,7 @@ public static ModelAndView init(Request req, Response res) {
 		
 		HashMap<String, Object> model = new HashMap<>();
 
-		return new ModelAndView(model, "home/guardarropas.hbs");
+		return new ModelAndView(model, "home/altaEvento.hbs");
 	}
-	
-	
-	
-	
 	
 }

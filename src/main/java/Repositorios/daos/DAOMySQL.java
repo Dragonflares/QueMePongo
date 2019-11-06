@@ -92,25 +92,9 @@ public class DAOMySQL implements DAO {
     	Optional<Usuario> usuario = ((List<Usuario>)(List<?>) this.buscarTodos()).stream()
 				.filter(c -> Objects.equals(c.getPassword(), password) && Objects.equals(c.getUsername(), username))
 				.findFirst();
-    	System.out.println("CONTRAAA:");//TODO SACAR
-		System.out.println(password);
     	
 		if (!usuario.isPresent()) {
-			System.out.println("----------NO ESTA PRESENTE----------"); //TODO SACAR
-			// TODO tiene pinta que no esta bueno esto
-			Usuario usuarioNuevo = new Usuario(username, password);
-			System.out.println("USUARIO USERNAME: ");//TODO SACAR
-			System.out.println(usuarioNuevo.getUsername());
-			System.out.println(username);
-			usuarioNuevo.agregarGuardarropa(new Guardarropa(usuarioNuevo, Estilo.CASUAL));
-			usuarioNuevo.agregarGuardarropa(new Guardarropa(usuarioNuevo, Estilo.FORMAL));
-			try {
-				System.out.println("----------AGREGO USUARIO----------");
-				this.agregar(usuarioNuevo);
-				System.out.println("----------TERMINO DE AGREGAR USUARIO----------");
-			} catch (Exception x) {
 				return false;
-			}
 		}
 		return true;
     }
