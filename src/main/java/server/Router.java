@@ -34,7 +34,6 @@ public class Router {
 
 
 	public static void configure() {
-	//	HandlebarsTemplateEngine transformer = new HandlebarsTemplateEngine();
 
 		
 		

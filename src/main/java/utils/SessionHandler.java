@@ -24,7 +24,6 @@ public class SessionHandler {
 
 				if (!authenticated && !Router.isPublic(req.pathInfo())) {
 					res.redirect("/login");
-					System.out.println("Entro");
 					Spark.halt(401, "No tiene permisos para acceder a la ruta especificada");
 				}
 

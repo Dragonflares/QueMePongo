@@ -1,9 +1,11 @@
 {{#partial "alerta"}}
 
 <br>
-<label class="alert alert-danger alert-dismissible fade in">
-    <a href="/login" class="close" data-dismiss="alert">&times;</a>
-  Usuario y/o password incorrectos
+<div>
+  <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  Usuario o contraseña incorrecto :v
 </div>
+
 {{/partial}}
-{{>home/login.hbs}}
+{{>home/login2.hbs}}

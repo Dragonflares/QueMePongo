@@ -23,7 +23,7 @@ public class Server {
 //		if (processBuilder.environment().get("9003") != null) {
 //			return Integer.parseInt(processBuilder.environment().get("9003"));
 //		}
-		return 9006; //return default port if saprk-port isn't set (i.e. on localhost)
+		return 9009; //return default port if saprk-port isn't set (i.e. on localhost)
 	}
 	
 	public static void insertarUsuariosParaProbar() throws ProcessingDataFailedException, Exception 

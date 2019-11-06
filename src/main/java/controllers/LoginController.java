@@ -30,7 +30,7 @@ public class LoginController {
 
 	public static ModelAndView loginFailure(Request req, Response res) {
 
-		return new ModelAndView(null,"/home/errorLogin.hbs");
+		return new ModelAndView(null,"home/errorLogin.hbs");
 	}
 
 
@@ -45,8 +45,8 @@ public class LoginController {
 
 		//		password = Cifrado.Encrypt(req.queryParams("password"));
 		if (!FactoryRepositorioUsuario.get().existeUsuario(username, password)) {
-			res.status(400);
-			res.redirect("/login");
+					res.status(400);
+			res.redirect("/loginFailure");
 		} else {
 			res.status(200);
 			req.session().attribute("username", username);

@@ -23,7 +23,7 @@ public class UserController {
 		HashMap<String, Object> viewModel = new HashMap<>();
 			
 		// TODO esta harcodeado, cambiar
-		guardarropas = ((Usuario) FactoryRepositorioUsuario.get().buscarPorId().get(req.session().attribute("username"))).getGuardarropas();
+//		guardarropas = ((Usuario) FactoryRepositorioUsuario.get().buscarPorId().get(req.session().attribute("username"))).getGuardarropas();
 		guardarropaSeleccionado = null;
 		viewModel.put("guardarropas", guardarropas);
 		return new ModelAndView(
