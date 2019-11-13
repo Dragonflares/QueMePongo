@@ -43,10 +43,10 @@ public class Server {
 			Guardarropa guardarropa1 = new Guardarropa(usuario1, Estilo.CASUAL);
 			Guardarropa guardarropa2 = new Guardarropa(usuario1, Estilo.ELEGANTE);
 			LocalDateTime dentroDeUnaSemana = LocalDateTime.now().plusDays(7);
-			Evento evento1 = new Evento("Cumpleaños", LocalDateTime.now(), "avenida 123", Estilo.ELEGANTE_SPORT, null, new Media());
-			Evento evento2 = new Evento("Casamiento", dentroDeUnaSemana, "calle 13", Estilo.ELEGANTE, null, new Alta());
-			Evento evento3 = new Evento("Fiesta", LocalDateTime.now(), "calle falsa 123", Estilo.CASUAL, null, new Baja());
-			Evento evento4 = new Evento("Bautismo", dentroDeUnaSemana, "iglesa 123", Estilo.FORMAL, null, new Media());
+			Evento evento1 = new Evento("Cumpleaños", LocalDateTime.now(), "Avenida 123", Estilo.ELEGANTE_SPORT, null, new Media());
+			Evento evento2 = new Evento("Casamiento", dentroDeUnaSemana, "Calle 13", Estilo.ELEGANTE, null, new Alta());
+			Evento evento3 = new Evento("Fiesta", LocalDateTime.now(), "Calle falsa 123", Estilo.CASUAL, null, new Baja());
+			Evento evento4 = new Evento("Bautismo", dentroDeUnaSemana, "Iglesa 123", Estilo.FORMAL, null, new Media());
 			usuario1.agregarEvento(evento1);
 			usuario1.agregarEvento(evento2);
 			usuario2.agregarEvento(evento3);

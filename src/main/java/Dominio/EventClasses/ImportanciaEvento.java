@@ -14,4 +14,5 @@ import db.EntidadPersistente;
 @DiscriminatorColumn(name = "tipoEvento") // "baja", "media" y "alta"
 public abstract class ImportanciaEvento extends EntidadPersistente{
 	public abstract boolean estaProximo(Evento evento);
+	public abstract String getImportancia();
 }

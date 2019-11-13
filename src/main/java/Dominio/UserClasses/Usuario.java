@@ -293,4 +293,9 @@ public class Usuario extends EntidadPersistente{
 	{
 		this.tipoDeCuenta = tipo;
 	}
+	
+	public List<Evento> getEventosEn(LocalDateTime fecha)
+	{
+		return this.eventos.stream().filter(e -> e.ocurre(fecha)).collect(Collectors.toList());
+	}
 }

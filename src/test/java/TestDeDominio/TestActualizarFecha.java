@@ -1,6 +1,7 @@
 package TestDeDominio;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -47,6 +48,12 @@ public class TestActualizarFecha {
 		LocalDateTime unAnio = LocalDateTime.now().minusYears(1);
 		eventoOcurrioYesFrecuente365 = new Evento("Cumpleaños", unAnio, "dire", Estilo.FORMAL, new Anualmente(), null);
 
+	}
+	
+	@Test
+	public void ocurre() {
+		LocalDateTime ayerConHoraDistinta = LocalDateTime.now().minusDays(1).minusHours(1);
+		assertTrue(eventoOcurrioYesFrecuente1.ocurre(ayerConHoraDistinta));
 	}
 	
 	@Test

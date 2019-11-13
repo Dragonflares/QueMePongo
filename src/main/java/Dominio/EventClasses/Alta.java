@@ -13,4 +13,9 @@ public class Alta extends ImportanciaEvento{
 	{
 		return ChronoUnit.DAYS.between(evento.getFecha(), LocalDateTime.now()) <= 30;
 	}
+
+	@Override
+	public String getImportancia() {
+		return "Alta";
+	}
 }

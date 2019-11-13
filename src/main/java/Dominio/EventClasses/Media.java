@@ -14,4 +14,9 @@ public class Media extends ImportanciaEvento{
 	public boolean estaProximo(Evento evento) {
 		return ChronoUnit.DAYS.between(evento.getFecha(), LocalDateTime.now()) <= 7;
 	}
+
+	@Override
+	public String getImportancia() {
+		return "Media";
+	}
 }

@@ -11,21 +11,17 @@ import spark.Response;
 
 public class EventController {
 	public static Usuario usuario;
-	public static LocalDateTime fechaElegida;
 	
 	public static ModelAndView verEventosDeUnaFecha(Request req, Response res) 
 	{
 		HashMap<String, Object> viewModel = new HashMap<>();
 		String fecha = req.queryParams("fecha");
-		// TODO ARREGLAR
-		System.out.println("Fecha:");
-		System.out.println(fecha);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a"); 
 		
-		fechaElegida = LocalDateTime.parse(fecha, formatter);
+		LocalDateTime fechaElegida = LocalDateTime.parse(fecha, formatter);
 		
 		viewModel.put("cliente", usuario);
-		//viewModel.put("fecha", fechaElegida);
+		viewModel.put("eventos", usuario.getEventosEn(fechaElegida));
 		
 		return new ModelAndView(viewModel, "home/listaDeEventos.hbs");
 	}

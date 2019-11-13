@@ -1,7 +1,7 @@
 package Dominio.EventClasses;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -53,6 +53,7 @@ public class Evento extends EntidadPersistente{
 	@Column(name = "sugerenciaNotificada")
 	private boolean sugerenciaNotificada;
 	
+	public Evento() {}
 	
 	public Evento (String nombre, LocalDateTime fecha, String direccion, Estilo estilo, Frecuencia frecuencia, ImportanciaEvento importancia)
 	{
@@ -87,7 +88,7 @@ public class Evento extends EntidadPersistente{
 	
 	public boolean ocurre(LocalDateTime fechaInteres)
 	{
-		return this.fecha.compareTo(fechaInteres) == 0;
+		return this.fecha.toLocalDate().compareTo(fechaInteres.toLocalDate()) == 0;
 	}
 	
 	public boolean esFrecuente() 
@@ -134,5 +135,20 @@ public class Evento extends EntidadPersistente{
 	public void setCreador(Usuario creador)
 	{
 		this.creador = creador;
+	}
+	
+	public String getDireccion() 
+	{
+		return this.direccion;
+	}
+	
+	public String getImportancia()
+	{
+		return this.importancia.getImportancia();
+	}
+	
+	public LocalTime getHoraInicio()
+	{
+		return this.fecha.toLocalTime();
 	}
 }

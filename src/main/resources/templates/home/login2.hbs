@@ -8,7 +8,16 @@
         body {
           height: 100%;
         }
-        
+        header{
+                font-family: Arial, Helvetica, sans-serif;
+                background-color:  #ffcf7a;
+                position: center;
+                padding: 10px;
+                height: 20xp;
+                text-align: center;
+                box-shadow: 3px 5px 11px 1px rgba(0,0,0,0.75);
+                border: 5px solid white;
+            }
         body {
           display: -ms-flexbox;
           display: flex;
@@ -58,28 +67,29 @@
 </head>
 
 <body class="text-center">
-  
-    <form class="form-signin" action="/login" method="POST">
-        <div class="row">
-            <div class="column">
-                <h1 class="h3 mb-3 font-weight-normal">Que me pongo</h1>
-                <label for="username" class="sr-only">Usuario</label>
-                <input id="username" class="form-control" name="usuario" id="usuario" placeholder="Usuario" required oninvalid="this.setCustomValidity('Debe ingresar un usuario')" autofocus="" type="text">
-                <label for="inputPassword" class="sr-only">Contraseña</label>
-                <input id="inputPassword" class="form-control" name="contrasenia" id="contrasenia" placeholder="Contrasenia" required oninvalid="this.setCustomValidity('Debe ingresar una contrasenia')" type="password">
-                <button class="btn btn-lg btn-primary" type="submit" name="aceptar" value="aceptar">Aceptar</button><br><br>
-            </div>
-        
-        </div>
-        <br>
-         {{#block "alerta"}}
-         {{/block}}
-    </form>
-	
+	<div class="container" align="center">
+		<header>
+			<h1>Que me pongo? - Login</h1>
+		</header>
+	  
+	    <form class="form-signin" action="/login" method="POST">
+	        <div class="row">
+	            <div class="column">
+	                <label for="username" class="sr-only">Usuario</label>
+	                <input id="username" class="form-control" name="usuario" id="usuario" placeholder="Usuario" required oninvalid="this.setCustomValidity('Debe ingresar un usuario')" autofocus="" type="text">
+	               <br/>
+	                <label for="inputPassword" class="sr-only">Contraseña</label>
+	                <input id="inputPassword" class="form-control" name="contrasenia" id="contrasenia" placeholder="Contrasenia" required oninvalid="this.setCustomValidity('Debe ingresar una contrasenia')" type="password">
+	                <button class="btn btn-lg btn-primary" type="submit" name="aceptar" value="aceptar">Aceptar</button><br><br>
+	            </div>
+	        
+	        </div>
+	        <br>
+	         {{#block "alerta"}}
+	         {{/block}}
+	    </form>
+	</div>
 </body>
 
-
-
 </html>
 
-</html>

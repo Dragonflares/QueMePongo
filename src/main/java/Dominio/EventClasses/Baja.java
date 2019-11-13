@@ -13,4 +13,9 @@ public class Baja extends ImportanciaEvento{
 	{
 		return ChronoUnit.DAYS.between(evento.getFecha(), LocalDateTime.now()) <= 1;
 	}
+
+	@Override
+	public String getImportancia() {
+		return "Baja";
+	}
 }
