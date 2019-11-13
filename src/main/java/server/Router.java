@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import controllers.LoginController;
-import controllers.UserController;
+import controllers.WardrobeController;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import utils.BooleanHelper;
@@ -55,15 +55,19 @@ public class Router {
 		Spark.post("/login", LoginController::processLogin,engine);
 		
 		Spark.get("/login", LoginController::init,engine); 
-		Spark.get("/",WardrobeController::init,engine);
+		Spark.get("/", WardrobeController::init,engine);
+		
+		Spark.path("/eventos",  () -> {
+			Spark.get("", WardrobeController::verEventos, engine); // creo que no tendria que ser Wardrobe, pero lo puse para ponerle un cliente a Event
+			Spark.get("/info", EventController::verEventosDeUnaFecha, engine);
+		});
+		
+		Spark.get("/guardarropas/:idGuardarropa", WardrobeController::indexViewDatosDeUnGuardarropa, engine);	
+		Spark.get("/guardarropas/:idGuardarropa/prendas", WardrobeController::indexViewAgregarPrenda, engine);	
+		Spark.post("/guardarropas/:idGuardarropa/prendas", WardrobeController::registrarPrenda);
 
-		Spark.get("sdsdsd", UserController::indexViewDatosGenerales, engine);	
-		Spark.get("/guardarropas/:idGuardarropa", UserController::indexViewDatosDeUnGuardarropa, engine);	
-		Spark.get("/guardarropas/:idGuardarropa/prendas", UserController::indexViewAgregarPrenda, engine);	
-		Spark.post("/guardarropas/:idGuardarropa/prendas", UserController::registrarPrenda);
 
-
-		Spark.get("/out", UserController::logOut, engine); // este boton no esta en nuestro tp, pero lo puse porque si
+		Spark.get("/out", WardrobeController::logOut, engine); // este boton no esta en nuestro tp, pero lo puse porque si
 	}
 
 }

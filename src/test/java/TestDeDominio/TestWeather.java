@@ -4,6 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 
 import org.junit.Before;
@@ -12,12 +13,11 @@ import org.junit.Test;
 import Dominio.WeatherAPIClasses.GestorClimatico;
 
 public class TestWeather {
-	private Calendar dia;
+	private LocalDateTime dia;
 	
 	@Before
 	public void init() {
-		dia = Calendar.getInstance();
-		dia.add(Calendar.DATE, 15);
+		dia = LocalDateTime.now().plusDays(15);
 	}
 	@Test
 	public void probarTemperatura() throws IOException {

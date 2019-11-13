@@ -6,7 +6,6 @@ import Dominio.UserClasses.Usuario;
 import Repositorios.factories.FactoryRepositorioUsuario;
 import spark.Session;
 
-import server.Cifrado;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -39,11 +38,8 @@ public class LoginController {
 
 		validarUsernamePassword(req, res);
 		String username = req.queryParams("usuario");
-		System.out.println(username);
 		String password = req.queryParams("contrasenia");
 
-
-		//		password = Cifrado.Encrypt(req.queryParams("password"));
 		if (!FactoryRepositorioUsuario.get().existeUsuario(username, password)) {
 					res.status(400);
 			res.redirect("/loginFailure");
@@ -51,7 +47,7 @@ public class LoginController {
 			res.status(200);
 			req.session().attribute("username", username);
 
-			UserController.usuario = FactoryRepositorioUsuario.get().buscarUsuario(username, password);
+			WardrobeController.usuario = FactoryRepositorioUsuario.get().buscarUsuario(username, password);
 			res.redirect("/");
 		}
 

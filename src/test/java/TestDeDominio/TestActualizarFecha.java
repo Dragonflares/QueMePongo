@@ -2,6 +2,9 @@ package TestDeDominio;
 
 import static org.junit.Assert.assertEquals;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -25,27 +28,23 @@ public class TestActualizarFecha {
 	
 	@Before
 	public void init() {
-		Calendar ayer = Calendar.getInstance();
-		ayer.add(Calendar.DATE, -1); // le resto un dia a la fecha actual 
+		LocalDateTime ayer = LocalDateTime.now().minusDays(1);
 		
 		eventoOcurrioYesFrecuente1 = new Evento("Ir a trabajar", ayer, "dire", Estilo.FORMAL, new Diario(), null);
 		
-		ArrayList<Integer> diasQueRepite = new ArrayList<Integer>();
-		diasQueRepite.add(Calendar.MONDAY);
-		diasQueRepite.add(Calendar.WEDNESDAY);
+		ArrayList<DayOfWeek> diasQueRepite = new ArrayList<DayOfWeek>();
+		diasQueRepite.add(DayOfWeek.MONDAY);
+		diasQueRepite.add(DayOfWeek.WEDNESDAY);
 		
 		eventoOcurrioYesFrecuente1Personalizado = new Evento("Ir a la facultad", ayer, "dire", Estilo.FORMAL, new DiarioPersonalizado(diasQueRepite), null);
 		
-		Calendar unaSemana = Calendar.getInstance();
-		unaSemana.add(Calendar.DATE, -7); // le resto una semana a la fecha actual 
+		LocalDateTime unaSemana = LocalDateTime.now().minusDays(7);
 		eventoOcurrioYesFrecuente7 = new Evento("Ir a bailar", unaSemana, "dire", Estilo.FORMAL, new Semanalmente(), null);
 		
-		Calendar unMes = Calendar.getInstance();
-		unMes.add(Calendar.DATE, -31); // le resto un mes a la fecha actual 
+		LocalDateTime unMes = LocalDateTime.now().minusDays(31);
 		eventoOcurrioYesFrecuente30 = new Evento("Salir con amigos", unMes, "dire", Estilo.FORMAL, new Mensualmente(), null);
 		
-		Calendar unAnio = Calendar.getInstance();
-		unAnio.add(Calendar.DATE, -365); // le resto un año a la fecha actual 
+		LocalDateTime unAnio = LocalDateTime.now().minusYears(1);
 		eventoOcurrioYesFrecuente365 = new Evento("Cumpleaños", unAnio, "dire", Estilo.FORMAL, new Anualmente(), null);
 
 	}
@@ -53,7 +52,7 @@ public class TestActualizarFecha {
 	@Test
 	public void actualizarFechaEventoDiario() {
 		eventoOcurrioYesFrecuente1.actualizarFecha();
-		assertEquals(eventoOcurrioYesFrecuente1.getFecha().get(Calendar.DAY_OF_MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+		assertEquals(eventoOcurrioYesFrecuente1.getFecha().getDayOfMonth(), LocalDate.now().getDayOfMonth());
 	}
 	
 	@Test
@@ -61,25 +60,25 @@ public class TestActualizarFecha {
 		eventoOcurrioYesFrecuente1Personalizado.actualizarFecha();
 	
 		
-		assertEquals(eventoOcurrioYesFrecuente1Personalizado.getFecha().get(Calendar.DAY_OF_WEEK), Calendar.MONDAY);
+		assertEquals(eventoOcurrioYesFrecuente1Personalizado.getFecha().getDayOfWeek(), DayOfWeek.WEDNESDAY);
 	}
 	
 	@Test
 	public void actualizarFechaEventoSemanal() {
 		eventoOcurrioYesFrecuente7.actualizarFecha();
-		assertEquals(eventoOcurrioYesFrecuente7.getFecha().get(Calendar.DAY_OF_MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+		assertEquals(eventoOcurrioYesFrecuente7.getFecha().getDayOfMonth(), LocalDate.now().getDayOfMonth());
 	}
 	
 	@Test
 	public void actualizarFechaEventoMensual() {
 		eventoOcurrioYesFrecuente30.actualizarFecha();
-		assertEquals(eventoOcurrioYesFrecuente30.getFecha().get(Calendar.DAY_OF_MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+		assertEquals(eventoOcurrioYesFrecuente30.getFecha().getDayOfMonth(), LocalDate.now().getDayOfMonth());
 	}
 	
 	@Test
 	public void actualizarFechaEventoAnual() {
 		eventoOcurrioYesFrecuente365.actualizarFecha();
-		assertEquals(eventoOcurrioYesFrecuente365.getFecha().get(Calendar.DAY_OF_MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+		assertEquals(eventoOcurrioYesFrecuente365.getFecha().getDayOfMonth(), LocalDate.now().getDayOfMonth());
 	}
 	
 }

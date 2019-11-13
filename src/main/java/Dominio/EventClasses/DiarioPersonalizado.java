@@ -1,12 +1,13 @@
 package Dominio.EventClasses;
 
-import java.util.Calendar;
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class DiarioPersonalizado extends Frecuencia{
-	private List<Integer> queDiasRepite;
+	private List<DayOfWeek> queDiasRepite;
 	
-	public DiarioPersonalizado(List<Integer> queDias)
+	public DiarioPersonalizado(List<DayOfWeek> queDias)
 	{
 		this.frecuencia = 1;
 		this.queDiasRepite = queDias;
@@ -21,11 +22,11 @@ public class DiarioPersonalizado extends Frecuencia{
 		}while(!this.esDeTipoCompatible(evento.getFecha()));
 	}
 	
-	private boolean esDeTipoCompatible(Calendar fecha)
+	private boolean esDeTipoCompatible(LocalDateTime fecha)
 	{
 		return queDiasRepite.stream().anyMatch(tipo -> 
 		
-			 tipo.equals(fecha.get(Calendar.DAY_OF_WEEK))
+			 tipo.equals(fecha.getDayOfWeek())
 		);
 	}
 	

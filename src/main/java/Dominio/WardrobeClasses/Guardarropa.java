@@ -1,5 +1,6 @@
 package Dominio.WardrobeClasses;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -14,6 +15,7 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Categoria;
 import Dominio.ClothingClasses.Prenda;
@@ -78,14 +80,14 @@ public class Guardarropa extends EntidadPersistente{
 		return this.estilo;
 	}
 
-	private double pedirTemperatura(Calendar fecha, int hora) throws IOException {
+	private double pedirTemperatura(LocalDateTime fecha, int hora) throws IOException {
 		return GestorClimatico.getInstance().obtenerTemperatura(fecha, hora);
 	}
 
 	public Atuendo generarRecomendacion(Evento evento,
 			Usuario creador) throws Exception {
 		Atuendo atuendo = null;
-		double temperatura = pedirTemperatura(evento.getFecha(), evento.getFecha().get(Calendar.HOUR_OF_DAY));
+		double temperatura = pedirTemperatura(evento.getFecha(), evento.getFecha().getHour());
 		atuendo = Vestidor.getInstance().obtenerAtuendo(this, temperatura, 0, creador);
 		if(atuendo.equals(null))
 			atuendo = new Atuendo(generarAtuendoRandom(evento, temperatura, creador));

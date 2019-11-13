@@ -1,5 +1,6 @@
 package Repositorios;
 
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,13 +34,13 @@ public class RepoUsuario extends Repositorio{
 		return this.dao.getUsuariosConEventosProximosYnotificados();
 	}
 	
-	public List<Usuario> getUsuariosConEventosOcurridoFrecuentemente(Calendar fecha)
+	public List<Usuario> getUsuariosConEventosOcurridoFrecuentemente(LocalDateTime fecha)
 	{	
 		// este no delega al dao porque segun la entrega 5 los repetitivos quedarán por ahora fuera de esta versión
 		return usuarios.stream().filter(u -> u.tieneEventosOcurridoFrecuentemente(fecha)).collect(Collectors.toList());
 	}
 	
-	public List<Usuario> getUsuariosConEventosOcurridos(Calendar fecha)
+	public List<Usuario> getUsuariosConEventosOcurridos(LocalDateTime fecha)
 	{
 		return this.dao.getUsuariosConEventosOcurridos(fecha);
 	}

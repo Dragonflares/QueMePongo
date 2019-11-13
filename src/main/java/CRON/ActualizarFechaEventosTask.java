@@ -1,5 +1,6 @@
 package CRON;
 
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Timer;
@@ -16,8 +17,7 @@ public class ActualizarFechaEventosTask extends TimerTask{
     
 	@Override
 	public void run() {
-		Calendar ayer = Calendar.getInstance();
-		ayer.add(Calendar.DATE, -1); // le resto un dia a la fecha actual 
+		LocalDateTime ayer = LocalDateTime.now().minusDays(1);
 		
 		List<Usuario> usuarios = FactoryRepositorioUsuario.get().getUsuariosConEventosOcurridoFrecuentemente(ayer);
 		

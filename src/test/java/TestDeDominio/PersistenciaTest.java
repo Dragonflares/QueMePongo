@@ -1,6 +1,6 @@
 package TestDeDominio;
 
-import java.util.Calendar;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.junit.Assert;
@@ -13,8 +13,8 @@ import Dominio.EventClasses.ImportanciaEvento;
 import Dominio.EventClasses.Media;
 import Dominio.UserClasses.Usuario;
 import Dominio.WardrobeClasses.Guardarropa;
-import db.EntityManagerHelper;
-import Repositorios.factories.FactoryRepositorioUsuario;;
+import Repositorios.factories.FactoryRepositorioUsuario;
+import db.EntityManagerHelper;;
 
 public class PersistenciaTest{
     
@@ -52,8 +52,8 @@ public class PersistenciaTest{
     {
     	Usuario melisa = EntityManagerHelper.getEntityManager().find(Usuario.class, 1);
     	
-    	melisa.agregarEvento(new Evento("fiesta", Calendar.getInstance(), "en casa 1234", Estilo.CASUAL, null, null));
-    	melisa.agregarEvento(new Evento("casamiento", Calendar.getInstance(), "iglesia 1234", Estilo.ELEGANTE, null, null));
+    	melisa.agregarEvento(new Evento("fiesta", LocalDateTime.now(), "en casa 1234", Estilo.CASUAL, null, null));
+    	melisa.agregarEvento(new Evento("casamiento", LocalDateTime.now(), "iglesia 1234", Estilo.ELEGANTE, null, null));
     	
     	FactoryRepositorioUsuario.get().agregar(melisa);
         
@@ -95,15 +95,13 @@ public class PersistenciaTest{
 	   // meli y giuli son usuarios con eventos proximos
 	   Usuario meli = new Usuario();
 	   meli.setUsername("Melisa Ailen");
-	   Calendar maniana = Calendar.getInstance();
-	   maniana.add(Calendar.DATE, 1); // le sumo un dia a la fecha actual 
+	   LocalDateTime maniana = LocalDateTime.now().plusDays(1);
 	   ImportanciaEvento baja = new Baja();
 	   meli.agregarEvento(new Evento("cumpleanios", maniana, "calle 123", Estilo.CASUAL, null, baja));
 	   
 	   Usuario martin = new Usuario();
 	   martin.setUsername("Martin");
-	   Calendar dentroDeCinco = Calendar.getInstance();
-	   dentroDeCinco.add(Calendar.DATE, 5);
+	   LocalDateTime dentroDeCinco = LocalDateTime.now().plusDays(5);
 	   martin.agregarEvento(new Evento("cumpleanios", dentroDeCinco, "calle 123", Estilo.DEPORTIVO, null, baja));
 	   
 	   Usuario giuli = new Usuario();
@@ -125,7 +123,7 @@ public class PersistenciaTest{
    {
 	   Usuario ivan = new Usuario();
 	   ivan.setUsername("Ivan");
-	   Evento eventoNotificado = new Evento("cumpleanios", Calendar.getInstance(), "calle 123", Estilo.CASUAL, null, new Baja());
+	   Evento eventoNotificado = new Evento("cumpleanios", LocalDateTime.now(), "calle 123", Estilo.CASUAL, null, new Baja());
 	   eventoNotificado.setSeNotificoUltimaSugerencia(true);
 	   ivan.agregarEvento(eventoNotificado);
 	   
@@ -142,12 +140,12 @@ public class PersistenciaTest{
 	   // TODO
 	   Usuario ivan = new Usuario();
 	   ivan.setUsername("Ivancito");
-	   Evento eventoNotificado = new Evento("cumpleanios", Calendar.getInstance(), "calle 123", Estilo.CASUAL, null, new Baja());
+	   Evento eventoNotificado = new Evento("cumpleanios", LocalDateTime.now(), "calle 123", Estilo.CASUAL, null, new Baja());
 	   ivan.agregarEvento(eventoNotificado);
 	   
 	   FactoryRepositorioUsuario.get().agregar(ivan);
        
-       List<Usuario> usuarios = FactoryRepositorioUsuario.get().getUsuariosConEventosOcurridos(Calendar.getInstance());
+       List<Usuario> usuarios = FactoryRepositorioUsuario.get().getUsuariosConEventosOcurridos(LocalDateTime.now());
 	   
        Assert.assertEquals(2, usuarios.size());
    }

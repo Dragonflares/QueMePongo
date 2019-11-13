@@ -1,7 +1,8 @@
 package Repositorios.daos;
 
-import java.util.Calendar;
+import java.time.LocalDateTime;
 import java.util.List;
+
 import Dominio.UserClasses.Usuario;
 
 public interface DAO {
@@ -12,7 +13,7 @@ public interface DAO {
     public void eliminar(Object unObjeto);
     public List<Usuario> getUsuariosConEventosProximosYSinNotificar();
     public List<Usuario> getUsuariosConEventosProximosYnotificados();
-    public List<Usuario> getUsuariosConEventosOcurridos(Calendar fecha);
+    public List<Usuario> getUsuariosConEventosOcurridos(LocalDateTime fecha);
     public boolean existeUsuario(String username, String password);
     public Usuario buscarUsuario(String username, String password);
 }

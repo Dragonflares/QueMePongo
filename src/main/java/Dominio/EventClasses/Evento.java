@@ -1,6 +1,7 @@
 package Dominio.EventClasses;
 
-import java.util.Calendar;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -27,7 +28,7 @@ public class Evento extends EntidadPersistente{
 	private String nombre;
 	
 	@Column(name = "fecha")
-	private Calendar fecha;
+	private LocalDateTime fecha;
 	
 	@Column(name = "direccion")
 	private String direccion;
@@ -53,7 +54,7 @@ public class Evento extends EntidadPersistente{
 	private boolean sugerenciaNotificada;
 	
 	
-	public Evento (String nombre, Calendar fecha, String direccion, Estilo estilo, Frecuencia frecuencia, ImportanciaEvento importancia)
+	public Evento (String nombre, LocalDateTime fecha, String direccion, Estilo estilo, Frecuencia frecuencia, ImportanciaEvento importancia)
 	{
 		this.nombre = nombre;
 		this.fecha = fecha;
@@ -74,7 +75,7 @@ public class Evento extends EntidadPersistente{
 		return this.estilo;
 	}
 	
-	public Calendar getFecha()
+	public LocalDateTime getFecha()
 	{
 		return this.fecha;
 	}
@@ -84,7 +85,7 @@ public class Evento extends EntidadPersistente{
 		return importancia.estaProximo(this);
 	}
 	
-	public boolean ocurre(Calendar fechaInteres)
+	public boolean ocurre(LocalDateTime fechaInteres)
 	{
 		return this.fecha.compareTo(fechaInteres) == 0;
 	}
@@ -102,7 +103,7 @@ public class Evento extends EntidadPersistente{
 	
 	public void sumarDias(int dias)
 	{
-		this.fecha.add(Calendar.DAY_OF_YEAR, dias);
+		this.fecha = fecha.plusDays(dias);
 	}
 	
 	public void agregarSugerencia(Atuendo sugerencia)
@@ -120,7 +121,7 @@ public class Evento extends EntidadPersistente{
 		return sugerenciaNotificada;
 	}
 	
-	public void setFecha(Calendar fecha)
+	public void setFecha(LocalDateTime fecha)
 	{
 		this.fecha = fecha;
 	}

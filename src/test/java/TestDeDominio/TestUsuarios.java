@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import java.util.Calendar;
+import java.time.LocalDateTime;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -21,17 +21,13 @@ import Dominio.WardrobeClasses.Guardarropa;
 public class TestUsuarios {
 
 	private Usuario usuario1;
-	private Usuario usuario2;
-	private Guardarropa guardarropa1;
-	private Guardarropa guardarropa2;
-	private Estilo estiloFormal;
 	private Atuendo atuendoMedio;
 	private Atuendo atuendoPocoAbrigado;
 	private Prenda remeraMangaCorta;
 	private Prenda camperaFinita;
 	private Prenda pantalonLargo;
 	private Prenda pantalonCorto;
-	private Calendar date;
+	private LocalDateTime date;
 	
 	@Before
 	public void init() {
@@ -40,16 +36,12 @@ public class TestUsuarios {
 		
 		usuario1 = new Usuario("Dragonflares", "lorddragonflares@gmail.com", "+54 9 1133606009");
 		usuario1.modificarOffSetSuperior(1);
-		date = Calendar.getInstance();
-		date.add(Calendar.DATE, -2);
+		date = LocalDateTime.now().minusDays(2);
 		
 		remeraMangaCorta = mock(Prenda.class);
 		camperaFinita = mock(Prenda.class);
 		pantalonLargo = mock(Prenda.class);
 		pantalonCorto = mock(Prenda.class);
-		
-		guardarropa1 = mock(Guardarropa.class);
-		guardarropa2 = mock(Guardarropa.class);
 		
 		when(remeraMangaCorta.getNivelAbrigo()).thenReturn(3);
 		when(camperaFinita.getNivelAbrigo()).thenReturn(4);

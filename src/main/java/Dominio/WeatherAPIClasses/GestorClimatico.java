@@ -1,10 +1,9 @@
 package Dominio.WeatherAPIClasses;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class GestorClimatico{
@@ -26,9 +25,9 @@ public class GestorClimatico{
 		return instance;
 	}
 
-	public double obtenerTemperatura(Calendar fecha, int time) throws IOException
+	public double obtenerTemperatura(LocalDateTime fecha, int time) throws IOException
 	{
-		long diferenciaDias = this.diasEntre(Calendar.getInstance(), fecha);
+		long diferenciaDias = ChronoUnit.DAYS.between(LocalDateTime.now(), fecha);
 		double temp = -404;
 		int actualForecaster = 0;
 		while(temp == -404 && weatherAdapters.size() != actualForecaster)
@@ -40,9 +39,10 @@ public class GestorClimatico{
 		return temp;
 	}
 	
-	public  String darCondicionClimatica(Calendar dia, int time) throws IOException
+	public  String darCondicionClimatica(LocalDateTime dia, int time) throws IOException
 	{
-		long diferenciaDias = this.diasEntre(Calendar.getInstance(), dia);
+		
+		long diferenciaDias = ChronoUnit.DAYS.between(LocalDateTime.now(), dia);
 		String condicion = null;
 		int actualForecaster = 0;
 		while(condicion == null && weatherAdapters.size() != actualForecaster)
@@ -55,23 +55,6 @@ public class GestorClimatico{
 		setPrincipal(weatherAdapters.get(actualForecaster));
 		
 		return condicion;
-	}
-	
-	private long diasEntre(Calendar diaMenor, Calendar diaMayor)
-	{ 	
-		Date diaMenorDate = this.convertirDate(diaMenor);
-		Date diaMayorDate = this.convertirDate(diaMayor);
-
-		return ( diaMayorDate.getTime() - diaMenorDate.getTime() )/(24 * 60 * 60 * 1000); 		
-	}
-	
-	private Date convertirDate(Calendar fecha)
-	{
-		int anio = fecha.get(Calendar.YEAR); 
-		int mes = fecha.get(Calendar.MONTH); 
-		int dia = fecha.get(Calendar.DAY_OF_MONTH); 
-		Calendar calendar = new GregorianCalendar(anio, mes-1, dia); 
-		return new Date(calendar.getTimeInMillis());
 	}
 
 	public static List<WeatherAdapter> getWeatherAdapters() {

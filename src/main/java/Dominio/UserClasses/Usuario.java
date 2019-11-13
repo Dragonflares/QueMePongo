@@ -1,7 +1,7 @@
 package Dominio.UserClasses;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -183,12 +183,12 @@ public class Usuario extends EntidadPersistente{
 		return eventos.stream().anyMatch(e -> e.estaProximo());
 	}
 
-	public boolean tieneEventosOcurridoFrecuentemente(Calendar fecha)
+	public boolean tieneEventosOcurridoFrecuentemente(LocalDateTime fecha)
 	{
 		return eventos.stream().anyMatch(e -> e.ocurre(fecha) && e.esFrecuente());
 	}
 
-	public List<Evento> getEventosOcurridoFrecuentemente(Calendar fecha)
+	public List<Evento> getEventosOcurridoFrecuentemente(LocalDateTime fecha)
 	{
 		return eventos.stream().filter(e -> e.ocurre(fecha) && e.esFrecuente()).collect(Collectors.toList());
 	}
@@ -253,12 +253,12 @@ public class Usuario extends EntidadPersistente{
 		this.modificarOffSetSuperior(superior.darCalificacion());	
 	}
 
-	public boolean tieneEventosOcurridos(Calendar fecha)
+	public boolean tieneEventosOcurridos(LocalDateTime fecha)
 	{
 		return eventos.stream().anyMatch(e -> e.ocurre(fecha));
 	}
 
-	public List<Evento> getEventosOcurridos(Calendar fecha) {
+	public List<Evento> getEventosOcurridos(LocalDateTime fecha) {
 		return eventos.stream().filter(e -> e.ocurre(fecha)).collect(Collectors.toList());
  
 	}

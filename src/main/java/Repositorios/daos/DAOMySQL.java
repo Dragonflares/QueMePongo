@@ -1,14 +1,12 @@
 package Repositorios.daos;
 
 
-import java.util.Calendar;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-import Dominio.Estilish.Estilo;
 import Dominio.UserClasses.Usuario;
-import Dominio.WardrobeClasses.Guardarropa;
 import Models.Model;
 import db.EntityManagerHelper;
 
@@ -76,7 +74,7 @@ public class DAOMySQL implements DAO {
     }
     
     @Override
-    public List<Usuario> getUsuariosConEventosOcurridos(Calendar fecha)
+    public List<Usuario> getUsuariosConEventosOcurridos(LocalDateTime fecha)
     {
     	String query = "SELECT u FROM Usuario u\r\n" +
     		    "INNER JOIN u.eventos e \r\n"  + 

@@ -1,6 +1,6 @@
 package Repositorios.daos;
 
-import java.util.Calendar;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -65,7 +65,7 @@ public class DAOMemoria implements DAO {
     
     @SuppressWarnings("unchecked")
 	@Override
-    public List<Usuario> getUsuariosConEventosOcurridos(Calendar fecha)
+    public List<Usuario> getUsuariosConEventosOcurridos(LocalDateTime fecha)
     {
     	return ((List<Usuario>)(List<?>) entities).stream().filter(u -> u.tieneEventosOcurridos(fecha)).collect(Collectors.toList());
     }

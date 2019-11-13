@@ -1,6 +1,7 @@
 package Dominio.EventClasses;
 
-import java.util.Calendar;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -11,6 +12,6 @@ public class Media extends ImportanciaEvento{
 	
 	@Override
 	public boolean estaProximo(Evento evento) {
-		return this.diasEntre(evento.getFecha(), Calendar.getInstance()) <= 7;
+		return ChronoUnit.DAYS.between(evento.getFecha(), LocalDateTime.now()) <= 7;
 	}
 }

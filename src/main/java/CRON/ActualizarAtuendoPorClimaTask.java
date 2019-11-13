@@ -1,6 +1,7 @@
 package CRON;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Timer;
@@ -28,7 +29,7 @@ public class ActualizarAtuendoPorClimaTask extends TimerTask {
 					{
 						
 						try {
-							double temperatura = pedirTemperatura(e.getFecha(), e.getFecha().get(Calendar.HOUR_OF_DAY));
+							double temperatura = pedirTemperatura(e.getFecha(), e.getFecha().getHour());
 							
 							if(!e.getUltimaSugerencia().abrigaLoNecesario(temperatura, u))
 								e.setSeNotificoUltimaSugerencia(false);
@@ -42,7 +43,7 @@ public class ActualizarAtuendoPorClimaTask extends TimerTask {
 		);
 	}
 	
-	private double pedirTemperatura(Calendar fecha, int hora) throws IOException {
+	private double pedirTemperatura(LocalDateTime fecha, int hora) throws IOException {
 		return GestorClimatico.getInstance().obtenerTemperatura(fecha, hora);
 	}
 	
