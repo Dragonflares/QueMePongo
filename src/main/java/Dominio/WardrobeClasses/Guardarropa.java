@@ -39,7 +39,6 @@ public class Guardarropa extends EntidadPersistente{
 	public Guardarropa(Usuario creador, Estilo estilo) {
 		this.usuariosConAcceso.add(creador);
 		this.estilo = estilo;
-		this.prendasDisponibles = null;
 	}
 
 	public int cantidadDePrendasDisponibles()
@@ -56,8 +55,7 @@ public class Guardarropa extends EntidadPersistente{
 	}
 
 	public void agregarPrenda(Prenda prenda) {
-
-		prendasDisponibles.add(prenda);
+		this.prendasDisponibles.add(prenda);
 	}
 
 	public List<Prenda> getPrendasDisponibles() {
@@ -314,6 +312,16 @@ public class Guardarropa extends EntidadPersistente{
 
 	public void cambiarEstilo(Estilo estilo) {
 		this.estilo = estilo;
+	}
+	
+	public boolean tienePrenda(Prenda prenda) {
+		if(this.prendasDisponibles == null)
+			return false;
+		else
+		{
+			return this.prendasDisponibles.contains(prenda);
+		}
+						
 	}
 	
 	//	public List<Prenda> obtenerAccesorios(Evento evento) throws IOException{

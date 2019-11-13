@@ -1,7 +1,16 @@
 package server;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
 import Dominio.ClothingClasses.Prenda;
 import Dominio.Estilish.Estilo;
+import Dominio.EventClasses.Alta;
+import Dominio.EventClasses.Baja;
+import Dominio.EventClasses.Evento;
+import Dominio.EventClasses.Media;
+import Dominio.UserClasses.Premium;
 import Dominio.UserClasses.Usuario;
 import Dominio.WardrobeClasses.Guardarropa;
 import Repositorios.factories.FactoryRepositorioUsuario;
@@ -30,8 +39,19 @@ public class Server {
 	{
 		Usuario usuario1 = new Usuario("usuario123", "asd123");
 		Usuario usuario2 = new Usuario("lala", "qwe123");
+		usuario2.setTipoDeCuenta(new Premium());
 		Guardarropa guardarropa1 = new Guardarropa(usuario1, Estilo.CASUAL);
 		Guardarropa guardarropa2 = new Guardarropa(usuario1, Estilo.ELEGANTE);
+		Calendar dentroDeUnaSemana = Calendar.getInstance();
+		dentroDeUnaSemana.add(Calendar.DATE, 7); 
+		Evento evento1 = new Evento("Cumpleaños", Calendar.getInstance(), "avenida 123", Estilo.ELEGANTE_SPORT, null, new Media());
+		Evento evento2 = new Evento("Casamiento", dentroDeUnaSemana, "calle 13", Estilo.ELEGANTE, null, new Alta());
+		Evento evento3 = new Evento("Fiesta", Calendar.getInstance(), "calle falsa 123", Estilo.CASUAL, null, new Baja());
+		Evento evento4 = new Evento("Bautismo", dentroDeUnaSemana, "iglesa 123", Estilo.FORMAL, null, new Media());
+		usuario1.agregarEvento(evento1);
+		usuario1.agregarEvento(evento2);
+		usuario2.agregarEvento(evento3);
+		usuario2.agregarEvento(evento4);
 		
 		Prenda remeraMangaLargaRojaDeAlgodon = new Prenda.PrendaBuilder()
 				.material("Algodon")
@@ -45,12 +65,10 @@ public class Server {
 				.setearColores("Negro", "Azul")
 				.tipoRopa("Pantalon largo")
 				.build();
-		System.out.println("PRENDASSSSSS");
-		System.out.println(remeraMangaLargaRojaDeAlgodon);
-		System.out.println(pantalonLargoNegroDeLycra);
+		
+		
 		usuario1.agregarGuardarropa(guardarropa1);
 		usuario2.agregarGuardarropa(guardarropa2);
-		// TODO HACER QUE FUNCIONE agregarPrendaAGuardarropa
 		usuario1.agregarPrendaAGuardarropa(guardarropa1, pantalonLargoNegroDeLycra);
 		usuario2.agregarPrendaAGuardarropa(guardarropa2, remeraMangaLargaRojaDeAlgodon);
 		FactoryRepositorioUsuario.get().agregar(usuario1);

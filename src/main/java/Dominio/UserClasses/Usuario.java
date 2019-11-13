@@ -22,7 +22,6 @@ import Dominio.ClothingClasses.Prenda;
 import Dominio.Estilish.Estilo;
 import Dominio.EventClasses.Evento;
 import Dominio.WardrobeClasses.Guardarropa;
-
 import db.EntidadPersistente;
 
 @Entity
@@ -112,17 +111,13 @@ public class Usuario extends EntidadPersistente{
 	}
 
 	public void agregarPrendaAGuardarropa(Guardarropa guardarropa, Prenda prenda) throws Exception {
-// TODO NO FUNCIONA, SI LAS PRENDAS DISPONIBLES ES NULL ME TIRA NULL PONTER EXCEPTION
 		
-		/*if(!this.guardarropas.stream().anyMatch(g ->{
-			if(g.getPrendasDisponibles() != null)
-				g.getPrendasDisponibles().contains(prenda);
-		})) */
-		/*{
+		if(!this.guardarropas.stream().anyMatch(g -> g.tienePrenda(prenda))) 
+		{
 			tipoDeCuenta.agregarPrendaAGuardarropa(guardarropa, prenda);
 		} else {
 			throw new Exception("Ya tenes la prenda en otro guardarropa");
-		}*/
+		}
 
 	}
 
@@ -292,5 +287,10 @@ public class Usuario extends EntidadPersistente{
 	public String getPassword()
 	{
 		return this.password;
+	}
+	
+	public void setTipoDeCuenta(TipoDeUsuario tipo)
+	{
+		this.tipoDeCuenta = tipo;
 	}
 }
