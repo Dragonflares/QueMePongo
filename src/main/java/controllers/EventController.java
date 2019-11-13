@@ -20,13 +20,13 @@ public class EventController {
 		// TODO ARREGLAR
 		System.out.println("Fecha:");
 		System.out.println(fecha);
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // deberia ser: "dd/MM/yyyy HH:mm", pero está mal la view
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a"); 
 		
 		fechaElegida = LocalDateTime.parse(fecha, formatter);
 		
 		viewModel.put("cliente", usuario);
-		viewModel.put("fecha", fechaElegida);
+		//viewModel.put("fecha", fechaElegida);
 		
-		return new ModelAndView(viewModel, "consumo.hbs");
+		return new ModelAndView(viewModel, "home/listaDeEventos.hbs");
 	}
 }
