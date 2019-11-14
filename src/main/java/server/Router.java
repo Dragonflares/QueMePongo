@@ -50,7 +50,7 @@ public class Router {
 		
 		Spark.before("/", SessionHandler.allowed());
 		Spark.before("/eventos", SessionHandler.allowed());
-		Spark.before("/eventos/info", SessionHandler.allowed());
+		//Spark.before("/eventos/info", SessionHandler.allowed());
 		
 		Spark.get("/loginFailure", LoginController::loginFailure, engine);
 		Spark.post("/loginFailure", LoginController::processLogin, engine);
