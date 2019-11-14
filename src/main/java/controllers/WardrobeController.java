@@ -1,5 +1,7 @@
 package controllers;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,8 +33,29 @@ public class WardrobeController {
 		EventController.usuario = usuario;
 		
 		HashMap<String, Object> viewModel = new HashMap<>();
+
+		//String json = usuario.eventoToJson();
+		/*String jsonEvento = "[ { title: 'All Day Event', start: new Date(y, m, 28), className: 'important' }]";
+		
+		try {
+
+			FileWriter file = new FileWriter("src/main/resources/public/json/eventos.json");
+			file.write(jsonEvento);
+			file.flush();
+			file.close();
+
+		} catch (IOException e) {
+			//manejar error
+		}*/
+		
 		viewModel.put("eventos", usuario.getEventos());
-		return new ModelAndView(viewModel, "home/selecFecha.hbs");
+		//viewModel.put("json", jsonEvento);
+		
+		//System.out.println(eventosJson);
+		
+		
+		
+		return new ModelAndView(viewModel, "home/seleccionarFecha.hbs");
 	}
 	
 	

@@ -38,6 +38,7 @@ public class Guardarropa extends EntidadPersistente{
 	@OneToMany(mappedBy = "id", cascade = {CascadeType.ALL})
 	private List<Prenda> prendasDisponibles = new ArrayList<Prenda>();
 
+	public Guardarropa() {}
 	public Guardarropa(Usuario creador, Estilo estilo) {
 		this.usuariosConAcceso.add(creador);
 		this.estilo = estilo;

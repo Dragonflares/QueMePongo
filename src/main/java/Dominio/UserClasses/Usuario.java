@@ -17,6 +17,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Prenda;
 import Dominio.Estilish.Estilo;
@@ -88,6 +91,14 @@ public class Usuario extends EntidadPersistente{
 		this.offsetSuperior = 0;
 		this.setUltimoAtuendo(null);
 		this.tipoDeCuenta = new Gratuito();
+	}
+	
+	public String eventoToJson()
+	{
+		Gson objGson = new GsonBuilder().setPrettyPrinting().create();
+		
+		Evento lista = this.eventos.get(0);
+		return objGson.toJson(lista);
 	}
 	
 	public void setAtuendosRechazados(List<Atuendo> atuendosRechazados) {

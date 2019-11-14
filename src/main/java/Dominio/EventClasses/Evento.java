@@ -66,11 +66,64 @@ public class Evento extends EntidadPersistente{
 		this.importancia = importancia;
 	}
 	
+	
+	
+	@Override
+	public String toString() {
+		return "Evento [nombre=" + nombre + ", fecha=" + fecha + ", direccion=" + direccion + ", estilo=" + estilo
+				+ ", creador=" + creador + ", frecuencia=" + frecuencia + ", importancia=" + importancia
+				+ ", sugerencias=" + sugerencias + ", sugerenciaNotificada=" + sugerenciaNotificada + "]";
+	}
+
 	public String getNombre()
 	{
 		return this.nombre;
 	}
 	
+	public Frecuencia getFrecuencia() {
+		return frecuencia;
+	}
+
+	public void setFrecuencia(Frecuencia frecuencia) {
+		this.frecuencia = frecuencia;
+	}
+
+	public List<Atuendo> getSugerencias() {
+		return sugerencias;
+	}
+
+	public void setSugerencias(List<Atuendo> sugerencias) {
+		this.sugerencias = sugerencias;
+	}
+
+	public boolean isSugerenciaNotificada() {
+		return sugerenciaNotificada;
+	}
+
+	public void setSugerenciaNotificada(boolean sugerenciaNotificada) {
+		this.sugerenciaNotificada = sugerenciaNotificada;
+	}
+
+	public Usuario getCreador() {
+		return creador;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public void setEstilo(Estilo estilo) {
+		this.estilo = estilo;
+	}
+
+	public void setImportancia(ImportanciaEvento importancia) {
+		this.importancia = importancia;
+	}
+
 	public Estilo getEstilo()
 	{
 		return this.estilo;
