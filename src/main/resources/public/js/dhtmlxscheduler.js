@@ -342,4 +342,4 @@ if(!s.callEvent("onBeforeViewChange",[d,o,r||s._mode,e||s._date]))return void t(
 var i=i||'<div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div><div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div><div class="dhx_cal_tab" name="month_tab" style="right:76px;"></div>',a=document.createElement("DIV");return a.id="dhxSchedObj_"+this._genStr(12),
 a.innerHTML='<div id="'+a.id+'" class="dhx_cal_container" style="width:100%; height:100%;"><div class="dhx_cal_navline"><div class="dhx_cal_prev_button">&nbsp;</div><div class="dhx_cal_next_button">&nbsp;</div><div class="dhx_cal_today_button"></div><div class="dhx_cal_date"></div>'+i+'</div><div class="dhx_cal_header"></div><div class="dhx_cal_data"></div></div>',document.body.appendChild(a.firstChild),this.attachObject(a.id,!1,!0),this.vs[this.av].sched=n,this.vs[this.av].schedId=a.id,
 n.setSizes=n.updateView,n.destructor=function(){},n.init(a.id,t,e),this.vs[this._viewRestore()].sched})}();
-//# sourceMappingURL=s/js/dhtmlxscheduler.js.map
+//# sourceMappingURL=dhtmlxscheduler.js.map
