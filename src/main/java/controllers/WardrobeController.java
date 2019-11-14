@@ -32,7 +32,7 @@ public class WardrobeController {
 		
 		HashMap<String, Object> viewModel = new HashMap<>();
 		viewModel.put("eventos", usuario.getEventos());
-		return new ModelAndView(viewModel, "home/selecFecha.hbs");
+		return new ModelAndView(viewModel, "home/seleccionarFecha.hbs");
 	}
 	
 	
