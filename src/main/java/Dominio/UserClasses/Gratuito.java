@@ -13,7 +13,7 @@ public class Gratuito extends TipoDeUsuario{
 
 	public void agregarPrendaAGuardarropa(Guardarropa guardarropa, Prenda prenda) throws Exception
 	{
-		if(this.tamanioMaximoGuardarropa > guardarropa.cantidadDePrendasDisponibles())
+		if(this.tamanioMaximoGuardarropa > guardarropa.getCantidadDePrendas()())
 		{
 			guardarropa.agregarPrenda(prenda);
 		} else 
