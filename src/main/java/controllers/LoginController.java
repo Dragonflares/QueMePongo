@@ -32,16 +32,14 @@ public class LoginController {
 		return new ModelAndView(null,"home/errorLogin.hbs");
 	}
 
-
 	public static ModelAndView processLogin(Request req, Response res) {
-
 
 		validarUsernamePassword(req, res);
 		String username = req.queryParams("usuario");
 		String password = req.queryParams("contrasenia");
 
 		if (!FactoryRepositorioUsuario.get().existeUsuario(username, password)) {
-					res.status(400);
+			res.status(400);
 			res.redirect("/loginFailure");
 		} else {
 			res.status(200);
@@ -54,9 +52,6 @@ public class LoginController {
 		return null;
 	}
 
-	
-	
-	
 	public static Void logout(Request req, Response res) {
         Session session = req.session(true);
         session.invalidate();
@@ -64,10 +59,5 @@ public class LoginController {
         res.redirect("/login");
         return null;
     }
-
-
-
-
-
 
 }

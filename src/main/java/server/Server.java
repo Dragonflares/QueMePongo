@@ -41,7 +41,9 @@ public class Server {
 			Usuario usuario2 = new Usuario("lala", "qwe123");
 			usuario2.setTipoDeCuenta(new Premium());
 			Guardarropa guardarropa1 = new Guardarropa(usuario1, Estilo.CASUAL);
+			guardarropa1.setNombre("Guardarropas Tranqui");
 			Guardarropa guardarropa2 = new Guardarropa(usuario1, Estilo.ELEGANTE);
+			guardarropa2.setNombre("Guardarropas Cheto");
 			LocalDateTime dentroDeUnaSemana = LocalDateTime.now().plusDays(7);
 			Evento evento1 = new Evento("Cumpleaños", LocalDateTime.now(), "Avenida 123", Estilo.ELEGANTE_SPORT, null, new Media());
 			Evento evento2 = new Evento("Casamiento", dentroDeUnaSemana, "Calle 13", Estilo.ELEGANTE, null, new Alta());
@@ -67,6 +69,7 @@ public class Server {
 			
 			
 			usuario1.agregarGuardarropa(guardarropa1);
+			guardarropa1.permitirAccesoaUsuario(usuario2);
 			usuario2.agregarGuardarropa(guardarropa2);
 			usuario1.agregarPrendaAGuardarropa(guardarropa1, pantalonLargoNegroDeLycra);
 			usuario2.agregarPrendaAGuardarropa(guardarropa2, remeraMangaLargaRojaDeAlgodon);

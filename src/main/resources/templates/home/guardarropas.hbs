@@ -3,40 +3,30 @@
             <h1>Que me pongo? - Guardarropas</h1>
 
         </header>
-        
-        <div><p>
-            <h2>Guardarropas<button class="button">Nuevo guardarropas</button></p></h2> <br/>
-            <form>
-                <table id="t01">
-                    <tr>
-                      <th>Guardarropas</th>
-                      <th>Estilo</th> 
-                      <th>Cantidad de prendas</th>
-                      <th>Usuarios con acceso</th>
-                    </tr>
-                    <tr>
-                      <td>Guardarropas de fiesta</td>
-                      <td>Elegante</td>
-                      <td>8</td>
-                      <td>Romina Malavio, Julieta Ramirez, Marina Slavich</td>
-                    </tr>
-                    <tr>
-                        <td>GYM</td>
-                        <td>Deportivo</td>
-                        <td>25</td>
-                        <td>Daiana Blanco, Marina Slavich</td>
-                    </tr>
-                    <tr>
-                        <td>Casas de amigos</td>
-                        <td>Casual</td>
-                        <td>30</td>
-                        <td>Maria Lazarte</td>
-                    </tr>
-                </table>
-            </form>
-        </div>
+		
+		<div class="row">
+			<div class="col-md-12 block-center">
+			<h2>Guardarropas <button class="button">Nuevo guardarropas</button></h2> </p> 
+				<ul class="list-group">
+					{{#each guardarropas}}
+					<div class="list-group-item">
+						<tr>
+							<h4> <td> {{ nombre }} </td> </h4>
+							<p> 
+								<h6> Estilo: {{ estilo }} </h6>
+								<h6> Cantidadantidad De Prendas: {{ cantidadDePrendas }} </h6>
+								<h6> Usuarios Con Acceso: </h6>
+								{{#each usuariosConAcceso}} 
+								<h6> {{ username }} </h6>
+								{{/each}}
+							</p>
+						</tr>
+					</div>
+					{{/each}}
+				</ul>
+			</div>
+		</div>		
     
 	
 {{/partial}}
-
 {{>layout.hbs}}

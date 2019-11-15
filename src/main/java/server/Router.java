@@ -16,7 +16,6 @@ import controllers.*;
 
 public class Router {
 
-
 	static Set<String> publicRoutes = new HashSet<String>();
 
 	public static Boolean isPublic(String route)
@@ -31,31 +30,30 @@ public class Router {
 		publicRoutes.add("/logout");
 	}
 
-
-
 	public static void configure() {
 
-		
-		
-		
 		Spark.staticFiles.location("/public");
 		setPublicRoutes(publicRoutes);
 		
+		//es asi porque si, corta
 		HandlebarsTemplateEngine engine = HandlebarsTemplateEngineBuilder
 				.create()
 				.withDefaultHelpers()
 				.withHelper("isTrue", BooleanHelper.isTrue)
 				.build();
-	
+		
+		//el before chequea si esta autenticado (con username) y si la ruta es pública, en caso de que una no lo sea, redirige al login
+		//el get te devuelve un model and view
+		//el post te "redirecciona" debido a una modificacion que haces (si bien devuelven model and view en realidad devuelven null)
 		
 		Spark.before("/", SessionHandler.allowed());
 		Spark.before("/eventos", SessionHandler.allowed());
 		
+		Spark.get("/login", LoginController::init,engine);
 		Spark.get("/loginFailure", LoginController::loginFailure, engine);
 		Spark.post("/loginFailure", LoginController::processLogin, engine);
-		Spark.post("/login", LoginController::processLogin,engine);
-		
-		Spark.get("/login", LoginController::init,engine); 
+		Spark.post("/login", LoginController::processLogin, engine);
+		 
 		Spark.get("/", WardrobeController::init,engine);
 		
 		Spark.path("/eventos",  () -> {
@@ -66,7 +64,6 @@ public class Router {
 		Spark.get("/guardarropas/:idGuardarropa", WardrobeController::indexViewDatosDeUnGuardarropa, engine);	
 		Spark.get("/guardarropas/:idGuardarropa/prendas", WardrobeController::indexViewAgregarPrenda, engine);	
 		Spark.post("/guardarropas/:idGuardarropa/prendas", WardrobeController::registrarPrenda);
-
 
 		Spark.get("/out", WardrobeController::logOut, engine); // este boton no esta en nuestro tp, pero lo puse porque si
 	}

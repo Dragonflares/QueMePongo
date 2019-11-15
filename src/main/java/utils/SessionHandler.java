@@ -10,9 +10,7 @@ import server.Router;
 
 
 public class SessionHandler {
-
-
-
+	
 	public static Filter allowed() {
 
 		return new Filter() {
@@ -25,13 +23,8 @@ public class SessionHandler {
 				if (!authenticated && !Router.isPublic(req.pathInfo())) {
 					res.redirect("/login");
 					Spark.halt(401, "No tiene permisos para acceder a la ruta especificada");
-				}
-
-				
+				}			
 			}
 		};
 	}
-
-
-
 }

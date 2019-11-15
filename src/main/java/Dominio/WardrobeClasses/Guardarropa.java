@@ -8,6 +8,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -29,6 +30,10 @@ import db.EntidadPersistente;
 @Entity
 @Table(name = "guardarropa")
 public class Guardarropa extends EntidadPersistente{
+	
+	@Column(name = "nombre")
+	private String nombre;
+	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Usuario> usuariosConAcceso = new ArrayList<Usuario>();
 	
@@ -37,13 +42,14 @@ public class Guardarropa extends EntidadPersistente{
 	
 	@OneToMany(mappedBy = "id", cascade = {CascadeType.ALL})
 	private List<Prenda> prendasDisponibles = new ArrayList<Prenda>();
+	
 
 	public Guardarropa(Usuario creador, Estilo estilo) {
 		this.usuariosConAcceso.add(creador);
 		this.estilo = estilo;
 	}
 
-	public int cantidadDePrendasDisponibles()
+	public int getCantidadDePrendas()
 	{
 		return prendasDisponibles.size();
 	}
@@ -75,11 +81,17 @@ public class Guardarropa extends EntidadPersistente{
 	public List<Prenda> getCalzadosDisponibles(){
 		return  prendasDisponibles.stream().filter(p -> p.getCategoria() == Categoria.CALZADO).collect(Collectors.toList());
 	}
+	
+	public String getNombre()
+	{
+		return this.nombre;
+	}
+	
 	public Estilo getEstilo()
 	{
 		return this.estilo;
 	}
-
+	
 	private double pedirTemperatura(LocalDateTime fecha, int hora) throws IOException {
 		return GestorClimatico.getInstance().obtenerTemperatura(fecha, hora);
 	}
@@ -324,6 +336,10 @@ public class Guardarropa extends EntidadPersistente{
 			return this.prendasDisponibles.contains(prenda);
 		}
 						
+	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
 	//	public List<Prenda> obtenerAccesorios(Evento evento) throws IOException{

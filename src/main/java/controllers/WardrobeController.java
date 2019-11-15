@@ -19,12 +19,12 @@ public class WardrobeController {
 	
 	public static ModelAndView init(Request req, Response res) {
 		
-		HashMap<String, Object> viewModel = new HashMap<>();
+		//HashMap<String, Object> viewModel = new HashMap<>();
 		
-		viewModel.put("cliente", usuario);
-		viewModel.put("guardarropas", usuario.getGuardarropas());
+		//viewModel.put("usuario", usuario);
+		//viewModel.put("guardarropas", usuario.getGuardarropas());
 
-		return new ModelAndView(viewModel, "home/guardarropas.hbs");
+		return new ModelAndView(usuario, "home/guardarropas.hbs");
 	}
 	
 	public static ModelAndView verEventos(Request req, Response res) {
@@ -49,20 +49,18 @@ public class WardrobeController {
 	}
 	
 	public static ModelAndView indexViewDatosDeUnGuardarropa(Request req, Response res) {
+				
+		int id=Integer.parseInt(req.params(":idGuardarropa"));
 		
-		
-	int id=Integer.parseInt(req.params(":idGuardarropa"));
-	
-	// TODO esta harcodeado, cambiar. PD: en el otro tp tenian un repo, que en este caso seria RepoGuardarropa
-	guardarropaSeleccionado = ((Usuario) FactoryRepositorioUsuario.get().buscarTodos().get(0)).getGuardarropas().get(0);	
-		
-	
-	HashMap<String, Object> viewModel = new HashMap<>();
-	viewModel.put("id", guardarropaSeleccionado.getId() );
-	viewModel.put("guardarropa", guardarropaSeleccionado);
-	return new ModelAndView(
-			viewModel, 
-			"home/prendas.hbs");
+		// TODO esta harcodeado, cambiar. PD: en el otro tp tenian un repo, que en este caso seria RepoGuardarropa
+		guardarropaSeleccionado = ((Usuario) FactoryRepositorioUsuario.get().buscarTodos().get(usuario.getId())).getGuardarropas().get(id);	
+				
+		HashMap<String, Object> viewModel = new HashMap<>();
+		viewModel.put("id", guardarropaSeleccionado.getId() );
+		viewModel.put("guardarropa", guardarropaSeleccionado);
+		return new ModelAndView(
+				viewModel, 
+				"home/prendas.hbs");
 	}
 	
 	public static ModelAndView indexViewAgregarPrenda(Request req, Response res) {
