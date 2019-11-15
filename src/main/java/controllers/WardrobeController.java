@@ -3,6 +3,8 @@ package controllers;
 import java.util.HashMap;
 import java.util.List;
 
+import com.alibaba.fastjson.JSON;
+
 import Dominio.ClothingClasses.Prenda;
 import Dominio.UserClasses.Usuario;
 import Dominio.WardrobeClasses.Guardarropa;
@@ -31,7 +33,10 @@ public class WardrobeController {
 		EventController.usuario = usuario;
 		
 		HashMap<String, Object> viewModel = new HashMap<>();
+		String eventos = "[{ title: 'All Day Event', dire: 'Avenida 123', estilo: 'CASUAL', importancia: 'BAJA', start: new Date(y, m, 1)}]";
 		viewModel.put("eventos", usuario.getEventos());
+		//Object jsoni = JSON.parse(eventos);
+		viewModel.put("json", eventos);
 		return new ModelAndView(viewModel, "home/seleccionarFecha.hbs");
 	}
 	
