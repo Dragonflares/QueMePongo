@@ -195,9 +195,9 @@ public class Evento extends EntidadPersistente{
 		return this.direccion;
 	}
 	
-	public String getImportancia()
+	public ImportanciaEvento getImportanciaEvento()
 	{
-		return this.importancia.getImportancia();
+		return this.importancia;
 	}
 	
 	public LocalTime getHoraInicio()

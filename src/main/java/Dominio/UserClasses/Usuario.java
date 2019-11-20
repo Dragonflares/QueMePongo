@@ -17,9 +17,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Prenda;
 import Dominio.Estilish.Estilo;
@@ -91,49 +88,6 @@ public class Usuario extends EntidadPersistente{
 		this.offsetSuperior = 0;
 		this.setUltimoAtuendo(null);
 		this.tipoDeCuenta = new Gratuito();
-	}
-	
-	public String eventoToJson()
-	{
-		return "var data = [ \r\n" + 
-				"				{\r\n" + 
-				"					title: 'All Day Event',\r\n" + 
-				"					dire: 'Avenida 123',\r\n" + 
-				"					estilo: 'CASUAL',\r\n" + 
-				"					importancia: 'BAJA',\r\n" + 
-				"					start: \"2019-11-08\"\r\n" + 
-				"				},\r\n" + 
-				"				{\r\n" + 
-				"					id: 999,\r\n" + 
-				"					title: 'Repeating Event',\r\n" + 
-				"					dire: 'Calle 123',\r\n" + 
-				"					estilo: 'CASUAL',\r\n" + 
-				"					importancia: 'BAJA',\r\n" + 
-				"					start: \"2019-11-19\",\r\n" + 
-				"					allDay: false,\r\n" + 
-				"					className: 'info'\r\n" + 
-				"				},\r\n" + 
-				"				{\r\n" + 
-				"					id: 999,\r\n" + 
-				"					title: 'Repeating Event',\r\n" + 
-				"					dire: 'Calle 123',\r\n" + 
-				"					estilo: 'CASUAL',\r\n" + 
-				"					importancia: 'BAJA',\r\n" + 
-				"					start: \"2019-11-30\",\r\n" + 
-				"					allDay: false,\r\n" + 
-				"					className: 'info'\r\n" + 
-				"				},\r\n" + 
-				"				{\r\n" + 
-				"					title: 'Meeting',\r\n" + 
-				"					dire: 'Lugar 123',\r\n" + 
-				"					estilo: 'ELEGANTE',\r\n" + 
-				"					importancia: 'MEDIA',\r\n" + 
-				"					start: \"2019-11-01\",\r\n" + 
-				"					allDay: false,\r\n" + 
-				"					className: 'important'\r\n" + 
-				"				}\r\n" + 
-				"			];\r\n" + 
-				"";
 	}
 	
 	public void setAtuendosRechazados(List<Atuendo> atuendosRechazados) {
