@@ -6,6 +6,7 @@ import java.util.List;
 import com.alibaba.fastjson.JSON;
 
 import Dominio.ClothingClasses.Prenda;
+import Dominio.ClothingClasses.TipoDeRopa;
 import Dominio.UserClasses.Usuario;
 import Dominio.WardrobeClasses.Guardarropa;
 import Repositorios.factories.FactoryRepositorioUsuario;
@@ -18,15 +19,14 @@ public class WardrobeController {
 	private static String cadena;
 	private static List<Guardarropa> guardarropas;
 	private static Guardarropa guardarropaSeleccionado = null;
+	private static List<Prenda> prendasSeleccionadas = null;
 	
 	public static ModelAndView init(Request req, Response res) {
 		
-		//HashMap<String, Object> viewModel = new HashMap<>();
-		
-		//viewModel.put("usuario", usuario);
-		//viewModel.put("guardarropas", usuario.getGuardarropas());
+		HashMap<String, Object> viewModel = new HashMap<>();
+		viewModel.put("guardarropas", usuario.getGuardarropas());
 
-		return new ModelAndView(usuario, "home/guardarropas.hbs");
+		return new ModelAndView(viewModel, "home/guardarropas.hbs");
 	}
 	
 	public static ModelAndView verEventos(Request req, Response res) {
@@ -56,16 +56,19 @@ public class WardrobeController {
 	public static ModelAndView indexViewDatosDeUnGuardarropa(Request req, Response res) {
 				
 		int id=Integer.parseInt(req.params(":idGuardarropa"));
-		
-		// TODO esta harcodeado, cambiar. PD: en el otro tp tenian un repo, que en este caso seria RepoGuardarropa
 		guardarropaSeleccionado = ((Usuario) FactoryRepositorioUsuario.get().buscarTodos().get(usuario.getId())).getGuardarropas().get(id);	
-				
+		
 		HashMap<String, Object> viewModel = new HashMap<>();
-		viewModel.put("id", guardarropaSeleccionado.getId() );
-		viewModel.put("guardarropa", guardarropaSeleccionado);
-		return new ModelAndView(
-				viewModel, 
-				"home/prendas.hbs");
+		//viewModel.put("id", guardarropaSeleccionado.getId() );
+		viewModel.put("guardarropas", guardarropaSeleccionado);
+		viewModel.put("prendasDisponibles", guardarropaSeleccionado.getPrendasDisponibles());
+		
+		String ahre2 = guardarropaSeleccionado.getPrendasDisponibles().get(0).getNombrePrenda();
+		//String ahre = guardarropaSeleccionado.getPrendasDisponibles().get(0).getTipoRopa().getNombre();
+		System.out.println(ahre2);
+		
+		
+		return new ModelAndView(viewModel, "home/prendas.hbs");
 	}
 	
 	public static ModelAndView indexViewAgregarPrenda(Request req, Response res) {

@@ -22,6 +22,9 @@ public class Prenda extends EntidadPersistente{
 	@JoinColumn(name = "tipo_id", referencedColumnName = "id")
 	private TipoDeRopa tipoRopa;
 	
+	@Column(name = "nombrePrenda")
+	private String nombrePrenda;
+	
 	@ManyToOne
 	@JoinColumn(name = "color_primario_id", referencedColumnName = "id")
 	private Color colorPrimario;
@@ -37,8 +40,6 @@ public class Prenda extends EntidadPersistente{
 	@Transient
 	private List<Graphics2D> imagenGraphics;
 	
-	@Column(name = "nombrePrenda")
-	private String nombrePrenda;
 
 	public Prenda(String nombrePrenda) // TODO sacar cuando se haya hecho bien en el UserController
 	{
@@ -145,5 +146,15 @@ public class Prenda extends EntidadPersistente{
 		public Prenda build() {
 			return new Prenda(this);
 		}
+	}
+	
+	public Color getColorPrimario()
+	{
+		return this.colorPrimario;
+	}
+	
+	public Color getColorSecundario()
+	{
+		return this.colorSecundario;
 	}
 }

@@ -1,7 +1,6 @@
 {{#partial "contenido"}}
         <header>
             <h1>Que me pongo? - Guardarropas</h1>
-
         </header>
 		
 		<div class="row">
@@ -11,10 +10,10 @@
 					{{#each guardarropas}}
 					<div class="list-group-item">
 						<tr>
-							<h4> <td> {{ nombre }} </td> </h4>
+							<h4><td><a href="/guardarropas/{{id}}"> {{ nombre }} </a></td></h4> 
 							<p> 
 								<h6> Estilo: {{ estilo }} </h6>
-								<h6> Cantidadantidad De Prendas: {{ cantidadDePrendas }} </h6>
+								<h6> Cantidad De Prendas: {{ cantidadDePrendas }} </h6>
 								<h6> Usuarios Con Acceso: </h6>
 								{{#each usuariosConAcceso}} 
 								<h6> {{ username }} </h6>
@@ -25,7 +24,9 @@
 					{{/each}}
 				</ul>
 			</div>
-		</div>		
+		</div>
+
+		<div>
     
 	
 {{/partial}}

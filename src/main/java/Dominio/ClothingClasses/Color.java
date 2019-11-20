@@ -10,7 +10,7 @@ import db.EntidadPersistente;
 @Table(name = "color")
 public class Color extends EntidadPersistente{
 	@Column(name = "nombre")
-	String nombre;
+	private String nombre;
 	
 	public Color(String nuevoNombre) {	
 		setNombre(nuevoNombre);

@@ -1,0 +1,29 @@
+{{#partial "contenido"}}
+        <header>
+            <h1>Que me pongo? - Prendas</h1>
+        </header>
+		
+		<div class="row">
+			<div class="col-md-12 block-center">
+			<h2>{{ guardarropas.nombre }}</h2> </p> 
+				<ul class="list-group">
+					{{#each prendasDisponibles}}
+					<div class="list-group-item">
+						<tr>
+							<h4><td>{{ nombrePrenda }}</td></h4> 
+							<p> 
+								<h6> tipo de ropa: {{ tipoRopa.nombre }} </h6>
+								<h6> Color primario: {{ colorPrimario.nombre }} </h6>
+								<h6> Color secundario: {{ colorSecundario.nombre }}</h6>
+								<h6> Material: {{ material.nombre }}</h6>
+							</p>
+						</tr>
+					</div>
+					{{/each}}
+				</ul>
+			</div>
+		</div>
+    
+	
+{{/partial}}
+{{>layout.hbs}}

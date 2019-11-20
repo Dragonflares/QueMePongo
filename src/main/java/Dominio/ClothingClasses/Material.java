@@ -10,7 +10,7 @@ import db.EntidadPersistente;
 @Table(name = "material")
 public class Material extends EntidadPersistente{
 	@Column(name = "nombre")
-	String nombre;
+	private String nombre;
 
 	public String getNombre() {
 		return nombre;
