@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 public class Alta extends ImportanciaEvento{
 	public boolean estaProximo(Evento evento)
 	{
-		return ChronoUnit.DAYS.between(evento.getFecha(), LocalDateTime.now()) <= 30;
+		return ChronoUnit.DAYS.between(evento.getFechaLocalDateTime(), LocalDateTime.now()) <= 30;
 	}
 
 	@Override

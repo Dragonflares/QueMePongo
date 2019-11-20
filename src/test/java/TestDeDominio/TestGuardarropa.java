@@ -41,7 +41,7 @@ public class TestGuardarropa {
 		guardarropa1 = new Guardarropa(usuario, Estilo.CASUAL);
 		
 		eventoCasual = mock(Evento.class);
-		when(eventoCasual.getFecha()).thenReturn(date);
+		when(eventoCasual.getFechaLocalDateTime()).thenReturn(date);
 		
 		remeraMangaCorta = mock(Prenda.class);
 		camperaFinita = mock(Prenda.class);

@@ -100,7 +100,7 @@ public class Guardarropa extends EntidadPersistente{
 	public Atuendo generarRecomendacion(Evento evento,
 			Usuario creador) throws Exception {
 		Atuendo atuendo = null;
-		double temperatura = pedirTemperatura(evento.getFecha(), evento.getFecha().getHour());
+		double temperatura = pedirTemperatura(evento.getFechaLocalDateTime(), evento.getFechaLocalDateTime().getHour());
 		atuendo = Vestidor.getInstance().obtenerAtuendo(this, temperatura, 0, creador);
 		if(atuendo.equals(null))
 			atuendo = new Atuendo(generarAtuendoRandom(evento, temperatura, creador));

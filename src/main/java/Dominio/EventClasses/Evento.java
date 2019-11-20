@@ -2,6 +2,7 @@ package Dominio.EventClasses;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -129,7 +130,7 @@ public class Evento extends EntidadPersistente{
 		return this.estilo;
 	}
 	
-	public LocalDateTime getFecha()
+	public LocalDateTime getFechaLocalDateTime()
 	{
 		return this.fecha;
 	}
@@ -200,8 +201,21 @@ public class Evento extends EntidadPersistente{
 		return this.importancia;
 	}
 	
+	public String getImportancia()
+	{
+		return this.importancia.getImportancia();
+	}
+	
 	public LocalTime getHoraInicio()
 	{
 		return this.fecha.toLocalTime();
+	}
+	
+	public String getFecha()
+	{
+		/* obj.addProperty("importancia", e.getImportanciaEvento().getImportancia());
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		return this.getFechaLocalDateTime().format(formatter)*/
+		return "2019-11-01";
 	}
 }

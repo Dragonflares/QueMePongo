@@ -12,7 +12,7 @@ public class Media extends ImportanciaEvento{
 	
 	@Override
 	public boolean estaProximo(Evento evento) {
-		return ChronoUnit.DAYS.between(evento.getFecha(), LocalDateTime.now()) <= 7;
+		return ChronoUnit.DAYS.between(evento.getFechaLocalDateTime(), LocalDateTime.now()) <= 7;
 	}
 
 	@Override

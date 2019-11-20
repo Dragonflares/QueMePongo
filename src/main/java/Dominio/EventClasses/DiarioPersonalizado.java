@@ -19,7 +19,7 @@ public class DiarioPersonalizado extends Frecuencia{
 		do {
 			evento.sumarDias(this.frecuencia);
 			
-		}while(!this.esDeTipoCompatible(evento.getFecha()));
+		}while(!this.esDeTipoCompatible(evento.getFechaLocalDateTime()));
 	}
 	
 	private boolean esDeTipoCompatible(LocalDateTime fecha)

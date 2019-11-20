@@ -106,9 +106,25 @@
 					$(this).remove();
 				}
 			},
-			events: data
+			
+			events: 
+			[
+			{{#each eventitos}}
+  				{	
+  					id: '{{ id }}',
+  					title: '{{ nombre }}',
+  					estilo: 'CASUAL',
+  					importancia: '{{ importancia }}',
+  					start: '{{ fecha }}',
+  					allDay: false,
+  					className: 'important'
+  				},
+				{{/each}}
+			]
 		});
 	});
+	
+	
 </script>
 
 <style>

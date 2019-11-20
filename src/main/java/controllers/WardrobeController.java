@@ -1,7 +1,5 @@
 package controllers;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +9,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import Dominio.ClothingClasses.Prenda;
-import Dominio.ClothingClasses.TipoDeRopa;
 import Dominio.UserClasses.Usuario;
 import Dominio.WardrobeClasses.Guardarropa;
 import Repositorios.factories.FactoryRepositorioUsuario;
@@ -38,7 +35,7 @@ public class WardrobeController {
 		EventController.usuario = usuario;
 		
 		HashMap<String, Object> viewModel = new HashMap<>();
-		
+		/*
 		try (FileWriter file = new FileWriter("src/main/resources/public/js/eventitos.js")) {
 			//File Writer creates a file in write mode at the given location 
 			file.write(getJSONEventos());
@@ -53,13 +50,18 @@ public class WardrobeController {
 			e.printStackTrace();
 		}
 		//Thread.sleep(8000); // dejar, hace que espere un tiempo porque sino cuando hace un new ModelAndView lee 
-		// el archivo eventitos antes de que se haga la modificación. Pd: no funciona
+		// el archivo eventitos antes de que se haga la modificación. Pd: no funciona*/
+		//String evs = getJSONEventos();
+		//System.out.println(evs); // TODO SACAR
+		//viewModel.put("eventitos", evs.replaceAll("\"", "&quot;"));
+		viewModel.put("eventitos", usuario.getEventos());
+		
 		return new ModelAndView(viewModel, "home/seleccionarFecha.hbs");
 	}
 	
 	private static String getJSONEventos()
 	{
-		String data = "var data = ";
+		//String data = "var data = ";
 		JsonArray jsonArr = new JsonArray();
 		
 		usuario.getEventos().forEach(e -> {
@@ -70,7 +72,7 @@ public class WardrobeController {
 			obj.addProperty("estilo", e.getEstilo().toString());
 			obj.addProperty("importancia", e.getImportanciaEvento().getImportancia());
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-			obj.addProperty("start", e.getFecha().format(formatter));
+			obj.addProperty("start", e.getFechaLocalDateTime().format(formatter));
 			obj.addProperty("allDay", false);
 			obj.addProperty("className", "important");
 			
@@ -79,7 +81,10 @@ public class WardrobeController {
 		});
 		
 		Gson gson = new Gson();
-		return data + gson.toJson(jsonArr) + ";";
+		return gson.toJson(jsonArr) + ";";
+		//return "[{id:1,title: "Cumpleaños', estilo:'ELEGANTE_SPORT', importanci:'Media', start:'2019-11-19', allDay: false,className:'important'},{id:2,title:'Casamiento',estilo:'ELEGANTE',importancia:'Alta',start:'2019-11-26',allDay:false,className:'important}];"; 
+				
+		//return jsonArr;
 	}
 	
 	

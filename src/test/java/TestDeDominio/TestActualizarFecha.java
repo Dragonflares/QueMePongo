@@ -59,7 +59,7 @@ public class TestActualizarFecha {
 	@Test
 	public void actualizarFechaEventoDiario() {
 		eventoOcurrioYesFrecuente1.actualizarFecha();
-		assertEquals(eventoOcurrioYesFrecuente1.getFecha().getDayOfMonth(), LocalDate.now().getDayOfMonth());
+		assertEquals(eventoOcurrioYesFrecuente1.getFechaLocalDateTime().getDayOfMonth(), LocalDate.now().getDayOfMonth());
 	}
 	
 	@Test
@@ -67,25 +67,25 @@ public class TestActualizarFecha {
 		eventoOcurrioYesFrecuente1Personalizado.actualizarFecha();
 	
 		
-		assertEquals(eventoOcurrioYesFrecuente1Personalizado.getFecha().getDayOfWeek(), DayOfWeek.WEDNESDAY);
+		assertEquals(eventoOcurrioYesFrecuente1Personalizado.getFechaLocalDateTime().getDayOfWeek(), DayOfWeek.WEDNESDAY);
 	}
 	
 	@Test
 	public void actualizarFechaEventoSemanal() {
 		eventoOcurrioYesFrecuente7.actualizarFecha();
-		assertEquals(eventoOcurrioYesFrecuente7.getFecha().getDayOfMonth(), LocalDate.now().getDayOfMonth());
+		assertEquals(eventoOcurrioYesFrecuente7.getFechaLocalDateTime().getDayOfMonth(), LocalDate.now().getDayOfMonth());
 	}
 	
 	@Test
 	public void actualizarFechaEventoMensual() {
 		eventoOcurrioYesFrecuente30.actualizarFecha();
-		assertEquals(eventoOcurrioYesFrecuente30.getFecha().getDayOfMonth(), LocalDate.now().getDayOfMonth());
+		assertEquals(eventoOcurrioYesFrecuente30.getFechaLocalDateTime().getDayOfMonth(), LocalDate.now().getDayOfMonth());
 	}
 	
 	@Test
 	public void actualizarFechaEventoAnual() {
 		eventoOcurrioYesFrecuente365.actualizarFecha();
-		assertEquals(eventoOcurrioYesFrecuente365.getFecha().getDayOfMonth(), LocalDate.now().getDayOfMonth());
+		assertEquals(eventoOcurrioYesFrecuente365.getFechaLocalDateTime().getDayOfMonth(), LocalDate.now().getDayOfMonth());
 	}
 	
 }
