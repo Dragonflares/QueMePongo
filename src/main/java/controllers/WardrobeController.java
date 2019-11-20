@@ -1,9 +1,14 @@
 package controllers;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 
-import com.alibaba.fastjson.JSON;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import Dominio.ClothingClasses.Prenda;
 import Dominio.ClothingClasses.TipoDeRopa;
@@ -29,15 +34,52 @@ public class WardrobeController {
 		return new ModelAndView(viewModel, "home/guardarropas.hbs");
 	}
 	
-	public static ModelAndView verEventos(Request req, Response res) {
+	public static ModelAndView verEventos(Request req, Response res) throws InterruptedException {
 		EventController.usuario = usuario;
 		
 		HashMap<String, Object> viewModel = new HashMap<>();
-		String eventos = "[{ title: 'All Day Event', dire: 'Avenida 123', estilo: 'CASUAL', importancia: 'BAJA', start: new Date(y, m, 1)}]";
-		viewModel.put("eventos", usuario.getEventos());
-		//Object jsoni = JSON.parse(eventos);
-		viewModel.put("json", eventos);
+		
+		try (FileWriter file = new FileWriter("src/main/resources/public/js/eventitos.js")) {
+			//File Writer creates a file in write mode at the given location 
+			file.write(getJSONEventos());
+
+			//write function is use to write in file,
+			//here we write the Json object in the file
+			file.flush();
+			file.close();
+
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		//Thread.sleep(8000); // dejar, hace que espere un tiempo porque sino cuando hace un new ModelAndView lee 
+		// el archivo eventitos antes de que se haga la modificación. Pd: no funciona
 		return new ModelAndView(viewModel, "home/seleccionarFecha.hbs");
+	}
+	
+	private static String getJSONEventos()
+	{
+		String data = "var data = ";
+		JsonArray jsonArr = new JsonArray();
+		
+		usuario.getEventos().forEach(e -> {
+			JsonObject obj = new JsonObject();
+			
+			obj.addProperty("id", e.getId());
+			obj.addProperty("title", e.getNombre());
+			obj.addProperty("estilo", e.getEstilo().toString());
+			obj.addProperty("importancia", e.getImportanciaEvento().getImportancia());
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			obj.addProperty("start", e.getFecha().format(formatter));
+			obj.addProperty("allDay", false);
+			obj.addProperty("className", "important");
+			
+			jsonArr.add(obj);
+			
+		});
+		
+		Gson gson = new Gson();
+		return data + gson.toJson(jsonArr) + ";";
 	}
 	
 	

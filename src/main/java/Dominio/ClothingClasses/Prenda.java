@@ -40,6 +40,13 @@ public class Prenda extends EntidadPersistente{
 	@Transient
 	private List<Graphics2D> imagenGraphics;
 	
+<<<<<<< HEAD
+=======
+	@Column(name = "nombrePrenda")
+	private String nombrePrenda;
+	
+	public Prenda() {}
+>>>>>>> 3810db9cf79675cfa4aaff7bb611ce3f7bfa9644
 
 	public Prenda(String nombrePrenda) // TODO sacar cuando se haya hecho bien en el UserController
 	{
