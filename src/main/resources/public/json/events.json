@@ -1,0 +1,1 @@
+data = '[{ "title": "All Day Event", "dire": "Avenida 123", "estilo": "CASUAL", "importancia": "BAJA", "start": new Date(y, m, 1)}]';

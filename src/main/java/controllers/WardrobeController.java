@@ -1,9 +1,9 @@
 package controllers;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-
-import com.alibaba.fastjson.JSON;
 
 import Dominio.ClothingClasses.Prenda;
 import Dominio.UserClasses.Usuario;
@@ -33,10 +33,23 @@ public class WardrobeController {
 		EventController.usuario = usuario;
 		
 		HashMap<String, Object> viewModel = new HashMap<>();
-		String eventos = "[{ title: 'All Day Event', dire: 'Avenida 123', estilo: 'CASUAL', importancia: 'BAJA', start: new Date(y, m, 1)}]";
-		viewModel.put("eventos", usuario.getEventos());
-		//Object jsoni = JSON.parse(eventos);
-		viewModel.put("json", eventos);
+		
+		//JSONObject obj = new JSONObject();
+		//String string = obj.toJSONString();
+		
+		try (FileWriter file = new FileWriter("src/main/resources/public/js/eventitos.json")) {
+			//File Writer creates a file in write mode at the given location 
+			file.write(usuario.eventoToJson());
+
+			//write function is use to write in file,
+			//here we write the Json object in the file
+			file.flush();
+			file.close();
+
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
 		return new ModelAndView(viewModel, "home/seleccionarFecha.hbs");
 	}
 	

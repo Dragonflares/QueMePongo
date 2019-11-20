@@ -39,6 +39,8 @@ public class Prenda extends EntidadPersistente{
 	
 	@Column(name = "nombrePrenda")
 	private String nombrePrenda;
+	
+	public Prenda() {}
 
 	public Prenda(String nombrePrenda) // TODO sacar cuando se haya hecho bien en el UserController
 	{
