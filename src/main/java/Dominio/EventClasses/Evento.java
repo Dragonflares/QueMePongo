@@ -125,7 +125,7 @@ public class Evento extends EntidadPersistente{
 		this.importancia = importancia;
 	}
 
-	public Estilo getEstilo()
+	public Estilo obtenerEstilo()
 	{
 		return this.estilo;
 	}
@@ -213,9 +213,12 @@ public class Evento extends EntidadPersistente{
 	
 	public String getFecha()
 	{
-		/* obj.addProperty("importancia", e.getImportanciaEvento().getImportancia());
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		return this.getFechaLocalDateTime().format(formatter)*/
-		return "2019-11-01";
+		return this.getFechaLocalDateTime().format(formatter);
+	}
+	
+	public String getEstilo()
+	{
+		return this.estilo.toString();
 	}
 }

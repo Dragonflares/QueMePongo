@@ -133,7 +133,7 @@ public class Usuario extends EntidadPersistente{
 
 	public Atuendo pedirRecomendacion(Evento evento) throws Exception{
 		List<Guardarropa> guardarropasConEstilo = 
-				this.guardarropas.stream().filter(g -> g.getEstilo() == evento.getEstilo()).collect(Collectors.toList());
+				this.guardarropas.stream().filter(g -> g.getEstilo() == evento.obtenerEstilo()).collect(Collectors.toList());
 
 		Atuendo atuendoFinal = null;
 		Random rand = new Random();
