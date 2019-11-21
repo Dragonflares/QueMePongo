@@ -44,9 +44,6 @@ public class Prenda extends EntidadPersistente{
 	@JoinColumn(name = "material_id", referencedColumnName = "id")
 	private Material material;
 	
-	@Transient
-	private List<Graphics2D> imagenGraphics;
-	
 	public Prenda() {}
 
 	public Prenda(String nombrePrenda) // TODO sacar cuando se haya hecho bien en el UserController
@@ -68,15 +65,6 @@ public class Prenda extends EntidadPersistente{
 
 	public Categoria getCategoria() { 
 		return this.tipoRopa.getCategoria();
-	}
-
-	public List<Graphics2D> getImagenGraphics() {
-		return imagenGraphics;
-	}
-
-	@SuppressWarnings("unused")
-	private void setImagenGraphics(List<Graphics2D> imagenGraphics) {
-		this.imagenGraphics = imagenGraphics;
 	}
 
 	public String getNombrePrenda() {
