@@ -1,26 +1,27 @@
 package Repositorios.testMemoData;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
+
 import Dominio.ClothingClasses.TipoDeRopa;
+import Importadores.ImportadorDeMateriales;
+import Importadores.ImportadorDeRopas;
 import db.EntidadPersistente;
 
 public class DataRopa {
-private static List<TipoDeRopa> ropas = new ArrayList<>();
+	private static List<TipoDeRopa> ropas = new ArrayList<>();
 	
-	@SuppressWarnings("unchecked")
-	public static List<EntidadPersistente> getList(){
-		if(ropas.size() == 0) {
-			
-		addAll();
-		}
-		
-		return (List<EntidadPersistente>) (List<?>) ropas;
-	}
-	
-	private static void addAll(TipoDeRopa...ropas ) {
-		Collections.addAll(DataRopa.ropas, ropas);
+	public static List<TipoDeRopa> getList() throws JsonIOException, JsonSyntaxException, FileNotFoundException{
+        if(ropas.size() == 0){
+        	ropas = ImportadorDeRopas.getInstance().levantarTipoDeRopasDePath();
+        	return ropas;
+        }
+        
+        return ropas;
 	}
 }

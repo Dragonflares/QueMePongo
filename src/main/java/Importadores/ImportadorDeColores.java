@@ -17,16 +17,19 @@ import Repositorios.factories.FactoryRepositorioColor;
 
 public class ImportadorDeColores {
 
-    RepoColor repo = FactoryRepositorioColor.get();
     String path = Property.getSpecifiedProperty("RutaRepoColor");
-	private static ImportadorDeColores instance = new ImportadorDeColores();
 	
-	private ImportadorDeColores () {
-	} 
+    private static ImportadorDeColores instance;
+	
+	private ImportadorDeColores () {} 
 	
 	public static ImportadorDeColores getInstance()
 	{
-		return instance;
+        if(instance == null){
+            instance = new ImportadorDeColores();
+        }
+        
+        return instance;
 	}
     public List<Color> levantarColoresDePath()
             throws JsonIOException, JsonSyntaxException, FileNotFoundException {
@@ -35,8 +38,8 @@ public class ImportadorDeColores {
         Type tipoListaColores = new TypeToken<List<Color>>() {
         }.getType();
         List<Color> colores = gson.fromJson(new FileReader(path), tipoListaColores);
-        repo.agregarAlRepositorio(colores);
-        return repo.getColores();
+
+        return colores;
     }
 	
 }

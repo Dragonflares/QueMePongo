@@ -67,7 +67,11 @@ public class Server {
 					.tipoRopa("Pantalon largo")
 					.build();
 			
+			//toy probando nomas XD
 			System.out.println(remeraMangaLargaRojaDeAlgodon.getMaterial().getNombre());
+			System.out.println(remeraMangaLargaRojaDeAlgodon.getColorPrimario().getNombre());
+			System.out.println(remeraMangaLargaRojaDeAlgodon.getColorSecundario().getNombre());
+			System.out.println(remeraMangaLargaRojaDeAlgodon.getTipoRopa().getNombre());
 			
 			usuario1.agregarGuardarropa(guardarropa1);
 			guardarropa1.permitirAccesoaUsuario(usuario2);

@@ -17,16 +17,19 @@ import Repositorios.factories.FactoryRepositorioRopa;
 
 public class ImportadorDeRopas {
 
-    RepoRopa repo = FactoryRepositorioRopa.get();;
     String path = Property.getSpecifiedProperty("RutaRepoRopa");
-	private static ImportadorDeRopas instance = new ImportadorDeRopas();
 	
-	private ImportadorDeRopas () {
-	} 
+    private static ImportadorDeRopas instance;
+	
+	private ImportadorDeRopas () {} 
 	
 	public static ImportadorDeRopas getInstance()
 	{
-		return instance;
+        if(instance == null){
+            instance = new ImportadorDeRopas();
+        }
+        
+        return instance;
 	}
 	
     public List<TipoDeRopa> levantarTipoDeRopasDePath()
@@ -36,8 +39,7 @@ public class ImportadorDeRopas {
         Type tipoListaRopas = new TypeToken<List<TipoDeRopa>>() {
         }.getType();
         List<TipoDeRopa> ropas = gson.fromJson(new FileReader(path), tipoListaRopas);
-        repo.agregarAlRepositorio(ropas);
-        return repo.getTipoDeRopas();
-
+        
+        return ropas;
     }
 }

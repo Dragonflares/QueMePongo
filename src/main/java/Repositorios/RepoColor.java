@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class RepoColor extends Repositorio{
 
-	private List<Color> colores;
+	//private List<Color> colores;
 	
 	private static RepoColor instance;
 	
@@ -26,15 +26,15 @@ public class RepoColor extends Repositorio{
 	}
 	
     public List<Color> getColores() {
-        return this.colores;
+        return this.dao.buscarTodos();
     }
 
-    public void agregarAlRepositorio(List<Color> unosColores) {
+    /*public void agregarAlRepositorio(List<Color> unosColores) {
         this.colores = unosColores;
-    }
+    }*/
 
-    public Color buscarPorNombre(String nombre) {
-       return this.colores.stream().filter(c -> c.compararNombres(nombre)).collect(Collectors.toList()).get(0);
+    public Color findByName(String nombre) {
+       return this.getColores().stream().filter(c -> c.compararNombres(nombre)).collect(Collectors.toList()).get(0);
     }
 
 }

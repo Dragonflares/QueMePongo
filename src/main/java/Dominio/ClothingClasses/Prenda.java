@@ -16,6 +16,8 @@ import javax.persistence.Transient;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 
+import Repositorios.factories.FactoryRepositorioColor;
+import Repositorios.factories.FactoryRepositorioRopa;
 import Repositorios.factories.FactoryRepositoriosMaterial;
 import db.EntidadPersistente;
 import entities.ProcessingDataFailedException;
@@ -110,12 +112,10 @@ public class Prenda extends EntidadPersistente{
 		private List<Graphics2D> imagenGraphics;
 		private String nombrePrenda;
 
-		public PrendaBuilder () {
+		public PrendaBuilder () {}
 
-		}
-
-		public PrendaBuilder tipoRopa(String tipoRopa) throws ProcessingDataFailedException {
-			//this.tipoRopa = RepoRopa.getInstance().findByName(tipoRopa);
+		public PrendaBuilder tipoRopa(String tipoRopa) throws ProcessingDataFailedException, JsonIOException, JsonSyntaxException, FileNotFoundException {
+			this.tipoRopa = (TipoDeRopa) FactoryRepositorioRopa.get().findByName(tipoRopa);
 			return this;
 		}
 
@@ -137,8 +137,8 @@ public class Prenda extends EntidadPersistente{
 
 		public PrendaBuilder setearColores(String colorPrimario, String colorSecundario) throws Exception{
 			if (!colorPrimario.equals(colorSecundario)) {
-				//this.colorPrimario =  RepoColor.getInstance().findByName(colorPrimario);
-				//this.colorSecundario = RepoColor.getInstance().findByName(colorSecundario);
+				this.colorPrimario =  (Color) FactoryRepositorioColor.get().findByName(colorPrimario);
+				this.colorSecundario = (Color) FactoryRepositorioColor.get().findByName(colorSecundario);
 			} else {
 				throw new Exception("No pueden ser del mismo color."); 
 			}
