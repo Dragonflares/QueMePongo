@@ -6,7 +6,9 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import Dominio.ClothingClasses.Color;
 import Dominio.ClothingClasses.Material;
+import Dominio.ClothingClasses.TipoDeRopa;
 import Dominio.Estilish.Estilo;
 import Dominio.UserClasses.Usuario;
 import Dominio.WardrobeClasses.Guardarropa;
@@ -101,12 +103,27 @@ public class DAOMemoria<T> implements DAO {
     
     @SuppressWarnings("unchecked")
 	@Override
-	public Material findByName(String nombre) {
-    	return ((List<Material>)(List<?>) entities).stream()
+	public Material findByNameMaterial(String nombre) {
+    	return ((List<Material>) entities).stream()
+				.filter(m -> m.compararNombres(nombre))
+				.findFirst().get();
+    }
+
+    @SuppressWarnings("unchecked")
+	@Override
+	public TipoDeRopa findByNameTipoDeRopa(String nombre) {
+    	return ((List<TipoDeRopa>) entities).stream()
 				.filter(m -> m.compararNombres(nombre))
 				.findFirst().get();
     }
     
+    @SuppressWarnings("unchecked")
+	@Override
+	public Color findByNameColor(String nombre) {
+    	return ((List<Color>) entities).stream()
+				.filter(m -> m.compararNombres(nombre))
+				.findFirst().get();
+    }
     
     
 }

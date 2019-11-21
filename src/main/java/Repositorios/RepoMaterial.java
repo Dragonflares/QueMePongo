@@ -36,7 +36,7 @@ public class RepoMaterial extends Repositorio{
     }*/
 
     public Material findByName(String nombre) {
-       return this.dao.findByName(nombre);
+       return this.dao.findByNameMaterial(nombre);
     }
 	
     
