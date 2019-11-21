@@ -34,7 +34,7 @@ public class RepoColor extends Repositorio{
     }*/
 
     public Color findByName(String nombre) {
-       return this.getColores().stream().filter(c -> c.compararNombres(nombre)).collect(Collectors.toList()).get(0);
+       return this.dao.findByNameColor(nombre);
     }
 
 }

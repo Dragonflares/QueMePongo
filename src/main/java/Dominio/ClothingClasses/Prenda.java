@@ -115,12 +115,12 @@ public class Prenda extends EntidadPersistente{
 		public PrendaBuilder () {}
 
 		public PrendaBuilder tipoRopa(String tipoRopa) throws ProcessingDataFailedException, JsonIOException, JsonSyntaxException, FileNotFoundException {
-			this.tipoRopa = (TipoDeRopa) FactoryRepositorioRopa.get().findByName(tipoRopa);
+			this.tipoRopa = FactoryRepositorioRopa.get().findByName(tipoRopa);
 			return this;
 		}
 
 		public PrendaBuilder material (String material) throws ProcessingDataFailedException, JsonIOException, JsonSyntaxException, FileNotFoundException {
-			this.material = (Material) FactoryRepositoriosMaterial.get().findByName(material);
+			this.material = FactoryRepositoriosMaterial.get().findByName(material);
 			return this;
 		}
 
@@ -137,8 +137,8 @@ public class Prenda extends EntidadPersistente{
 
 		public PrendaBuilder setearColores(String colorPrimario, String colorSecundario) throws Exception{
 			if (!colorPrimario.equals(colorSecundario)) {
-				this.colorPrimario =  (Color) FactoryRepositorioColor.get().findByName(colorPrimario);
-				this.colorSecundario = (Color) FactoryRepositorioColor.get().findByName(colorSecundario);
+				this.colorPrimario =  FactoryRepositorioColor.get().findByName(colorPrimario);
+				this.colorSecundario = FactoryRepositorioColor.get().findByName(colorSecundario);
 			} else {
 				throw new Exception("No pueden ser del mismo color."); 
 			}

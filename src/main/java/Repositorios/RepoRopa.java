@@ -32,7 +32,7 @@ public class RepoRopa extends Repositorio {
     }*/
 
     public TipoDeRopa findByName(String nombre) {
-       return this.getTipoDeRopas().stream().filter(r -> r.compararNombres(nombre)).collect(Collectors.toList()).get(0);
+       return this.dao.findByNameTipoDeRopa(nombre);
     }
 	
 }

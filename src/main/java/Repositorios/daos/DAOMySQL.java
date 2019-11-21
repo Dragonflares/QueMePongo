@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import Dominio.ClothingClasses.Color;
 import Dominio.ClothingClasses.Material;
+import Dominio.ClothingClasses.TipoDeRopa;
 import Dominio.UserClasses.Usuario;
 import Models.Model;
 import db.EntityManagerHelper;
@@ -103,8 +105,20 @@ public class DAOMySQL implements DAO {
 	}
 	
 	@Override
-	public Material findByName(String nombre) {
+	public Material findByNameMaterial(String nombre) {
 	 return EntityManagerHelper.getEntityManager().createQuery("from Material m where m.nombre = :n", Material.class)
+ 			.setParameter("n", nombre).getSingleResult();
+    }
+	
+	@Override
+	public TipoDeRopa findByNameTipoDeRopa(String nombre) {
+	 return EntityManagerHelper.getEntityManager().createQuery("from TipoDeRopa tr where tr.nombre = :n", TipoDeRopa.class)
+ 			.setParameter("n", nombre).getSingleResult();
+    }
+	
+	@Override
+	public Color findByNameColor(String nombre) {
+	 return EntityManagerHelper.getEntityManager().createQuery("from Color c where c.nombre = :n", Color.class)
  			.setParameter("n", nombre).getSingleResult();
     }
 
