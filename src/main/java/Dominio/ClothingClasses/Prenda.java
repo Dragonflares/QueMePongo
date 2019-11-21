@@ -66,15 +66,6 @@ public class Prenda extends EntidadPersistente{
 		return this.tipoRopa;
 	}
 
-	public void setearListaImagenes(List<String> imagenes) {
-		imagenes.forEach(una -> this.imagenGraphics.add(this.crearImagen(una)));
-	}
-
-	public Graphics2D crearImagen (String path) {
-		Imagen creator = new Imagen();
-		return creator.crearImagen(path);
-	}
-
 	public Categoria getCategoria() { 
 		return this.tipoRopa.getCategoria();
 	}
@@ -129,12 +120,6 @@ public class Prenda extends EntidadPersistente{
 			return this;
 		}
 
-		public PrendaBuilder imagen(List<String> imagenes) {
-			this.imagenGraphics = imagenes.stream().map(p -> this.crearImagen(p))
-					.collect(Collectors.toList());;
-					return this;
-		}
-
 		public PrendaBuilder setearColores(String colorPrimario, String colorSecundario) throws Exception{
 			if (!colorPrimario.equals(colorSecundario)) {
 				this.colorPrimario =  FactoryRepositorioColor.get().findByName(colorPrimario);
@@ -143,11 +128,6 @@ public class Prenda extends EntidadPersistente{
 				throw new Exception("No pueden ser del mismo color."); 
 			}
 			return this;
-		}
-
-		public Graphics2D crearImagen (String path) {
-			Imagen creator = new Imagen();
-			return creator.crearImagen(path);	
 		}
 
 		public Prenda build() {

@@ -8,8 +8,9 @@ public class Accesorio extends TipoDeRopa{
 	public Accesorio(String nombre, Integer abrigo, Categoria categoria,
 			ArrayList<Capas> capas,
 			ArrayList<Material> materialesNoCompatibles,
-			Boolean sirveParaLluvia) {
-		super(nombre, abrigo, categoria, capas, materialesNoCompatibles);
+			Boolean sirveParaLluvia,
+			String imagen) {
+		super(nombre, abrigo, categoria, capas, materialesNoCompatibles, imagen);
 		this.sirveParaLluvia = sirveParaLluvia;
 	}
 
