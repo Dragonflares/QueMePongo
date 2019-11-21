@@ -9,6 +9,7 @@ import org.junit.Test;
 import Importadores.ImportadorDeColores;
 import Importadores.ImportadorDeMateriales;
 import Importadores.ImportadorDeRopas;
+import db.EntidadPersistente;
 import Dominio.ClothingClasses.Categoria;
 import Dominio.ClothingClasses.Color;
 import Dominio.ClothingClasses.Material;
@@ -51,10 +52,10 @@ public class TestRepositorios {
 		//repoRopa= RepoRopa.getInstance();
 		
 		materiales = ImportadorDeMateriales.getInstance().levantarMaterialesDePath();
-		primerMaterial = materiales.get(0);
-		segundoMaterial = materiales.get(1);
-		tercerMaterial = materiales.get(2);
-		ultimoMaterial = materiales.get(materiales.size()-1);
+		primerMaterial = (Material) materiales.get(0);
+		segundoMaterial = (Material) materiales.get(1);
+		tercerMaterial = (Material) materiales.get(2);
+		ultimoMaterial = (Material) materiales.get(materiales.size()-1);
 		
 		colores = ImportadorDeColores.getInstance().levantarColoresDePath();
 		primerColor = colores.get(0);

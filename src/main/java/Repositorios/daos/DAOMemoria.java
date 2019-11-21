@@ -11,32 +11,33 @@ import Dominio.UserClasses.Usuario;
 import Dominio.WardrobeClasses.Guardarropa;
 import db.EntidadPersistente;
 
-public class DAOMemoria implements DAO {
-    private List<EntidadPersistente> entities;
+public class DAOMemoria<T> implements DAO {
+    private List<T> entities;
 
-    public DAOMemoria(List<EntidadPersistente> entidades){
+    public DAOMemoria(List<T> entidades){
         this.entities = entidades;
     }
 
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
 	@Override
     public <T> List<T> buscarTodos() {
         return (List<T>) this.entities;
     }
 
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
 	@Override
     public <T> T buscar(int id) {
         return (T) this.entities
                 .stream()
-                .filter(a -> a.getId() == id)
+                .filter(a -> ((EntidadPersistente) a).getId() == id)
                 .collect(Collectors.toList())
                 .get(0);
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public void agregar(Object unObjeto) {
-        this.entities.add((EntidadPersistente)unObjeto);
+        this.entities.add((T) unObjeto);
     }
 
     @Override

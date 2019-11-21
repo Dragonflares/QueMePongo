@@ -14,21 +14,25 @@ import Dominio.ClothingClasses.Material;
 import Dominio.UserClasses.Property;
 import Repositorios.RepoMaterial;
 import Repositorios.factories.FactoryRepositoriosMaterial;
+import db.EntidadPersistente;
 
 public class ImportadorDeMateriales {
 
-    RepoMaterial repo = FactoryRepositoriosMaterial.get();
     String path = Property.getSpecifiedProperty("RutaRepoMaterial");
     
-	private static ImportadorDeMateriales instance = new ImportadorDeMateriales();
+	private static ImportadorDeMateriales instance;
 	
-	private ImportadorDeMateriales () {
-	} 
+	private ImportadorDeMateriales () throws JsonIOException, JsonSyntaxException, FileNotFoundException {} 
 	
-	public static ImportadorDeMateriales getInstance()
-	{
-		return instance;
+	public static ImportadorDeMateriales getInstance() throws JsonIOException, JsonSyntaxException, FileNotFoundException
+	{	
+        if(instance == null){
+            instance = new ImportadorDeMateriales();
+        }
+        
+        return instance;
 	}
+	
     public List<Material> levantarMaterialesDePath()
             throws JsonIOException, JsonSyntaxException, FileNotFoundException {
 
@@ -36,8 +40,7 @@ public class ImportadorDeMateriales {
         Type tipoListaMateriales = new TypeToken<List<Material>>() {
         }.getType();
         List<Material> materiales = gson.fromJson(new FileReader(path), tipoListaMateriales);
-        repo.agregarAlRepositorio(materiales);
-        return repo.getMateriales();
+        return materiales;
 
     }
 

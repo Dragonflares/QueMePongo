@@ -4,6 +4,7 @@ package Repositorios;
 
 import Dominio.ClothingClasses.Material;
 import Repositorios.daos.DAO;
+import db.EntidadPersistente;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class RepoMaterial extends Repositorio{
 	
-	private List<Material> materiales; // TODO sacar
+	//private List<Material> materiales; 
 	
 	private static RepoMaterial instance;
 	
@@ -27,15 +28,15 @@ public class RepoMaterial extends Repositorio{
 	}
 	
     public List<Material> getMateriales() {
-        return this.materiales;
+        return this.dao.buscarTodos();
     }
 
-    public void agregarAlRepositorio(List<Material> unosMateriales) {
+    /*public void agregarAlRepositorio(List<Material> unosMateriales) {
         this.materiales = unosMateriales;
-    }
+    }*/
 
     public Material findByName(String nombre) {
-       return this.materiales.stream().filter(m -> m.compararNombres(nombre)).collect(Collectors.toList()).get(0);
+       return this.getMateriales().stream().filter(m -> (m).compararNombres(nombre)).collect(Collectors.toList()).get(0);
     }
 	
     

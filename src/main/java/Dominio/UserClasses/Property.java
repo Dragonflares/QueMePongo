@@ -23,12 +23,12 @@ public class Property {
 		try {
 			in = new FileInputStream(getPath());
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		try {
 			pro.load(in);
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		String finalProperty = pro.getProperty(property); 
 	

@@ -1,6 +1,7 @@
 package Dominio.ClothingClasses;
 
 import java.awt.Graphics2D;
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,6 +13,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
+
+import Repositorios.factories.FactoryRepositoriosMaterial;
 import db.EntidadPersistente;
 import entities.ProcessingDataFailedException;
 
@@ -114,8 +119,8 @@ public class Prenda extends EntidadPersistente{
 			return this;
 		}
 
-		public PrendaBuilder material (String material) throws ProcessingDataFailedException {
-			//this.material = RepoMaterial.getInstance().findByName(material);
+		public PrendaBuilder material (String material) throws ProcessingDataFailedException, JsonIOException, JsonSyntaxException, FileNotFoundException {
+			this.material = (Material) FactoryRepositoriosMaterial.get().findByName(material);
 			return this;
 		}
 
@@ -158,5 +163,9 @@ public class Prenda extends EntidadPersistente{
 	public Color getColorSecundario()
 	{
 		return this.colorSecundario;
+	}
+	
+	public Material getMaterial() {
+		return this.material;
 	}
 }
