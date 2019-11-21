@@ -3,6 +3,7 @@ package Repositorios.daos;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import Dominio.ClothingClasses.Material;
 import Dominio.UserClasses.Usuario;
 
 public interface DAO {
@@ -16,4 +17,5 @@ public interface DAO {
     public List<Usuario> getUsuariosConEventosOcurridos(LocalDateTime fecha);
     public boolean existeUsuario(String username, String password);
     public Usuario buscarUsuario(String username, String password);
+    public Material findByName(String nombre);
 }

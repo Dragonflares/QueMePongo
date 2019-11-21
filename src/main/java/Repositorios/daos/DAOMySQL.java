@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import Dominio.ClothingClasses.Material;
 import Dominio.UserClasses.Usuario;
 import Models.Model;
 import db.EntityManagerHelper;
@@ -27,8 +28,6 @@ public class DAOMySQL implements DAO {
         return this.model.buscar(id);
     }
     
-    
-
     @Override
     public void agregar(Object unObjeto) {
         this.model.agregar(unObjeto);
@@ -102,5 +101,11 @@ public class DAOMySQL implements DAO {
 		return  EntityManagerHelper.getEntityManager().createQuery("from Usuario c where c.username = :u and c.password = :p", Usuario.class)
     			.setParameter("u", username).setParameter("p", password).getSingleResult();
 	}
+	
+	@Override
+	public Material findByName(String nombre) {
+	 return EntityManagerHelper.getEntityManager().createQuery("from Material m where m.nombre = :n", Material.class)
+ 			.setParameter("n", nombre).getSingleResult();
+    }
 
 }

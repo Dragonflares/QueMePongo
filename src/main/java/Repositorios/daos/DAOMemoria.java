@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import Dominio.ClothingClasses.Material;
 import Dominio.Estilish.Estilo;
 import Dominio.UserClasses.Usuario;
 import Dominio.WardrobeClasses.Guardarropa;
@@ -97,6 +98,15 @@ public class DAOMemoria<T> implements DAO {
 				.filter(c -> Objects.equals(c.getPassword(), password) && Objects.equals(c.getUsername(), username))
 				.findFirst().get();
 	}
+    
+    @SuppressWarnings("unchecked")
+	@Override
+	public Material findByName(String nombre) {
+    	return ((List<Material>)(List<?>) entities).stream()
+				.filter(m -> m.compararNombres(nombre))
+				.findFirst().get();
+    }
+    
     
     
 }

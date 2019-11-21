@@ -36,7 +36,7 @@ public class RepoMaterial extends Repositorio{
     }*/
 
     public Material findByName(String nombre) {
-       return this.getMateriales().stream().filter(m -> (m).compararNombres(nombre)).collect(Collectors.toList()).get(0);
+       return this.dao.findByName(nombre);
     }
 	
     

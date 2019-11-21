@@ -2,6 +2,7 @@ package server;
 
 import java.time.LocalDateTime;
 
+import Dominio.ClothingClasses.Material;
 import Dominio.ClothingClasses.Prenda;
 import Dominio.Estilish.Estilo;
 import Dominio.EventClasses.Alta;
@@ -12,6 +13,8 @@ import Dominio.UserClasses.Premium;
 import Dominio.UserClasses.Usuario;
 import Dominio.WardrobeClasses.Guardarropa;
 import Repositorios.factories.FactoryRepositorioUsuario;
+import Repositorios.factories.FactoryRepositoriosMaterial;
+import config.Config;
 import entities.ProcessingDataFailedException;
 import spark.Spark;
 import spark.debug.DebugScreen;
@@ -35,8 +38,8 @@ public class Server {
 	
 	public static void insertarUsuariosParaProbar() throws ProcessingDataFailedException, Exception 
 	{
-		//if(!FactoryRepositorioUsuario.get().existeUsuario("usuario123", "asd123"))
-		//{
+		if(!FactoryRepositorioUsuario.get().existeUsuario("usuario123", "asd123"))
+		{
 			Usuario usuario1 = new Usuario("usuario123", "asd123");
 			Usuario usuario2 = new Usuario("lala", "qwe123");
 			usuario2.setTipoDeCuenta(new Premium());
@@ -53,6 +56,20 @@ public class Server {
 			usuario1.agregarEvento(evento2);
 			usuario2.agregarEvento(evento3);
 			usuario2.agregarEvento(evento4);
+			
+			if(Config.useDataBase)
+			{
+				FactoryRepositoriosMaterial.get().agregar(new Material("Algodon"));
+				FactoryRepositoriosMaterial.get().agregar(new Material("Lycra"));
+				FactoryRepositoriosMaterial.get().agregar("Cuero");
+				FactoryRepositoriosMaterial.get().agregar("Lana");
+				FactoryRepositoriosMaterial.get().agregar("Jean");
+				FactoryRepositoriosMaterial.get().agregar("Goma");
+				FactoryRepositoriosMaterial.get().agregar("Plastico");
+				FactoryRepositoriosMaterial.get().agregar("Seda");
+				FactoryRepositoriosMaterial.get().agregar("Gamuza");
+				FactoryRepositoriosMaterial.get().agregar("Gabardina");
+			}
 			
 			Prenda remeraMangaLargaRojaDeAlgodon = new Prenda.PrendaBuilder()
 					.material("Algodon")
@@ -83,7 +100,7 @@ public class Server {
 			usuario2.agregarPrendaAGuardarropa(guardarropa2, remeraMangaLargaRojaDeAlgodon);
 			FactoryRepositorioUsuario.get().agregar(usuario1);
 			FactoryRepositorioUsuario.get().agregar(usuario2);
-		//}
+		}
 	}
 
 }

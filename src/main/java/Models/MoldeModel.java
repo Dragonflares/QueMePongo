@@ -3,6 +3,7 @@ import java.util.List;
 
 import db.EntityManagerHelper;
 import Dominio.ClothingClasses.MoldeDeAtuendo;
+import Dominio.UserClasses.Usuario;
 
 public class MoldeModel extends Model{
 	 private static MoldeModel instance;
@@ -29,6 +30,6 @@ public class MoldeModel extends Model{
     @Override
     public List<MoldeDeAtuendo> buscarPorQuery(String query)
     {
-    	return  (List<MoldeDeAtuendo>) EntityManagerHelper.createQuery(query).getResultList();
+    	return  EntityManagerHelper.createQuery(query).getResultList();
     }
 }
