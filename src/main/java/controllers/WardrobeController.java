@@ -69,7 +69,7 @@ public class WardrobeController {
 			
 			obj.addProperty("id", e.getId());
 			obj.addProperty("title", e.getNombre());
-			obj.addProperty("estilo", e.getEstilo().toString());
+			obj.addProperty("estilo", e.obtenerEstilo().toString());
 			obj.addProperty("importancia", e.getImportanciaEvento().getImportancia());
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			obj.addProperty("start", e.getFechaLocalDateTime().format(formatter));
