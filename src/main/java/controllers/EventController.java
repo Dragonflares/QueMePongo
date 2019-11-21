@@ -3,6 +3,7 @@ package controllers;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.Locale;
 
 import Dominio.UserClasses.Usuario;
 import spark.ModelAndView;
@@ -15,10 +16,11 @@ public class EventController {
 	public static ModelAndView verEventosDeUnaFecha(Request req, Response res) 
 	{
 		HashMap<String, Object> viewModel = new HashMap<>();
-		String fecha = req.queryParams("fecha");
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a"); 
+		String fechita = req.queryParams("fecha").split("G")[0];
+		//String fechita = fechata.substring(0, fechata.length()-1);;
 		
-		LocalDateTime fechaElegida = LocalDateTime.parse(fecha, formatter);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E MMM dd yyyy HH:mm:ss ", Locale.ENGLISH); 
+		LocalDateTime fechaElegida = LocalDateTime.parse(fechita, formatter);
 		
 		viewModel.put("cliente", usuario);
 		viewModel.put("eventos", usuario.getEventosEn(fechaElegida));
