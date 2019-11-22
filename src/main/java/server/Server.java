@@ -1,9 +1,14 @@
 package server;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
+import Dominio.ClothingClasses.Capas;
+import Dominio.ClothingClasses.Categoria;
+import Dominio.ClothingClasses.Color;
 import Dominio.ClothingClasses.Material;
 import Dominio.ClothingClasses.Prenda;
+import Dominio.ClothingClasses.TipoDeRopa;
 import Dominio.Estilish.Estilo;
 import Dominio.EventClasses.Alta;
 import Dominio.EventClasses.Baja;
@@ -12,6 +17,8 @@ import Dominio.EventClasses.Media;
 import Dominio.UserClasses.Premium;
 import Dominio.UserClasses.Usuario;
 import Dominio.WardrobeClasses.Guardarropa;
+import Repositorios.factories.FactoryRepositorioColor;
+import Repositorios.factories.FactoryRepositorioRopa;
 import Repositorios.factories.FactoryRepositorioUsuario;
 import Repositorios.factories.FactoryRepositoriosMaterial;
 import config.Config;
@@ -38,8 +45,8 @@ public class Server {
 	
 	public static void insertarUsuariosParaProbar() throws ProcessingDataFailedException, Exception 
 	{
-		//if(!FactoryRepositorioUsuario.get().existeUsuario("usuario123", "asd123"))
-		//{
+		if(!FactoryRepositorioUsuario.get().existeUsuario("usuario123", "asd123"))
+		{
 			Usuario usuario1 = new Usuario("usuario123", "asd123");
 			Usuario usuario2 = new Usuario("lala", "qwe123");
 			usuario2.setTipoDeCuenta(new Premium());
@@ -59,16 +66,52 @@ public class Server {
 			
 			if(Config.useDataBase)
 			{
+				Material cuero = new Material("Cuero");
+				Material lana = new Material("Lana");
+				Material jean = new Material("Jean");
+				Material goma = new Material("Goma");
+				Material plastico = new Material("Plastico");
+				Material gabardina = new Material("Gabardina");
+				Material gamuza = new Material("Gamuza");
 				FactoryRepositoriosMaterial.get().agregar(new Material("Algodon"));
 				FactoryRepositoriosMaterial.get().agregar(new Material("Lycra"));
-				FactoryRepositoriosMaterial.get().agregar("Cuero");
-				FactoryRepositoriosMaterial.get().agregar("Lana");
-				FactoryRepositoriosMaterial.get().agregar("Jean");
-				FactoryRepositoriosMaterial.get().agregar("Goma");
-				FactoryRepositoriosMaterial.get().agregar("Plastico");
-				FactoryRepositoriosMaterial.get().agregar("Seda");
-				FactoryRepositoriosMaterial.get().agregar("Gamuza");
-				FactoryRepositoriosMaterial.get().agregar("Gabardina");
+				FactoryRepositoriosMaterial.get().agregar(cuero);
+				FactoryRepositoriosMaterial.get().agregar(lana);
+				FactoryRepositoriosMaterial.get().agregar(jean);
+				FactoryRepositoriosMaterial.get().agregar(goma);
+				FactoryRepositoriosMaterial.get().agregar(plastico);
+				FactoryRepositoriosMaterial.get().agregar(new Material("Seda"));
+				FactoryRepositoriosMaterial.get().agregar(gamuza);
+				FactoryRepositoriosMaterial.get().agregar(gabardina);
+				FactoryRepositorioColor.get().agregar(new Color("Rojo"));
+				FactoryRepositorioColor.get().agregar(new Color("Azul"));
+				FactoryRepositorioColor.get().agregar(new Color("Amarillo"));
+				FactoryRepositorioColor.get().agregar(new Color("Blanco"));
+				FactoryRepositorioColor.get().agregar(new Color("Verde"));
+				FactoryRepositorioColor.get().agregar(new Color("Negro"));
+				FactoryRepositorioColor.get().agregar(new Color("Violeta"));
+				FactoryRepositorioColor.get().agregar(new Color("Naranja"));
+				FactoryRepositorioColor.get().agregar(new Color("Rosa"));
+				FactoryRepositorioColor.get().agregar(new Color("Beige"));
+				FactoryRepositorioColor.get().agregar(new Color("Marron"));
+				FactoryRepositorioColor.get().agregar(new Color("Gris"));
+				FactoryRepositorioColor.get().agregar(new Color("Celeste"));
+				ArrayList<Capas> capasRemera = new ArrayList<>();
+				capasRemera.add(Capas.CAPA1);
+				ArrayList<Material> materialesNoCompatiblesRemera = new ArrayList<>();
+				materialesNoCompatiblesRemera.add(cuero);
+				materialesNoCompatiblesRemera.add(lana);
+				materialesNoCompatiblesRemera.add(goma);
+				materialesNoCompatiblesRemera.add(plastico);
+				materialesNoCompatiblesRemera.add(gabardina);
+				materialesNoCompatiblesRemera.add(gamuza);
+				ArrayList<Material> materialesNoCompatiblesPantalon = new ArrayList<>();
+				materialesNoCompatiblesPantalon.add(cuero);
+				materialesNoCompatiblesPantalon.add(lana);
+				materialesNoCompatiblesPantalon.add(goma);
+				materialesNoCompatiblesPantalon.add(plastico);
+				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Remera manga larga", 4, Categoria.PARTE_SUPERIOR, capasRemera, materialesNoCompatiblesRemera, ""));
+				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Pantalon largo", 1, Categoria.PARTE_INFERIOR, null, materialesNoCompatiblesRemera, ""));
 			}
 			
 			Prenda remeraMangaLargaRojaDeAlgodon = new Prenda.PrendaBuilder()
@@ -100,7 +143,7 @@ public class Server {
 			usuario2.agregarPrendaAGuardarropa(guardarropa2, remeraMangaLargaRojaDeAlgodon);
 			FactoryRepositorioUsuario.get().agregar(usuario1);
 			FactoryRepositorioUsuario.get().agregar(usuario2);
-		//}
+		}
 	}
 
 }

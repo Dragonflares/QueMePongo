@@ -11,6 +11,8 @@ import db.EntidadPersistente;
 public class Material extends EntidadPersistente{
 	@Column(name = "nombre")
 	private String nombre;
+	
+	public Material () {}
 
 	public String getNombre() {
 		return nombre;

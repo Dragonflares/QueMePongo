@@ -12,6 +12,8 @@ public class Color extends EntidadPersistente{
 	@Column(name = "nombre")
 	private String nombre;
 	
+	public Color() {}
+	
 	public Color(String nuevoNombre) {	
 		setNombre(nuevoNombre);
 	}

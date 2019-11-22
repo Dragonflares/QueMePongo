@@ -46,6 +46,8 @@ public class TipoDeRopa extends EntidadPersistente{
 		this.imagen = imagen;
 	}
 	
+	public TipoDeRopa() {}
+	
 	public Integer getNivelAbrigo() {
 		return this.abrigo;
 	}
