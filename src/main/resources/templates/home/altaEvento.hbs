@@ -1,77 +1,63 @@
 {{#partial "contenido"}}
+<script src="https://cdnjs.coudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-	
-	<div class="form-row">
+	<div class="container">
 		<h3 class="mb-3">Crear evento</h3>
-        <form action="/clientes/{{id}}/eventos" method="post">
-        <div class="form-group">
-        	<input type="text" name="nombreEvento" class="form-control" placeholder="Nombre" required>
-             
-            <br/>
-            
-           <label for="estilo"> <strong> <font size="3"> Estilo: </font> </strong> &nbsp &nbsp </label>
-            <br>
-            <select class="input-select" name="estilo">
-               <option>Formal</option>
-               <option>Casual</option>
-               <option>Deportivo</option>
-               <option>Elegante</option>
-               <option>Elegante Sport</option>
-            </select>
-            
-            <br/><br/>
-                
-            <div class="col-sm-6">
-              	<div class='input-group date' id='datetimepicker6'>
-	                <input type='text' class="form-control" />
-	                <span class="input-group-addon">
-	                    <span class="glyphicon glyphicon-calendar"></span>
-	                </span>
-	            </div>
-            </div>
-            
-            <div class="col-sm-6">
-              	<div class='input-group date' id='datetimepicker7'>
-	                <input type='text' class="form-control" />
-	                <span class="input-group-addon">
-	                    <span class="glyphicon glyphicon-calendar"></span>
-	                </span>
-	            </div>
-            </div>
-            
-	       	<script type="text/javascript">
-			    $(function () {
-			        $('#datetimepicker6').datetimepicker();
-			        $('#datetimepicker7').datetimepicker({
-			            useCurrent: false //Important! See issue #1075
-			        });
-			        $("#datetimepicker6").on("dp.change", function (e) {
-			            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-			        });
-			        $("#datetimepicker7").on("dp.change", function (e) {
-			            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-			        });
-	    		});
-			</script>
-			
-  		</div>
-  		
-  		<br/><br/>
-  		
-  		<div class="col-sm-6">
-              	<button type="submit" class="btn btn-secondary" onclick="location.href='/clientes/{{id}}'" >Cancelar</button>
-        </div>	
-  		
-  		<div class="col-sm-6">
-              	<button type="submit" class="btn btn-primary" formmethod="post">
-					Agregar
-				</button>
-		</div>
-	</form>
+        <form action="/eventos/alta" method="post">
+	        
+	        <div class="form-row">
+	        	<label for="picker" class="control-label col-md-2"> <strong> <font size="3"> Fecha: </font> </strong> &nbsp &nbsp </label>
+	        	<div class="col-md-10">
+	        		<input type='date' id="picker" class="form-control" />
+	        	</div>
+	        	<br/>
+	        </div>
+	        
+	        <div class="form-row">
+	        <br/>
+	        </div>
+	        	
+		    <div class="form-row">
+	        	<label for="nombreEvento" class="control-label col-md-2"> <strong> <font size="3"> Nombre: </font> </strong> &nbsp &nbsp </label>
+	        	<div class="col-md-10">
+	        		<input type="text" name="nombreEvento" class="form-control" placeholder="Nombre" required>
+	        	</div>
+	        	<br/>
+	        </div>      
+	        
+	       <div class="form-row">
+	        <br/>
+	        </div>
+		            
+	        <div class="form-row">
+	        	<label for="estilo" class="control-label col-md-2"> <strong> <font size="3"> Estilo: </font> </strong> &nbsp &nbsp </label>
+	        	<div class="col-md-10">
+		        	<select class="form-control" id="estilo" name="estilo">
+		               <option value="">Formal</option>
+		               <option value="">Casual</option>
+		               <option value="">Deportivo</option>
+		               <option value="">Elegante</option>
+		               <option value="">Elegante Sport</option>
+			        </select>
+		        </div>
+		        <br/>
+	        </div>   	
+	              
+	  		
+	  		<br/><br/><br/>
+	  		
+	  		<div class="col-sm-6">
+	              	<button type="submit" class="btn btn-secondary" onclick="location.href='/eventos'" >Cancelar</button>
+	        </div>	
+	  		
+	  		<div class="col-sm-6">
+	              	<button type="submit" class="btn btn-primary" formmethod="post">
+						Agregar
+					</button>
+			</div>
+		</form>
 	</div>
-		
-
-
 	
 {{/partial}}
 
