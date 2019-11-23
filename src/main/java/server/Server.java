@@ -1,8 +1,10 @@
 package server;
 
+import java.awt.List;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Capas;
 import Dominio.ClothingClasses.Categoria;
 import Dominio.ClothingClasses.Color;
@@ -45,17 +47,19 @@ public class Server {
 	
 	public static void insertarUsuariosParaProbar() throws ProcessingDataFailedException, Exception 
 	{
-		if(!FactoryRepositorioUsuario.get().existeUsuario("usuario123", "asd123"))
-		{
+		//if(!FactoryRepositorioUsuario.get().existeUsuario("usuario123", "asd123"))
+		//{
 			Usuario usuario1 = new Usuario("usuario123", "asd123");
 			Usuario usuario2 = new Usuario("lala", "qwe123");
+			
+			
 			usuario2.setTipoDeCuenta(new Premium());
 			Guardarropa guardarropa1 = new Guardarropa(usuario1, Estilo.CASUAL);
 			guardarropa1.setNombre("Guardarropas Tranqui");
 			Guardarropa guardarropa2 = new Guardarropa(usuario1, Estilo.ELEGANTE);
 			guardarropa2.setNombre("Guardarropas Cheto");
 			LocalDateTime dentroDeUnaSemana = LocalDateTime.now().plusDays(7);
-			Evento evento1 = new Evento("Cumpleaños", LocalDateTime.now(), "Avenida 123", Estilo.ELEGANTE_SPORT, null, new Media());
+			Evento evento1 = new Evento("Cumpleaños", LocalDateTime.now().minusDays(2), "Avenida 123", Estilo.ELEGANTE_SPORT, null, new Media());
 			Evento evento2 = new Evento("Casamiento", dentroDeUnaSemana, "Calle 13", Estilo.ELEGANTE, null, new Alta());
 			Evento evento3 = new Evento("Fiesta", LocalDateTime.now(), "Calle falsa 123", Estilo.CASUAL, null, new Baja());
 			Evento evento4 = new Evento("Bautismo", dentroDeUnaSemana, "Iglesa 123", Estilo.FORMAL, null, new Media());
@@ -63,7 +67,7 @@ public class Server {
 			usuario1.agregarEvento(evento2);
 			usuario2.agregarEvento(evento3);
 			usuario2.agregarEvento(evento4);
-			
+
 			if(Config.useDataBase)
 			{
 				Material cuero = new Material("Cuero");
@@ -132,7 +136,10 @@ public class Server {
 			System.out.println(remeraMangaLargaRojaDeAlgodon.getColorPrimario().getNombre());
 			System.out.println(remeraMangaLargaRojaDeAlgodon.getColorSecundario().getNombre());
 			System.out.println(remeraMangaLargaRojaDeAlgodon.getTipoRopa().getNombre());
-			
+			ArrayList<Prenda> prendassugerencia = new ArrayList<Prenda>();
+			prendassugerencia.add(remeraMangaLargaRojaDeAlgodon);
+			Atuendo sugerencia = new Atuendo(prendassugerencia);
+			evento1.agregarSugerencia(sugerencia);
 			usuario1.agregarGuardarropa(guardarropa1);
 			guardarropa1.permitirAccesoaUsuario(usuario2);
 			usuario2.agregarGuardarropa(guardarropa2);
@@ -143,7 +150,7 @@ public class Server {
 			usuario2.agregarPrendaAGuardarropa(guardarropa2, remeraMangaLargaRojaDeAlgodon);
 			FactoryRepositorioUsuario.get().agregar(usuario1);
 			FactoryRepositorioUsuario.get().agregar(usuario2);
-		}
+		//}
 	}
 
 }
