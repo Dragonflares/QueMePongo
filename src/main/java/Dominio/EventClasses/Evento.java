@@ -3,6 +3,7 @@ package Dominio.EventClasses;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -18,6 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import Dominio.ClothingClasses.Atuendo;
+import Dominio.ClothingClasses.Prenda;
 import Dominio.Estilish.Estilo;
 import Dominio.UserClasses.Usuario;
 import db.EntidadPersistente;
@@ -49,10 +51,12 @@ public class Evento extends EntidadPersistente{
 	private ImportanciaEvento importancia;
 	
 	@ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-	private List<Atuendo> sugerencias;
+	private List<Atuendo> sugerencias = new ArrayList<Atuendo>();
 	
 	@Column(name = "sugerenciaNotificada")
 	private boolean sugerenciaNotificada;
+	
+	private List<Prenda> prendasUltimoAtuendo;
 	
 	public Evento() {}
 	
@@ -220,5 +224,16 @@ public class Evento extends EntidadPersistente{
 	public String getEstilo()
 	{
 		return this.estilo.toString();
+	}
+	
+	public boolean yaOcurrio()
+	{
+		return this.getFechaLocalDateTime().isBefore(LocalDateTime.now());
+	}
+	
+	public List<Prenda> getPrendasUltimoAtuendo()
+	{	
+		prendasUltimoAtuendo = this.getUltimaSugerencia().getPrendas();
+		return prendasUltimoAtuendo;
 	}
 }

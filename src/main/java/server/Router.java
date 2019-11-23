@@ -63,6 +63,8 @@ public class Router {
 			//Spark.post("/alta", EventController::processAgregarEvento);
 		});
 		
+		Spark.get("/calificaciones", WardrobeController::indexObtenerAtuendosCalificar,engine);
+		
 		Spark.get("/guardarropas/:idGuardarropa", WardrobeController::indexViewDatosDeUnGuardarropa, engine);	
 		Spark.get("/guardarropas/:idGuardarropa/prendas", WardrobeController::indexViewAgregarPrenda, engine);	
 		Spark.post("/guardarropas/:idGuardarropa/prendas", WardrobeController::registrarPrenda);

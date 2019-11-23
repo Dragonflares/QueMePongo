@@ -3,6 +3,7 @@ package controllers;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -145,6 +146,13 @@ public class WardrobeController {
 		
 		res.redirect("/user/guardarropas/"+id+"");
 		return null;
+	}
+	
+	public static ModelAndView indexObtenerAtuendosCalificar(Request req, Response res) {
+		HashMap<String, Object> viewModel = new HashMap<>();
+		//viewModel.put("id", guardarropaSeleccionado.getId() );
+		viewModel.put("evento", usuario.getEventos().stream().filter(event -> event.yaOcurrio()).collect(Collectors.toList()));
+		return new ModelAndView(viewModel, "home/calificaratuendo.hbs");
 	}
 	
 	public static ModelAndView logOut(Request req, Response res) {
