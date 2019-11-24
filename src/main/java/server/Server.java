@@ -115,6 +115,7 @@ public class Server {
 				materialesNoCompatiblesPantalon.add(goma);
 				materialesNoCompatiblesPantalon.add(plastico);
 				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Remera manga larga", 4, Categoria.PARTE_SUPERIOR, capasRemera, materialesNoCompatiblesRemera, ""));
+				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Remera manga corta", 4, Categoria.PARTE_SUPERIOR, capasRemera, materialesNoCompatiblesRemera, ""));
 				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Pantalon largo", 1, Categoria.PARTE_INFERIOR, null, materialesNoCompatiblesRemera, ""));
 			}
 			
@@ -130,12 +131,13 @@ public class Server {
 					.setearColores("Negro", "Azul")
 					.tipoRopa("Pantalon largo")
 					.build();
+			Prenda remeraMangaCorta = new Prenda.PrendaBuilder()
+					.material("Lycra")
+					.nombrePrenda("remeraMangaCorta")
+					.setearColores("Negro", "Azul")
+					.tipoRopa("Remera manga corta")
+					.build();
 			
-			//toy probando nomas XD
-			System.out.println(remeraMangaLargaRojaDeAlgodon.getMaterial().getNombre());
-			System.out.println(remeraMangaLargaRojaDeAlgodon.getColorPrimario().getNombre());
-			System.out.println(remeraMangaLargaRojaDeAlgodon.getColorSecundario().getNombre());
-			System.out.println(remeraMangaLargaRojaDeAlgodon.getTipoRopa().getNombre());
 			ArrayList<Prenda> prendassugerencia = new ArrayList<Prenda>();
 			prendassugerencia.add(remeraMangaLargaRojaDeAlgodon);
 			Atuendo sugerencia = new Atuendo(prendassugerencia);
@@ -144,6 +146,8 @@ public class Server {
 			guardarropa1.permitirAccesoaUsuario(usuario2);
 			usuario2.agregarGuardarropa(guardarropa2);
 			usuario1.agregarPrendaAGuardarropa(guardarropa1, pantalonLargoNegroDeLycra);
+			usuario1.agregarPrendaAGuardarropa(guardarropa1, remeraMangaLargaRojaDeAlgodon);
+			usuario1.agregarPrendaAGuardarropa(guardarropa1, remeraMangaCorta);
 			
 			//System.out.println(guardarropa1.getCantidadDePrendas());
 			
