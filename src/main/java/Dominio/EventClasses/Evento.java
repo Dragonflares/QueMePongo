@@ -56,6 +56,7 @@ public class Evento extends EntidadPersistente{
 	@Column(name = "sugerenciaNotificada")
 	private boolean sugerenciaNotificada;
 	
+	@Transient
 	private List<Prenda> prendasUltimoAtuendo;
 	
 	public Evento() {}
