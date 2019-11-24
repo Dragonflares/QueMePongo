@@ -22,6 +22,7 @@ import Dominio.EventClasses.Media;
 import Dominio.UserClasses.Usuario;
 import Dominio.WardrobeClasses.Guardarropa;
 import Repositorios.factories.FactoryRepositorioUsuario;
+import config.Config;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -41,63 +42,47 @@ public class WardrobeController {
 		return new ModelAndView(viewModel, "home/guardarropas.hbs");
 	}
 	
-	public static ModelAndView indexViewDatosGenerales(Request req, Response res) {
-		HashMap<String, Object> viewModel = new HashMap<>();
-			
-		// TODO esta harcodeado, cambiar
-//		guardarropas = ((Usuario) FactoryRepositorioUsuario.get().buscarPorId().get(req.session().attribute("username"))).getGuardarropas();
-		guardarropaSeleccionado = null;
-		viewModel.put("guardarropas", guardarropas);
-		return new ModelAndView(
-				viewModel, 
-				"home/guardarropas.hbs"); 
-	}
+	
 	
 	public static ModelAndView indexViewDatosDeUnGuardarropa(Request req, Response res) {
 				
 		int id=Integer.parseInt(req.params(":idGuardarropa"));
-		guardarropaSeleccionado = ((Usuario) FactoryRepositorioUsuario.get().buscarTodos().get(usuario.getId())).getGuardarropas().get(id);	
+		
+		if(Config.useDataBase)
+		{
+			id--;
+		}
+		
+		guardarropaSeleccionado = usuario.getGuardarropas().get(id);
+		
+		res.redirect("/guardarropas");
+		
+		
+		
+		/*
+		System.out.println("Usuario:");
+		System.out.println(usuario.getGuardarropas().size()); //1
+		System.out.println(id);
+		System.out.println(usuario.getGuardarropas().get(id)); //id=1, deería hacer get(0)
+		System.out.println("-------------");
+		guardarropaSeleccionado = usuario.getGuardarropas().get(id);	
 		
 		HashMap<String, Object> viewModel = new HashMap<>();
 		//viewModel.put("id", guardarropaSeleccionado.getId() );
 		viewModel.put("guardarropas", guardarropaSeleccionado);
 		viewModel.put("prendasDisponibles", guardarropaSeleccionado.getPrendasDisponibles());
 		
-		String ahre2 = guardarropaSeleccionado.getPrendasDisponibles().get(0).getNombrePrenda();
-		//String ahre = guardarropaSeleccionado.getPrendasDisponibles().get(0).getTipoRopa().getNombre();
-		System.out.println(ahre2);
 		
+		return new ModelAndView(viewModel, "home/prendas.hbs");*/
 		
-		return new ModelAndView(viewModel, "home/prendas.hbs");
-	}
-	
-	public static ModelAndView indexViewAgregarPrenda(Request req, Response res) {
-		cadena=req.params(":idGuardarropa");
-		HashMap<String, Object> viewModel = new HashMap<>();
-		viewModel.put("id", cadena ); 
-
-		return new ModelAndView(
-					viewModel, 
-					"home/altaPrenda.hbs");
-			
-	}
-	
-	public static Void registrarPrenda(Request req, Response res) {	
-		String id=req.params("idGuardarropa");	
-		String tipo=req.queryParams("tipo"); 
-		
-		// TODO esta harcodeado, cambiar. PD: en el otro tp tenian un repo, que en este caso seria RepoGuardarropa
-		guardarropaSeleccionado = ((Usuario) FactoryRepositorioUsuario.get().buscarTodos().get(0)).getGuardarropas().get(0);
-		
-		Prenda prenda = new Prenda(req.queryParams("nombrePrenda"));
-		guardarropaSeleccionado.agregarPrenda(prenda);
-		
-		
-		// tener repo prenda? No lo creo
-		//RepoClientes.getInstanceOfSingleton().persistirCliente(clienteSeleccionado);
-		
-		res.redirect("/user/guardarropas/"+id+"");
 		return null;
+	}
+	
+	public static ModelAndView mostrarPrendas(Request req, Response res) {
+		HashMap<String, Object> viewModel = new HashMap<>();
+		viewModel.put("guardarropas", guardarropaSeleccionado);
+		viewModel.put("prendasDisponibles", guardarropaSeleccionado.getPrendasDisponibles());
+		return new ModelAndView(viewModel, "home/prendas.hbs");
 	}
 	
 	public static ModelAndView indexObtenerAtuendosCalificar(Request req, Response res) {

@@ -65,9 +65,10 @@ public class Router {
 		
 		Spark.get("/calificaciones", WardrobeController::indexObtenerAtuendosCalificar,engine);
 		
+		Spark.get("/guardarropas", WardrobeController::mostrarPrendas, engine);
 		Spark.get("/guardarropas/:idGuardarropa", WardrobeController::indexViewDatosDeUnGuardarropa, engine);	
-		Spark.get("/guardarropas/:idGuardarropa/prendas", WardrobeController::indexViewAgregarPrenda, engine);	
-		Spark.post("/guardarropas/:idGuardarropa/prendas", WardrobeController::registrarPrenda);
+		//Spark.get("/guardarropas/:idGuardarropa/prendas", WardrobeController::indexViewAgregarPrenda, engine);	
+		//Spark.post("/guardarropas/:idGuardarropa/prendas", WardrobeController::registrarPrenda);
 
 		Spark.get("/out", WardrobeController::logOut, engine); // este boton no esta en nuestro tp, pero lo puse porque si
 	}
