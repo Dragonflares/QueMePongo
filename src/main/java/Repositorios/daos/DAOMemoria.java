@@ -80,17 +80,8 @@ public class DAOMemoria<T> implements DAO {
 		Optional<Usuario> usuario = ((List<Usuario>)(List<?>) entities).stream()
 				.filter(c -> Objects.equals(c.getPassword(), password) && Objects.equals(c.getUsername(), username))
 				.findFirst();
-		if (!usuario.isPresent()) {
-			try {
-				Usuario usuarioNuevo = new Usuario(username, password);
-				usuarioNuevo.agregarGuardarropa(new Guardarropa(usuarioNuevo, Estilo.CASUAL));
-				usuarioNuevo.agregarGuardarropa(new Guardarropa(usuarioNuevo, Estilo.FORMAL));
-				this.agregar(usuarioNuevo);
-			} catch (Exception x) {
-				return false;
-			}
-		}
-		return true;
+		return usuario.isPresent();
+	
 	}
     
     @SuppressWarnings("unchecked")
