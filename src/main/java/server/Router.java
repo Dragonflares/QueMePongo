@@ -56,6 +56,11 @@ public class Router {
 		Spark.post("/login", LoginController::processLogin, engine);
 		 
 		Spark.get("/", WardrobeController::init,engine);
+		Spark.get("/guardarropas/:idGuardarropa", WardrobeController::indexViewDatosDeUnGuardarropa, engine);
+		Spark.get("/guardarropas", WardrobeController::mostrarPrendas, engine);
+		
+		//Spark.get("/guardarropas/:idGuardarropa/prendas", WardrobeController::indexViewAgregarPrenda, engine);	
+		//Spark.post("/guardarropas/:idGuardarropa/prendas", WardrobeController::registrarPrenda);
 		
 		Spark.path("/eventos",  () -> {
 			Spark.get("", WardrobeController::verEventos, engine); // creo que no tendria que ser Wardrobe, pero lo puse para ponerle un cliente a Event
@@ -65,11 +70,6 @@ public class Router {
 		
 		Spark.get("/calificaciones", WardrobeController::indexObtenerAtuendosCalificar,engine);
 		
-		Spark.get("/guardarropas", WardrobeController::mostrarPrendas, engine);
-		Spark.get("/guardarropas/:idGuardarropa", WardrobeController::indexViewDatosDeUnGuardarropa, engine);	
-		//Spark.get("/guardarropas/:idGuardarropa/prendas", WardrobeController::indexViewAgregarPrenda, engine);	
-		//Spark.post("/guardarropas/:idGuardarropa/prendas", WardrobeController::registrarPrenda);
-
 		Spark.get("/out", WardrobeController::logOut, engine); // este boton no esta en nuestro tp, pero lo puse porque si
 	}
 

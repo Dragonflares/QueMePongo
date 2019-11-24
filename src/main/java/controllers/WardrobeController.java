@@ -42,8 +42,6 @@ public class WardrobeController {
 		return new ModelAndView(viewModel, "home/guardarropas.hbs");
 	}
 	
-	
-	
 	public static ModelAndView indexViewDatosDeUnGuardarropa(Request req, Response res) {
 				
 		int id=Integer.parseInt(req.params(":idGuardarropa"));
@@ -53,27 +51,8 @@ public class WardrobeController {
 			id--;
 		}
 		
-		guardarropaSeleccionado = usuario.getGuardarropas().get(id);
-		
-		res.redirect("/guardarropas");
-		
-		
-		
-		/*
-		System.out.println("Usuario:");
-		System.out.println(usuario.getGuardarropas().size()); //1
-		System.out.println(id);
-		System.out.println(usuario.getGuardarropas().get(id)); //id=1, deería hacer get(0)
-		System.out.println("-------------");
 		guardarropaSeleccionado = usuario.getGuardarropas().get(id);	
-		
-		HashMap<String, Object> viewModel = new HashMap<>();
-		//viewModel.put("id", guardarropaSeleccionado.getId() );
-		viewModel.put("guardarropas", guardarropaSeleccionado);
-		viewModel.put("prendasDisponibles", guardarropaSeleccionado.getPrendasDisponibles());
-		
-		
-		return new ModelAndView(viewModel, "home/prendas.hbs");*/
+		res.redirect("/guardarropas");
 		
 		return null;
 	}
