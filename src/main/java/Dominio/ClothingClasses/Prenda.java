@@ -16,6 +16,8 @@ import javax.persistence.Transient;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 
+import Dominio.UserClasses.Usuario;
+import Dominio.WardrobeClasses.Guardarropa;
 import Repositorios.factories.FactoryRepositorioColor;
 import Repositorios.factories.FactoryRepositorioRopa;
 import Repositorios.factories.FactoryRepositoriosMaterial;
@@ -43,6 +45,10 @@ public class Prenda extends EntidadPersistente{
 	@OneToOne
 	@JoinColumn(name = "material_id", referencedColumnName = "id")
 	private Material material;
+	
+	@ManyToOne
+	@JoinColumn(name = "guardarropas_id", referencedColumnName = "id", insertable = true)
+	private Guardarropa guardarropas;
 	
 	public Prenda() {}
 

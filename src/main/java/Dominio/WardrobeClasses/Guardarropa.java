@@ -40,7 +40,7 @@ public class Guardarropa extends EntidadPersistente{
 	@Enumerated(EnumType.ORDINAL)
 	private Estilo estilo;
 	
-	@OneToMany(mappedBy = "id", cascade = {CascadeType.ALL})
+	@OneToMany( mappedBy = "guardarropas", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 	private List<Prenda> prendasDisponibles = new ArrayList<Prenda>();
 	
 
