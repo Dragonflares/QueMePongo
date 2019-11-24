@@ -47,8 +47,8 @@ public class Server {
 	
 	public static void insertarUsuariosParaProbar() throws ProcessingDataFailedException, Exception 
 	{
-		if(!FactoryRepositorioUsuario.get().existeUsuario("usuario123", "asd123"))
-		{
+		//if(!FactoryRepositorioUsuario.get().existeUsuario("usuario123", "asd123"))
+		//{
 			Usuario usuario1 = new Usuario("usuario123", "asd123");
 			Usuario usuario2 = new Usuario("lala", "qwe123");
 			
@@ -150,7 +150,7 @@ public class Server {
 			usuario2.agregarPrendaAGuardarropa(guardarropa2, remeraMangaLargaRojaDeAlgodon);
 			FactoryRepositorioUsuario.get().agregar(usuario1);
 			FactoryRepositorioUsuario.get().agregar(usuario2);
-		}
+		//}
 	}
 
 }
