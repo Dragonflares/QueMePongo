@@ -60,7 +60,7 @@ public class Router {
 		Spark.path("/eventos",  () -> {
 			Spark.get("", WardrobeController::verEventos, engine); // creo que no tendria que ser Wardrobe, pero lo puse para ponerle un cliente a Event
 			Spark.get("/alta", EventController::agregarEvento, engine);
-			//Spark.post("/alta", EventController::processAgregarEvento);
+			Spark.post("/alta", EventController::processAgregarEvento);
 		});
 		
 		Spark.get("/calificaciones", WardrobeController::indexObtenerAtuendosCalificar,engine);
