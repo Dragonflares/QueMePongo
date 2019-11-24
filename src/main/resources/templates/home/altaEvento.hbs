@@ -24,9 +24,12 @@
                 	</div>
                 
 	                <script type="text/javascript">
-			            $(function () {
-			                $('#datetimepicker1').datetimepicker();
-			            });
+	                 $(function () {
+                $('#datetimepicker1').datetimepicker({
+                    defaultDate: "{{ fecha }}"
+                });
+            });
+			            
 	        		</script>
 	        	</div>
 	        	<br/>
@@ -47,16 +50,42 @@
 	       <div class="form-row">
 	        <br/>
 	        </div>
+	        
+	        <div class="form-row">
+	        	<label for="direccionEvento" class="control-label col-md-2"> <strong> <font size="3"> Direccion: </font> </strong> &nbsp &nbsp </label>
+	        	<div class="col-md-10">
+	        		<input type="text" name="direccionEvento" class="form-control" placeholder="Direccion" required>
+	        	</div>
+	        	<br/>
+	        </div>      
+	        
+	       <div class="form-row">
+	        <br/>
+	        </div>
 		            
 	        <div class="form-row">
 	        	<label for="estilo" class="control-label col-md-2"> <strong> <font size="3"> Estilo: </font> </strong> &nbsp &nbsp </label>
 	        	<div class="col-md-10">
 		        	<select class="form-control" id="estilo" name="estilo">
-		               <option value="">Formal</option>
-		               <option value="">Casual</option>
-		               <option value="">Deportivo</option>
-		               <option value="">Elegante</option>
-		               <option value="">Elegante Sport</option>
+		               	{{#each estilos}}
+    						<option value="">{{ this }}</option>
+  						{{/each}}
+			        </select>
+		        </div>
+		        <br/>
+	        </div>
+
+			<div class="form-row">
+	        <br/>
+	        </div>
+		            
+	        <div class="form-row">
+	        	<label for="importancia" class="control-label col-md-2"> <strong> <font size="3"> Importancia: </font> </strong> &nbsp &nbsp </label>
+	        	<div class="col-md-10">
+		        	<select class="form-control" id="importancia" name="importancia">
+		               	{{#each importancias}}
+    						<option value="">{{ this }}</option>
+  						{{/each}}
 			        </select>
 		        </div>
 		        <br/>

@@ -36,58 +36,10 @@ public class WardrobeController {
 		EventController.usuario = usuario;
 		
 		HashMap<String, Object> viewModel = new HashMap<>();
-		/*
-		try (FileWriter file = new FileWriter("src/main/resources/public/js/eventitos.js")) {
-			//File Writer creates a file in write mode at the given location 
-			file.write(getJSONEventos());
-
-			//write function is use to write in file,
-			//here we write the Json object in the file
-			file.flush();
-			file.close();
-
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-		//Thread.sleep(8000); // dejar, hace que espere un tiempo porque sino cuando hace un new ModelAndView lee 
-		// el archivo eventitos antes de que se haga la modificación. Pd: no funciona*/
-		//String evs = getJSONEventos();
-		//System.out.println(evs); // TODO SACAR
-		//viewModel.put("eventitos", evs.replaceAll("\"", "&quot;"));
 		viewModel.put("eventitos", usuario.getEventos());
 		
 		return new ModelAndView(viewModel, "home/seleccionarFecha.hbs");
 	}
-	
-	private static String getJSONEventos()
-	{
-		//String data = "var data = ";
-		JsonArray jsonArr = new JsonArray();
-		
-		usuario.getEventos().forEach(e -> {
-			JsonObject obj = new JsonObject();
-			
-			obj.addProperty("id", e.getId());
-			obj.addProperty("title", e.getNombre());
-			obj.addProperty("estilo", e.obtenerEstilo().toString());
-			obj.addProperty("importancia", e.getImportanciaEvento().getImportancia());
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-			obj.addProperty("start", e.getFechaLocalDateTime().format(formatter));
-			obj.addProperty("allDay", false);
-			obj.addProperty("className", "important");
-			
-			jsonArr.add(obj);
-			
-		});
-		
-		Gson gson = new Gson();
-		return gson.toJson(jsonArr) + ";";
-		//return "[{id:1,title: "Cumpleaños', estilo:'ELEGANTE_SPORT', importanci:'Media', start:'2019-11-19', allDay: false,className:'important'},{id:2,title:'Casamiento',estilo:'ELEGANTE',importancia:'Alta',start:'2019-11-26',allDay:false,className:'important}];"; 
-				
-		//return jsonArr;
-	}
-	
 	
 	public static ModelAndView indexViewDatosGenerales(Request req, Response res) {
 		HashMap<String, Object> viewModel = new HashMap<>();
