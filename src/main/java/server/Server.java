@@ -59,7 +59,7 @@ public class Server {
 			Guardarropa guardarropa2 = new Guardarropa(usuario1, Estilo.ELEGANTE);
 			guardarropa2.setNombre("Guardarropas Cheto");
 			LocalDateTime dentroDeUnaSemana = LocalDateTime.now().plusDays(7);
-			Evento evento1 = new Evento("CumpleaÃ±os", LocalDateTime.now().minusDays(2), "Avenida 123", Estilo.ELEGANTE_SPORT, null, new Media());
+			Evento evento1 = new Evento("Cumpleaños", LocalDateTime.now().plusDays(2), "Avenida 123", Estilo.ELEGANTE_SPORT, null, new Media());
 			Evento evento2 = new Evento("Casamiento", dentroDeUnaSemana, "Calle 13", Estilo.ELEGANTE, null, new Alta());
 			Evento evento3 = new Evento("Fiesta", LocalDateTime.now(), "Calle falsa 123", Estilo.CASUAL, null, new Baja());
 			Evento evento4 = new Evento("Bautismo", dentroDeUnaSemana, "Iglesa 123", Estilo.FORMAL, null, new Media());
@@ -148,7 +148,10 @@ public class Server {
 			usuario1.agregarPrendaAGuardarropa(guardarropa1, pantalonLargoNegroDeLycra);
 			usuario1.agregarPrendaAGuardarropa(guardarropa1, remeraMangaLargaRojaDeAlgodon);
 			usuario1.agregarPrendaAGuardarropa(guardarropa1, remeraMangaCorta);
-			
+			evento1.setUltimoAtuendoAceptado(sugerencia);
+			usuario1.agregarSugerenciaSinCalificar(sugerencia);
+			evento1.setSeNotificoUltimaSugerencia(true);
+			evento1.getPrendasUltimoAtuendo();
 			//System.out.println(guardarropa1.getCantidadDePrendas());
 			
 			usuario2.agregarPrendaAGuardarropa(guardarropa2, remeraMangaLargaRojaDeAlgodon);

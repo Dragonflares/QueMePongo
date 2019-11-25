@@ -79,7 +79,9 @@ public class WardrobeController {
 
 		HashMap<String, Object> viewModel = new HashMap<>();
 
-		List<Evento> eventosProximos = usuario.getEventosProximosYnotificados();
+		List<Evento> eventosProximos = usuario.getEventosProximosYnotificados().stream()
+				.filter(e->e.getUltimoAtuendoAceptado() == null)
+				.collect(Collectors.toList());
 		
 		viewModel.put("eventosProximos", eventosProximos);
 		
@@ -153,22 +155,6 @@ public class WardrobeController {
 		return new ModelAndView(viewModel, "home/recomendacion.hbs");
 	}
 
-	//	public static ModelAndView mostrarSugerencias(Request req, Response res) {
-	//		HashMap<String, Object> viewModel = new HashMap<>();
-	//		//viewModel.put("sugerencia", );
-	//		Date fecha = new Date();
-	//		ImportanciaEvento importancia = new Alta();
-	//		String preEstilo = req.queryParams("estilo");
-	//		
-	//	
-	//		
-	//		
-	//		Evento evento = new Evento(fecha.toString(),fecha,"casa",estilo,null,null);
-	//		viewModel.put("prendasDisponibles", guardarropaSeleccionado.getPrendasDisponibles());
-	//		return new ModelAndView(viewModel, "home/prendas.hbs");
-	//	}
-
-
 
 	public static ModelAndView indexViewAgregarPrenda(Request req, Response res) {
 
@@ -182,15 +168,10 @@ public class WardrobeController {
 		//viewModel.put("id", guardarropaSeleccionado.getId() );
 		viewModel.put("evento", usuario.getEventos().stream()
 				.filter(event -> event.yaOcurrio() 
-						&& usuario.getAtuendosSinCalificar().contains(event.getUltimaSugerencia()))
+						&& usuario.getAtuendosSinCalificar().contains(event.getUltimoAtuendoAceptado()))
 				.collect(Collectors.toList()));
 		return new ModelAndView(viewModel, "home/calificaratuendo.hbs");
 	}
-
-
-	//---------------------------------Log out---------------------------------
-
-
 
 	public static ModelAndView califico(Request req, Response res) {
 		HashMap<String, Object> viewModel = new HashMap<>();
@@ -199,7 +180,7 @@ public class WardrobeController {
 		String evento = req.queryParams("evento");
 		Evento eventoObject =  usuario.getEventos().stream().filter(event->event.getNombre()
 				.equals(evento)).collect(Collectors.toList()).get(0);
-		Atuendo elAtuendo = eventoObject.getUltimaSugerencia();
+		Atuendo elAtuendo = eventoObject.getUltimoAtuendoAceptado();
 		System.out.println(evento);
 
 		System.out.println(temperaturaInferior);
@@ -253,7 +234,7 @@ public class WardrobeController {
 		}
 
 		usuario.calificar(elAtuendo, superior, inferior);
-
+		eventoObject.setUltimoAtuendoAceptado(null);
 		System.out.println(usuario.getOffsetInferior());
 		System.out.println(usuario.getOffsetSuperior());
 		viewModel.put("evento", usuario.getEventos().stream()
@@ -263,6 +244,7 @@ public class WardrobeController {
 		return new ModelAndView(viewModel, "home/calificaratuendo.hbs");
 	}
 
+	//---------------------------------Log out---------------------------------
 
 	public static ModelAndView logOut(Request req, Response res) {
 

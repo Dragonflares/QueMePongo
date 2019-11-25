@@ -10,14 +10,14 @@
         <label for="calificacionSuperior">Elija estilo para generar recomendacion</label>
         <br>
         </br>
-		<td><select class="mdb-select md-form" name="estilo" required> 
-		<option value="">Elija una opción...</option> 
-		<option value="Formal">Formal</option> 
-		<option value="Casual">Casual</option> 
-		<option value="Elegante">Elegante</option> 
-        <option value="Deportivo">Deportivo</option> 
-		<option value="Elegante_Sport">Elegante_Sport</option> 
-		</select>
+		      <td><select class="mdb-select md-form" name="estilo" required> 
+		          <option value="">Elija una opción...</option> 
+		          <option value="Formal">Formal</option> 
+		          <option value="Casual">Casual</option> 
+		          <option value="Elegante">Elegante</option> 
+              <option value="Deportivo">Deportivo</option> 
+		          <option value="Elegante_Sport">Elegante_Sport</option> 
+		      </select>
          <br>
         </br>
         <button type="submit" class="btn btn-primary">Generar recomendacion</button></td> 
@@ -71,11 +71,13 @@
 
   <tbody>
 
-    {{#each eventoNoUsados}}
+    {{#each eventosNoUsados}}
       <tr>
 
         <td>{{ nombre }}</td>
-        <td>{{ prendas }}</td>
+        <td>{{#each prendasUltimoAtuendo}}
+            <h6> {{nombrePrenda}}</h6>
+        {{/each}}</td>
       </tr>
     {{/each}}
   </tbody>
