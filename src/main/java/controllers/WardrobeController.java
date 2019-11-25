@@ -33,6 +33,7 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+
 public class WardrobeController {
 	public static Usuario usuario;
 	private static String cadena;
@@ -70,22 +71,68 @@ public class WardrobeController {
 		return new ModelAndView(viewModel, "home/prendas.hbs");
 	}
 
+	
+	
+	
+	
 	public static ModelAndView mostrarSugerencias(Request req, Response res) {
 
 		HashMap<String, Object> viewModel = new HashMap<>();
 
+		List<Evento> eventosProximos = usuario.getEventosProximosYnotificados();
+		
+		viewModel.put("eventosProximos", eventosProximos);
+		
+		
 		return new ModelAndView(viewModel, "home/sugerencias.hbs");
+		
 	}
 
 
-	public static ModelAndView generaRecomendacion(Request req, Response res) {
+	public static ModelAndView generaRecomendacion(Request req, Response res) throws Exception {
 		
 		HashMap<String, Object> viewModel = new HashMap<>();
 		
+		String estilo = req.queryParams("estilo");
 		
+		Estilo nuevoEstilo;
+
+		switch(estilo) {
+
+		case "Formal" :{
+
+			nuevoEstilo =   Estilo.FORMAL;
+			break;
+		}
+
+		case "Casual" :{
+
+			nuevoEstilo = Estilo.CASUAL;
+			break;
+		}
+		case "Elegante" :{
+
+			nuevoEstilo = Estilo.ELEGANTE;
+			break;
+		}
+		case "Deportivo" :{
+
+			nuevoEstilo = Estilo.DEPORTIVO;
+			break;
+		}case "Elegante_Sport" :{
+
+			nuevoEstilo = Estilo.ELEGANTE_SPORT;
+			break;
+		}
 		
-		
-		
+
+		default : nuevoEstilo = Estilo.FORMAL;
+		}
+		ImportanciaEvento importancia = new Alta();
+		LocalDateTime fecha = LocalDateTime.now();
+		Evento evento = new Evento(fecha.toString(),fecha,"casa",nuevoEstilo,null,importancia);
+		usuario.agregarEvento(evento);
+		Atuendo atuendoSugerencia = usuario.pedirRecomendacion(evento);
 		return new ModelAndView(viewModel, "home/recomendacion.hbs");
 	}
 
@@ -246,14 +293,8 @@ public class WardrobeController {
 				+ "/" + String.valueOf(fechaElegida.getDayOfMonth()) 
 				+ "/" + String.valueOf(fechaElegida.getYear());
 
-		List<String> importanciasStr = new ArrayList<String>();
-		importanciasStr.add("Alta");
-		importanciasStr.add("Media");
-		importanciasStr.add("Baja");
-
 		viewModel.put("fecha", fechaStr);
 		viewModel.put("estilos", Estilo.values());
-		viewModel.put("importancias", importanciasStr);
 
 		return new ModelAndView(viewModel, "home/altaEvento.hbs");
 	}
@@ -263,22 +304,8 @@ public class WardrobeController {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm", Locale.ENGLISH); 
 		LocalDateTime fechaElegida = LocalDateTime.parse(req.queryParams("fecha"), formatter);
 		Estilo estilo = Estilo.valueOf(req.queryParams("estilo"));
-		ImportanciaEvento importanciaEvento;
-		String importanciaStr = req.queryParams("importancia");
-		// TODO se les ocurre otra cosa?
-		if(importanciaStr == "Alta")
-		{
-			importanciaEvento = new Alta();
-		}
-		else if (importanciaStr == "Media")
-		{
-			importanciaEvento = new Media();
-		}
-		else
-		{
-			importanciaEvento = new Baja();
-		}
-		Evento eventoAAgregar = new Evento(req.queryParams("nombreEvento"), fechaElegida, req.queryParams("direccionEvento"), estilo,null,importanciaEvento);
+		
+		Evento eventoAAgregar = new Evento(req.queryParams("nombreEvento"), fechaElegida, req.queryParams("direccionEvento"), estilo,null,null);
 		usuario.agregarEvento(eventoAAgregar);
 		FactoryRepositorioUsuario.get().modificar(usuario);
 		res.redirect("/eventos");
