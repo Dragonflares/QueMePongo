@@ -142,4 +142,8 @@ public class Prenda extends EntidadPersistente{
 	public Material getMaterial() {
 		return this.material;
 	}
+
+	public void setGuardarropas(Guardarropa guardarropa) {
+		this.guardarropas = guardarropa;
+	}
 }

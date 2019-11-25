@@ -115,6 +115,7 @@ public class Usuario extends EntidadPersistente{
 		if(!this.guardarropas.stream().anyMatch(g -> g.tienePrenda(prenda))) 
 		{
 			tipoDeCuenta.agregarPrendaAGuardarropa(guardarropa, prenda);
+			prenda.setGuardarropas(guardarropa);
 		} else {
 			throw new Exception("Ya tenes la prenda en otro guardarropa");
 		}
