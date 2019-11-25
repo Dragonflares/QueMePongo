@@ -1,0 +1,87 @@
+{{#partial "contenido"}}
+
+        <header>
+            <h1>Que me pongo? - Calificaciones</h1>
+
+        </header>
+        
+        <div>
+        <form method="POST" action="/calificaciones" align="left">
+        <label for="calificacionSuperior">Elija estilo para generar recomendacion</label>
+		<td><select class="mdb-select md-form" name="estilo" required> 
+		<option value="">Elija una opción...</option> 
+		<option value="Formal">Formal</option> 
+		<option value="Casual">Casual</option> 
+		<option value="Elegante">Elegante</option> 
+        <option value="Deportivo">Deportivo</option> 
+		<option value="Elegante_Sport">Elegante_Sport</option> 
+		</select>
+        <button type="submit" class="btn btn-primary">Generar recomendacion</button></td> 
+        </form> 
+        </div>
+
+
+        <h2>Atuendos sugeridos para eventos</h2>
+
+
+        <div><p>
+            <h2>Atuendos por calificar</p></h2> <br/>
+            <div class="row">
+			<div class="col-md-12 block-center">
+			<h2>{{nombre}}</h2> </p> 
+				<ul class="list-group">
+					{{#each evento}}
+					<div class="list-group-item">
+						<tr>
+							<h4><td>{{ nombre }}</td></h4> 
+							<p>  
+								<div>
+                                    <h6>Prendas: </h6>
+                                    {{#each prendasUltimoAtuendo}}
+
+                                    <h6> {{nombrePrenda}}</h6>
+                                    {{/each}}
+									<form method="POST" action="/calificaciones" align="left">
+									<label for="calificacionSuperior">Calificar parte prenda superior</label>
+										<td><select class="mdb-select md-form" name="temperaturaParteSuperior" required> 
+										<option value="">Elija una opción...</option> 
+										<option value="Caluroso">Caluroso</option> 
+										<option value="Bien">Bien</option> 
+										<option value="Frio">Frio</option> 
+										</select>
+										<br></br>
+										<label for="calificacionInferior">Calificar parte prenda inferior</label>
+										<td><select class="mdb-select md-form" name="temperaturaParteInferior" required> 
+										<option value="">Elija una opción...</option> 
+										<option value="Caluroso">Caluroso</option> 
+										<option value="Bien">Bien</option> 
+										<option value="Frio">Frio</option> 
+										</select>
+										<input id="evento" name="evento" type="hidden" value={{ nombre }}>
+										<button type="submit" class="btn btn-primary">Calificar</button></td> 
+									</form> 
+                                </div>
+
+							</p>
+						</tr>
+					</div>
+					{{/each}}
+				</ul>
+			</div>
+		</div>
+                
+            
+        </div>
+
+        <h2>Atuendos aceptados pero no usados</h2>
+
+        <div>
+
+
+
+        </div>
+
+
+{{/partial}}
+
+{{>layout.hbs}}

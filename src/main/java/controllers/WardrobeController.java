@@ -3,6 +3,7 @@ package controllers;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -69,13 +70,27 @@ public class WardrobeController {
 		return new ModelAndView(viewModel, "home/prendas.hbs");
 	}
 	
-	
 	public static ModelAndView mostrarSugerencias(Request req, Response res) {
+		
 		HashMap<String, Object> viewModel = new HashMap<>();
-		//viewModel.put("sugerencia", );
-		viewModel.put("prendasDisponibles", guardarropaSeleccionado.getPrendasDisponibles());
-		return new ModelAndView(viewModel, "home/prendas.hbs");
+		
+		return new ModelAndView(viewModel, "home/sugerencias.hbs");
 	}
+	
+//	public static ModelAndView mostrarSugerencias(Request req, Response res) {
+//		HashMap<String, Object> viewModel = new HashMap<>();
+//		//viewModel.put("sugerencia", );
+//		Date fecha = new Date();
+//		ImportanciaEvento importancia = new Alta();
+//		String preEstilo = req.queryParams("estilo");
+//		
+//	
+//		
+//		
+//		Evento evento = new Evento(fecha.toString(),fecha,"casa",estilo,null,null);
+//		viewModel.put("prendasDisponibles", guardarropaSeleccionado.getPrendasDisponibles());
+//		return new ModelAndView(viewModel, "home/prendas.hbs");
+//	}
 	
 	
 	
