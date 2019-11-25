@@ -121,6 +121,10 @@ public class Usuario extends EntidadPersistente{
 		}
 
 	}
+	
+	public List<Atuendo> getAtuendosSinCalificar(){
+		return this.sugerenciasQueFaltanCalificar;
+	}
 
 	public void agregarARechazados(Atuendo atuendo)
 	{

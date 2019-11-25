@@ -150,7 +150,7 @@ public class Server {
 			usuario1.agregarPrendaAGuardarropa(guardarropa1, remeraMangaCorta);
 			
 			//System.out.println(guardarropa1.getCantidadDePrendas());
-			
+			usuario1.agregarSugerenciaSinCalificar(sugerencia);
 			usuario2.agregarPrendaAGuardarropa(guardarropa2, remeraMangaLargaRojaDeAlgodon);
 			FactoryRepositorioUsuario.get().agregar(usuario1);
 			FactoryRepositorioUsuario.get().agregar(usuario2);

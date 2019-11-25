@@ -80,7 +80,10 @@ public class WardrobeController {
 	public static ModelAndView indexObtenerAtuendosCalificar(Request req, Response res) {
 		HashMap<String, Object> viewModel = new HashMap<>();
 		//viewModel.put("id", guardarropaSeleccionado.getId() );
-		viewModel.put("evento", usuario.getEventos().stream().filter(event -> event.yaOcurrio()).collect(Collectors.toList()));
+		viewModel.put("evento", usuario.getEventos().stream()
+				.filter(event -> event.yaOcurrio() 
+						&& usuario.getAtuendosSinCalificar().contains(event.getUltimaSugerencia()))
+				.collect(Collectors.toList()));
 		return new ModelAndView(viewModel, "home/calificaratuendo.hbs");
 	}
 
@@ -153,7 +156,10 @@ public class WardrobeController {
 
 		System.out.println(usuario.getOffsetInferior());
 		System.out.println(usuario.getOffsetSuperior());
-		viewModel.put("evento", usuario.getEventos().stream().filter(event -> event.yaOcurrio()).collect(Collectors.toList()));
+		viewModel.put("evento", usuario.getEventos().stream()
+				.filter(event -> event.yaOcurrio() 
+						&& usuario.getAtuendosSinCalificar().contains(event.getUltimaSugerencia()))
+				.collect(Collectors.toList()));
 		return new ModelAndView(viewModel, "home/calificaratuendo.hbs");
 	}
 
