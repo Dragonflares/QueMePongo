@@ -34,6 +34,8 @@ public class WardrobeController {
 	private static Guardarropa guardarropaSeleccionado = null;
 	private static List<Prenda> prendasSeleccionadas = null;
 	
+	//------------------------Guardarropa--------------------------------------
+	
 	public static ModelAndView init(Request req, Response res) {
 		
 		HashMap<String, Object> viewModel = new HashMap<>();
@@ -64,12 +66,22 @@ public class WardrobeController {
 		return new ModelAndView(viewModel, "home/prendas.hbs");
 	}
 	
+	
+	public static ModelAndView indexViewAgregarPrenda(Request req, Response res) {
+		
+		return new ModelAndView(null, "home/altaPrenda.hbs");
+	}
+	
+	//---------------------------------Calificaciones-------------------------
+	
 	public static ModelAndView indexObtenerAtuendosCalificar(Request req, Response res) {
 		HashMap<String, Object> viewModel = new HashMap<>();
 		//viewModel.put("id", guardarropaSeleccionado.getId() );
 		viewModel.put("evento", usuario.getEventos().stream().filter(event -> event.yaOcurrio()).collect(Collectors.toList()));
 		return new ModelAndView(viewModel, "home/calificaratuendo.hbs");
 	}
+	
+	//---------------------------------Log out---------------------------------
 	
 	public static ModelAndView logOut(Request req, Response res) {
 
