@@ -7,57 +7,41 @@
         
         <div><p>
             <h2>Atuendos por calificar</p></h2> <br/>
-            
-                <table id="t01">
-                    <tr>
-                      <th>Atuendo</th>
-                      <th>Evento</th> 
-                      <th>Calificacion</th>
-                    </tr>
-                    <tr>
-                        <form>
-                        <td>Atuendo veraniego</td>
-                        <td>Playa del sabado</td>
-                        <td><select name="Temperatura" required>
-                            <option value="">Elija una opción...</option>
-                            <option value="Muy caluroso">Muy caluroso</option>
-                            <option value="Caluroso">Caluroso</option>
-                            <option value="Bien">Bien</option>
-                            <option value="Fresco">Fresco</option>
-                            <option value="Frio">Frio</option>
-                        </select>
-                        <button class="button">Calificar</button></td>
-                        </form>
-                    </tr>
-                    <tr>
-                        <form>
-                        <td>Traje elegante</td>
-                        <td>Cumpleaños de 15</td>
-                        <td><select name="Temperatura" required>
-                            <option value="">Elija una opción...</option>
-                            <option value="Muy caluroso">Muy caluroso</option>
-                            <option value="Caluroso">Caluroso</option>
-                            <option value="Bien">Bien</option>
-                            <option value="Fresco">Fresco</option>
-                            <option value="Frio">Frio</option>
-                            </select><button class="button">Calificar</button></td>
-                        </form>
-                    </tr>
-                    <tr>
-                        <form>
-                        <td>Ropas de calle</td>
-                        <td>Cumple en lo de Juan</td>
-                        <td><select name="Temperatura" required>
-                            <option value="">Elija una opción...</option>
-                            <option value="Muy caluroso">Muy caluroso</option>
-                            <option value="Caluroso">Caluroso</option>
-                            <option value="Bien">Bien</option>
-                            <option value="Fresco">Fresco</option>
-                            <option value="Frio">Frio</option>
-                            </select><button class="button">Calificar</button></td>
-                        </form>
-                    </tr>
-                </table>
+            <div class="row">
+			<div class="col-md-12 block-center">
+			<h2>{{nombre}}</h2> </p> 
+				<ul class="list-group">
+					{{#each evento}}
+					<div class="list-group-item">
+						<tr>
+							<h4><td>{{ nombre }}</td></h4> 
+							<p>  
+								<div>
+                                    <h6>Prendas: </h6>
+                                    {{#each prendasUltimoAtuendo}}
+
+                                    <h6> {{nombrePrenda}}</h6>
+                                    {{/each}}
+									<form>
+										<td><select name="Temperatura" required> 
+										<option value="">Elija una opción...</option> 
+										<option value="Muy caluroso">Muy caluroso</option> 
+										<option value="Caluroso">Caluroso</option> 
+										<option value="Bien">Bien</option> 
+										<option value="Fresco">Fresco</option> 
+										<option value="Frio">Frio</option> 
+										</select><button class="button">Calificar</button></td> 
+									</form> 
+                                </div>
+
+							</p>
+						</tr>
+					</div>
+					{{/each}}
+				</ul>
+			</div>
+		</div>
+                
             
         </div>
 {{/partial}}
