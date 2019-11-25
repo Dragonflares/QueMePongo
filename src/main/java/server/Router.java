@@ -42,12 +42,19 @@ public class Router {
 				.withHelper("isTrue", BooleanHelper.isTrue)
 				.build();
 		
-		//el before chequea si esta autenticado (con username) y si la ruta es pública, en caso de que una no lo sea, redirige al login
+		//el before chequea si esta autenticado (con username) y si la ruta es pï¿½blica, en caso de que una no lo sea, redirige al login
 		//el get te devuelve un model and view
 		//el post te "redirecciona" debido a una modificacion que haces (si bien devuelven model and view en realidad devuelven null)
 		
 		Spark.before("/", SessionHandler.allowed());
 		Spark.before("/eventos", SessionHandler.allowed());
+		Spark.before("/eventos", SessionHandler.allowed());
+		Spark.before("/guardarropas/:idGuardarropa",SessionHandler.allowed());
+		Spark.before("/guardarropas",SessionHandler.allowed());
+		Spark.before("/calificaciones",SessionHandler.allowed());
+		Spark.before("/out",SessionHandler.allowed());
+		Spark.before("/eventos/alta",SessionHandler.allowed());
+
 		//Spark.before("/eventos/info", SessionHandler.allowed());
 		
 		Spark.get("/login", LoginController::init,engine);
