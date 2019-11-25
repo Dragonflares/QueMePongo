@@ -25,7 +25,7 @@
         </div>
 
 
-        <h2>Atuendos sugeridos para eventos</h2>
+        <h2>Eventos con sugerencias pendientes</h2>
 
 
         <div>
@@ -43,7 +43,9 @@
       <tr>
 
         <td>{{ nombre }}</td>
-        <td><a class="btn btn-primary" href="#" role="button">Link</a></td>
+        
+        <td><input id="evento" name="evento" type="hidden" value={{ nombre }}>
+            <a class="btn btn-primary" href="/recomendacion" role="button">Ver sugerencia</a></td>
       </tr>
     {{/each}}
   </tbody>
@@ -69,7 +71,7 @@
 
   <tbody>
 
-    {{#each evento}}
+    {{#each eventoNoUsados}}
       <tr>
 
         <td>{{ nombre }}</td>

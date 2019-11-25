@@ -69,38 +69,65 @@ public class WardrobeController {
 		viewModel.put("prendasDisponibles", guardarropaSeleccionado.getPrendasDisponibles());
 		return new ModelAndView(viewModel, "home/prendas.hbs");
 	}
-	
+
 	public static ModelAndView mostrarSugerencias(Request req, Response res) {
+
+		HashMap<String, Object> viewModel = new HashMap<>();
+
+		return new ModelAndView(viewModel, "home/sugerencias.hbs");
+	}
+
+
+	public static ModelAndView generaRecomendacion(Request req, Response res) {
 		
 		HashMap<String, Object> viewModel = new HashMap<>();
 		
-		return new ModelAndView(viewModel, "home/sugerencias.hbs");
-	}
-	
-//	public static ModelAndView mostrarSugerencias(Request req, Response res) {
-//		HashMap<String, Object> viewModel = new HashMap<>();
-//		//viewModel.put("sugerencia", );
-//		Date fecha = new Date();
-//		ImportanciaEvento importancia = new Alta();
-//		String preEstilo = req.queryParams("estilo");
-//		
-//	
-//		
-//		
-//		Evento evento = new Evento(fecha.toString(),fecha,"casa",estilo,null,null);
-//		viewModel.put("prendasDisponibles", guardarropaSeleccionado.getPrendasDisponibles());
-//		return new ModelAndView(viewModel, "home/prendas.hbs");
-//	}
-	
-	
-	
-	public static ModelAndView indexViewAgregarPrenda(Request req, Response res) {
 		
+		
+		
+		
+		return new ModelAndView(viewModel, "home/recomendacion.hbs");
+	}
+
+
+
+	public static ModelAndView envioSugerencia(Request req, Response res) {
+
+		HashMap<String, Object> viewModel = new HashMap<>();
+
+		String evento = req.queryParams("evento");
+		Evento nuevoEvento = usuario.getEventos().stream()
+				.filter(e->e.getNombre().equals(evento)).collect(Collectors.toList()).get(0);
+		List<Prenda> prendas = nuevoEvento.getPrendasUltimoAtuendo();
+		viewModel.put("prendas", prendas);
+
+		return new ModelAndView(viewModel, "home/recomendacion.hbs");
+	}
+
+	//	public static ModelAndView mostrarSugerencias(Request req, Response res) {
+	//		HashMap<String, Object> viewModel = new HashMap<>();
+	//		//viewModel.put("sugerencia", );
+	//		Date fecha = new Date();
+	//		ImportanciaEvento importancia = new Alta();
+	//		String preEstilo = req.queryParams("estilo");
+	//		
+	//	
+	//		
+	//		
+	//		Evento evento = new Evento(fecha.toString(),fecha,"casa",estilo,null,null);
+	//		viewModel.put("prendasDisponibles", guardarropaSeleccionado.getPrendasDisponibles());
+	//		return new ModelAndView(viewModel, "home/prendas.hbs");
+	//	}
+
+
+
+	public static ModelAndView indexViewAgregarPrenda(Request req, Response res) {
+
 		return new ModelAndView(null, "home/altaPrenda.hbs");
 	}
-	
+
 	//---------------------------------Calificaciones-------------------------
-	
+
 	public static ModelAndView indexObtenerAtuendosCalificar(Request req, Response res) {
 		HashMap<String, Object> viewModel = new HashMap<>();
 		//viewModel.put("id", guardarropaSeleccionado.getId() );
@@ -111,9 +138,9 @@ public class WardrobeController {
 		return new ModelAndView(viewModel, "home/calificaratuendo.hbs");
 	}
 
-	
+
 	//---------------------------------Log out---------------------------------
-	
+
 
 
 	public static ModelAndView califico(Request req, Response res) {
@@ -125,7 +152,7 @@ public class WardrobeController {
 				.equals(evento)).collect(Collectors.toList()).get(0);
 		Atuendo elAtuendo = eventoObject.getUltimaSugerencia();
 		System.out.println(evento);
-		
+
 		System.out.println(temperaturaInferior);
 		System.out.println(temperaturaSuperior);
 
