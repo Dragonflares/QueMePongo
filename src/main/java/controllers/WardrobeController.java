@@ -87,11 +87,6 @@ public class WardrobeController {
 		return new ModelAndView(viewModel, "home/calificaratuendo.hbs");
 	}
 
-	
-	//---------------------------------Log out---------------------------------
-	
-
-
 	public static ModelAndView califico(Request req, Response res) {
 		HashMap<String, Object> viewModel = new HashMap<>();
 		String temperaturaInferior = req.queryParams("temperaturaParteInferior");

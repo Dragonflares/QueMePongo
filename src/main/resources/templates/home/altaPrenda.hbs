@@ -1,93 +1,123 @@
 {{#partial "contenido"}}
 
-<style>
-header{
-  font-family: Arial, Helvetica, sans-serif;
-  background-color:  #ffcf7a;
-  position: center;
-  width: 100%;
-  padding: 10px;
-  height: 20xp;
-  box-shadow: 3px 5px 11px 1px rgba(0,0,0,0.75);
-  border: 5px solid white;
-}
-.button {
-font-family: Arial, Helvetica, sans-serif;
-  background-color: #ffcf7a;
-  color: black;
-  padding: 5px 5px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-div {
-font-family: Arial, Helvetica, sans-serif;
-  background-color:  #e7e7e7;
-  width: 50%;
-  border: 5px solid #ffcf7a;
-  padding: 2%;
-  margin: 8%;
-}
 
-</style>
+	<header>
+	  <h1>Nueva Prenda</h1>
+	</header>
+	<p></p>}
+	
+	<link  href='/css/fullcalendar.css' rel='stylesheet' type="text/css" />
+	<link href='/css/fullcalendar.print.css' rel='stylesheet' media='print' type="text/css" />
+	<script rel="stylesheet" src='/js/jquery-1.10.2.js' type="text/javascript"></script>
+	<script rel="stylesheet" src='/js/jquery-ui.custom.min.js' type="text/javascript"></script>
+	<script rel="stylesheet" src='/js/fullcalendar.js' type="text/javascript"></script>
 
-<header>
-  <h1>Nueva Prenda</h1>
-</header>
-<p></p>
 
-<p>
-<label>Nombre</label></p>
-<p>
-<input class="form-control" type="text" style="width:40%" size="150" > </p>
-<p>
-<label>Tipo De Prenda</label></p>
 
-<select id="control_id" class="form-control" style="width:150px">
-    <option value="action">Action</option>
-    <option value="another_action">Another action</option>
-    <option value="something_else_here">Something else here</option>
- </select> 
-<p>
-<label>Colores   </label>
-<p></p>
-        <select id="control_id" class="form-control" style="width:150px">
-            <option selected disabled>Principal</option>
-            <option value="action">Color1</option>
-            <option value="another_action">Color2</option>
-            <option value="something_else_here">Color3</option>
-         </select> 
 
-         <select id="control_id" class="form-control" style="width:150px">
-            <option selected disabled>Secundario</option>
-            <option value="action">Color1</option>
-            <option value="another_action">Color2</option>
-            <option value="something_else_here">Color3</option>
-         </select> 
-  <p>
-    <label>Material</label>
- </p>
 
- <p>
-    <select id="control_id" class="form-control" style="width:150px">
-        <option selected disabled>Principal</option>
-        <option value="action">Color1</option>
-        <option value="another_action">Color2</option>
-        <option value="something_else_here">Color3</option>
-     </select> 
- </p>
 
-<label>Insertar Imagen</label></p>
-<p></p>
- <input type="file" class="custom-file-input" id="inputGroupFile01"
- aria-describedby="inputGroupFileAddon01">
 
-<p></p>
-<button class="button">Cancelar</button>
-<button class="button"> Aceptar </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<label>Nombre</label>
+	<input class="form-control" type="text" style="width:40%" size="150" >
+	<h3></h3>
+	<label>Tipo De Prenda</label>
+	<p></p>
+	<select id="control_id">
+		<option value="action">Action</option>
+		<option value="another_action">Another action</option>
+		<option value="something_else_here">Something else here</option>
+	 </select> 
+	 <h3></h3>
+	<p>
+	<label>Colores   </label>
+	<p></p>
+			<select id="control_id">
+				<option selected disabled>Principal</option>
+				<option value="action">Color1</option>
+				<option value="another_action">Color2</option>
+				<option value="something_else_here">Color3</option>
+			</select> 
+			<h3></h3>
+			<select id="control_id">
+				<option selected disabled>Secundario</option>
+				<option value="action">Color1</option>
+				<option value="another_action">Color2</option>
+				<option value="something_else_here">Color3</option>
+			</select>
+			<h3></h3>
+	 <p>
+		<label>Material</label>
+	 </p>
+
+	 <p>
+		<select id="control_id">
+			<option selected disabled>Principal</option>
+			<option value="action">Color1</option>
+			<option value="another_action">Color2</option>
+			<option value="something_else_here">Color3</option>
+		 </select> 
+	 </p>
+
+	<label>Insertar Imagen</label></p>
+	<p></p>
+	 <input type="file" class="custom-file-input" id="inputGroupFile01"
+	 aria-describedby="inputGroupFileAddon01">
+
+	<p></p>
+	<button class="button"> Aceptar </button>
 
 
 
