@@ -25,21 +25,26 @@
 		<h2>Prendas del guardarropa</h2>
 		</br>
 		
-		
 		 <div class="row">
-		 {{#each prendasDisponibles}}
-			<div class="col-sm-6">
-				<div class="card" style="width: 18rem;">
-		  			<img class="card-img-top" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/don_quixote.jpg" alt="Card image cap">
-				  <div class="card-body">
-				    <h6> tipo de ropa: {{ tipoRopa.nombre }} </h6>
-				  </div>
-				</div>
+			<div class="col-md-12 block-center">
+				<ul class="list-group">
+					{{#each prendasDisponibles}}
+					<div class="list-group-item">
+						<tr>
+							<h4> <td> {{ nombre }} </td> </h4>
+							<p> 
+								<div id="changed"></div>
+								<h6> tipo de ropa: {{ tipoRopa.nombre }} </h6>
+								<h6> Color primario: {{ colorPrimario.nombre }} </h6>
+								<h6> Color secundario: {{ colorSecundario.nombre }}</h6>
+								<h6> Material: {{ material.nombre }}</h6>
+							</p>
+						</tr>
+					</div>
+					{{/each}}
+				</ul>
 			</div>
-			{{/each}}
-			</br>
-		</div> 
-		
+		</div>
 		
 		
     
