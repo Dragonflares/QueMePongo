@@ -248,7 +248,7 @@ public class Usuario extends EntidadPersistente{
 	
 	public void calificar(Atuendo atuendo, Calificadores superior, Calificadores inferior) {
 
-		this.getSugerenciasQueFaltanCalificar().remove(atuendo);
+		this.sugerenciasQueFaltanCalificar.remove(atuendo);
 		this.modificarOffSetInferior(inferior.darCalificacion());
 		this.modificarOffSetSuperior(superior.darCalificacion());	
 	}
