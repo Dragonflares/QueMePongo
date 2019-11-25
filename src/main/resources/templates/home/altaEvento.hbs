@@ -16,21 +16,15 @@
 	        <div class="form-row">
 	        	<label for="datetimepicker1" class="control-label col-md-2"> <strong> <font size="3"> Fecha: </font> </strong> &nbsp &nbsp </label>
 	        	<div class="col-md-10">
-	        		<div class='input-group date' id='datetimepicker1'>
-	                    <input type='text' class="form-control" name="fecha"/>
-	                    <span class="input-group-addon">
-	                        <span class="glyphicon glyphicon-calendar"></span>
-	                    </span>
-                	</div>
-                
+	        		<input type='text' class="form-control" name="fecha" id='datetimepicker1' style="width:40%"/>
+	                    
 	                <script type="text/javascript">
-	                 $(function () {
-                $('#datetimepicker1').datetimepicker({
-                    format:'DD/MM/YYYY HH:mm',
-                   	defaultDate: "{{ fecha }}"
-                });
-            });
-			            
+			                 $(function () {
+		                $('#datetimepicker1').datetimepicker({
+		                    format:'DD/MM/YYYY HH:mm',
+		                   	defaultDate: "{{ fecha }}"
+		                });
+		            });
 	        		</script>
 	        	</div>
 	        	<br/>
@@ -43,7 +37,7 @@
 		    <div class="form-row">
 	        	<label for="nombreEvento" class="control-label col-md-2"> <strong> <font size="3"> Nombre: </font> </strong> &nbsp &nbsp </label>
 	        	<div class="col-md-10">
-	        		<input type="text" name="nombreEvento" class="form-control" placeholder="Nombre" required>
+	        		<input type="text" name="nombreEvento" class="form-control" placeholder="Nombre" style="width:40%" required>
 	        	</div>
 	        	<br/>
 	        </div>      
@@ -55,7 +49,7 @@
 	        <div class="form-row">
 	        	<label for="direccionEvento" class="control-label col-md-2"> <strong> <font size="3"> Direccion: </font> </strong> &nbsp &nbsp </label>
 	        	<div class="col-md-10">
-	        		<input type="text" name="direccionEvento" class="form-control" placeholder="Direccion">
+	        		<input type="text" name="direccionEvento" class="form-control" placeholder="Direccion" style="width:40%">
 	        	</div>
 	        	<br/>
 	        </div>      
@@ -67,30 +61,14 @@
 	        <div class="form-row">
 	        	<label for="estilo" class="control-label col-md-2"> <strong> <font size="3"> Estilo: </font> </strong> &nbsp &nbsp </label>
 	        	<div class="col-md-10">
-		        	<select class="form-control" id="estilo" name="estilo">
+		        	<select id="estilo" name="estilo" style="width:40%">
 		               	{{#each estilos}}
     						<option value="{{ this }}">{{ this }}</option>
   						{{/each}}
 			        </select>
 		        </div>
 		        <br/>
-	        </div>
-
-			<div class="form-row">
-	        <br/>
-	        </div>
-		            
-	        <div class="form-row">
-	        	<label for="importancia" class="control-label col-md-2"> <strong> <font size="3"> Importancia: </font> </strong> &nbsp &nbsp </label>
-	        	<div class="col-md-10">
-		        	<select class="form-control" id="importancia" name="importancia">
-		               	{{#each importancias}}
-    						<option value="{{this}}">{{ this }}</option>
-  						{{/each}}
-			        </select>
-		        </div>
-		        <br/>
-	        </div>   	
+	        </div>	
 	              
 	  		
 	  		<br/><br/><br/>
