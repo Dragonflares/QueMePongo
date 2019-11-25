@@ -70,6 +70,15 @@ public class WardrobeController {
 	}
 	
 	
+	public static ModelAndView mostrarSugerencias(Request req, Response res) {
+		HashMap<String, Object> viewModel = new HashMap<>();
+		//viewModel.put("sugerencia", );
+		viewModel.put("prendasDisponibles", guardarropaSeleccionado.getPrendasDisponibles());
+		return new ModelAndView(viewModel, "home/prendas.hbs");
+	}
+	
+	
+	
 	public static ModelAndView indexViewAgregarPrenda(Request req, Response res) {
 		
 		return new ModelAndView(null, "home/altaPrenda.hbs");
@@ -86,6 +95,11 @@ public class WardrobeController {
 				.collect(Collectors.toList()));
 		return new ModelAndView(viewModel, "home/calificaratuendo.hbs");
 	}
+
+	
+	//---------------------------------Log out---------------------------------
+	
+
 
 	public static ModelAndView califico(Request req, Response res) {
 		HashMap<String, Object> viewModel = new HashMap<>();
