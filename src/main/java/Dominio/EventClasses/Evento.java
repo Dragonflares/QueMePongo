@@ -44,6 +44,18 @@ public class Evento extends EntidadPersistente{
 	private Usuario creador;
 	
 	@Transient
+	private Atuendo ultimoAtuendoAceptado; 
+	
+	
+	public Atuendo getUltimoAtuendoAceptado() {
+		return ultimoAtuendoAceptado;
+	}
+
+	public void setUltimoAtuendoAceptado(Atuendo ultimoAtuendoAceptado) {
+		this.ultimoAtuendoAceptado = ultimoAtuendoAceptado;
+	}
+
+	@Transient
 	private Frecuencia frecuencia; 
 	
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -70,6 +82,7 @@ public class Evento extends EntidadPersistente{
 		this.frecuencia = frecuencia;
 		this.sugerenciaNotificada = false;
 		this.importancia = importancia;
+		this.ultimoAtuendoAceptado = null;
 	}
 	
 	
@@ -234,7 +247,7 @@ public class Evento extends EntidadPersistente{
 	
 	public List<Prenda> getPrendasUltimoAtuendo()
 	{	
-		prendasUltimoAtuendo = this.getUltimaSugerencia().getPrendas();
+		prendasUltimoAtuendo = this.getUltimoAtuendoAceptado().getPrendas();
 		return prendasUltimoAtuendo;
 	}
 }

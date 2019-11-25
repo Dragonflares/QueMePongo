@@ -83,7 +83,9 @@ public class WardrobeController {
 		
 		viewModel.put("eventosProximos", eventosProximos);
 		
-		
+		List<Evento> eventosNoUsados = usuario.getEventosProximosYnotificados().stream()
+				.filter(e->e.getUltimoAtuendoAceptado()!= null).collect(Collectors.toList());
+		viewModel.put("eventosNoUsados", eventosNoUsados);
 		return new ModelAndView(viewModel, "home/sugerencias.hbs");
 		
 	}
