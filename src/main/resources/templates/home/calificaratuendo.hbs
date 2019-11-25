@@ -22,15 +22,24 @@
 
                                     <h6> {{nombrePrenda}}</h6>
                                     {{/each}}
-									<form>
-										<td><select name="Temperatura" required> 
+									<form method="POST" action="/calificaciones" align="left">
+									<label for="calificacionSuperior">Calificar parte prenda superior</label>
+										<td><select class="mdb-select md-form" name="temperaturaParteSuperior" required> 
 										<option value="">Elija una opción...</option> 
-										<option value="Muy caluroso">Muy caluroso</option> 
 										<option value="Caluroso">Caluroso</option> 
 										<option value="Bien">Bien</option> 
-										<option value="Fresco">Fresco</option> 
 										<option value="Frio">Frio</option> 
-										</select><button class="button">Calificar</button></td> 
+										</select>
+										<br></br>
+										<label for="calificacionInferior">Calificar parte prenda inferior</label>
+										<td><select class="mdb-select md-form" name="temperaturaParteInferior" required> 
+										<option value="">Elija una opción...</option> 
+										<option value="Caluroso">Caluroso</option> 
+										<option value="Bien">Bien</option> 
+										<option value="Frio">Frio</option> 
+										</select>
+										<input id="evento" name="evento" type="hidden" value={{ nombre }}>
+										<button type="submit" class="btn btn-primary">Calificar</button></td> 
 									</form> 
                                 </div>
 
