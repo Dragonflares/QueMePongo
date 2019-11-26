@@ -61,7 +61,7 @@ public class Server {
 		LocalDateTime dentroDeUnaSemana = LocalDateTime.now().plusDays(7);
 		Evento evento1 = new Evento("Cumpleanios", LocalDateTime.now().plusDays(2), "Avenida 123", Estilo.ELEGANTE_SPORT, null, new Media());
 		Evento evento2 = new Evento("Casamiento", dentroDeUnaSemana, "Calle 13", Estilo.ELEGANTE, null, new Alta());
-		Evento evento3 = new Evento("Fiesta", LocalDateTime.now(), "Calle falsa 123", Estilo.CASUAL, null, new Baja());
+		Evento evento3 = new Evento("Fiesta", LocalDateTime.now().minusDays(1), "Calle falsa 123", Estilo.CASUAL, null, new Baja());
 		Evento evento4 = new Evento("Bautismo", dentroDeUnaSemana, "Iglesa 123", Estilo.FORMAL, null, new Media());
 		usuario1.agregarEvento(evento1);
 		usuario1.agregarEvento(evento2);
@@ -265,7 +265,9 @@ public class Server {
 		evento1.agregarSugerencia(sugerencia);
 
 		usuario1.agregarGuardarropa(guardarropa1);
-
+		
+		usuario1.agregarEvento(evento3);
+		
 		usuario1.agregarPrendaAGuardarropa(guardarropa1, RemeraCuelloRedondoMangaCorta1);
 		usuario1.agregarPrendaAGuardarropa(guardarropa1, RemeraEscoteVMangaCorta1);
 		usuario1.agregarPrendaAGuardarropa(guardarropa1, Musculosa1);
@@ -293,6 +295,17 @@ public class Server {
 		usuario1.agregarSugerenciaSinCalificar(sugerencia);
 		evento1.setSeNotificoUltimaSugerencia(true);
 		evento1.getPrendasUltimoAtuendo();
+		
+		ArrayList<Prenda> nuevaSugerencia2 = new ArrayList<Prenda>();
+		nuevaSugerencia2.add(Pollera2);
+		nuevaSugerencia2.add(Sandalias2);
+		nuevaSugerencia2.add(RemeraCuelloRedondoMangaCorta1);
+		
+		Atuendo sugerencia2 = new Atuendo(nuevaSugerencia2);
+		usuario1.agregarSugerenciaSinCalificar(sugerencia2);
+		evento3.agregarSugerencia(sugerencia2);
+		evento3.setUltimoAtuendoAceptado(sugerencia2);
+		
 		FactoryRepositorioUsuario.get().agregar(usuario1);
 		FactoryRepositorioUsuario.get().agregar(usuario2);
 		}

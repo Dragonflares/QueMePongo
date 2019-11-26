@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -27,7 +31,9 @@ public class TipoDeRopa extends EntidadPersistente{
 	@Enumerated(EnumType.ORDINAL)
 	private Categoria categoria;
 	
-	@Transient
+	@ElementCollection(targetClass=Capas.class) 
+	@CollectionTable( name="tiporopa_capa", joinColumns=@JoinColumn(name="id") ) 
+	@Column( name="capas", nullable=false ) @Enumerated(EnumType.ORDINAL) 
 	private ArrayList<Capas> capasEnDondePuedeEstar = new ArrayList<Capas>();
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
