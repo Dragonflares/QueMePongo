@@ -132,10 +132,14 @@ public class Guardarropa extends EntidadPersistente{
 	private List<Prenda> obtenerParteSuperior(Evento evento,
 			double temperatura, int intento, Usuario creador) throws Exception {
 		List<Prenda> prendasSuperiores = new ArrayList<Prenda>();
-		int calorActual;
+		int calorActual = 0;;
 		int capa = 0;
 		do{
-			prendasSuperiores.add(darPrendaSuperiorDeCapa(capa, prendasSuperiores));
+			Prenda prendaSuperior = darPrendaSuperiorDeCapa(capa, prendasSuperiores);
+			if(prendaSuperior == null) {
+				break;
+			}
+			prendasSuperiores.add(prendaSuperior);
 			calorActual = creador.getOffsetSuperior() + (prendasSuperiores.stream()
 					.mapToInt(p -> p.getTipoRopa().getNivelAbrigo()).sum());
 			capa++;
@@ -188,17 +192,22 @@ public class Guardarropa extends EntidadPersistente{
 			return prendaSuperior;
 		}
 		else {
-			throw new Exception("No hay suficientes prendas para generar el atuendo");
+//			throw new Exception("No hay suficientes prendas para generar el atuendo");
+			return null;
 		}
 	}
 
 	private List<Prenda> obtenerParteInferior(Evento evento,
 			double temperatura, Usuario creador, Integer intento) throws Exception {
 		List<Prenda> prendasInferiores = new ArrayList<Prenda>();
-		Integer calorActual;
+		Integer calorActual = 0;
 		Integer capa = 1;
 		do{
-			prendasInferiores.add(obtenerPrendaInf(capa, prendasInferiores));
+			Prenda prendaInferior = obtenerPrendaInf(capa, prendasInferiores);
+			if(prendaInferior == null) {
+				break;
+			}
+			prendasInferiores.add(prendaInferior);
 			calorActual = creador.getOffsetSuperior() + (prendasInferiores.stream()
 					.mapToInt(p -> p.getTipoRopa().getNivelAbrigo()).sum());
 			capa--;
@@ -254,19 +263,24 @@ public class Guardarropa extends EntidadPersistente{
 			}
 		}
 		else {
-			throw new Exception("No hay suficientes prendas inferiores "
-					+ "para crear el atuendo");
+//			throw new Exception("No hay suficientes prendas inferiores "
+//					+ "para crear el atuendo");
+			return null;
 		}
 		return prendaInferior;
 	}
 
 	private List<Prenda> obtenerCalzado(Evento evento,
-			double temperatura, Usuario creador, Integer intento) throws Exception {
+			double temperatura, Usuario creador, Integer intento){
 		List<Prenda> calzado = new ArrayList<Prenda>();
-		Integer calorActual;
+		Integer calorActual = 0;
 		Integer capa = 1;
 		do{
-			calzado.add(obtenerParteDeCalzado(capa, calzado));
+			Prenda calzadoNuevo = obtenerParteDeCalzado(capa, calzado);
+			if(calzadoNuevo == null) {
+				break;
+			}
+			calzado.add(calzadoNuevo);
 			calorActual = creador.getOffsetSuperior() + (calzado.stream()
 					.mapToInt(p -> p.getTipoRopa().getNivelAbrigo()).sum());
 			capa--;
@@ -294,7 +308,7 @@ public class Guardarropa extends EntidadPersistente{
 	}
 
 	private Prenda obtenerParteDeCalzado(Integer capa,
-			List<Prenda> prendasInfActuales) throws Exception {
+			List<Prenda> prendasInfActuales){
 		Prenda prendaDeCalzado = null;
 		Random rand = new Random();
 		List<Prenda> calzadosDisponibles = getCalzadosDisponibles()
@@ -322,8 +336,9 @@ public class Guardarropa extends EntidadPersistente{
 			}
 		}
 		else {
-			throw new Exception("No hay suficientes prendas inferiores "
-					+ "para crear el atuendo");
+//			throw new Exception("No hay suficientes prendas inferiores "
+//					+ "para crear el atuendo");
+			return null;
 		}
 		return prendaDeCalzado;
 	}
