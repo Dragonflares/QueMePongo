@@ -232,8 +232,11 @@ public class WardrobeController {
 		}
 		else {
 			viewModel.put("prendasUltimaSugerencia", atuendoSugerencia.getPrendas());
+			for(Prenda prenda : atuendoSugerencia.getPrendas()) {
+				System.out.println(prenda.getNombrePrenda());
+			}
 		}
-
+		
 		return new ModelAndView(viewModel, "home/recomendacion.hbs");
 	}
 

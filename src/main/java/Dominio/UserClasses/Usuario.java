@@ -150,6 +150,7 @@ public class Usuario extends EntidadPersistente{
 			ArrayList<Prenda> prendasX = new ArrayList<>();
 			prendasX.add(prenda);
 			atuendoFinal = new Atuendo(prendasX);
+			
 		}
 		else
 		{
@@ -164,7 +165,7 @@ public class Usuario extends EntidadPersistente{
 				intentos++;
 			}
 		}
-
+		evento.agregarSugerencia(atuendoFinal);
 		return atuendoFinal;
 	}
 

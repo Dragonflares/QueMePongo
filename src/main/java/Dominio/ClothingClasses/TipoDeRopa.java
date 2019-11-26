@@ -57,7 +57,7 @@ public class TipoDeRopa extends EntidadPersistente{
 	}
 	
 	public Boolean esDeEsaCapa(final int capa){
-		return capasEnDondePuedeEstar.stream().anyMatch(p -> p.equals(capa));
+		return capasEnDondePuedeEstar.stream().anyMatch(p -> p.ordinal() == capa);
 	}
 	
 	

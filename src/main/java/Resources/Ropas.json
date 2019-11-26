@@ -16,7 +16,7 @@
 	},
 	{
 		"nombre": "Remera cuello redondo manga larga", 
-		"abrigo": 4,
+		"abrigo": 5,
 		"categoria": "PARTE_SUPERIOR",
 		"capasEnDondePuedeEstar":
 		[
@@ -46,7 +46,7 @@
 	},
 	{
 		"nombre": "Remera escote V manga larga", 
-		"abrigo": 4,
+		"abrigo": 5,
 		"categoria": "PARTE_SUPERIOR",
 		"capasEnDondePuedeEstar":
 		[
@@ -91,9 +91,9 @@
 		]
 	},
 	{
-		"nombre": "Pantalon largo", "abrigo": 1, 
+		"nombre": "Pantalon largo", "abrigo": 12, 
 		"categoria": "PARTE_INFERIOR",
-		"capasEnDondePuedeEstar":[], 
+		"capasEnDondePuedeEstar":["CAPA2"], 
 		"materialesNoCompatibles": 
 		[
 			{"nombre": "Lycra"}, 
@@ -101,9 +101,9 @@
 		]
 	},
 	{
-		"nombre": "Pantalon corto", "abrigo": 0,
+		"nombre": "Pantalon corto", "abrigo": 6,
 		"categoria": "PARTE_INFERIOR",
-		"capasEnDondePuedeEstar":[], 
+		"capasEnDondePuedeEstar":["CAPA2"], 
 		"materialesNoCompatibles": 
 		[
 			{"nombre": "Lycra"}, 
@@ -113,7 +113,7 @@
 	{
 		"nombre": "Bermuda", "abrigo": 7,
 		"categoria": "PARTE_INFERIOR",
-		"capasEnDondePuedeEstar":[], 
+		"capasEnDondePuedeEstar":["CAPA2"], 
 		"materialesNoCompatibles": 
 		[
 			{"nombre": "Lycra"}, 
@@ -123,7 +123,7 @@
 	{
 		"nombre": "Pollera", "abrigo": 5,
 		"categoria": "PARTE_INFERIOR",
-		"capasEnDondePuedeEstar":[], 
+		"capasEnDondePuedeEstar":["CAPA2"], 
 		"materialesNoCompatibles": 
 		[
 			{"nombre": "Lycra"}, 

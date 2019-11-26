@@ -117,7 +117,7 @@ public class Guardarropa extends EntidadPersistente{
 				obtenerParteSuperior(evento, temperatura, 0, creador);
 		List<Prenda> prendaInferior = obtenerParteInferior(evento, temperatura, creador, 0);
 		List<Prenda> calzado = obtenerCalzado(evento, temperatura, creador , 0);
-		if(prendasSuperiores.isEmpty() || prendaInferior.equals(null) || calzado.equals(null))
+		if(prendasSuperiores.isEmpty() || prendaInferior.isEmpty() || calzado.isEmpty())
 		{
 			return null;
 		}
