@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -11,7 +12,9 @@ import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Prenda;
@@ -27,7 +30,10 @@ import Dominio.UserClasses.Caluroso;
 import Dominio.UserClasses.Frio;
 import Dominio.UserClasses.Usuario;
 import Dominio.WardrobeClasses.Guardarropa;
+import Repositorios.factories.FactoryRepositorioColor;
+import Repositorios.factories.FactoryRepositorioRopa;
 import Repositorios.factories.FactoryRepositorioUsuario;
+import Repositorios.factories.FactoryRepositoriosMaterial;
 import config.Config;
 import spark.ModelAndView;
 import spark.Request;
@@ -256,9 +262,15 @@ public class WardrobeController {
 	}
 
 
-	public static ModelAndView indexViewAgregarPrenda(Request req, Response res) {
+	public static ModelAndView indexViewAgregarPrenda(Request req, Response res) throws JsonIOException, JsonSyntaxException, FileNotFoundException {
 
-		return new ModelAndView(null, "home/altaPrenda.hbs");
+		HashMap<String, Object> viewModel = new HashMap<>();
+		viewModel.put("tipos", FactoryRepositorioRopa.get().getTipoDeRopas());
+		viewModel.put("materiales", FactoryRepositoriosMaterial.get().getMateriales());
+		viewModel.put("colores", FactoryRepositorioColor.get().getColores());	
+		
+		
+		return new ModelAndView(viewModel, "home/altaPrenda.hbs");
 	}
 
 	//---------------------------------Calificaciones-------------------------

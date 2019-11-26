@@ -95,7 +95,7 @@
 
 		<style>
 		#original, #changed {
-			background: url('imgPrendas/index2.jpg');
+			background: url('imgPrendas/Sueter Amarillo.jpg');
 			background-size: cover;
 			width: 70%;
 			margin: 0 25% 0 25%;
@@ -133,8 +133,8 @@
 
 						<div class="wizard-navigation">
 							<ul>
-	                            <li><a href="#tipo" data-toggle="tab">Tipo</a></li>
-	                            <li><a href="#material" data-toggle="tab">Material</a></li>
+	                            <li><a href="#atributos" data-toggle="tab">Atributos</a></li>
+	                            <li><a href="#nombre" data-toggle="tab">Nombre</a></li>
 	                            
 	                        </ul>
 
@@ -142,53 +142,75 @@
 
                         <div class="tab-content">
                             
-							<div class="tab-pane" id="tipo">
+							<div class="tab-pane" id="atributos">
                               <div class="row">
                                   <h4 class="info-text">&nbsp;&nbsp;Elija el tipo de Ropa </h4>
                                   <div class="col-sm-6 col-sm-offset-3">
-                                      <div class="form-group">
-                                       <!-- <input name="firstname" type="text" class="form-control"> -->
-                                      		<select name="country" class="form-control" style="height: 35px;">
-                                              <option value="Afghanistan"> Afghanistan </option>
-                                              <option value="Albania"> Albania </option>
-                                              <option value="Algeria"> Algeria </option>
-                                              <option value="American Samoa"> American Samoa </option>
-                                              <option value="Andorra"> Andorra </option>
-                                              <option value="Angola"> Angola </option>
-                                              <option value="Anguilla"> Anguilla </option>
-                                              <option value="Antarctica"> Antarctica </option>
-                                              <option value="...">...</option>
-                                      	  	</select>
+                                      <div class="form-group">											
+                                      		<select name="tipo" class="form-control" style="height: 35px;">
+											{{#each tipos}}                                            
+											<option value={{ nombre }}> {{ nombre }} </option>
+                                      	  	{{/each}}
+											</select>
                                       </div>
                                   </div>
-                              </div>
-                            </div>						
-							
-							<div class="tab-pane" id="material">
-							  <div class="row">
-                                  <h4 class="info-text">&nbsp;&nbsp;Elija el material &nbsp; &nbsp;&nbsp;</h4>
+								  <h4 class="info-text">&nbsp;&nbsp;Elija el material &nbsp; &nbsp;&nbsp;</h4>
                                   <div class="col-sm-6 col-sm-offset-3">
                                       <div class="form-group">
-                                       <!-- <input name="firstname" type="text" class="form-control"> -->
-                                      		<select name="country" class="form-control" style="height: 35px;">
-                                              <option value="Afghanistan"> Afghanistan </option>
-                                              <option value="Albania"> Albania </option>
-                                              <option value="Algeria"> Algeria </option>
-                                              <option value="American Samoa"> American Samoa </option>
-                                              <option value="Andorra"> Andorra </option>
-                                              <option value="Angola"> Angola </option>
-                                              <option value="Anguilla"> Anguilla </option>
-                                              <option value="Antarctica"> Antarctica </option>
-                                              <option value="...">...</option>
-                                      	  	</select>
+                                      		
+											<select name="material" class="form-control" style="height: 35px;">
+											{{#each materiales}}
+											<option value={{ nombre }}> {{ nombre }} </option>
+                                      	  	{{/each}}
+											</select>
+											
                                       </div>
                                   </div>
+								  <h4 class="info-text">&nbsp;&nbsp;Elija el color principal &nbsp; &nbsp;&nbsp;</h4>
+                                  <div class="col-sm-6 col-sm-offset-3">
+                                      <div class="form-group">
+                                      		
+											<select name="colorPrincipal" class="form-control" style="height: 35px;">
+											{{#each colores}}
+											<option value={{ nombre }}> {{ nombre }} </option>
+                                      	  	{{/each}}
+											</select>
+											
+                                      </div>
+                                  </div>
+								  <h4 class="info-text">&nbsp;&nbsp;Elija el color secundario &nbsp; &nbsp;&nbsp;</h4>
+                                  <div class="col-sm-6 col-sm-offset-3">
+                                      <div class="form-group">
+                                      		
+											<select name="colorSecundario" class="form-control" style="height: 35px;">
+											{{#each colores}}
+											<option value={{ nombre }}> {{ nombre }} </option>
+                                      	  	{{/each}}
+											</select>
+											
+                                      </div>
+                                  </div>								  
                               </div>
-                            </div>							
-							
-                            
-					
-						</div>
+                            </div>					
+						                           
+							<div class="tab-pane" id="nombre">
+                              <div class="row">                                 
+								<h4 class="info-text">&nbsp;&nbsp; Elija un nombre para su prenda </h4>
+                                  <div id="changed" class="col-md-4"></br></br></br></br></br></br></br></br></br></div> 
+								  <div class="col-md-8">
+									  <div class="form-group">
+										</br>
+										<input type="text" class="form-control" name="nombrePrenda" style="margin: 0 25% 0 25%;">
+									  </div>
+                                  </div>
+							  
+                              </div>
+                            </div>						
+						
+						</div>						
+						
+						
+   						
 						
                         <div class="wizard-footer height-wizard">
                             <div class="pull-right">
