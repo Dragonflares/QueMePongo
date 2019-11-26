@@ -134,6 +134,35 @@ public class Prenda extends EntidadPersistente{
 		return this.colorPrimario;
 	}
 	
+	//toma una ruta en base a si es blanco, negro u otro (en este ultimo caso tomara la ruta del amarillo)
+	public String getImagenSegunColor() throws JsonIOException, JsonSyntaxException, FileNotFoundException {
+		
+		String rutaBase = MatcheadorTipoPrenda.matchearRuta(this);
+		
+		switch(this.getColorPrimario().getNombre()) {
+			
+			case "Blanco": {
+				break;
+			}
+			
+			case "Negro": {
+				rutaBase.concat("Negro");
+			}
+			
+			default: {
+				rutaBase.concat("Amarillo");
+			}
+		}
+		
+		return rutaBase;	
+	}
+	
+	//toma los degrees en base al amarillo
+	public int getColorEnDegrees() {
+		
+		return this.getColorPrimario().getDegrees();
+	}
+	
 	public Color getColorSecundario()
 	{
 		return this.colorSecundario;

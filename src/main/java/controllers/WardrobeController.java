@@ -84,6 +84,7 @@ public class WardrobeController {
 				.filter(e->e.getUltimoAtuendoAceptado() == null)
 				.collect(Collectors.toList());
 		
+		
 		viewModel.put("eventosProximos", eventosProximos);
 		
 		List<Evento> eventosNoUsados = usuario.getEventosProximosYnotificados().stream()
@@ -138,6 +139,7 @@ public class WardrobeController {
 		eventoEnCuestion = new Evento(fecha.toString(),fecha,"casa",nuevoEstilo,null,importancia);
 		usuario.agregarEvento(eventoEnCuestion);
 		Atuendo atuendoSugerencia = usuario.pedirRecomendacion(eventoEnCuestion);
+
 		
 		viewModel.put("prendasUltimaSugerencia", atuendoSugerencia.getPrendas());
 		
