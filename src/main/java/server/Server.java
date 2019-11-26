@@ -294,7 +294,7 @@ public class Server {
 		evento1.getPrendasUltimoAtuendo();
 		FactoryRepositorioUsuario.get().agregar(usuario1);
 		FactoryRepositorioUsuario.get().agregar(usuario2);
-	}
+		}
 	}
 }
 
