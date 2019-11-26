@@ -102,6 +102,8 @@ public class Server {
 				FactoryRepositorioColor.get().agregar(new Color("Celeste"));
 				ArrayList<Capas> capasRemera = new ArrayList<>();
 				capasRemera.add(Capas.CAPA1);
+				ArrayList<Capas> capasSandalia = new ArrayList<>();
+				capasSandalia.add(Capas.CAPA2);
 				ArrayList<Material> materialesNoCompatiblesRemera = new ArrayList<>();
 				materialesNoCompatiblesRemera.add(cuero);
 				materialesNoCompatiblesRemera.add(lana);
@@ -109,6 +111,9 @@ public class Server {
 				materialesNoCompatiblesRemera.add(plastico);
 				materialesNoCompatiblesRemera.add(gabardina);
 				materialesNoCompatiblesRemera.add(gamuza);
+				ArrayList<Material> materialesNoCompatiblesSandalia = new ArrayList<>();
+				materialesNoCompatiblesSandalia.add(gabardina);
+				materialesNoCompatiblesSandalia.add(gamuza);
 				ArrayList<Material> materialesNoCompatiblesPantalon = new ArrayList<>();
 				materialesNoCompatiblesPantalon.add(cuero);
 				materialesNoCompatiblesPantalon.add(lana);
@@ -116,7 +121,8 @@ public class Server {
 				materialesNoCompatiblesPantalon.add(plastico);
 				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Remera manga larga", 4, Categoria.PARTE_SUPERIOR, capasRemera, materialesNoCompatiblesRemera, ""));
 				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Remera manga corta", 4, Categoria.PARTE_SUPERIOR, capasRemera, materialesNoCompatiblesRemera, ""));
-				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Pantalon largo", 1, Categoria.PARTE_INFERIOR, null, materialesNoCompatiblesRemera, ""));
+				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Pantalon largo", 4, Categoria.PARTE_INFERIOR, null, materialesNoCompatiblesRemera, ""));
+				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Sandalias", 2, Categoria.CALZADO, capasSandalia, materialesNoCompatiblesSandalia, ""));
 			}
 			
 			Prenda remeraMangaLargaRojaDeAlgodon = new Prenda.PrendaBuilder()
@@ -137,12 +143,18 @@ public class Server {
 					.setearColores("Negro", "Azul")
 					.tipoRopa("Remera manga corta")
 					.build();
-			
+			Prenda sandaliasVerdes = new Prenda.PrendaBuilder()
+					.material("Goma")
+					.nombrePrenda("Sandalias Verdes")
+					.setearColores("Verde", "Verde")
+					.tipoRopa("Sandalias")
+					.build();
 			ArrayList<Prenda> prendassugerencia = new ArrayList<Prenda>();
 			prendassugerencia.add(remeraMangaLargaRojaDeAlgodon);
 			Atuendo sugerencia = new Atuendo(prendassugerencia);
 			evento1.agregarSugerencia(sugerencia);
 			usuario1.agregarGuardarropa(guardarropa1);
+			guardarropa1.agregarPrenda(sandaliasVerdes);
 			guardarropa1.permitirAccesoaUsuario(usuario2);
 			usuario2.agregarGuardarropa(guardarropa2);
 			usuario1.agregarPrendaAGuardarropa(guardarropa1, pantalonLargoNegroDeLycra);

@@ -137,6 +137,9 @@ public class WardrobeController {
 		Evento evento = new Evento(fecha.toString(),fecha,"casa",nuevoEstilo,null,importancia);
 		usuario.agregarEvento(evento);
 		Atuendo atuendoSugerencia = usuario.pedirRecomendacion(evento);
+		
+		viewModel.put("prendasUltimaSugerencia", atuendoSugerencia.getPrendas());
+		
 		return new ModelAndView(viewModel, "home/recomendacion.hbs");
 	}
 
@@ -149,8 +152,8 @@ public class WardrobeController {
 		String evento = req.queryParams("evento");
 		Evento nuevoEvento = usuario.getEventos().stream()
 				.filter(e->e.getNombre().equals(evento)).collect(Collectors.toList()).get(0);
-		List<Prenda> prendas = nuevoEvento.getPrendasUltimoAtuendo();
-		viewModel.put("prendas", prendas);
+		List<Prenda> prendasUltimaSugerencia = nuevoEvento.getUltimaSugerencia().getPrendas();
+		viewModel.put("prendasUltimaSugerencia", prendasUltimaSugerencia);
 
 		return new ModelAndView(viewModel, "home/recomendacion.hbs");
 	}

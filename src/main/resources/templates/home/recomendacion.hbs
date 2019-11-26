@@ -25,33 +25,17 @@
         </div>
 
 
-        <h2>Atuendos sugeridos para eventos</h2>
+        <h2>Sugerencia para este evento</h2>
 
 
         <div>
-        <table class="table  table-dark table-hover">
-  <thead>
-    <tr>
-      <th>Nombre de evento</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-
-    {{#each evento}}
-      <tr>
-
-        <td>{{ nombre }}</td>
-        <td><a class="btn btn-primary" href="#" role="button">Link</a></td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
-
-
-<br></br>
-</div>
+          <br></br>
+          <h6>Prendas: </h6>
+            {{#each prendasUltimaSugerencia}}
+              <h6> {{nombrePrenda}}</h6>
+            {{/each}}
+          <br></br>
+        </div>
             
         
 
@@ -60,24 +44,22 @@
         <div>
 
         <table class="table  table-dark table-hover">
-  <thead>
-    <tr>
-      <th>Nombre de evento</th>
-      <th>Atuendo</th>
-    </tr>
-  </thead>
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
 
-  <tbody>
-
-    {{#each evento}}
-      <tr>
-
-        <td>{{ nombre }}</td>
-        <td>{{ prendas }}</td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+          <tbody>
+              <tr>
+                <td><button type="submit" class="btn btn-primary">Aceptar</button></td>
+                <td><button type="submit" class="btn btn-primary">Deshacer</button></td>
+                <td><button type="submit" class="btn btn-primary">Rechazar</button></td>
+              </tr>
+          </tbody>
+        </table>
 
 
 <br></br>
