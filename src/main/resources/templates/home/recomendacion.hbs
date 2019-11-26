@@ -32,12 +32,16 @@
 
           <tbody>
               <tr>
-                <td><form>
-            <a class="btn btn-primary" href="/sugerencias" role="button">Ver sugerencia</a></form></td>
-                <td><form>
-            <a class="btn btn-primary" href="/verRecomendacion" role="button">Ver sugerencia</a></form></td>
-                <td><form method="POST" action="/verRecomendacion" align="left">
-            <a class="btn btn-primary" href="/verRecomendacion" role="button">Ver sugerencia</a></form></td>
+                <td><form method="POST" action="/aceptarRecomendacion" >
+            <button type="submit" class="btn btn-primary">Aceptar</button>
+            </form></td>
+                <td><form method="POST" action="/rechazarRecomendacion" >
+            <button type="submit" class="btn btn-primary">Rechazar</button>
+             </form></td>
+                <td><form method="POST" action="/deshacerRecomendacion" align="left">
+            <button type="submit" class="btn btn-primary">Deshacer</button>
+        
+            </form></td>
               </tr>
           </tbody>
         </table>

@@ -49,6 +49,65 @@ public class WardrobeController {
 
 		return new ModelAndView(viewModel, "home/guardarropas.hbs");
 	}
+	
+	
+	
+	public static ModelAndView aceptarRecomendacion(Request req, Response res) {
+
+		HashMap<String, Object> viewModel = new HashMap<>();
+		
+		
+		
+		Atuendo nuevoAtuendo = eventoEnCuestion.getSugerencias().get(eventoEnCuestion.getSugerencias().size()-1);
+		eventoEnCuestion.setUltimoAtuendoAceptado(nuevoAtuendo);
+		
+		List<Evento> eventosProximos = usuario.getEventosProximosYnotificados().stream()
+				.filter(e->e.getUltimoAtuendoAceptado() == null)
+				.collect(Collectors.toList());
+		
+		
+		viewModel.put("eventosProximos", eventosProximos);
+		
+		List<Evento> eventosNoUsados = usuario.getEventosProximosYnotificados().stream()
+				.filter(e->e.getUltimoAtuendoAceptado()!= null).collect(Collectors.toList());
+		viewModel.put("eventosNoUsados", eventosNoUsados);
+		
+		
+		return new ModelAndView(viewModel, "home/sugerencias.hbs");
+	}
+	
+	
+	public static ModelAndView rechazarRecomendacion(Request req, Response res) throws Exception {
+
+		HashMap<String, Object> viewModel = new HashMap<>();
+		Atuendo atuendoRechazado = eventoEnCuestion.getUltimaSugerencia();
+		eventoEnCuestion.getSugerencias().remove(atuendoRechazado);
+		usuario.agregarARechazados(atuendoRechazado);
+		Atuendo nuevoAtuendo = usuario.pedirRecomendacion(eventoEnCuestion);
+		
+		
+		List<Prenda> prendasUltimaSugerencia = nuevoAtuendo.getPrendas();
+		viewModel.put("prendasUltimaSugerencia", prendasUltimaSugerencia);
+
+		
+		return new ModelAndView(viewModel, "home/guardarropas.hbs");
+	}
+	
+	
+	public static ModelAndView deshacerRecomendacion(Request req, Response res) {
+
+		HashMap<String, Object> viewModel = new HashMap<>();
+		Atuendo atuendoRechazado = eventoEnCuestion.getUltimaSugerencia();
+		eventoEnCuestion.getSugerencias().remove(atuendoRechazado);
+		Atuendo nuevoAtuendo = usuario.getUltimoAtuendo();
+		List<Prenda> prendasUltimaSugerencia = nuevoAtuendo.getPrendas();
+		viewModel.put("prendasUltimaSugerencia", prendasUltimaSugerencia);
+		eventoEnCuestion.getSugerencias().add(nuevoAtuendo);
+		
+		return new ModelAndView(viewModel, "home/guardarropas.hbs");
+	}
+	
+	
 
 	public static ModelAndView indexViewDatosDeUnGuardarropa(Request req, Response res) {
 
