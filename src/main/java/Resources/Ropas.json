@@ -1,6 +1,6 @@
 [
 	{
-		"nombre": "Remera manga corta", 
+		"nombre": "Remera cuello redondo manga corta", 
 		"abrigo": 3,
 		"categoria": "PARTE_SUPERIOR",
 		"capasEnDondePuedeEstar":
@@ -10,17 +10,13 @@
 		"materialesNoCompatibles": 
 		[
 			{"nombre": "Cuero"}, 
-			{"nombre": "Lana"}, 
 			{"nombre": "Jean"}, 
-			{"nombre": "Goma"}, 
-			{"nombre": "Plastico"}, 
-			{"nombre": "Gabardina"},
-			{"nombre": "Gamuza"}
+			{"nombre": "Nylon"}
 		]
 	},
 	{
-		"nombre": "Remera manga larga", 
-		"abrigo": 4, 
+		"nombre": "Remera cuello redondo manga larga", 
+		"abrigo": 4,
 		"categoria": "PARTE_SUPERIOR",
 		"capasEnDondePuedeEstar":
 		[
@@ -29,17 +25,13 @@
 		"materialesNoCompatibles": 
 		[
 			{"nombre": "Cuero"}, 
-			{"nombre": "Lycra"}, 
-			{"nombre": "Lana"}, 
 			{"nombre": "Jean"}, 
-			{"nombre": "Goma"}, 
-			{"nombre": "Plastico"}, 
-			{"nombre": "Gabardina"},
-			{"nombre": "Gamuza"}
+			{"nombre": "Nylon"}
 		]
 	},
 	{
-		"nombre": "Chomba", "abrigo": 4,
+		"nombre": "Remera escote V manga corta", 
+		"abrigo": 3,
 		"categoria": "PARTE_SUPERIOR",
 		"capasEnDondePuedeEstar":
 		[
@@ -48,36 +40,13 @@
 		"materialesNoCompatibles": 
 		[
 			{"nombre": "Cuero"}, 
-			{"nombre": "Lycra"}, 
-			{"nombre": "Lana"}, 
 			{"nombre": "Jean"}, 
-			{"nombre": "Goma"}, 
-			{"nombre": "Plastico"}, 
-			{"nombre": "Gabardina"},
-			{"nombre": "Gamuza"}
+			{"nombre": "Nylon"}
 		]
 	},
 	{
-		"nombre": "Camisa", "abrigo": 4, 
-		"categoria": "PARTE_SUPERIOR",
-		"capasEnDondePuedeEstar":
-		[
-			"CAPA1",
-			"CAPA2"
-		], 
-		"materialesNoCompatibles": 
-		[
-			{"nombre": "Lycra"}, 
-			{"nombre": "Cuero"}, 
-			{"nombre": "Lana"}, 
-			{"nombre": "Jean"}, 
-			{"nombre": "Goma"}, 
-			{"nombre": "Plastico"}, 
-			{"nombre": "Gabardina"}
-		]
-	},
-	{
-		"nombre": "Musculosa", "abrigo": 1, 
+		"nombre": "Remera escote V manga larga", 
+		"abrigo": 4,
 		"categoria": "PARTE_SUPERIOR",
 		"capasEnDondePuedeEstar":
 		[
@@ -86,31 +55,79 @@
 		"materialesNoCompatibles": 
 		[
 			{"nombre": "Cuero"}, 
-			{"nombre": "Lana"}, 
 			{"nombre": "Jean"}, 
-			{"nombre": "Goma"}, 
-			{"nombre": "Plastico"}, 
-			{"nombre": "Gabardina"},
-			{"nombre": "Seda"},
-			{"nombre": "Gamuza"}
+			{"nombre": "Nylon"}
 		]
 	},
 	{
-		"nombre": "Blusa", "abrigo": 2,
+		"nombre": "Sueter", "abrigo": 7, 
 		"categoria": "PARTE_SUPERIOR",
 		"capasEnDondePuedeEstar":
 		[
-			"CAPA1",
-		],
-		"materialesNoCompatibles":
+			"CAPA2",
+			"CAPA3"
+		], 
+		"materialesNoCompatibles": 
 		[
+			{"nombre": "Lycra"}, 
 			{"nombre": "Cuero"}, 
-			{"nombre": "Lana"}, 
 			{"nombre": "Jean"}, 
-			{"nombre": "Goma"}, 
-			{"nombre": "Plastico"}, 
-			{"nombre": "Gabardina"},
-			{"nombre": "Gamuza"}
+			{"nombre": "Nylon"}
+		]
+	},
+	{
+		"nombre": "Campera", "abrigo": 7, 
+		"categoria": "PARTE_SUPERIOR",
+		"capasEnDondePuedeEstar":
+		[
+			"CAPA2",
+			"CAPA3",
+			"CAPA4"
+		], 
+		"materialesNoCompatibles": 
+		[
+			{"nombre": "Lycra"}, 
+			{"nombre": "Jean"}
+		]
+	},
+	{
+		"nombre": "Pantalon largo", "abrigo": 1, 
+		"categoria": "PARTE_INFERIOR",
+		"capasEnDondePuedeEstar":[], 
+		"materialesNoCompatibles": 
+		[
+			{"nombre": "Lycra"}, 
+			{"nombre": "Cuero"}
+		]
+	},
+	{
+		"nombre": "Pantalon corto", "abrigo": 0,
+		"categoria": "PARTE_INFERIOR",
+		"capasEnDondePuedeEstar":[], 
+		"materialesNoCompatibles": 
+		[
+			{"nombre": "Lycra"}, 
+			{"nombre": "Cuero"}
+		]
+	},
+	{
+		"nombre": "Bermuda", "abrigo": 0,
+		"categoria": "PARTE_INFERIOR",
+		"capasEnDondePuedeEstar":[], 
+		"materialesNoCompatibles": 
+		[
+			{"nombre": "Lycra"}, 
+			{"nombre": "Cuero"}
+		]
+	},
+	{
+		"nombre": "Pollera", "abrigo": 0,
+		"categoria": "PARTE_INFERIOR",
+		"capasEnDondePuedeEstar":[], 
+		"materialesNoCompatibles": 
+		[
+			{"nombre": "Lycra"}, 
+			{"nombre": "Cuero"}
 		]
 	},
 	{
@@ -124,243 +141,23 @@
 		"materialesNoCompatibles": 
 		[
 			{"nombre": "Cuero"}, 
-			{"nombre": "Lana"}, 
-			{"nombre": "Goma"}, 
-			{"nombre": "Plastico"},
-			{"nombre": "Seda"}
-		]
-	},
-	{
-		"nombre": "Pulover", "abrigo": 7, 
-		"categoria": "PARTE_SUPERIOR",
-		"capasEnDondePuedeEstar":
-		[
-			"CAPA2",
-			"CAPA3"
-		], 
-		"materialesNoCompatibles": 
-		[
-			{"nombre": "Cuero"}, 
-			{"nombre": "Algodon"}, 
-			{"nombre": "Jean"}, 
-			{"nombre": "Goma"}, 
-			{"nombre": "Plastico"}, 
-			{"nombre": "Gabardina"},
-			{"nombre": "Seda"}
-		]
-	},
-	{
-		"nombre": "Polera", "abrigo": 8,
-		"categoria": "PARTE_SUPERIOR",
-		"capasEnDondePuedeEstar":
-		[
-			"CAPA2",
-			"CAPA3"
-		], 
-		"materialesNoCompatibles": 
-		[
-			{"nombre": "Cuero"}, 
-			{"nombre": "Algodon"}, 
-			{"nombre": "Jean"}, 
-			{"nombre": "Goma"}, 
-			{"nombre": "Plastico"}, 
-			{"nombre": "Gabardina"},
-			{"nombre": "Seda"}
-		]
-	},
-	{
-		"nombre": "Campera finita", "abrigo": 5,
-		"categoria": "PARTE_SUPERIOR",
-		"capasEnDondePuedeEstar":
-		[
-			"CAPA2"
-		], 
-		"materialesNoCompatibles": 
-		[
-			{"nombre": "Goma"}, 
-			{"nombre": "Plastico"}, 
-			{"nombre": "Gabardina"}
-		]
-	},
-	{
-		"nombre": "Campera media", "abrigo": 7, 
-		"categoria": "PARTE_SUPERIOR",
-		"capasEnDondePuedeEstar":
-		[
-			"CAPA2",
-			"CAPA3",
-			"CAPA4"
-		], 
-		"materialesNoCompatibles": 
-		[
-			{"nombre": "Goma"}, 
-			{"nombre": "Lycra"},
-			{"nombre": "Plastico"},
 			{"nombre": "Jean"}, 
 			{"nombre": "Seda"}
 		]
 	},
 	{
-		"nombre": "Campera gruesa", "abrigo": 10, 
+		"nombre": "Musculosa", "abrigo": 1, 
 		"categoria": "PARTE_SUPERIOR",
 		"capasEnDondePuedeEstar":
 		[
-			"CAPA2",
-			"CAPA3",
-			"CAPA4",
-			"CAPA5"
+			"CAPA1"
 		], 
 		"materialesNoCompatibles": 
 		[
-			{"nombre": "Goma"}, 
-			{"nombre": "Lycra"},
-			{"nombre": "Plastico"},
+			{"nombre": "Cuero"}, 
+			{"nombre": "Poliester"}, 
 			{"nombre": "Jean"}, 
-			{"nombre": "Seda"}
-			
-		]
-	},
-	{
-		"nombre": "Pantalon largo", "abrigo": 1, 
-		"categoria": "PARTE_INFERIOR",
-		"capasEnDondePuedeEstar":[], 
-		"materialesNoCompatibles": 
-		[
-			{"nombre": "Cuero"}, 
-			{"nombre": "Lana"},  
-			{"nombre": "Goma"}, 
-			{"nombre": "Plastico"}
-		]
-	},
-	{
-		"nombre": "Pantalon corto", "abrigo": 0,
-		"categoria": "PARTE_INFERIOR",
-		"capasEnDondePuedeEstar":[], 
-		"materialesNoCompatibles": 
-		[
-			{"nombre": "Cuero"}, 
-			{"nombre": "Lana"},  
-			{"nombre": "Goma"}, 
-			{"nombre": "Plastico"}, 
-			{"nombre": "Gabardina"}
-		]
-	},
-	{
-		"nombre": "Pollera", "abrigo": 0,
-		"categoria": "PARTE_INFERIOR",
-		"capasEnDondePuedeEstar":[], 
-		"materialesNoCompatibles": 
-		[
-			{"nombre": "Cuero"}, 
-			{"nombre": "Lana"},  
-			{"nombre": "Goma"}, 
-			{"nombre": "Plastico"}, 
-			{"nombre": "Gabardina"}
-		]
-	},
-	{
-		"nombre": "Gorro invernal", "abrigo": 1,
-		"categoria": "ACCESORIOS",
-		"capasEnDondePuedeEstar":[], 
-		"materialesNoCompatibles": 
-		[
-			{"nombre": "Cuero"}, 
-			{"nombre": "Plastico"}, 
-			{"nombre": "Gabardina"},
-			{"nombre": "Goma"}, 
-			{"nombre": "Lycra"},
-			{"nombre": "Jean"}, 
-			{"nombre": "Seda"}, 
-			{"nombre": "Gamuza"}
-		]
-	},
-	{
-		"nombre": "Gorra", "abrigo": 0, 
-		"categoria": "ACCESORIOS",
-		"capasEnDondePuedeEstar":[], 
-		"materialesNoCompatibles": 
-		[
-			{"nombre": "Cuero"}, 
-			{"nombre": "Plastico"}, 
-			{"nombre": "Gabardina"},
-			{"nombre": "Goma"}, 
-			{"nombre": "Lycra"},
-			{"nombre": "Lana"}, 
-			{"nombre": "Seda"}, 
-			{"nombre": "Gamuza"}
-		]
-	},
-	{
-		"nombre": "Paraguas", "abrigo": 0,
-		"categoria": "ACCESORIOS",
-		"capasEnDondePuedeEstar":[], 
-		"materialesNoCompatibles": 
-		[
-			{"nombre": "Cuero"}, 
-			{"nombre": "Algodon"}, 
-			{"nombre": "Gabardina"},
-			{"nombre": "Lana"}, 
-			{"nombre": "Seda"}, 
-			{"nombre": "Jean"},
-			{"nombre": "Gamuza"}
-		]
-	},
-	{
-		"nombre": "Lentes de sol", "abrigo": 0,
-				"categoria": "ACCESORIOS",
-		"capasEnDondePuedeEstar":[], 
-		"materialesNoCompatibles": 
-		[
-			{"nombre": "Cuero"}, 
-			{"nombre": "Algodon"}, 
-			{"nombre": "Gabardina"},
-			{"nombre": "Goma"}, 
-			{"nombre": "Lycra"},
-			{"nombre": "Lana"}, 
-			{"nombre": "Seda"}, 
-			{"nombre": "Jean"},
-			{"nombre": "Gamuza"}
-		]
-	},
-	{
-		"nombre": "Guantes", "abrigo": 1, 
-		"categoria": "ACCESORIOS",
-		"capasEnDondePuedeEstar":[], 
-		"materialesNoCompatibles": 
-		[
-			{"nombre": "Plastico"}, 
-			{"nombre": "Lycra"},
-			{"nombre": "Jean"},
-			{"nombre": "Seda"}
-		]
-	},
-	{
-		"nombre": "Pilotín", "abrigo": 0, 
-		"categoria": "ACCESORIOS",
-		"capasEnDondePuedeEstar":[], 
-		"materialesNoCompatibles": 
-		[
-			{"nombre": "Cuero"}, 
-			{"nombre": "Algodon"}, 
-			{"nombre": "Lycra"},
-			{"nombre": "Lana"}, 
-			{"nombre": "Seda"}, 
-			{"nombre": "Jean"},
-			{"nombre": "Gamuza"}
-		]
-	},
-	{
-		"nombre": "Zapatos", "abrigo": 0,
-		"categoria": "CALZADO",
-		"capasEnDondePuedeEstar":[], 
-		"materialesNoCompatibles": 
-		[
-			{"nombre": "Plastico"}, 
-			{"nombre": "Algodon"},
-			{"nombre": "Goma"}, 
-			{"nombre": "Lycra"},
-			{"nombre": "Lana"},
-			{"nombre": "Jean"},
+			{"nombre": "Nylon"}, 
 			{"nombre": "Seda"}
 		]
 	},
@@ -370,62 +167,40 @@
 		"capasEnDondePuedeEstar":[], 
 		"materialesNoCompatibles": 
 		[
-			{"nombre": "Plastico"},
-			{"nombre": "Goma"}, 
+			{"nombre": "Algodon"}, 
 			{"nombre": "Lycra"},
-			{"nombre": "Lana"},
-			{"nombre": "Cuero"},
+			{"nombre": "Poliester"}, 
+			{"nombre": "Jean"},
+			{"nombre": "Nyon"},
+			{"nombre": "Seda"}
+		]
+	},
+	{
+		"nombre": "Zapatos", "abrigo": 0,
+		"categoria": "CALZADO",
+		"capasEnDondePuedeEstar":[], 
+		"materialesNoCompatibles": 
+		[
+			{"nombre": "Algodon"}, 
+			{"nombre": "Lycra"},
+			{"nombre": "Poliester"}, 
+			{"nombre": "Jean"},
+			{"nombre": "Nyon"},
 			{"nombre": "Seda"}
 		]
 	},
 	{
 		"nombre": "Sandalias", "abrigo": 0,
 		"categoria": "CALZADO",
-		"capasEnDondePuedeEstar":[], 
-		"materialesNoCompatibles": 
-		[
-			{"nombre": "Cuero"}, 
-			{"nombre": "Algodon"},
-			{"nombre": "Goma"}, 
-			{"nombre": "Lycra"},
-			{"nombre": "Lana"},
-			{"nombre": "Gabardina"},
-			{"nombre": "Jean"},
-			{"nombre": "Gamuza"},
-			{"nombre": "Seda"}
-		]
-	},
-	{
-		"nombre": "Crocs", "abrigo": 0,
-		"categoria": "CALZADO",
-		"capasEnDondePuedeEstar":[], 
-		"materialesNoCompatibles": 
-		[
-			{"nombre": "Cuero"}, 
-			{"nombre": "Algodon"},
-			{"nombre": "Goma"}, 
-			{"nombre": "Lycra"},
-			{"nombre": "Lana"},
-			{"nombre": "Gabardina"},
-			{"nombre": "Jean"},
-			{"nombre": "Gamuza"},
-			{"nombre": "Seda"}
-		]
-	},
-	{
-		"nombre": "Tacos", "abrigo": 0,
-		"categoria": "CALZADO",
 		"capasEnDondePuedeEstar": [], 
 		"materialesNoCompatibles": 
 		[
-			{"nombre": "Cuero"}, 
-			{"nombre": "Algodon"},
-			{"nombre": "Goma"}, 
+			{"nombre": "Algodon"}, 
 			{"nombre": "Lycra"},
-			{"nombre": "Lana"},
-			{"nombre": "Gabardina"},
+			{"nombre": "Poliester"}, 
 			{"nombre": "Jean"},
-			{"nombre": "Gamuza"}
+			{"nombre": "Nyon"},
+			{"nombre": "Seda"}
 		]
 	}
 ]

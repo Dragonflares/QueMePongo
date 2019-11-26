@@ -3,30 +3,21 @@
 		"nombre": "Algodon"
 	},
 	{
+		"nombre": "Lycra"
+	},
+	{
 		"nombre": "Cuero"
 	},
 	{
-		"nombre": "Lana"
-	},
-	{
-		"nombre": "Lycra"
+		"nombre": "Poliester"
 	},
 	{
 		"nombre": "Jean"
 	},
 	{
-		"nombre": "Goma"
-	},
-	{
-		"nombre": "Plastico"
+		"nombre": "Nylon"
 	},
 	{
 		"nombre": "Seda"
-	},
-	{
-		"nombre": "Gamuza"
-	},
-	{
-		"nombre": "Gabardina"
 	}
 ]
