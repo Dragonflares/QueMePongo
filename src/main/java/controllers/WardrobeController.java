@@ -73,9 +73,6 @@ public class WardrobeController {
 	}
 
 	
-	
-	
-	
 	public static ModelAndView mostrarSugerencias(Request req, Response res) {
 
 		HashMap<String, Object> viewModel = new HashMap<>();

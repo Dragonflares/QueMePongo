@@ -142,15 +142,15 @@ public class Prenda extends EntidadPersistente{
 		switch(this.getColorPrimario().getNombre()) {
 			
 			case "Blanco": {
-				break;
+				rutaBase.concat(".jpg");
 			}
 			
 			case "Negro": {
-				rutaBase.concat("Negro");
+				rutaBase.concat(" Negro.jpg");
 			}
 			
 			default: {
-				rutaBase.concat("Amarillo");
+				rutaBase.concat(" Amarillo.jpg");
 			}
 		}
 		

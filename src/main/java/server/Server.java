@@ -87,19 +87,13 @@ public class Server {
 				FactoryRepositoriosMaterial.get().agregar(new Material("Seda"));
 				FactoryRepositoriosMaterial.get().agregar(gamuza);
 				FactoryRepositoriosMaterial.get().agregar(gabardina);
-				FactoryRepositorioColor.get().agregar(new Color("Rojo"));
-				FactoryRepositorioColor.get().agregar(new Color("Azul"));
-				FactoryRepositorioColor.get().agregar(new Color("Amarillo"));
-				FactoryRepositorioColor.get().agregar(new Color("Blanco"));
-				FactoryRepositorioColor.get().agregar(new Color("Verde"));
-				FactoryRepositorioColor.get().agregar(new Color("Negro"));
-				FactoryRepositorioColor.get().agregar(new Color("Violeta"));
-				FactoryRepositorioColor.get().agregar(new Color("Naranja"));
-				FactoryRepositorioColor.get().agregar(new Color("Rosa"));
-				FactoryRepositorioColor.get().agregar(new Color("Beige"));
-				FactoryRepositorioColor.get().agregar(new Color("Marron"));
-				FactoryRepositorioColor.get().agregar(new Color("Gris"));
-				FactoryRepositorioColor.get().agregar(new Color("Celeste"));
+				FactoryRepositorioColor.get().agregar(new Color("Rojo", 290));
+				FactoryRepositorioColor.get().agregar(new Color("Azul", 170));
+				FactoryRepositorioColor.get().agregar(new Color("Amarillo", 0));
+				FactoryRepositorioColor.get().agregar(new Color("Blanco", 0));
+				FactoryRepositorioColor.get().agregar(new Color("Verde", 50));
+				FactoryRepositorioColor.get().agregar(new Color("Negro", 0));
+
 				ArrayList<Capas> capasRemera = new ArrayList<>();
 				capasRemera.add(Capas.CAPA1);
 				ArrayList<Capas> capasSandalia = new ArrayList<>();
@@ -129,7 +123,7 @@ public class Server {
 					.material("Algodon")
 					.nombrePrenda("remeraMangaLargaRojaDeAlgodon")
 					.setearColores("Rojo", "Negro")
-					.tipoRopa("Remera manga larga")
+					.tipoRopa("Camiseta de manga larga")
 					.build();
 			Prenda pantalonLargoNegroDeLycra = new Prenda.PrendaBuilder()
 					.material("Lycra")
