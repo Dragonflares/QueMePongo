@@ -1,7 +1,7 @@
 [
 	{
 		"nombre": "Rojo",
-		"degrees": 50
+		"degrees": 290
 	},
 	{
 		"nombre": "Azul",
@@ -25,6 +25,6 @@
 	},
 	{
 		"nombre": "Celeste",
-		"degrees": 0
+		"degrees": 100
 	}
 ]

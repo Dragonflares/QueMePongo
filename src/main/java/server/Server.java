@@ -90,9 +90,9 @@ public class Server {
 			FactoryRepositorioColor.get().agregar(new Color("Amarillo",0));
 			FactoryRepositorioColor.get().agregar(new Color("Blanco",0));
 			FactoryRepositorioColor.get().agregar(new Color("Negro",0));
-			FactoryRepositorioColor.get().agregar(new Color("Celeste",0));
-			FactoryRepositorioColor.get().agregar(new Color("Verde",0));
-
+		    FactoryRepositorioColor.get().agregar(new Color("Celeste",100)); 
+		    FactoryRepositorioColor.get().agregar(new Color("Verde",50)); 
+		    
 			ArrayList<Capas> capa1 = new ArrayList<>();
 			capa1.add(Capas.CAPA1);
 			ArrayList<Capas> capas23 = new ArrayList<>();

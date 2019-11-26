@@ -54,7 +54,13 @@ public class Router {
 		Spark.before("/calificaciones",SessionHandler.allowed());
 		Spark.before("/out",SessionHandler.allowed());
 		Spark.before("/eventos/alta",SessionHandler.allowed());
-
+	    Spark.before("/verRecomendacion",SessionHandler.allowed()); 
+	    Spark.before("/generarRecomendacion",SessionHandler.allowed()); 
+	    Spark.before("/aceptarRecomendacion",SessionHandler.allowed()); 
+	    Spark.before("/rechazarRecomendacion",SessionHandler.allowed()); 
+	    Spark.before("/deshacerRecomendacion",SessionHandler.allowed()); 
+	    Spark.before("/altaPrenda",SessionHandler.allowed()); 
+	    
 		//Spark.before("/eventos/info", SessionHandler.allowed());
 		
 		Spark.get("/login", LoginController::init,engine);
