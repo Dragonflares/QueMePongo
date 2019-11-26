@@ -47,8 +47,8 @@ public class Server {
 	
 	public static void insertarUsuariosParaProbar() throws ProcessingDataFailedException, Exception 
 	{
-		if(!FactoryRepositorioUsuario.get().existeUsuario("usuario123", "asd123"))
-		{
+		//if(!FactoryRepositorioUsuario.get().existeUsuario("usuario123", "asd123"))
+		//{
 			Usuario usuario1 = new Usuario("usuario123", "asd123");
 			Usuario usuario2 = new Usuario("lala", "qwe123");
 			
@@ -125,17 +125,12 @@ public class Server {
 					.setearColores("Rojo", "Negro")
 					.tipoRopa("Camiseta de manga larga")
 					.build();
+			
 			Prenda pantalonLargoNegroDeLycra = new Prenda.PrendaBuilder()
 					.material("Lycra")
 					.nombrePrenda("pantalonLargoNegroDeLycra")
 					.setearColores("Negro", "Azul")
 					.tipoRopa("Pantalon largo")
-					.build();
-			Prenda remeraMangaCorta = new Prenda.PrendaBuilder()
-					.material("Lycra")
-					.nombrePrenda("remeraMangaCorta")
-					.setearColores("Negro", "Azul")
-					.tipoRopa("Remera manga corta")
 					.build();
 			Prenda sandaliasVerdes = new Prenda.PrendaBuilder()
 					.material("Goma")
@@ -143,6 +138,7 @@ public class Server {
 					.setearColores("Verde", "Blanco")
 					.tipoRopa("Sandalias")
 					.build();
+			
 			ArrayList<Prenda> prendassugerencia = new ArrayList<Prenda>();
 			prendassugerencia.add(remeraMangaLargaRojaDeAlgodon);
 			Atuendo sugerencia = new Atuendo(prendassugerencia);
@@ -153,7 +149,6 @@ public class Server {
 			usuario2.agregarGuardarropa(guardarropa2);
 			usuario1.agregarPrendaAGuardarropa(guardarropa1, pantalonLargoNegroDeLycra);
 			usuario1.agregarPrendaAGuardarropa(guardarropa1, remeraMangaLargaRojaDeAlgodon);
-			usuario1.agregarPrendaAGuardarropa(guardarropa1, remeraMangaCorta);
 			evento1.setUltimoAtuendoAceptado(sugerencia);
 			usuario1.agregarSugerenciaSinCalificar(sugerencia);
 			evento1.setSeNotificoUltimaSugerencia(true);
@@ -163,7 +158,7 @@ public class Server {
 			usuario2.agregarPrendaAGuardarropa(guardarropa2, remeraMangaLargaRojaDeAlgodon);
 			FactoryRepositorioUsuario.get().agregar(usuario1);
 			FactoryRepositorioUsuario.get().agregar(usuario2);
-		}
+		//}
 	}
 
 }

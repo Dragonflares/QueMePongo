@@ -42,6 +42,12 @@ public class Prenda extends EntidadPersistente{
 	@JoinColumn(name = "color_secundario_id", referencedColumnName = "id")
 	private Color colorSecundario;
 	
+	@Transient
+	private String imagenSegunColor;
+	
+	@Transient
+	private int colorEnDegrees;
+	
 	@OneToOne
 	@JoinColumn(name = "material_id", referencedColumnName = "id")
 	private Material material;
@@ -142,25 +148,27 @@ public class Prenda extends EntidadPersistente{
 		switch(this.getColorPrimario().getNombre()) {
 			
 			case "Blanco": {
-				rutaBase.concat(".jpg");
+				this.imagenSegunColor = rutaBase.concat(".jpg");
+				return this.imagenSegunColor;
 			}
 			
 			case "Negro": {
-				rutaBase.concat(" Negro.jpg");
+				this.imagenSegunColor = rutaBase.concat(" Negro.jpg");
+				return this.imagenSegunColor;
 			}
 			
 			default: {
-				rutaBase.concat(" Amarillo.jpg");
+				this.imagenSegunColor = rutaBase.concat(" Amarillo.jpg");
+				return this.imagenSegunColor;
 			}
-		}
-		
-		return rutaBase;	
+		}	
 	}
 	
 	//toma los degrees en base al amarillo
 	public int getColorEnDegrees() {
 		
-		return this.getColorPrimario().getDegrees();
+		this.colorEnDegrees = this.getColorPrimario().getDegrees();
+		return this.colorEnDegrees;
 	}
 	
 	public Color getColorSecundario()
