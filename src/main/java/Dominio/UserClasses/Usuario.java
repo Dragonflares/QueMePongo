@@ -143,7 +143,7 @@ public class Usuario extends EntidadPersistente{
 		Atuendo atuendoFinal = null;
 		Random rand = new Random();
 		int cantGuardarropas = guardarropasConEstilo.size();
-		while(atuendoFinal != null)
+		while(atuendoFinal == null)
 		{
 			Guardarropa guardarropa =  guardarropasConEstilo.get(rand.nextInt(cantGuardarropas));
 			atuendoFinal = guardarropa.generarRecomendacion(evento, this);
