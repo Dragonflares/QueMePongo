@@ -90,7 +90,11 @@ public class Vestidor {
 				molde.darRopas().stream()
 				.map(p -> obtenerPrendaDelMolde(guardarropa, p))
 				.collect(Collectors.toList());
-		if(prendasParaAtuendo.stream().anyMatch(p -> p.equals(null)))
+		int a = 0;
+		while(prendasParaAtuendo.get(a) != null) {
+			a++;
+		}
+		if(a < prendasParaAtuendo.size())
 		{
 			if(intento < Integer.parseInt(Property.getSpecifiedProperty("CantIntentos")))
 			{
