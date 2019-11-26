@@ -13,7 +13,14 @@
           <br></br>
           <h6>Prendas: </h6>
             {{#each prendasUltimaSugerencia}}
-              <h6> {{nombrePrenda}}</h6>
+              <div class="list-group-item">
+						    <tr>
+							    <h4> <td> {{ nombrePrenda }} </td> </h4>
+							    <p> 
+								    <div style="background: url('{{ imagenSegunColor }}'); background-size: cover; width: 10%; margin: 0 10% 0 10%; padding-bottom: 10%; float: left; -webkit-filter : hue-rotate(200deg); filter : hue-rotate({{ colorEnDegrees }}deg);"></div>
+							    </p>
+						    </tr>
+					    </div>
             {{/each}}
           <br></br>
         </div>

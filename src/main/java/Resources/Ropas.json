@@ -111,7 +111,7 @@
 		]
 	},
 	{
-		"nombre": "Bermuda", "abrigo": 0,
+		"nombre": "Bermuda", "abrigo": 7,
 		"categoria": "PARTE_INFERIOR",
 		"capasEnDondePuedeEstar":[], 
 		"materialesNoCompatibles": 
@@ -121,7 +121,7 @@
 		]
 	},
 	{
-		"nombre": "Pollera", "abrigo": 0,
+		"nombre": "Pollera", "abrigo": 5,
 		"categoria": "PARTE_INFERIOR",
 		"capasEnDondePuedeEstar":[], 
 		"materialesNoCompatibles": 
@@ -162,9 +162,9 @@
 		]
 	},
 	{
-		"nombre": "Zapatillas", "abrigo": 0, 
+		"nombre": "Zapatillas", "abrigo": 7, 
 		"categoria": "CALZADO",
-		"capasEnDondePuedeEstar":[], 
+		"capasEnDondePuedeEstar":["CAPA2"], 
 		"materialesNoCompatibles": 
 		[
 			{"nombre": "Algodon"}, 
@@ -176,9 +176,9 @@
 		]
 	},
 	{
-		"nombre": "Zapatos", "abrigo": 0,
+		"nombre": "Zapatos", "abrigo": 6,
 		"categoria": "CALZADO",
-		"capasEnDondePuedeEstar":[], 
+		"capasEnDondePuedeEstar":["CAPA2"], 
 		"materialesNoCompatibles": 
 		[
 			{"nombre": "Algodon"}, 
@@ -190,9 +190,9 @@
 		]
 	},
 	{
-		"nombre": "Sandalias", "abrigo": 0,
+		"nombre": "Sandalias", "abrigo": 5,
 		"categoria": "CALZADO",
-		"capasEnDondePuedeEstar": [], 
+		"capasEnDondePuedeEstar": ["CAPA2"], 
 		"materialesNoCompatibles": 
 		[
 			{"nombre": "Algodon"}, 
@@ -202,5 +202,11 @@
 			{"nombre": "Nyon"},
 			{"nombre": "Seda"}
 		]
+	},
+	{
+		"nombre": "Nulo", "abrigo": 0,
+		"categoria": "CALZADO",
+		"capasEnDondePuedeEstar": ["CAPA1"], 
+		"materialesNoCompatibles": []
 	}
 ]

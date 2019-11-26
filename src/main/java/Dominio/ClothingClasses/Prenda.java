@@ -30,39 +30,39 @@ public class Prenda extends EntidadPersistente{
 	@ManyToOne
 	@JoinColumn(name = "tipo_id", referencedColumnName = "id")
 	private TipoDeRopa tipoRopa;
-	
+
 	@Column(name = "nombrePrenda")
 	private String nombrePrenda;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "color_primario_id", referencedColumnName = "id")
 	private Color colorPrimario;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "color_secundario_id", referencedColumnName = "id")
 	private Color colorSecundario;
-	
+
 	@Transient
 	private String imagenSegunColor;
-	
+
 	@Transient
 	private int colorEnDegrees;
-	
+
 	@OneToOne
 	@JoinColumn(name = "material_id", referencedColumnName = "id")
 	private Material material;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "guardarropas_id", referencedColumnName = "id", insertable = true)
 	private Guardarropa guardarropas;
-	
+
 	public Prenda() {}
 
 	public Prenda(String nombrePrenda) // TODO sacar cuando se haya hecho bien en el UserController
 	{
 		this.nombrePrenda = nombrePrenda;
 	}
-	
+
 	public Prenda (PrendaBuilder builder) {
 		this.tipoRopa = builder.tipoRopa;
 		this.nombrePrenda = builder.nombrePrenda;
@@ -86,7 +86,7 @@ public class Prenda extends EntidadPersistente{
 	public void setNombrePrenda(String nombrePrenda) {
 		this.nombrePrenda = nombrePrenda;
 	} 
-	
+
 	public Integer getNivelAbrigo()
 	{
 		return this.tipoRopa.getNivelAbrigo();
@@ -134,48 +134,52 @@ public class Prenda extends EntidadPersistente{
 			return new Prenda(this);
 		}
 	}
-	
+
 	public Color getColorPrimario()
 	{
 		return this.colorPrimario;
 	}
-	
+
 	//toma una ruta en base a si es blanco, negro u otro (en este ultimo caso tomara la ruta del amarillo)
 	public String getImagenSegunColor() throws JsonIOException, JsonSyntaxException, FileNotFoundException {
-		
+
 		String rutaBase = MatcheadorTipoPrenda.matchearRuta(this);
-		
-		switch(this.getColorPrimario().getNombre()) {
-			
+		if(rutaBase =="") {
+			return null;
+		}
+		else {
+			switch(this.getColorPrimario().getNombre()) {
+
 			case "Blanco": {
 				this.imagenSegunColor = rutaBase.concat(".jpg");
 				return this.imagenSegunColor;
 			}
-			
+
 			case "Negro": {
 				this.imagenSegunColor = rutaBase.concat(" Negro.jpg");
 				return this.imagenSegunColor;
 			}
-			
+
 			default: {
 				this.imagenSegunColor = rutaBase.concat(" Amarillo.jpg");
 				return this.imagenSegunColor;
 			}
-		}	
+			}	
+		}
 	}
-	
+
 	//toma los degrees en base al amarillo
 	public int getColorEnDegrees() {
-		
+
 		this.colorEnDegrees = this.getColorPrimario().getDegrees();
 		return this.colorEnDegrees;
 	}
-	
+
 	public Color getColorSecundario()
 	{
 		return this.colorSecundario;
 	}
-	
+
 	public Material getMaterial() {
 		return this.material;
 	}

@@ -143,6 +143,9 @@ public class Usuario extends EntidadPersistente{
 		if(guardarropasConEstilo.isEmpty()) {
 			Prenda prenda = new Prenda.PrendaBuilder()
 					.nombrePrenda("Usted no posee guardarropas con ese estilo!")
+					.tipoRopa("Nulo")
+					.setearColores("Blanco", "Rojo")
+					.material("Lycra")
 					.build();
 			ArrayList<Prenda> prendasX = new ArrayList<>();
 			prendasX.add(prenda);

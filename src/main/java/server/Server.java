@@ -173,13 +173,13 @@ public class Server {
 		Prenda Campera1 = new Prenda.PrendaBuilder()
 				.material("Cuero")
 				.nombrePrenda("Campera")
-				.setearColores("Blanco", "Blanco")
+				.setearColores("Blanco", "Verde")
 				.tipoRopa("Campera")
 				.build();
 		Prenda Sueter1 = new Prenda.PrendaBuilder()
 				.material("Poliester")
 				.nombrePrenda("Sueter")
-				.setearColores("Blanco", "Blanco")
+				.setearColores("Blanco", "Verde")
 				.tipoRopa("Sueter")
 				.build();
 		Prenda Bermuda1 = new Prenda.PrendaBuilder()
@@ -257,7 +257,7 @@ public class Server {
 				.build();
 
 		ArrayList<Prenda> prendassugerencia = new ArrayList<Prenda>();
-		//prendassugerencia.add(remeraMangaLargaRojaDeAlgodon);
+		prendassugerencia.add(Sandalias2);
 		Atuendo sugerencia = new Atuendo(prendassugerencia);
 		evento1.agregarSugerencia(sugerencia);
 

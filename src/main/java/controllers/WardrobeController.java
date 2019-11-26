@@ -89,6 +89,9 @@ public class WardrobeController {
 		if(atuendoSugerencia == null) {
 			Prenda prendaNula = new Prenda.PrendaBuilder()
 					.nombrePrenda("No hay suficientes prendas para generar una recomendación.")
+					.tipoRopa("Nulo")
+					.setearColores("Blanco", "Rojo")
+					.material("Lycra")
 					.build();
 			List<Prenda> prendasX = new ArrayList<>();
 			prendasX.add(prendaNula);
@@ -219,6 +222,9 @@ public class WardrobeController {
 		if(atuendoSugerencia == null) {
 			Prenda prendaNula = new Prenda.PrendaBuilder()
 					.nombrePrenda("No hay suficientes prendas para generar una recomendación.")
+					.tipoRopa("Nulo")
+					.setearColores("Blanco", "Rojo")
+					.material("Lycra")
 					.build();
 			List<Prenda> prendasX = new ArrayList<>();
 			prendasX.add(prendaNula);
