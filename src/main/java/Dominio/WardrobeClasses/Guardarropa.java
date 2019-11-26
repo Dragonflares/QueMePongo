@@ -100,14 +100,17 @@ public class Guardarropa extends EntidadPersistente{
 	public Atuendo generarRecomendacion(Evento evento,
 			Usuario creador) throws Exception {
 		Atuendo atuendo = null;
+		int a = 0;
 		double temperatura = pedirTemperatura(evento.getFechaLocalDateTime(), evento.getFechaLocalDateTime().getHour());
 		atuendo = Vestidor.getInstance().obtenerAtuendo(this, temperatura, 0, creador);
-		if(atuendo.equals(null))
-			atuendo = new Atuendo(generarAtuendoRandom(evento, temperatura, creador));
+		while(a < 10 && atuendo == null) {
+			atuendo = generarAtuendoRandom(evento, temperatura, creador);
+			a++;
+		}
 		return atuendo;
 	}
 
-	private ArrayList<Prenda> generarAtuendoRandom(Evento evento,
+	private Atuendo generarAtuendoRandom(Evento evento,
 			double temperatura, Usuario creador) throws Exception {
 		ArrayList<Prenda> prendasDeAtuendo = new ArrayList<Prenda>();
 		List<Prenda> prendasSuperiores = 
@@ -123,7 +126,7 @@ public class Guardarropa extends EntidadPersistente{
 			prendasDeAtuendo.addAll(prendaInferior);
 			prendasDeAtuendo.addAll(calzado);
 		}
-		return prendasDeAtuendo;
+		return new Atuendo(prendasDeAtuendo);
 	}
 
 	private List<Prenda> obtenerParteSuperior(Evento evento,
