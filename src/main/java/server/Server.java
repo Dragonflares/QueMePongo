@@ -59,7 +59,7 @@ public class Server {
 			Guardarropa guardarropa2 = new Guardarropa(usuario1, Estilo.ELEGANTE);
 			guardarropa2.setNombre("Guardarropas Cheto");
 			LocalDateTime dentroDeUnaSemana = LocalDateTime.now().plusDays(7);
-			Evento evento1 = new Evento("Cumpleaños", LocalDateTime.now().plusDays(2), "Avenida 123", Estilo.ELEGANTE_SPORT, null, new Media());
+			Evento evento1 = new Evento("CumpleaÃ±os", LocalDateTime.now().plusDays(2), "Avenida 123", Estilo.ELEGANTE_SPORT, null, new Media());
 			Evento evento2 = new Evento("Casamiento", dentroDeUnaSemana, "Calle 13", Estilo.ELEGANTE, null, new Alta());
 			Evento evento3 = new Evento("Fiesta", LocalDateTime.now(), "Calle falsa 123", Estilo.CASUAL, null, new Baja());
 			Evento evento4 = new Evento("Bautismo", dentroDeUnaSemana, "Iglesa 123", Estilo.FORMAL, null, new Media());
@@ -146,7 +146,7 @@ public class Server {
 			Prenda sandaliasVerdes = new Prenda.PrendaBuilder()
 					.material("Goma")
 					.nombrePrenda("Sandalias Verdes")
-					.setearColores("Verde", "Verde")
+					.setearColores("Verde", "Blanco")
 					.tipoRopa("Sandalias")
 					.build();
 			ArrayList<Prenda> prendassugerencia = new ArrayList<Prenda>();

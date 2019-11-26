@@ -24,7 +24,7 @@ public class LoginController {
 	public static ModelAndView init(Request req, Response res) {
 
 		HashMap<String, Object> model = new HashMap<>();
-		return new ModelAndView(model, "home/login2.hbs");
+		return new ModelAndView(model, "home/login3.hbs");
 	}
 
 	public static ModelAndView loginFailure(Request req, Response res) {
