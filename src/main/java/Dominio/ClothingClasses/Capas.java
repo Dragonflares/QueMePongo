@@ -1,5 +1,9 @@
+
 package Dominio.ClothingClasses;
 
+import javax.persistence.Entity;
+
+@Entity
 public enum Capas {
 	CAPA1,
 	CAPA2,

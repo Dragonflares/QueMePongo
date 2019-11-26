@@ -102,7 +102,8 @@ public class Server {
 			capas234.add(Capas.CAPA2);
 			capas234.add(Capas.CAPA3);
 			capas234.add(Capas.CAPA4);
-
+			ArrayList<Capas> capas2 = new ArrayList<>();
+			capas2.add(Capas.CAPA2);
 			ArrayList<Material> MNCCueroJeanNylon = new ArrayList<>();
 			MNCCueroJeanNylon.add(cuero);
 			MNCCueroJeanNylon.add(jean);
@@ -136,22 +137,22 @@ public class Server {
 			MNCAlgodonLycraPoliesterJeanNylonSeda.add(nylon);
 			MNCAlgodonLycraPoliesterJeanNylonSeda.add(seda);
 
-			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Nulo", 0, Categoria.CALZADO, capa1, null, ""));
+			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Nulo", 0, Categoria.CALZADO, capas2, null, ""));
 			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Remera cuello redondo manga corta", 3, Categoria.PARTE_SUPERIOR, capa1, MNCCueroJeanNylon, ""));
 			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Remera cuello redondo manga larga", 4, Categoria.PARTE_SUPERIOR, capa1, MNCCueroJeanNylon, ""));
 			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Remera escote V manga corta", 3, Categoria.PARTE_SUPERIOR, capa1, MNCCueroJeanNylon, ""));
 			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Remera escote V manga larga", 4, Categoria.PARTE_SUPERIOR, capa1, MNCCueroJeanNylon, ""));
 			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Sueter", 7, Categoria.PARTE_SUPERIOR, capas23, MNCLycraCueroJeanNylon, ""));
 			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Campera", 7, Categoria.PARTE_SUPERIOR, capas234, MNCLycraJean, ""));
-			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Pantalon largo", 1, Categoria.PARTE_INFERIOR, null, MNCLycraCuero, ""));
-			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Pantalon corto", 0, Categoria.PARTE_INFERIOR, null, MNCLycraCuero, ""));
-			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Bermuda", 0, Categoria.PARTE_INFERIOR, null, MNCLycraCuero, ""));
-			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Pollera", 0, Categoria.PARTE_INFERIOR, null, MNCLycraCuero, ""));
+			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Pantalon largo", 11, Categoria.PARTE_INFERIOR, capas2, MNCLycraCuero, ""));
+			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Pantalon corto", 6, Categoria.PARTE_INFERIOR, capas2, MNCLycraCuero, ""));
+			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Bermuda", 7, Categoria.PARTE_INFERIOR, capas2, MNCLycraCuero, ""));
+			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Pollera", 5, Categoria.PARTE_INFERIOR, capas2, MNCLycraCuero, ""));
 			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Buzo", 6, Categoria.PARTE_SUPERIOR, capas23, MNCCueroPoliesterJeanNylonSeda, ""));
 			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Musculosa", 1, Categoria.PARTE_SUPERIOR, capa1, MNCCueroJeanSeda, ""));
-			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Zapatillas", 0, Categoria.CALZADO, null, MNCAlgodonLycraPoliesterJeanNylonSeda, ""));
-			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Zapatos", 0, Categoria.CALZADO, null, MNCAlgodonLycraPoliesterJeanNylonSeda, ""));
-			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Sandalias", 0, Categoria.CALZADO, null, MNCAlgodonLycraPoliesterJeanNylonSeda, ""));
+			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Zapatillas", 7, Categoria.CALZADO, capas2, MNCAlgodonLycraPoliesterJeanNylonSeda, ""));
+			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Zapatos", 6, Categoria.CALZADO, capas2, MNCAlgodonLycraPoliesterJeanNylonSeda, ""));
+			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Sandalias", 5, Categoria.CALZADO, capas2, MNCAlgodonLycraPoliesterJeanNylonSeda, ""));
 		}
 
 		Prenda RemeraCuelloRedondoMangaCorta1 = new Prenda.PrendaBuilder()
