@@ -56,7 +56,7 @@ public class WardrobeController {
 
 		HashMap<String, Object> viewModel = new HashMap<>();
 
-
+		
 
 		Atuendo nuevoAtuendo = eventoEnCuestion.getSugerencias().get(eventoEnCuestion.getSugerencias().size()-1);
 		eventoEnCuestion.setUltimoAtuendoAceptado(nuevoAtuendo);
@@ -71,7 +71,7 @@ public class WardrobeController {
 		List<Evento> eventosNoUsados = usuario.getEventosProximosYnotificados().stream()
 				.filter(e->e.getUltimoAtuendoAceptado()!= null).collect(Collectors.toList());
 		viewModel.put("eventosNoUsados", eventosNoUsados);
-
+		
 
 		return new ModelAndView(viewModel, "home/sugerencias.hbs");
 	}

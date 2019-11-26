@@ -139,18 +139,29 @@ public class Usuario extends EntidadPersistente{
 	public Atuendo pedirRecomendacion(Evento evento) throws Exception{
 		List<Guardarropa> guardarropasConEstilo = 
 				this.guardarropas.stream().filter(g -> g.getEstilo() == evento.obtenerEstilo()).collect(Collectors.toList());
-
 		Atuendo atuendoFinal = null;
-		Random rand = new Random();
-		int cantGuardarropas = guardarropasConEstilo.size();
-		int intentos = 0;
-		while(atuendoFinal == null && intentos < 10)
-		{
-			Guardarropa guardarropa =  guardarropasConEstilo.get(rand.nextInt(cantGuardarropas));
-			atuendoFinal = guardarropa.generarRecomendacion(evento, this);
-			intentos++;
+		if(guardarropasConEstilo.isEmpty()) {
+			Prenda prenda = new Prenda.PrendaBuilder()
+					.nombrePrenda("Usted no posee guardarropas con ese estilo!")
+					.build();
+			ArrayList<Prenda> prendasX = new ArrayList<>();
+			prendasX.add(prenda);
+			atuendoFinal = new Atuendo(prendasX);
 		}
-		this.setUltimoAtuendo(atuendoFinal);
+		else
+		{
+
+			Random rand = new Random();
+			int cantGuardarropas = guardarropasConEstilo.size();
+			int intentos = 0;
+			while(atuendoFinal == null && intentos < 10)
+			{
+				Guardarropa guardarropa =  guardarropasConEstilo.get(rand.nextInt(cantGuardarropas));
+				atuendoFinal = guardarropa.generarRecomendacion(evento, this);
+				intentos++;
+			}
+		}
+
 		return atuendoFinal;
 	}
 
