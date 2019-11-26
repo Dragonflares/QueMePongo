@@ -6,7 +6,7 @@
         </header>
         
         <div>
-        <form method="POST" action="/recomendacion" align="left">
+        <form method="POST" action="/generarRecomendacion" align="left">
         <label for="calificacionSuperior">Elija estilo para generar recomendacion</label>
         <br>
         </br>
@@ -44,8 +44,9 @@
 
         <td>{{ nombre }}</td>
         
-        <td><input id="evento" name="evento" type="hidden" value={{ nombre }}>
-            <a class="btn btn-primary" href="/recomendacion" role="button">Ver sugerencia</a></td>
+        <td><form method="POST" action="/verRecomendacion" align="left">
+            <input id="evento" name="evento" type="hidden" value={{ nombre }}>
+            <button type="submit" class="btn btn-primary">Ver sugerencia</button></form></td>
       </tr>
     {{/each}}
   </tbody>

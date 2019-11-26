@@ -14,11 +14,80 @@
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
 
 	<!-- CSS Files -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet" />
 	<link href="css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
 
-	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<link href="css/demo.css" rel="stylesheet" />
+	
+	
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css">     
+    
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    
+    <a href="/"><i class="fas fa-tshirt" style="font-size:36px"></i></a>
+    <a href="/eventos"><i class="fas fa-calendar-alt" style="font-size:36px"></i></a>
+    <a href="/calificaciones"><i class="fas fa-star" style="font-size:36px"></i></a>
+    <a href="/out"><i class="fas fa-sign-out-alt" style="font-size:36px"></i></a>
+
+    <a href="/sugerencias"><i class="fas fa-bat" style="font-size:36px"></i></a>
+
+  </div>
+</nav>
+
+<style>
+            
+            button {
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: #ffcf7a;
+                color: black;
+                padding: 5px 5px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+            
+            ul#ul01 {
+                list-style-type: none;                
+                overflow: hidden;
+                position: center;
+                background-color: #ffcf7a;
+                box-shadow: 3px 5px 11px 1px rgba(0,0,0,0.75);
+                border: 5px solid white;
+            }
+            table {
+                width:100%;
+            }
+            table, th{
+                border-collapse: collapse;
+            }
+            td {
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 15px;
+                text-align: left;
+            }
+            table#t01 tr:nth-child(even) {
+                background-color: rgb(255, 226, 177, 0.5);
+            }
+            table#t01 tr:nth-child(odd) {
+                background-color: rgb(255, 214, 144, 0.5);
+            }
+            table#t01 th {
+                background-color: rgb(255, 199, 102, 0.5);
+                color: black;
+            }
+			select{
+				width: 150px;
+				height: 30px;
+			}
+			
+    </style>
 
 </head>
 
@@ -28,7 +97,7 @@
 		#original, #changed {
 			background: url('imgPrendas/index2.jpg');
 			background-size: cover;
-			width: 50%;
+			width: 70%;
 			margin: 0 25% 0 25%;
 			padding-bottom: 10%;
 			float: left;
@@ -66,8 +135,7 @@
 							<ul>
 	                            <li><a href="#tipo" data-toggle="tab">Tipo</a></li>
 	                            <li><a href="#material" data-toggle="tab">Material</a></li>
-	                            <li><a href="#color" data-toggle="tab">Color</a></li>
-								<li><a href="#nombre" data-toggle="tab">Nombre</a></li>
+	                            
 	                        </ul>
 
 						</div>
@@ -76,11 +144,11 @@
                             
 							<div class="tab-pane" id="tipo">
                               <div class="row">
-                                  <h4 class="info-text"> Elija el tipo de Ropa </h4>
+                                  <h4 class="info-text">&nbsp;&nbsp;Elija el tipo de Ropa </h4>
                                   <div class="col-sm-6 col-sm-offset-3">
                                       <div class="form-group">
                                        <!-- <input name="firstname" type="text" class="form-control"> -->
-                                      		<select name="country" class="form-control">
+                                      		<select name="country" class="form-control" style="height: 35px;">
                                               <option value="Afghanistan"> Afghanistan </option>
                                               <option value="Albania"> Albania </option>
                                               <option value="Algeria"> Algeria </option>
@@ -98,11 +166,11 @@
 							
 							<div class="tab-pane" id="material">
 							  <div class="row">
-                                  <h4 class="info-text"> Elija el material </h4>
+                                  <h4 class="info-text">&nbsp;&nbsp;Elija el material &nbsp; &nbsp;&nbsp;</h4>
                                   <div class="col-sm-6 col-sm-offset-3">
                                       <div class="form-group">
                                        <!-- <input name="firstname" type="text" class="form-control"> -->
-                                      		<select name="country" class="form-control">
+                                      		<select name="country" class="form-control" style="height: 35px;">
                                               <option value="Afghanistan"> Afghanistan </option>
                                               <option value="Albania"> Albania </option>
                                               <option value="Algeria"> Algeria </option>
@@ -118,68 +186,7 @@
                               </div>
                             </div>							
 							
-                            <div class="tab-pane" id="color">
-                                <h4 class="info-text"> Elija un color (checkbox) </h4>
-                                <div class="row">
-
-                                    <div class="col-sm-10 col-sm-offset-1">
-                                        <div class="col-sm-4">
-                                            <div class="choice" data-toggle="wizard-radio">
-                                                <input type="radio" name="jobb" value="Design">
-                                                <div class="icon" style="background-color:#ff0000;">
-                                                </div>
-                                                <h6><!--aca va el nombre del color--></h6>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="choice" data-toggle="wizard-radio">
-                                                <input type="radio" name="jobb" value="Code">
-                                                <div class="icon">
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="choice" data-toggle="wizard-radio">
-                                                <input type="radio" name="jobb" value="Develop">
-                                                <div class="icon">
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="choice" data-toggle="wizard-radio">
-                                                <input type="radio" name="jobb" value="Develop">
-                                                <div class="icon">
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="choice" data-toggle="wizard-radio">
-                                                <input type="radio" name="jobb" value="Develop">
-                                                <div class="icon">
-                                                </div>
-                                                
-                                            </div>
-                                        </div>																				
-                                    </div>
-                                </div>
-                            </div>
-							
-							<div class="tab-pane" id="nombre">
-                              <div class="row">
-								  <h4 class="info-text"> Elija un nombre para su prenda </h4>
-                                  <div id="changed" class="col-md-4"></br></br></br></br></br></br></br></br></br></div>
-								  
-								  <div class="col-md-8">
-									  <div class="form-group">
-										</br>
-										<input type="text" class="form-control" id="exampleInputEmail1" style="margin: 0 25% 0 25%;">
-									  </div>
-                                  </div>
-                              </div>
-                            </div>
+                            
 					
 						</div>
 						

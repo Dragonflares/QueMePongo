@@ -40,7 +40,8 @@ public class WardrobeController {
 	private static List<Guardarropa> guardarropas;
 	private static Guardarropa guardarropaSeleccionado = null;
 	private static List<Prenda> prendasSeleccionadas = null;
-
+	private static Evento eventoEnCuestion = null;
+	
 	public static ModelAndView init(Request req, Response res) {
 
 		HashMap<String, Object> viewModel = new HashMap<>();
@@ -134,9 +135,12 @@ public class WardrobeController {
 		}
 		ImportanciaEvento importancia = new Alta();
 		LocalDateTime fecha = LocalDateTime.now();
-		Evento evento = new Evento(fecha.toString(),fecha,"casa",nuevoEstilo,null,importancia);
-		usuario.agregarEvento(evento);
-		Atuendo atuendoSugerencia = usuario.pedirRecomendacion(evento);
+		eventoEnCuestion = new Evento(fecha.toString(),fecha,"casa",nuevoEstilo,null,importancia);
+		usuario.agregarEvento(eventoEnCuestion);
+		Atuendo atuendoSugerencia = usuario.pedirRecomendacion(eventoEnCuestion);
+		
+		viewModel.put("prendasUltimaSugerencia", atuendoSugerencia.getPrendas());
+		
 		return new ModelAndView(viewModel, "home/recomendacion.hbs");
 	}
 
@@ -147,10 +151,10 @@ public class WardrobeController {
 		HashMap<String, Object> viewModel = new HashMap<>();
 
 		String evento = req.queryParams("evento");
-		Evento nuevoEvento = usuario.getEventos().stream()
+		eventoEnCuestion = usuario.getEventos().stream()
 				.filter(e->e.getNombre().equals(evento)).collect(Collectors.toList()).get(0);
-		List<Prenda> prendas = nuevoEvento.getPrendasUltimoAtuendo();
-		viewModel.put("prendas", prendas);
+		List<Prenda> prendasUltimaSugerencia = eventoEnCuestion.getUltimaSugerencia().getPrendas();
+		viewModel.put("prendasUltimaSugerencia", prendasUltimaSugerencia);
 
 		return new ModelAndView(viewModel, "home/recomendacion.hbs");
 	}

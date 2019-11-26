@@ -4,80 +4,43 @@
             <h1>Que me pongo? - Recomendacion</h1>
 
         </header>
-        
+      
+
+        <h2>Sugerencia para este evento</h2>
+
+
         <div>
-        <form method="POST" action="/calificaciones" align="left">
-        <label for="calificacionSuperior">Elija estilo para generar recomendacion</label>
-        <br>
-        </br>
-		<td><select class="mdb-select md-form" name="estilo" required> 
-		<option value="">Elija una opción...</option> 
-		<option value="Formal">Formal</option> 
-		<option value="Casual">Casual</option> 
-		<option value="Elegante">Elegante</option> 
-        <option value="Deportivo">Deportivo</option> 
-		<option value="Elegante_Sport">Elegante_Sport</option> 
-		</select>
-         <br>
-        </br>
-        <button type="submit" class="btn btn-primary">Generar recomendacion</button></td> 
-        </form> 
+          <br></br>
+          <h6>Prendas: </h6>
+            {{#each prendasUltimaSugerencia}}
+              <h6> {{nombrePrenda}}</h6>
+            {{/each}}
+          <br></br>
         </div>
-
-
-        <h2>Atuendos sugeridos para eventos</h2>
-
-
-        <div>
-        <table class="table  table-dark table-hover">
-  <thead>
-    <tr>
-      <th>Nombre de evento</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-
-    {{#each evento}}
-      <tr>
-
-        <td>{{ nombre }}</td>
-        <td><a class="btn btn-primary" href="#" role="button">Link</a></td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
-
-
-<br></br>
-</div>
             
-        
-
-        <h2>Atuendos aceptados pero no usados</h2>
 
         <div>
 
         <table class="table  table-dark table-hover">
-  <thead>
-    <tr>
-      <th>Nombre de evento</th>
-      <th>Atuendo</th>
-    </tr>
-  </thead>
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
 
-  <tbody>
-
-    {{#each evento}}
-      <tr>
-
-        <td>{{ nombre }}</td>
-        <td>{{ prendas }}</td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+          <tbody>
+              <tr>
+                <td><form>
+            <a class="btn btn-primary" href="/sugerencias" role="button">Ver sugerencia</a></form></td>
+                <td><form>
+            <a class="btn btn-primary" href="/verRecomendacion" role="button">Ver sugerencia</a></form></td>
+                <td><form method="POST" action="/verRecomendacion" align="left">
+            <a class="btn btn-primary" href="/verRecomendacion" role="button">Ver sugerencia</a></form></td>
+              </tr>
+          </tbody>
+        </table>
 
 
 <br></br>
