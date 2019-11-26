@@ -112,6 +112,7 @@ public class DAOMySQL implements DAO {
 	
 	@Override
 	public TipoDeRopa findByNameTipoDeRopa(String nombre) {
+		System.out.println(nombre);
 	 return EntityManagerHelper.getEntityManager().createQuery("from TipoDeRopa tr where tr.nombre = :n", TipoDeRopa.class)
  			.setParameter("n", nombre).getSingleResult();
     }

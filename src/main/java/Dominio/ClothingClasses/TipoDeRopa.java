@@ -16,12 +16,12 @@ import javax.persistence.Transient;
 import db.EntidadPersistente;
 
 @Entity
-@Table(name = "tipoDeRopa")
+@Table(name = "TipoDeRopa")
 public class TipoDeRopa extends EntidadPersistente{
 	@Column(name = "nombre")
 	private String nombre;
 	
-	@Column(name = "abrigp")
+	@Column(name = "abrigo")
 	private Integer abrigo;
 	 
 	@Enumerated(EnumType.ORDINAL)

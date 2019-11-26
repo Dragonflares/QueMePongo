@@ -47,8 +47,8 @@ public class Server {
 
 	public static void insertarUsuariosParaProbar() throws ProcessingDataFailedException, Exception 
 	{
-		//if(!FactoryRepositorioUsuario.get().existeUsuario("usuario123", "asd123"))
-		//{
+		if(!Config.useDataBase || !FactoryRepositorioUsuario.get().existeUsuario("aroco", "123456"))
+		{
 		Usuario usuario1 = new Usuario("aroco", "123456");
 		Usuario usuario2 = new Usuario("jazul", "123456");
 
@@ -91,6 +91,7 @@ public class Server {
 			FactoryRepositorioColor.get().agregar(new Color("Blanco",0));
 			FactoryRepositorioColor.get().agregar(new Color("Negro",0));
 			FactoryRepositorioColor.get().agregar(new Color("Celeste",0));
+			FactoryRepositorioColor.get().agregar(new Color("Verde",0));
 
 			ArrayList<Capas> capa1 = new ArrayList<>();
 			capa1.add(Capas.CAPA1);
@@ -135,6 +136,7 @@ public class Server {
 			MNCAlgodonLycraPoliesterJeanNylonSeda.add(nylon);
 			MNCAlgodonLycraPoliesterJeanNylonSeda.add(seda);
 
+			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Nulo", 0, Categoria.CALZADO, capa1, null, ""));
 			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Remera cuello redondo manga corta", 3, Categoria.PARTE_SUPERIOR, capa1, MNCCueroJeanNylon, ""));
 			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Remera cuello redondo manga larga", 4, Categoria.PARTE_SUPERIOR, capa1, MNCCueroJeanNylon, ""));
 			FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Remera escote V manga corta", 3, Categoria.PARTE_SUPERIOR, capa1, MNCCueroJeanNylon, ""));
@@ -154,7 +156,7 @@ public class Server {
 
 		Prenda RemeraCuelloRedondoMangaCorta1 = new Prenda.PrendaBuilder()
 				.material("Algodon")
-				.nombrePrenda("Remera Cuello Redondo Manga Corta")
+				.nombrePrenda("Remera cuello redondo manga corta")
 				.setearColores("Negro","Rojo")
 				.tipoRopa("Remera cuello redondo manga corta")
 				.build();
@@ -263,26 +265,26 @@ public class Server {
 
 		usuario1.agregarGuardarropa(guardarropa1);
 
-		guardarropa1.agregarPrenda(RemeraCuelloRedondoMangaCorta1);
-		guardarropa1.agregarPrenda(RemeraEscoteVMangaCorta1);
-		guardarropa1.agregarPrenda(Musculosa1);
-		guardarropa1.agregarPrenda(Campera1);
-		guardarropa1.agregarPrenda(Sueter1);
-		guardarropa1.agregarPrenda(Bermuda1);
-		guardarropa1.agregarPrenda(PantalonLargo1);
-		guardarropa1.agregarPrenda(Zapatillas1);
-		guardarropa1.agregarPrenda(Zapatos1);
+		usuario1.agregarPrendaAGuardarropa(guardarropa1, RemeraCuelloRedondoMangaCorta1);
+		usuario1.agregarPrendaAGuardarropa(guardarropa1, RemeraEscoteVMangaCorta1);
+		usuario1.agregarPrendaAGuardarropa(guardarropa1, Musculosa1);
+		usuario1.agregarPrendaAGuardarropa(guardarropa1, Campera1);
+		usuario1.agregarPrendaAGuardarropa(guardarropa1, Sueter1);
+		usuario1.agregarPrendaAGuardarropa(guardarropa1, Bermuda1);
+		usuario1.agregarPrendaAGuardarropa(guardarropa1, PantalonLargo1);
+		usuario1.agregarPrendaAGuardarropa(guardarropa1, Zapatillas1);
+		usuario1.agregarPrendaAGuardarropa(guardarropa1, Zapatos1);
 
 		usuario1.agregarGuardarropa(guardarropa2);
-
-		guardarropa2.agregarPrenda(RemeraCuelloRedondaMangaLarga2);
-		guardarropa2.agregarPrenda(RemeraEscoteVMangaLarga2);
-		guardarropa2.agregarPrenda(Musculosa2);
-		guardarropa2.agregarPrenda(Campera1);
-		guardarropa2.agregarPrenda(Sueter2);
-		guardarropa2.agregarPrenda(Zapatos2);
-		guardarropa2.agregarPrenda(Buzo2);
-		guardarropa2.agregarPrenda(Sandalias2);
+		
+		usuario2.agregarPrendaAGuardarropa(guardarropa2, RemeraCuelloRedondaMangaLarga2);
+		usuario2.agregarPrendaAGuardarropa(guardarropa2, RemeraEscoteVMangaLarga2);
+		usuario2.agregarPrendaAGuardarropa(guardarropa2, Musculosa2);
+		usuario2.agregarPrendaAGuardarropa(guardarropa2, Sueter2);
+		usuario2.agregarPrendaAGuardarropa(guardarropa2, Zapatos2);
+		usuario2.agregarPrendaAGuardarropa(guardarropa2, Buzo2);
+		usuario2.agregarPrendaAGuardarropa(guardarropa2, Sandalias2);
+		usuario2.agregarPrendaAGuardarropa(guardarropa2, Pollera2);
 
 		guardarropa1.permitirAccesoaUsuario(usuario2);
 		usuario2.agregarGuardarropa(guardarropa2);
@@ -292,6 +294,7 @@ public class Server {
 		evento1.getPrendasUltimoAtuendo();
 		FactoryRepositorioUsuario.get().agregar(usuario1);
 		FactoryRepositorioUsuario.get().agregar(usuario2);
+	}
 	}
 }
 
