@@ -1,41 +1,26 @@
 [
 	{
-		"nombre": "Rojo"
+		"nombre": "Rojo",
+		"degrees": 50
 	},
 	{
-		"nombre": "Azul"
+		"nombre": "Azul",
+		"degrees" : 170
 	},
 	{
-		"nombre": "Amarillo"
+		"nombre": "Amarillo",
+		"degrees": 0
 	},
 	{
-		"nombre": "Blanco"
+		"nombre": "Blanco",
+		"degrees": 0
 	},
 	{
-		"nombre": "Verde"
+		"nombre": "Verde",
+		"degrees": 50
 	},
 	{
-		"nombre": "Negro"
-	},
-	{
-		"nombre": "Violeta"
-	},
-	{
-		"nombre": "Naranja"
-	},
-	{
-		"nombre": "Rosa"
-	},
-	{
-		"nombre": "Beige"
-	},
-	{
-		"nombre": "Marron"
-	},
-	{
-		"nombre": "Gris"
-	},
-	{
-		"nombre": "Celeste"
+		"nombre": "Negro",
+		"degrees": 0
 	}
 ]

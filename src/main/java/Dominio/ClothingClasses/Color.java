@@ -12,6 +12,10 @@ public class Color extends EntidadPersistente{
 	@Column(name = "nombre")
 	private String nombre;
 	
+	//los degrees son en base al amarillo, rancio fuerte
+	@Column(name = "degrees")
+	private int degrees;
+	
 	public Color() {}
 	
 	public Color(String nuevoNombre) {	
@@ -20,6 +24,10 @@ public class Color extends EntidadPersistente{
 	
 	public String getNombre() {
 		return nombre;
+	}
+	
+	public int getDegrees() {
+		return degrees;
 	}
 	
 	public void setNombre(String nombre) {
