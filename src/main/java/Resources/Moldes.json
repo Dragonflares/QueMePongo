@@ -26,7 +26,7 @@
 			{
 				"nombre": "Pantalon largo", "abrigo": 1, 
 				"categoria": "PARTE_INFERIOR",
-				"capasEnDondePuedeEstar":[], 
+				"capasEnDondePuedeEstar":["CAPA2"], 
 				"materialesNoCompatibles": 
 				[
 					{"nombre": "Cuero"}, 
@@ -38,7 +38,7 @@
 			{
 				"nombre": "Zapatos", "abrigo": 0,
 				"categoria": "CALZADO",
-				"capasEnDondePuedeEstar":[], 
+				"capasEnDondePuedeEstar":["CAPA2"], 
 				"materialesNoCompatibles": 
 				[
 					{"nombre": "Plastico"}, 
@@ -65,7 +65,7 @@
 				"categoria": "PARTE_SUPERIOR",
 				"capasEnDondePuedeEstar":
 				[
-					"CAPA1",
+					"CAPA1"
 				],
 				"materialesNoCompatibles":
 				[
@@ -81,7 +81,7 @@
 			{
 				"nombre": "Pollera", "abrigo": 0,
 				"categoria": "PARTE_INFERIOR",
-				"capasEnDondePuedeEstar":[], 
+				"capasEnDondePuedeEstar":["CAPA2"], 
 				"materialesNoCompatibles": 
 				[
 					{"nombre": "Cuero"}, 
@@ -94,7 +94,7 @@
 			{
 				"nombre": "Sandalias", "abrigo": 0,
 				"categoria": "CALZADO",
-				"capasEnDondePuedeEstar":[], 
+				"capasEnDondePuedeEstar":["CAPA2"], 
 				"materialesNoCompatibles": 
 				[
 					{"nombre": "Cuero"}, 
@@ -120,7 +120,7 @@
 				"categoria": "PARTE_SUPERIOR",
 				"capasEnDondePuedeEstar":
 				[
-					"CAPA1",
+					"CAPA1"
 				],
 				"materialesNoCompatibles":
 				[
@@ -136,7 +136,7 @@
 			{
 				"nombre": "Pantalon largo", "abrigo": 1, 
 				"categoria": "PARTE_INFERIOR",
-				"capasEnDondePuedeEstar":[], 
+				"capasEnDondePuedeEstar":["CAPA2"], 
 				"materialesNoCompatibles": 
 				[
 					{"nombre": "Cuero"}, 
@@ -148,7 +148,7 @@
 			{
 				"nombre": "Tacos", "abrigo": 0,
 				"categoria": "CALZADO",
-				"capasEnDondePuedeEstar": [], 
+				"capasEnDondePuedeEstar": ["CAPA2"], 
 				"materialesNoCompatibles": 
 				[
 					{"nombre": "Cuero"}, 
@@ -173,7 +173,7 @@
 				"categoria": "PARTE_SUPERIOR",
 				"capasEnDondePuedeEstar":
 				[
-					"CAPA1",
+					"CAPA1"
 				],
 				"materialesNoCompatibles":
 				[
@@ -189,7 +189,7 @@
 			{
 				"nombre": "Pantalon largo", "abrigo": 1, 
 				"categoria": "PARTE_INFERIOR",
-				"capasEnDondePuedeEstar":[], 
+				"capasEnDondePuedeEstar":["CAPA2"], 
 				"materialesNoCompatibles": 
 				[
 					{"nombre": "Cuero"}, 
@@ -201,7 +201,7 @@
 			{
 				"nombre": "Tacos", "abrigo": 0,
 				"categoria": "CALZADO",
-				"capasEnDondePuedeEstar": [], 
+				"capasEnDondePuedeEstar": ["CAPA2"], 
 				"materialesNoCompatibles": 
 				[
 					{"nombre": "Cuero"}, 
