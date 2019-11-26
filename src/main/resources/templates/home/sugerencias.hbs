@@ -44,8 +44,9 @@
 
         <td>{{ nombre }}</td>
         
-        <td><form><input id="evento" name="evento" type="hidden" value={{ nombre }}>
-            <a class="btn btn-primary" href="/verRecomendacion" role="button">Ver sugerencia</a></form></td>
+        <td><form method="POST" action="/generarRecomendacion" align="left">
+            <input id="evento" name="evento" type="hidden" value={{ nombre }}>
+            <button type="submit" class="btn btn-primary">Ver sugerencia</button></form></td>
       </tr>
     {{/each}}
   </tbody>
