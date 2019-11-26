@@ -35,6 +35,7 @@ import Repositorios.factories.FactoryRepositorioRopa;
 import Repositorios.factories.FactoryRepositorioUsuario;
 import Repositorios.factories.FactoryRepositoriosMaterial;
 import config.Config;
+import entities.ProcessingDataFailedException;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -271,6 +272,30 @@ public class WardrobeController {
 		
 		
 		return new ModelAndView(viewModel, "home/altaPrenda.hbs");
+	}
+	
+	public static ModelAndView registrarPrenda(Request req, Response res) throws JsonIOException, JsonSyntaxException, ProcessingDataFailedException, FileNotFoundException, Exception {
+		
+		String tipo = req.queryParams("tipo");
+		String material = req.queryParams("material");
+		String colorPrincipal = req.queryParams("colorPrincipal");
+		String colorSecundario = req.queryParams("colorSecundario");
+		String nombrePrenda = req.queryParams("nombrePrenda");
+		
+		Prenda prendaCreada = new Prenda.PrendaBuilder()
+				.material(material)
+				.nombrePrenda(nombrePrenda)
+				.setearColores(colorPrincipal, colorSecundario)
+				.tipoRopa(tipo)
+				.build();
+		
+		usuario.agregarPrendaAGuardarropa(guardarropaSeleccionado, prendaCreada);
+		
+		FactoryRepositorioUsuario.get().agregar(usuario);
+		
+		res.redirect("/guardarropas");
+		
+		return null;
 	}
 
 	//---------------------------------Calificaciones-------------------------

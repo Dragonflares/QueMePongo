@@ -67,7 +67,7 @@ public class Router {
 		Spark.get("/guardarropas", WardrobeController::mostrarPrendas, engine);
 		
 		Spark.get("/altaPrenda", WardrobeController::indexViewAgregarPrenda, engine);	
-		//Spark.post("/guardarropas/:idGuardarropa/prendas", WardrobeController::registrarPrenda);
+		Spark.post("/altaPrenda", WardrobeController::registrarPrenda);
 		
 		Spark.path("/eventos",  () -> {
 			Spark.get("", WardrobeController::verEventos, engine); // creo que no tendria que ser Wardrobe, pero lo puse para ponerle un cliente a Event
