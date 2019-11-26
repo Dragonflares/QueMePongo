@@ -41,7 +41,7 @@ public class WardrobeController {
 	private static Guardarropa guardarropaSeleccionado = null;
 	private static List<Prenda> prendasSeleccionadas = null;
 	private static Evento eventoEnCuestion = null;
-	
+
 	public static ModelAndView init(Request req, Response res) {
 
 		HashMap<String, Object> viewModel = new HashMap<>();
@@ -49,65 +49,86 @@ public class WardrobeController {
 
 		return new ModelAndView(viewModel, "home/guardarropas.hbs");
 	}
-	
-	
-	
+
+
+
 	public static ModelAndView aceptarRecomendacion(Request req, Response res) {
 
 		HashMap<String, Object> viewModel = new HashMap<>();
-		
-		
-		
+
+
+
 		Atuendo nuevoAtuendo = eventoEnCuestion.getSugerencias().get(eventoEnCuestion.getSugerencias().size()-1);
 		eventoEnCuestion.setUltimoAtuendoAceptado(nuevoAtuendo);
-		
+
 		List<Evento> eventosProximos = usuario.getEventosProximosYnotificados().stream()
 				.filter(e->e.getUltimoAtuendoAceptado() == null)
 				.collect(Collectors.toList());
-		
-		
+
+
 		viewModel.put("eventosProximos", eventosProximos);
-		
+
 		List<Evento> eventosNoUsados = usuario.getEventosProximosYnotificados().stream()
 				.filter(e->e.getUltimoAtuendoAceptado()!= null).collect(Collectors.toList());
 		viewModel.put("eventosNoUsados", eventosNoUsados);
-		
-		
+
+
 		return new ModelAndView(viewModel, "home/sugerencias.hbs");
 	}
-	
-	
+
+
 	public static ModelAndView rechazarRecomendacion(Request req, Response res) throws Exception {
 
 		HashMap<String, Object> viewModel = new HashMap<>();
 		Atuendo atuendoRechazado = eventoEnCuestion.getUltimaSugerencia();
 		eventoEnCuestion.getSugerencias().remove(atuendoRechazado);
 		usuario.agregarARechazados(atuendoRechazado);
-		Atuendo nuevoAtuendo = usuario.pedirRecomendacion(eventoEnCuestion);
 		
-		
-		List<Prenda> prendasUltimaSugerencia = nuevoAtuendo.getPrendas();
-		viewModel.put("prendasUltimaSugerencia", prendasUltimaSugerencia);
+		Atuendo atuendoSugerencia = usuario.pedirRecomendacion(eventoEnCuestion);
 
-		
-		return new ModelAndView(viewModel, "home/guardarropas.hbs");
+		if(atuendoSugerencia == null) {
+			Prenda prendaNula = new Prenda.PrendaBuilder()
+					.nombrePrenda("No hay suficientes prendas para generar una recomendación.")
+					.build();
+			List<Prenda> prendasX = new ArrayList<>();
+			prendasX.add(prendaNula);
+			viewModel.put("prendasUltimaSugerencia", prendasX);
+		}
+		else {
+			viewModel.put("prendasUltimaSugerencia", atuendoSugerencia.getPrendas());
+		}
+		usuario.setUltimoAtuendo(atuendoRechazado);
+
+		return new ModelAndView(viewModel, "home/recomendacion.hbs");
 	}
-	
-	
+
+
 	public static ModelAndView deshacerRecomendacion(Request req, Response res) {
 
 		HashMap<String, Object> viewModel = new HashMap<>();
-		Atuendo atuendoRechazado = eventoEnCuestion.getUltimaSugerencia();
-		eventoEnCuestion.getSugerencias().remove(atuendoRechazado);
+		if(eventoEnCuestion.getSugerencias().isEmpty()) {
+		}
+		else {
+			Atuendo atuendoRechazado = eventoEnCuestion.getUltimaSugerencia();
+			if(atuendoRechazado == null) {
+				
+			}
+			else
+			{
+				eventoEnCuestion.getSugerencias().remove(atuendoRechazado);	
+			}
+		}
+		
 		Atuendo nuevoAtuendo = usuario.getUltimoAtuendo();
+		usuario.eliminarDeRechazados(nuevoAtuendo);
 		List<Prenda> prendasUltimaSugerencia = nuevoAtuendo.getPrendas();
 		viewModel.put("prendasUltimaSugerencia", prendasUltimaSugerencia);
 		eventoEnCuestion.getSugerencias().add(nuevoAtuendo);
-		
-		return new ModelAndView(viewModel, "home/guardarropas.hbs");
+
+		return new ModelAndView(viewModel, "home/recomendacion.hbs");
 	}
-	
-	
+
+
 
 	public static ModelAndView indexViewDatosDeUnGuardarropa(Request req, Response res) {
 
@@ -131,7 +152,7 @@ public class WardrobeController {
 		return new ModelAndView(viewModel, "home/prendas.hbs");
 	}
 
-	
+
 	public static ModelAndView mostrarSugerencias(Request req, Response res) {
 
 		HashMap<String, Object> viewModel = new HashMap<>();
@@ -139,24 +160,24 @@ public class WardrobeController {
 		List<Evento> eventosProximos = usuario.getEventosProximosYnotificados().stream()
 				.filter(e->e.getUltimoAtuendoAceptado() == null)
 				.collect(Collectors.toList());
-		
-		
+
+
 		viewModel.put("eventosProximos", eventosProximos);
-		
+
 		List<Evento> eventosNoUsados = usuario.getEventosProximosYnotificados().stream()
 				.filter(e->e.getUltimoAtuendoAceptado()!= null).collect(Collectors.toList());
 		viewModel.put("eventosNoUsados", eventosNoUsados);
 		return new ModelAndView(viewModel, "home/sugerencias.hbs");
-		
+
 	}
 
 
 	public static ModelAndView generaRecomendacion(Request req, Response res) throws Exception {
-		
+
 		HashMap<String, Object> viewModel = new HashMap<>();
-		
+
 		String estilo = req.queryParams("estilo");
-		
+
 		Estilo nuevoEstilo;
 
 		switch(estilo) {
@@ -186,7 +207,7 @@ public class WardrobeController {
 			nuevoEstilo = Estilo.ELEGANTE_SPORT;
 			break;
 		}
-		
+
 
 		default : nuevoEstilo = Estilo.FORMAL;
 		}
@@ -195,10 +216,18 @@ public class WardrobeController {
 		eventoEnCuestion = new Evento(fecha.toString(),fecha,"casa",nuevoEstilo,null,importancia);
 		usuario.agregarEvento(eventoEnCuestion);
 		Atuendo atuendoSugerencia = usuario.pedirRecomendacion(eventoEnCuestion);
+		if(atuendoSugerencia == null) {
+			Prenda prendaNula = new Prenda.PrendaBuilder()
+					.nombrePrenda("No hay suficientes prendas para generar una recomendación.")
+					.build();
+			List<Prenda> prendasX = new ArrayList<>();
+			prendasX.add(prendaNula);
+			viewModel.put("prendasUltimaSugerencia", prendasX);
+		}
+		else {
+			viewModel.put("prendasUltimaSugerencia", atuendoSugerencia.getPrendas());
+		}
 
-		
-		viewModel.put("prendasUltimaSugerencia", atuendoSugerencia.getPrendas());
-		
 		return new ModelAndView(viewModel, "home/recomendacion.hbs");
 	}
 
@@ -350,7 +379,7 @@ public class WardrobeController {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm", Locale.ENGLISH); 
 		LocalDateTime fechaElegida = LocalDateTime.parse(req.queryParams("fecha"), formatter);
 		Estilo estilo = Estilo.valueOf(req.queryParams("estilo"));
-		
+
 		Evento eventoAAgregar = new Evento(req.queryParams("nombreEvento"), fechaElegida, req.queryParams("direccionEvento"), estilo,null,null);
 		usuario.agregarEvento(eventoAAgregar);
 		FactoryRepositorioUsuario.get().modificar(usuario);

@@ -143,10 +143,12 @@ public class Usuario extends EntidadPersistente{
 		Atuendo atuendoFinal = null;
 		Random rand = new Random();
 		int cantGuardarropas = guardarropasConEstilo.size();
-		while(atuendoFinal == null)
+		int intentos = 0;
+		while(atuendoFinal == null && intentos < 10)
 		{
 			Guardarropa guardarropa =  guardarropasConEstilo.get(rand.nextInt(cantGuardarropas));
 			atuendoFinal = guardarropa.generarRecomendacion(evento, this);
+			intentos++;
 		}
 		this.setUltimoAtuendo(atuendoFinal);
 		return atuendoFinal;
