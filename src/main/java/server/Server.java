@@ -49,17 +49,17 @@ public class Server {
 	{
 		//if(!FactoryRepositorioUsuario.get().existeUsuario("usuario123", "asd123"))
 		//{
-			Usuario usuario1 = new Usuario("usuario123", "asd123");
-			Usuario usuario2 = new Usuario("lala", "qwe123");
-			
+			Usuario usuario1 = new Usuario("aroco", "123456");
+			Usuario usuario2 = new Usuario("jazul", "123456");
 			
 			usuario2.setTipoDeCuenta(new Premium());
+			
 			Guardarropa guardarropa1 = new Guardarropa(usuario1, Estilo.CASUAL);
-			guardarropa1.setNombre("Guardarropas Tranqui");
-			Guardarropa guardarropa2 = new Guardarropa(usuario1, Estilo.ELEGANTE);
-			guardarropa2.setNombre("Guardarropas Cheto");
+			guardarropa1.setNombre("Guardarropas");
+			Guardarropa guardarropa2 = new Guardarropa(usuario1, Estilo.CASUAL);
+			guardarropa2.setNombre("Guardarropas");
 			LocalDateTime dentroDeUnaSemana = LocalDateTime.now().plusDays(7);
-			Evento evento1 = new Evento("Cumpleaños", LocalDateTime.now().plusDays(2), "Avenida 123", Estilo.ELEGANTE_SPORT, null, new Media());
+			Evento evento1 = new Evento("Cumpleanios", LocalDateTime.now().plusDays(2), "Avenida 123", Estilo.ELEGANTE_SPORT, null, new Media());
 			Evento evento2 = new Evento("Casamiento", dentroDeUnaSemana, "Calle 13", Estilo.ELEGANTE, null, new Alta());
 			Evento evento3 = new Evento("Fiesta", LocalDateTime.now(), "Calle falsa 123", Estilo.CASUAL, null, new Baja());
 			Evento evento4 = new Evento("Bautismo", dentroDeUnaSemana, "Iglesa 123", Estilo.FORMAL, null, new Media());
@@ -70,92 +70,226 @@ public class Server {
 
 			if(Config.useDataBase)
 			{
+				Material algodon = new Material("Algodon");
+				Material lycra = new Material("Lycra");
 				Material cuero = new Material("Cuero");
-				Material lana = new Material("Lana");
+				Material poliester = new Material("Poliester");
 				Material jean = new Material("Jean");
-				Material goma = new Material("Goma");
-				Material plastico = new Material("Plastico");
-				Material gabardina = new Material("Gabardina");
-				Material gamuza = new Material("Gamuza");
-				FactoryRepositoriosMaterial.get().agregar(new Material("Algodon"));
-				FactoryRepositoriosMaterial.get().agregar(new Material("Lycra"));
+				Material nylon = new Material("Nylon");
+				Material seda = new Material("Seda");
+				FactoryRepositoriosMaterial.get().agregar(algodon);
+				FactoryRepositoriosMaterial.get().agregar(lycra);
 				FactoryRepositoriosMaterial.get().agregar(cuero);
-				FactoryRepositoriosMaterial.get().agregar(lana);
+				FactoryRepositoriosMaterial.get().agregar(poliester);
 				FactoryRepositoriosMaterial.get().agregar(jean);
-				FactoryRepositoriosMaterial.get().agregar(goma);
-				FactoryRepositoriosMaterial.get().agregar(plastico);
-				FactoryRepositoriosMaterial.get().agregar(new Material("Seda"));
-				FactoryRepositoriosMaterial.get().agregar(gamuza);
-				FactoryRepositoriosMaterial.get().agregar(gabardina);
+				FactoryRepositoriosMaterial.get().agregar(nylon);
+				FactoryRepositoriosMaterial.get().agregar(seda);
 
 				FactoryRepositorioColor.get().agregar(new Color("Rojo",290));
 				FactoryRepositorioColor.get().agregar(new Color("Azul",170));
 				FactoryRepositorioColor.get().agregar(new Color("Amarillo",0));
 				FactoryRepositorioColor.get().agregar(new Color("Blanco",0));
 				FactoryRepositorioColor.get().agregar(new Color("Negro",0));
+				FactoryRepositorioColor.get().agregar(new Color("Celeste",0));
 
-				ArrayList<Capas> capasRemera = new ArrayList<>();
-				capasRemera.add(Capas.CAPA1);
-				ArrayList<Capas> capasSandalia = new ArrayList<>();
-				capasSandalia.add(Capas.CAPA2);
-				ArrayList<Material> materialesNoCompatiblesRemera = new ArrayList<>();
-				materialesNoCompatiblesRemera.add(cuero);
-				materialesNoCompatiblesRemera.add(lana);
-				materialesNoCompatiblesRemera.add(goma);
-				materialesNoCompatiblesRemera.add(plastico);
-				materialesNoCompatiblesRemera.add(gabardina);
-				materialesNoCompatiblesRemera.add(gamuza);
-				ArrayList<Material> materialesNoCompatiblesSandalia = new ArrayList<>();
-				materialesNoCompatiblesSandalia.add(gabardina);
-				materialesNoCompatiblesSandalia.add(gamuza);
-				ArrayList<Material> materialesNoCompatiblesPantalon = new ArrayList<>();
-				materialesNoCompatiblesPantalon.add(cuero);
-				materialesNoCompatiblesPantalon.add(lana);
-				materialesNoCompatiblesPantalon.add(goma);
-				materialesNoCompatiblesPantalon.add(plastico);
-				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Remera manga larga", 4, Categoria.PARTE_SUPERIOR, capasRemera, materialesNoCompatiblesRemera, ""));
-				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Remera manga corta", 4, Categoria.PARTE_SUPERIOR, capasRemera, materialesNoCompatiblesRemera, ""));
-				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Pantalon largo", 4, Categoria.PARTE_INFERIOR, null, materialesNoCompatiblesRemera, ""));
-				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Sandalias", 2, Categoria.CALZADO, capasSandalia, materialesNoCompatiblesSandalia, ""));
+				ArrayList<Capas> capa1 = new ArrayList<>();
+				capa1.add(Capas.CAPA1);
+				ArrayList<Capas> capas23 = new ArrayList<>();
+				capas23.add(Capas.CAPA2);
+				capas23.add(Capas.CAPA3);
+				ArrayList<Capas> capas234 = new ArrayList<>();
+				capas234.add(Capas.CAPA2);
+				capas234.add(Capas.CAPA3);
+				capas234.add(Capas.CAPA4);
+				
+				ArrayList<Material> MNCCueroJeanNylon = new ArrayList<>();
+				MNCCueroJeanNylon.add(cuero);
+				MNCCueroJeanNylon.add(jean);
+				MNCCueroJeanNylon.add(nylon);
+				ArrayList<Material> MNCLycraCueroJeanNylon = new ArrayList<>();
+				MNCLycraCueroJeanNylon.add(lycra);
+				MNCLycraCueroJeanNylon.add(cuero);
+				MNCLycraCueroJeanNylon.add(jean);
+				MNCLycraCueroJeanNylon.add(nylon);
+				ArrayList<Material> MNCLycraJean = new ArrayList<>();
+				MNCLycraJean.add(lycra);
+				MNCLycraJean.add(jean);
+				ArrayList<Material> MNCLycraCuero = new ArrayList<>();
+				MNCLycraCuero.add(lycra);
+				MNCLycraCuero.add(cuero);
+				ArrayList<Material> MNCCueroJeanSeda = new ArrayList<>();
+				MNCCueroJeanSeda.add(cuero);
+				MNCCueroJeanSeda.add(jean);
+				MNCCueroJeanSeda.add(seda);
+				ArrayList<Material> MNCCueroPoliesterJeanNylonSeda = new ArrayList<>();
+				MNCCueroPoliesterJeanNylonSeda.add(cuero);
+				MNCCueroPoliesterJeanNylonSeda.add(poliester);
+				MNCCueroPoliesterJeanNylonSeda.add(jean);
+				MNCCueroPoliesterJeanNylonSeda.add(nylon);
+				MNCCueroPoliesterJeanNylonSeda.add(seda);
+				ArrayList<Material> MNCAlgodonLycraPoliesterJeanNylonSeda = new ArrayList<>();
+				MNCAlgodonLycraPoliesterJeanNylonSeda.add(algodon);
+				MNCAlgodonLycraPoliesterJeanNylonSeda.add(lycra);
+				MNCAlgodonLycraPoliesterJeanNylonSeda.add(poliester);
+				MNCAlgodonLycraPoliesterJeanNylonSeda.add(jean);
+				MNCAlgodonLycraPoliesterJeanNylonSeda.add(nylon);
+				MNCAlgodonLycraPoliesterJeanNylonSeda.add(seda);
+				
+				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Remera cuello redondo manga corta", 3, Categoria.PARTE_SUPERIOR, capa1, MNCCueroJeanNylon, ""));
+				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Remera cuello redondo manga larga", 4, Categoria.PARTE_SUPERIOR, capa1, MNCCueroJeanNylon, ""));
+				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Remera escote V manga corta", 3, Categoria.PARTE_SUPERIOR, capa1, MNCCueroJeanNylon, ""));
+				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Remera escote V manga larga", 4, Categoria.PARTE_SUPERIOR, capa1, MNCCueroJeanNylon, ""));
+				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Sueter", 7, Categoria.PARTE_SUPERIOR, capas23, MNCLycraCueroJeanNylon, ""));
+				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Campera", 7, Categoria.PARTE_SUPERIOR, capas234, MNCLycraJean, ""));
+				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Pantalon largo", 1, Categoria.PARTE_INFERIOR, null, MNCLycraCuero, ""));
+				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Pantalon corto", 0, Categoria.PARTE_INFERIOR, null, MNCLycraCuero, ""));
+				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Bermuda", 0, Categoria.PARTE_INFERIOR, null, MNCLycraCuero, ""));
+				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Pollera", 0, Categoria.PARTE_INFERIOR, null, MNCLycraCuero, ""));
+				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Buzo", 6, Categoria.PARTE_SUPERIOR, capas23, MNCCueroPoliesterJeanNylonSeda, ""));
+				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Musculosa", 1, Categoria.PARTE_SUPERIOR, capa1, MNCCueroJeanSeda, ""));
+				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Zapatillas", 0, Categoria.CALZADO, null, MNCAlgodonLycraPoliesterJeanNylonSeda, ""));
+				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Zapatos", 0, Categoria.CALZADO, null, MNCAlgodonLycraPoliesterJeanNylonSeda, ""));
+				FactoryRepositorioRopa.get().agregar(new TipoDeRopa("Sandalias", 0, Categoria.CALZADO, null, MNCAlgodonLycraPoliesterJeanNylonSeda, ""));
 			}
 			
-			Prenda remeraMangaLargaRojaDeAlgodon = new Prenda.PrendaBuilder()
+			Prenda RemeraCuelloRedondoMangaCorta1 = new Prenda.PrendaBuilder()
 					.material("Algodon")
-					.nombrePrenda("remeraMangaLargaRojaDeAlgodon")
-					.setearColores("Rojo", "Negro")
-					.tipoRopa("Camiseta de manga larga")
+					.nombrePrenda("Remera Cuello Redondo Manga Corta")
+					.setearColores("Negro","Rojo")
+					.tipoRopa("Remera cuello redondo manga corta")
 					.build();
-			
-			Prenda pantalonLargoNegroDeLycra = new Prenda.PrendaBuilder()
+			Prenda RemeraEscoteVMangaCorta1 = new Prenda.PrendaBuilder()
 					.material("Lycra")
-					.nombrePrenda("pantalonLargoNegroDeLycra")
-					.setearColores("Negro", "Azul")
+					.nombrePrenda("Remera escote V manga corta")
+					.setearColores("Blanco", "Rojo")
+					.tipoRopa("Remera escote V manga corta")
+					.build();
+			Prenda Musculosa1 = new Prenda.PrendaBuilder()
+					.material("Lycra")
+					.nombrePrenda("Musculosa")
+					.setearColores("Amarillo", "Blanco")
+					.tipoRopa("Musculosa")
+					.build();
+			Prenda Campera1 = new Prenda.PrendaBuilder()
+					.material("Cuero")
+					.nombrePrenda("Campera")
+					.setearColores("Blanco", "Blanco")
+					.tipoRopa("Campera")
+					.build();
+			Prenda Sueter1 = new Prenda.PrendaBuilder()
+					.material("Poliester")
+					.nombrePrenda("Sueter")
+					.setearColores("Blanco", "Blanco")
+					.tipoRopa("Sueter")
+					.build();
+			Prenda Bermuda1 = new Prenda.PrendaBuilder()
+					.material("Jean")
+					.nombrePrenda("Bermuda")
+					.setearColores("Celeste", "Blanco")
+					.tipoRopa("Bermuda")
+					.build();
+			Prenda PantalonLargo1 = new Prenda.PrendaBuilder()
+					.material("Nylon")
+					.nombrePrenda("Pantalon largo")
+					.setearColores("Celeste", "Blanco")
 					.tipoRopa("Pantalon largo")
 					.build();
-			Prenda sandaliasVerdes = new Prenda.PrendaBuilder()
-					.material("Goma")
-					.nombrePrenda("Sandalias Verdes")
-					.setearColores("Verde", "Blanco")
+			Prenda Zapatillas1 = new Prenda.PrendaBuilder()
+					.material("Nylon")
+					.nombrePrenda("Zapatillas")
+					.setearColores("Rojo", "Blanco")
+					.tipoRopa("Zapatillas")
+					.build();
+			Prenda Zapatos1 = new Prenda.PrendaBuilder()
+					.material("Cuero")
+					.nombrePrenda("Zapatos")
+					.setearColores("Negro", "Blanco")
+					.tipoRopa("Zapatos")
+					.build();
+			
+			Prenda RemeraCuelloRedondaMangaLarga2 = new Prenda.PrendaBuilder()
+					.material("Lycra")
+					.nombrePrenda("Remera cuello redondo manga larga")
+					.setearColores("Amarillo", "Rojo")
+					.tipoRopa("Remera cuello redondo manga larga")
+					.build();
+			Prenda RemeraEscoteVMangaLarga2 = new Prenda.PrendaBuilder()
+					.material("Algodon")
+					.nombrePrenda("Remera escote V manga larga")
+					.setearColores("Blanco", "Rojo")
+					.tipoRopa("Remera escote V manga larga")
+					.build();
+			Prenda Musculosa2 = new Prenda.PrendaBuilder()
+					.material("Lycra")
+					.nombrePrenda("Musculosa")
+					.setearColores("Verde", "Rojo")
+					.tipoRopa("Musculosa")
+					.build();
+			Prenda Sueter2 = new Prenda.PrendaBuilder()
+					.material("Poliester")
+					.nombrePrenda("Sueter")
+					.setearColores("Verde", "Rojo")
+					.tipoRopa("Sueter")
+					.build();
+			Prenda Pollera2 = new Prenda.PrendaBuilder()
+					.material("Seda")
+					.nombrePrenda("Pollera")
+					.setearColores("Negro", "Rojo")
+					.tipoRopa("Pollera")
+					.build();
+			Prenda Zapatos2 = new Prenda.PrendaBuilder()
+					.material("Cuero")
+					.nombrePrenda("Zapatos")
+					.setearColores("Negro", "Rojo")
+					.tipoRopa("Zapatos")
+					.build();
+			Prenda Buzo2 = new Prenda.PrendaBuilder()
+					.material("Algodon")
+					.nombrePrenda("Buzo")
+					.setearColores("Blanco", "Rojo")
+					.tipoRopa("Buzo")
+					.build();
+			Prenda Sandalias2 = new Prenda.PrendaBuilder()
+					.material("Cuero")
+					.nombrePrenda("Sandalias")
+					.setearColores("Negro", "Rojo")
 					.tipoRopa("Sandalias")
 					.build();
 			
 			ArrayList<Prenda> prendassugerencia = new ArrayList<Prenda>();
-			prendassugerencia.add(remeraMangaLargaRojaDeAlgodon);
+			//prendassugerencia.add(remeraMangaLargaRojaDeAlgodon);
 			Atuendo sugerencia = new Atuendo(prendassugerencia);
 			evento1.agregarSugerencia(sugerencia);
+			
 			usuario1.agregarGuardarropa(guardarropa1);
-			guardarropa1.agregarPrenda(sandaliasVerdes);
+			
+			guardarropa1.agregarPrenda(RemeraCuelloRedondoMangaCorta1);
+			guardarropa1.agregarPrenda(RemeraEscoteVMangaCorta1);
+			guardarropa1.agregarPrenda(Musculosa1);
+			guardarropa1.agregarPrenda(Campera1);
+			guardarropa1.agregarPrenda(Sueter1);
+			guardarropa1.agregarPrenda(Bermuda1);
+			guardarropa1.agregarPrenda(PantalonLargo1);
+			guardarropa1.agregarPrenda(Zapatillas1);
+			guardarropa1.agregarPrenda(Zapatos1);
+			
+			usuario1.agregarGuardarropa(guardarropa2);
+			
+			guardarropa2.agregarPrenda(RemeraCuelloRedondaMangaLarga2);
+			guardarropa2.agregarPrenda(RemeraEscoteVMangaLarga2);
+			guardarropa2.agregarPrenda(Musculosa2);
+			guardarropa2.agregarPrenda(Campera1);
+			guardarropa2.agregarPrenda(Sueter2);
+			guardarropa2.agregarPrenda(Zapatos2);
+			guardarropa2.agregarPrenda(Buzo2);
+			guardarropa2.agregarPrenda(Sandalias2);
+			
 			guardarropa1.permitirAccesoaUsuario(usuario2);
 			usuario2.agregarGuardarropa(guardarropa2);
-			usuario1.agregarPrendaAGuardarropa(guardarropa1, pantalonLargoNegroDeLycra);
-			usuario1.agregarPrendaAGuardarropa(guardarropa1, remeraMangaLargaRojaDeAlgodon);
 			evento1.setUltimoAtuendoAceptado(sugerencia);
 			usuario1.agregarSugerenciaSinCalificar(sugerencia);
 			evento1.setSeNotificoUltimaSugerencia(true);
 			evento1.getPrendasUltimoAtuendo();
-			//System.out.println(guardarropa1.getCantidadDePrendas());
-			
-			usuario2.agregarPrendaAGuardarropa(guardarropa2, remeraMangaLargaRojaDeAlgodon);
 			FactoryRepositorioUsuario.get().agregar(usuario1);
 			FactoryRepositorioUsuario.get().agregar(usuario2);
 		//}
