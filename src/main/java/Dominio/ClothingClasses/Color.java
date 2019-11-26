@@ -18,8 +18,9 @@ public class Color extends EntidadPersistente{
 	
 	public Color() {}
 	
-	public Color(String nuevoNombre) {	
+	public Color(String nuevoNombre, int degrees) {	
 		setNombre(nuevoNombre);
+		setDegrees(degrees);
 	}
 	
 	public String getNombre() {
@@ -32,6 +33,10 @@ public class Color extends EntidadPersistente{
 	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	
+	public void setDegrees(int degrees) {
+		this.degrees = degrees;
 	}
 	
 	public boolean compararNombres(String otroNombre){
