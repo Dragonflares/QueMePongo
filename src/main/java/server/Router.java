@@ -48,7 +48,6 @@ public class Router {
 		
 		Spark.before("/", SessionHandler.allowed());
 		Spark.before("/eventos", SessionHandler.allowed());
-		Spark.before("/eventos", SessionHandler.allowed());
 		Spark.before("/guardarropas/:idGuardarropa",SessionHandler.allowed());
 		Spark.before("/guardarropas",SessionHandler.allowed());
 		Spark.before("/calificaciones",SessionHandler.allowed());
@@ -60,7 +59,8 @@ public class Router {
 	    Spark.before("/rechazarRecomendacion",SessionHandler.allowed()); 
 	    Spark.before("/deshacerRecomendacion",SessionHandler.allowed()); 
 	    Spark.before("/altaPrenda",SessionHandler.allowed()); 
-	    
+	    Spark.before("/suferencias",SessionHandler.allowed()); 
+
 		//Spark.before("/eventos/info", SessionHandler.allowed());
 		
 		Spark.get("/login", LoginController::init,engine);
