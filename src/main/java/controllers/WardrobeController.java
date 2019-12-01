@@ -277,8 +277,6 @@ public class WardrobeController {
 	public static ModelAndView registrarPrenda(Request req, Response res) throws JsonIOException, JsonSyntaxException, ProcessingDataFailedException, FileNotFoundException, Exception {
 		
 		String tipo = req.queryParams("tipo");
-		System.out.println("Tipo prenda: "); // TODO SACAR
-		System.out.println(tipo); // TODO SACAR
 		String material = req.queryParams("material");
 		String colorPrincipal = req.queryParams("colorPrincipal");
 		String colorSecundario = req.queryParams("colorSecundario");
