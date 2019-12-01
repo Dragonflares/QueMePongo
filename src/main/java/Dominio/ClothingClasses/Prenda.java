@@ -121,12 +121,12 @@ public class Prenda extends EntidadPersistente{
 		}
 
 		public PrendaBuilder setearColores(String colorPrimario, String colorSecundario) throws Exception{
-			if (!colorPrimario.equals(colorSecundario)) {
+			//if (!colorPrimario.equals(colorSecundario)) {
 				this.colorPrimario =  FactoryRepositorioColor.get().findByName(colorPrimario);
 				this.colorSecundario = FactoryRepositorioColor.get().findByName(colorSecundario);
-			} else {
-				throw new Exception("No pueden ser del mismo color."); 
-			}
+			//} else {
+				//throw new Exception("No pueden ser del mismo color."); 
+			//}
 			return this;
 		}
 
