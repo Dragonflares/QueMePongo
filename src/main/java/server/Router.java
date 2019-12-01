@@ -59,7 +59,7 @@ public class Router {
 	    Spark.before("/rechazarRecomendacion",SessionHandler.allowed()); 
 	    Spark.before("/deshacerRecomendacion",SessionHandler.allowed()); 
 	    Spark.before("/altaPrenda",SessionHandler.allowed()); 
-	    Spark.before("/suferencias",SessionHandler.allowed()); 
+	    Spark.before("/sugerencias",SessionHandler.allowed()); 
 
 		//Spark.before("/eventos/info", SessionHandler.allowed());
 		

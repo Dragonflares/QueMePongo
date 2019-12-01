@@ -31,22 +31,22 @@ public class TestActualizarFecha {
 	public void init() {
 		LocalDateTime ayer = LocalDateTime.now().minusDays(1);
 		
-		eventoOcurrioYesFrecuente1 = new Evento("Ir a trabajar", ayer, "dire", Estilo.FORMAL, new Diario(), null);
+		eventoOcurrioYesFrecuente1 = new Evento("Ir a trabajar", ayer, "dire", Estilo.FORMAL, new Diario());
 		
 		ArrayList<DayOfWeek> diasQueRepite = new ArrayList<DayOfWeek>();
 		diasQueRepite.add(DayOfWeek.MONDAY);
 		diasQueRepite.add(DayOfWeek.WEDNESDAY);
 		
-		eventoOcurrioYesFrecuente1Personalizado = new Evento("Ir a la facultad", ayer, "dire", Estilo.FORMAL, new DiarioPersonalizado(diasQueRepite), null);
+		eventoOcurrioYesFrecuente1Personalizado = new Evento("Ir a la facultad", ayer, "dire", Estilo.FORMAL, new DiarioPersonalizado(diasQueRepite));
 		
 		LocalDateTime unaSemana = LocalDateTime.now().minusDays(7);
-		eventoOcurrioYesFrecuente7 = new Evento("Ir a bailar", unaSemana, "dire", Estilo.FORMAL, new Semanalmente(), null);
+		eventoOcurrioYesFrecuente7 = new Evento("Ir a bailar", unaSemana, "dire", Estilo.FORMAL, new Semanalmente());
 		
 		LocalDateTime unMes = LocalDateTime.now().minusDays(31);
-		eventoOcurrioYesFrecuente30 = new Evento("Salir con amigos", unMes, "dire", Estilo.FORMAL, new Mensualmente(), null);
+		eventoOcurrioYesFrecuente30 = new Evento("Salir con amigos", unMes, "dire", Estilo.FORMAL, new Mensualmente());
 		
 		LocalDateTime unAnio = LocalDateTime.now().minusYears(1);
-		eventoOcurrioYesFrecuente365 = new Evento("Cumpleaños", unAnio, "dire", Estilo.FORMAL, new Anualmente(), null);
+		eventoOcurrioYesFrecuente365 = new Evento("CumpleaÃ±os", unAnio, "dire", Estilo.FORMAL, new Anualmente());
 
 	}
 	

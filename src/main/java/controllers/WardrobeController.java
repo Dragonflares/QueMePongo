@@ -4,26 +4,18 @@ import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonIOException;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Prenda;
 import Dominio.Estilish.Estilo;
-import Dominio.EventClasses.Alta;
-import Dominio.EventClasses.Baja;
 import Dominio.EventClasses.Evento;
-import Dominio.EventClasses.ImportanciaEvento;
-import Dominio.EventClasses.Media;
 import Dominio.UserClasses.Bien;
 import Dominio.UserClasses.Calificadores;
 import Dominio.UserClasses.Caluroso;
@@ -43,10 +35,7 @@ import spark.Response;
 
 public class WardrobeController {
 	public static Usuario usuario;
-	private static String cadena;
-	private static List<Guardarropa> guardarropas;
 	private static Guardarropa guardarropaSeleccionado = null;
-	private static List<Prenda> prendasSeleccionadas = null;
 	private static Evento eventoEnCuestion = null;
 
 	public static ModelAndView init(Request req, Response res) {
@@ -64,9 +53,9 @@ public class WardrobeController {
 		HashMap<String, Object> viewModel = new HashMap<>();
 
 		
+		Atuendo nuevoAtuendo = usuario.getSugerenciasAceptadasEnElDia().get(usuario.getSugerenciasAceptadasEnElDia().size()-1);
 
-		Atuendo nuevoAtuendo = eventoEnCuestion.getSugerencias().get(eventoEnCuestion.getSugerencias().size()-1);
-		eventoEnCuestion.setUltimoAtuendoAceptado(nuevoAtuendo);
+		//eventoEnCuestion.setUltimoAtuendoAceptado(nuevoAtuendo);
 
 		List<Evento> eventosProximos = usuario.getEventosProximosYnotificados().stream()
 				.filter(e->e.getUltimoAtuendoAceptado() == null)
@@ -78,7 +67,7 @@ public class WardrobeController {
 		List<Evento> eventosNoUsados = usuario.getEventosProximosYnotificados().stream()
 				.filter(e->e.getUltimoAtuendoAceptado()!= null).collect(Collectors.toList());
 		viewModel.put("eventosNoUsados", eventosNoUsados);
-		
+		usuario.setUltimoAtuendo(nuevoAtuendo);
 
 		return new ModelAndView(viewModel, "home/sugerencias.hbs");
 	}
@@ -87,15 +76,15 @@ public class WardrobeController {
 	public static ModelAndView rechazarRecomendacion(Request req, Response res) throws Exception {
 
 		HashMap<String, Object> viewModel = new HashMap<>();
-		Atuendo atuendoRechazado = eventoEnCuestion.getUltimaSugerencia();
-		eventoEnCuestion.getSugerencias().remove(atuendoRechazado);
+		Atuendo atuendoRechazado = usuario.getSugerenciasAceptadasEnElDia().get(usuario.getSugerenciasAceptadasEnElDia().size()-1);
+		usuario.removerASugerenciasAceptadas(atuendoRechazado);
 		usuario.agregarARechazados(atuendoRechazado);
 		
 		Atuendo atuendoSugerencia = usuario.pedirRecomendacion(eventoEnCuestion);
 
 		if(atuendoSugerencia == null) {
 			Prenda prendaNula = new Prenda.PrendaBuilder()
-					.nombrePrenda("No hay suficientes prendas para generar una recomendación.")
+					.nombrePrenda("No hay suficientes prendas para generar una recomendaciï¿½n.")
 					.tipoRopa("Nulo")
 					.setearColores("Blanco", "Rojo")
 					.material("Lycra")
@@ -108,6 +97,7 @@ public class WardrobeController {
 			viewModel.put("prendasUltimaSugerencia", atuendoSugerencia.getPrendas());
 		}
 		usuario.setUltimoAtuendo(atuendoRechazado);
+		usuario.agregarASugerenciasAceptadas(atuendoSugerencia);
 
 		return new ModelAndView(viewModel, "home/recomendacion.hbs");
 	}
@@ -119,13 +109,14 @@ public class WardrobeController {
 		if(eventoEnCuestion.getSugerencias().isEmpty()) {
 		}
 		else {
-			Atuendo atuendoRechazado = eventoEnCuestion.getUltimaSugerencia();
-			if(atuendoRechazado == null) {
+			Atuendo atuendoADeshacer = eventoEnCuestion.getUltimaSugerencia();
+			if(atuendoADeshacer == null) {
 				
 			}
 			else
 			{
-				eventoEnCuestion.getSugerencias().remove(atuendoRechazado);	
+				eventoEnCuestion.getSugerencias().remove(atuendoADeshacer);	
+				usuario.removerASugerenciasAceptadas(atuendoADeshacer);
 			}
 		}
 		
@@ -187,7 +178,8 @@ public class WardrobeController {
 		HashMap<String, Object> viewModel = new HashMap<>();
 
 		String estilo = req.queryParams("estilo");
-
+		
+		
 		Estilo nuevoEstilo;
 
 		switch(estilo) {
@@ -221,14 +213,12 @@ public class WardrobeController {
 
 		default : nuevoEstilo = Estilo.FORMAL;
 		}
-		ImportanciaEvento importancia = new Alta();
 		LocalDateTime fecha = LocalDateTime.now();
-		eventoEnCuestion = new Evento(fecha.toString(),fecha,"casa",nuevoEstilo,null,importancia);
-		usuario.agregarEvento(eventoEnCuestion);
+		eventoEnCuestion = new Evento(fecha.toString(),fecha,"casa",nuevoEstilo,null);
 		Atuendo atuendoSugerencia = usuario.pedirRecomendacion(eventoEnCuestion);
 		if(atuendoSugerencia == null) {
 			Prenda prendaNula = new Prenda.PrendaBuilder()
-					.nombrePrenda("No hay suficientes prendas para generar una recomendación.")
+					.nombrePrenda("No hay suficientes prendas para generar una recomendacion.")
 					.tipoRopa("Nulo")
 					.setearColores("Blanco", "Rojo")
 					.material("Lycra")
@@ -243,6 +233,11 @@ public class WardrobeController {
 				System.out.println(prenda.getNombrePrenda());
 			}
 		}
+		
+		usuario.setUltimoAtuendo(atuendoSugerencia);
+		eventoEnCuestion.agregarSugerencia(atuendoSugerencia);
+
+		usuario.agregarASugerenciasAceptadas(atuendoSugerencia);
 		
 		return new ModelAndView(viewModel, "home/recomendacion.hbs");
 	}
@@ -277,8 +272,6 @@ public class WardrobeController {
 	public static ModelAndView registrarPrenda(Request req, Response res) throws JsonIOException, JsonSyntaxException, ProcessingDataFailedException, FileNotFoundException, Exception {
 		
 		String tipo = req.queryParams("tipo");
-		System.out.println("Tipo prenda: "); // TODO SACAR
-		System.out.println(tipo); // TODO SACAR
 		String material = req.queryParams("material");
 		String colorPrincipal = req.queryParams("colorPrincipal");
 		String colorSecundario = req.queryParams("colorSecundario");
@@ -429,7 +422,7 @@ public class WardrobeController {
 		LocalDateTime fechaElegida = LocalDateTime.parse(req.queryParams("fecha"), formatter);
 		Estilo estilo = Estilo.valueOf(req.queryParams("estilo"));
 
-		Evento eventoAAgregar = new Evento(req.queryParams("nombreEvento"), fechaElegida, req.queryParams("direccionEvento"), estilo,null,null);
+		Evento eventoAAgregar = new Evento(req.queryParams("nombreEvento"), fechaElegida, req.queryParams("direccionEvento"), estilo,null);
 		usuario.agregarEvento(eventoAAgregar);
 		FactoryRepositorioUsuario.get().modificar(usuario);
 		res.redirect("/eventos");

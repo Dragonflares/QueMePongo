@@ -52,8 +52,8 @@ public class PersistenciaTest{
     {
     	Usuario melisa = EntityManagerHelper.getEntityManager().find(Usuario.class, 1);
     	
-    	melisa.agregarEvento(new Evento("fiesta", LocalDateTime.now(), "en casa 1234", Estilo.CASUAL, null, null));
-    	melisa.agregarEvento(new Evento("casamiento", LocalDateTime.now(), "iglesia 1234", Estilo.ELEGANTE, null, null));
+    	melisa.agregarEvento(new Evento("fiesta", LocalDateTime.now(), "en casa 1234", Estilo.CASUAL, null));
+    	melisa.agregarEvento(new Evento("casamiento", LocalDateTime.now(), "iglesia 1234", Estilo.ELEGANTE, null));
     	
     	FactoryRepositorioUsuario.get().agregar(melisa);
         
@@ -96,18 +96,16 @@ public class PersistenciaTest{
 	   Usuario meli = new Usuario();
 	   meli.setUsername("Melisa Ailen");
 	   LocalDateTime maniana = LocalDateTime.now().plusDays(1);
-	   ImportanciaEvento baja = new Baja();
-	   meli.agregarEvento(new Evento("cumpleanios", maniana, "calle 123", Estilo.CASUAL, null, baja));
+	   meli.agregarEvento(new Evento("cumpleanios", maniana, "calle 123", Estilo.CASUAL, null));
 	   
 	   Usuario martin = new Usuario();
 	   martin.setUsername("Martin");
 	   LocalDateTime dentroDeCinco = LocalDateTime.now().plusDays(5);
-	   martin.agregarEvento(new Evento("cumpleanios", dentroDeCinco, "calle 123", Estilo.DEPORTIVO, null, baja));
+	   martin.agregarEvento(new Evento("cumpleanios", dentroDeCinco, "calle 123", Estilo.DEPORTIVO, null));
 	   
 	   Usuario giuli = new Usuario();
 	   giuli.setUsername("Giuli");
-	   ImportanciaEvento media = new Media();
-	   giuli.agregarEvento(new Evento("cumpleanios", dentroDeCinco, "calle 123", Estilo.ELEGANTE, null, media));
+	   giuli.agregarEvento(new Evento("cumpleanios", dentroDeCinco, "calle 123", Estilo.ELEGANTE, null));
 	   
 	   FactoryRepositorioUsuario.get().agregar(meli);
 	   FactoryRepositorioUsuario.get().agregar(martin);
@@ -123,7 +121,7 @@ public class PersistenciaTest{
    {
 	   Usuario ivan = new Usuario();
 	   ivan.setUsername("Ivan");
-	   Evento eventoNotificado = new Evento("cumpleanios", LocalDateTime.now(), "calle 123", Estilo.CASUAL, null, new Baja());
+	   Evento eventoNotificado = new Evento("cumpleanios", LocalDateTime.now(), "calle 123", Estilo.CASUAL, null);
 	   eventoNotificado.setSeNotificoUltimaSugerencia(true);
 	   ivan.agregarEvento(eventoNotificado);
 	   
@@ -140,7 +138,7 @@ public class PersistenciaTest{
 	   // TODO
 	   Usuario ivan = new Usuario();
 	   ivan.setUsername("Ivancito");
-	   Evento eventoNotificado = new Evento("cumpleanios", LocalDateTime.now(), "calle 123", Estilo.CASUAL, null, new Baja());
+	   Evento eventoNotificado = new Evento("cumpleanios", LocalDateTime.now(), "calle 123", Estilo.CASUAL, null);
 	   ivan.agregarEvento(eventoNotificado);
 	   
 	   FactoryRepositorioUsuario.get().agregar(ivan);

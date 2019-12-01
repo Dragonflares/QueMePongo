@@ -30,19 +30,19 @@ import db.EntidadPersistente;
 @Entity
 @Table(name = "guardarropa")
 public class Guardarropa extends EntidadPersistente{
-	
+
 	@Column(name = "nombre")
 	private String nombre;
-	
+
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Usuario> usuariosConAcceso = new ArrayList<Usuario>();
-	
+
 	@Enumerated(EnumType.ORDINAL)
 	private Estilo estilo;
-	
+
 	@OneToMany( mappedBy = "guardarropas", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 	private List<Prenda> prendasDisponibles = new ArrayList<Prenda>();
-	
+
 
 	public Guardarropa() {}
 	public Guardarropa(Usuario creador, Estilo estilo) {
@@ -82,17 +82,17 @@ public class Guardarropa extends EntidadPersistente{
 	public List<Prenda> getCalzadosDisponibles(){
 		return  prendasDisponibles.stream().filter(p -> p.getCategoria() == Categoria.CALZADO).collect(Collectors.toList());
 	}
-	
+
 	public String getNombre()
 	{
 		return this.nombre;
 	}
-	
+
 	public Estilo getEstilo()
 	{
 		return this.estilo;
 	}
-	
+
 	private double pedirTemperatura(LocalDateTime fecha, int hora) throws IOException {
 		return GestorClimatico.getInstance().obtenerTemperatura(fecha, hora);
 	}
@@ -115,16 +115,16 @@ public class Guardarropa extends EntidadPersistente{
 		ArrayList<Prenda> prendasDeAtuendo = new ArrayList<Prenda>();
 		List<Prenda> prendasSuperiores = 
 				obtenerParteSuperior(evento, temperatura, 0, creador);
-		List<Prenda> prendaInferior = obtenerParteInferior(evento, temperatura, creador, 0);
-		List<Prenda> calzado = obtenerCalzado(evento, temperatura, creador , 0);
+		List<Prenda> prendaInferior = this.getPrendasInferioresDisponibles();//TODO esta harcodeado
+		List<Prenda> calzado = this.getCalzadosDisponibles();//TODO esta harcodeado
 		if(prendasSuperiores.isEmpty() || prendaInferior.isEmpty() || calzado.isEmpty())
 		{
 			return null;
 		}
 		else {
-			prendasDeAtuendo.addAll(prendasSuperiores);
-			prendasDeAtuendo.addAll(prendaInferior);
-			prendasDeAtuendo.addAll(calzado);
+			prendasDeAtuendo.add(this.getPrendasSuperioresDisponibles().get(0)); //TODO esta harcodeado
+			prendasDeAtuendo.add(this.getPrendasInferioresDisponibles().get(0));//TODO esta harcodeado
+			prendasDeAtuendo.add(this.getCalzadosDisponibles().get(0));//TODO esta harcodeado
 		}
 		return new Atuendo(prendasDeAtuendo);
 	}
@@ -192,7 +192,7 @@ public class Guardarropa extends EntidadPersistente{
 			return prendaSuperior;
 		}
 		else {
-//			throw new Exception("No hay suficientes prendas para generar el atuendo");
+			//			throw new Exception("No hay suficientes prendas para generar el atuendo");
 			return null;
 		}
 	}
@@ -263,8 +263,8 @@ public class Guardarropa extends EntidadPersistente{
 			}
 		}
 		else {
-//			throw new Exception("No hay suficientes prendas inferiores "
-//					+ "para crear el atuendo");
+			//			throw new Exception("No hay suficientes prendas inferiores "
+			//					+ "para crear el atuendo");
 			return null;
 		}
 		return prendaInferior;
@@ -336,8 +336,8 @@ public class Guardarropa extends EntidadPersistente{
 			}
 		}
 		else {
-//			throw new Exception("No hay suficientes prendas inferiores "
-//					+ "para crear el atuendo");
+			//			throw new Exception("No hay suficientes prendas inferiores "
+			//					+ "para crear el atuendo");
 			return null;
 		}
 		return prendaDeCalzado;
@@ -346,7 +346,7 @@ public class Guardarropa extends EntidadPersistente{
 	public void cambiarEstilo(Estilo estilo) {
 		this.estilo = estilo;
 	}
-	
+
 	public boolean tienePrenda(Prenda prenda) {
 		if(this.prendasDisponibles == null)
 			return false;
@@ -354,13 +354,13 @@ public class Guardarropa extends EntidadPersistente{
 		{
 			return this.prendasDisponibles.contains(prenda);
 		}
-						
+
 	}
-	
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
+
 	//	public List<Prenda> obtenerAccesorios(Evento evento) throws IOException{
 	//		List<Prenda> accesorios = new ArrayList<Prenda>();
 	//		int limitAccesorios = getAccesoriosDisponibles().size();

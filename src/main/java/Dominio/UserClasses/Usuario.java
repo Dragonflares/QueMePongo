@@ -29,43 +29,55 @@ import db.EntidadPersistente;
 public class Usuario extends EntidadPersistente{
 	@Column(name = "username")
 	private String username;
-	
+
 	@Column(name = "password")
 	private String password;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "tipo_id", referencedColumnName = "id", nullable = true)
 	private TipoDeUsuario tipoDeCuenta;
-	
+
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Guardarropa> guardarropas = new ArrayList<>();
-	
+
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Atuendo> atuendosRechazados = new ArrayList<>();
-	
+
 	@Transient
 	private Atuendo ultimoAtuendo;
-	
+
 	@OneToMany( mappedBy = "creador", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 	//@JoinColumn(name = "id_usuario")
 	private List<Evento> eventos = new ArrayList<>();
+
+	@OneToMany( mappedBy = "creador", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+	private List<Atuendo> sugerenciasAceptadasEnElDia = new ArrayList<>();
+
 	
+
+	public List<Atuendo> getSugerenciasAceptadasEnElDia() {
+		return sugerenciasAceptadasEnElDia;
+	}
+	public void setSugerenciasAceptadasEnElDia(List<Atuendo> sugerenciasAceptadasEnElDia) {
+		this.sugerenciasAceptadasEnElDia = sugerenciasAceptadasEnElDia;
+	}
+
 	@Column(name = "offsetSuperior")
 	private int offsetSuperior;
-	
+
 	@Column(name = "offsetInferior")
 	private int offsetInferior;
-	
+
 	@Column(name = "mail")
 	private String mail;
-	
+
 	@Column(name = "numeroCelular")
 	private String numeroCelular;
-	
+
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_usuario")
 	private List<Atuendo> sugerenciasQueFaltanCalificar = new ArrayList<>();
-	
+
 	public Usuario() {}
 	public Usuario(String username, String password) {
 		this.username = username;
@@ -77,7 +89,7 @@ public class Usuario extends EntidadPersistente{
 		this.setUltimoAtuendo(null);
 		this.tipoDeCuenta = new Gratuito();
 	}
-	
+
 	public Usuario(String username, String mail, String numeroCelular){
 		this.username = username;
 		this.guardarropas = new ArrayList<Guardarropa>();
@@ -89,11 +101,11 @@ public class Usuario extends EntidadPersistente{
 		this.setUltimoAtuendo(null);
 		this.tipoDeCuenta = new Gratuito();
 	}
-	
+
 	public void setAtuendosRechazados(List<Atuendo> atuendosRechazados) {
 		this.atuendosRechazados = atuendosRechazados;
 	}
-	
+
 	public List<Atuendo> getAtuendosRechazados() {
 		return atuendosRechazados;
 	}
@@ -111,7 +123,7 @@ public class Usuario extends EntidadPersistente{
 	}
 
 	public void agregarPrendaAGuardarropa(Guardarropa guardarropa, Prenda prenda) throws Exception {
-		
+
 		if(!this.guardarropas.stream().anyMatch(g -> g.tienePrenda(prenda))) 
 		{
 			tipoDeCuenta.agregarPrendaAGuardarropa(guardarropa, prenda);
@@ -121,9 +133,26 @@ public class Usuario extends EntidadPersistente{
 		}
 
 	}
-	
+
 	public List<Atuendo> getAtuendosSinCalificar(){
 		return this.sugerenciasQueFaltanCalificar;
+	}
+
+
+	public void  agregarASugerenciasAceptadas(Atuendo atuendo) {
+
+		this.sugerenciasAceptadasEnElDia.add(atuendo);
+
+	}
+
+
+	
+
+
+	public void  removerASugerenciasAceptadas(Atuendo atuendo) {
+
+		this.sugerenciasAceptadasEnElDia.remove(atuendo);
+
 	}
 
 	public void agregarARechazados(Atuendo atuendo)
@@ -150,7 +179,7 @@ public class Usuario extends EntidadPersistente{
 			ArrayList<Prenda> prendasX = new ArrayList<>();
 			prendasX.add(prenda);
 			atuendoFinal = new Atuendo(prendasX);
-			
+
 		}
 		else
 		{
@@ -267,7 +296,7 @@ public class Usuario extends EntidadPersistente{
 		this.offsetInferior += cantidad;
 
 	}
-	
+
 	public void calificar(Atuendo atuendo, Calificadores superior, Calificadores inferior) {
 
 		this.sugerenciasQueFaltanCalificar.remove(atuendo);
@@ -282,21 +311,21 @@ public class Usuario extends EntidadPersistente{
 
 	public List<Evento> getEventosOcurridos(LocalDateTime fecha) {
 		return eventos.stream().filter(e -> e.ocurre(fecha)).collect(Collectors.toList());
- 
+
 	}
-	
+
 	public void agregarSugerenciaSinCalificar(Atuendo sugerencia) {
 		this.sugerenciasQueFaltanCalificar.add(sugerencia);
-		
+
 	}
-	
+
 	public void modificarEstilo(Guardarropa guardarropa, Estilo estilo)
 	{
 		List<Guardarropa> guardarropas = this.guardarropas.stream().filter(g -> g.equals(guardarropa)).collect(Collectors.toList());
-		
+
 		guardarropas.get(0).cambiarEstilo(estilo);
 	}
-	
+
 	public List<Guardarropa> getGuardarropas()
 	{
 		return this.guardarropas;
@@ -305,17 +334,17 @@ public class Usuario extends EntidadPersistente{
 	public void eliminarEvento(Evento evento) {
 		this.eventos.remove(evento);
 	}
-	
+
 	public String getPassword()
 	{
 		return this.password;
 	}
-	
+
 	public void setTipoDeCuenta(TipoDeUsuario tipo)
 	{
 		this.tipoDeCuenta = tipo;
 	}
-	
+
 	public List<Evento> getEventosEn(LocalDateTime fecha)
 	{
 		return this.eventos.stream().filter(e -> e.ocurre(fecha)).collect(Collectors.toList());

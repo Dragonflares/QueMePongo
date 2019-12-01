@@ -58,9 +58,9 @@ public class Evento extends EntidadPersistente{
 	@Transient
 	private Frecuencia frecuencia; 
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "importancia_id", referencedColumnName = "id", nullable = true)
-	private ImportanciaEvento importancia;
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "importancia_id", referencedColumnName = "id", nullable = true)
+//	private ImportanciaEvento importancia;
 	
 	@ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 	private List<Atuendo> sugerencias = new ArrayList<Atuendo>();
@@ -73,7 +73,7 @@ public class Evento extends EntidadPersistente{
 	
 	public Evento() {}
 	
-	public Evento (String nombre, LocalDateTime fecha, String direccion, Estilo estilo, Frecuencia frecuencia, ImportanciaEvento importancia)
+	public Evento (String nombre, LocalDateTime fecha, String direccion, Estilo estilo, Frecuencia frecuencia)
 	{
 		this.nombre = nombre;
 		this.fecha = fecha;
@@ -81,18 +81,11 @@ public class Evento extends EntidadPersistente{
 		this.estilo = estilo;
 		this.frecuencia = frecuencia;
 		this.sugerenciaNotificada = false;
-		this.importancia = importancia;
 		this.ultimoAtuendoAceptado = null;
 	}
 	
 	
 	
-	@Override
-	public String toString() {
-		return "Evento [nombre=" + nombre + ", fecha=" + fecha + ", direccion=" + direccion + ", estilo=" + estilo
-				+ ", creador=" + creador + ", frecuencia=" + frecuencia + ", importancia=" + importancia
-				+ ", sugerencias=" + sugerencias + ", sugerenciaNotificada=" + sugerenciaNotificada + "]";
-	}
 
 	public String getNombre()
 	{
@@ -139,9 +132,7 @@ public class Evento extends EntidadPersistente{
 		this.estilo = estilo;
 	}
 
-	public void setImportancia(ImportanciaEvento importancia) {
-		this.importancia = importancia;
-	}
+	
 
 	public Estilo obtenerEstilo()
 	{
@@ -155,7 +146,7 @@ public class Evento extends EntidadPersistente{
 	
 	public boolean estaProximo()
 	{
-		return importancia.estaProximo(this);
+		return this.getFechaLocalDateTime().isBefore(LocalDateTime.now().plusDays(4));
 	}
 	
 	public boolean ocurre(LocalDateTime fechaInteres)
@@ -214,15 +205,9 @@ public class Evento extends EntidadPersistente{
 		return this.direccion;
 	}
 	
-	public ImportanciaEvento getImportanciaEvento()
-	{
-		return this.importancia;
-	}
 	
-	public String getImportancia()
-	{
-		return this.importancia.getImportancia();
-	}
+	
+	
 	
 	public LocalTime getHoraInicio()
 	{

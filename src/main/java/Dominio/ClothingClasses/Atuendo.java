@@ -7,7 +7,9 @@ import java.util.stream.Collectors;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import Dominio.UserClasses.Property;
@@ -19,6 +21,10 @@ import db.EntidadPersistente;
 public class Atuendo extends EntidadPersistente{
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Prenda> prendas = new ArrayList<Prenda>();
+	
+	@ManyToOne
+	@JoinColumn(name = "creador_id", referencedColumnName = "id", insertable = true)
+	private Usuario creador;
 	
 	public Atuendo(ArrayList<Prenda> prendas) throws Exception {
 		if(sonDeDistintoTipo(prendas))
