@@ -103,7 +103,6 @@ public class DAOMemoria<T> implements DAO {
     @SuppressWarnings("unchecked")
 	@Override
 	public TipoDeRopa findByNameTipoDeRopa(String nombre) {
-    	System.out.println(nombre); // TODO SACAR
     	return ((List<TipoDeRopa>) entities).stream()
 				.filter(m -> m.compararNombres(nombre))
 				.findFirst().get();
