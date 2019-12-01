@@ -24,12 +24,12 @@ public class LoginController {
 	public static ModelAndView init(Request req, Response res) {
 
 		HashMap<String, Object> model = new HashMap<>();
-		return new ModelAndView(model, "home/login3.hbs");
+		return new ModelAndView(model, "home/loginMelisa.hbs");
 	}
 
 	public static ModelAndView loginFailure(Request req, Response res) {
 
-		return new ModelAndView(null,"home/errorLogin.hbs");
+		return new ModelAndView(null,"home/errorLoginMelisa.hbs");
 	}
 
 	public static ModelAndView processLogin(Request req, Response res) {
