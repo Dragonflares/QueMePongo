@@ -55,20 +55,20 @@ public class WardrobeController {
 		
 		Atuendo nuevoAtuendo = usuario.getSugerenciasAceptadasEnElDia().get(usuario.getSugerenciasAceptadasEnElDia().size()-1);
 
-		//eventoEnCuestion.setUltimoAtuendoAceptado(nuevoAtuendo);
-
-		List<Evento> eventosProximos = usuario.getEventosProximosYnotificados().stream()
+		eventoEnCuestion.setUltimoAtuendoAceptado(nuevoAtuendo);
+		eventoEnCuestion.setSeNotificoUltimaSugerencia(true);
+		List<Evento> eventosProximos = usuario.getEventosProximosYsinNotificar().stream()
 				.filter(e->e.getUltimoAtuendoAceptado() == null)
 				.collect(Collectors.toList());
 
 
 		viewModel.put("eventosProximos", eventosProximos);
 
-		List<Evento> eventosNoUsados = usuario.getEventosProximosYnotificados().stream()
+		List<Evento> eventosNoUsados = usuario.getEventosNotificados().stream()
 				.filter(e->e.getUltimoAtuendoAceptado()!= null).collect(Collectors.toList());
 		viewModel.put("eventosNoUsados", eventosNoUsados);
 		usuario.setUltimoAtuendo(nuevoAtuendo);
-
+		FactoryRepositorioUsuario.get().modificar(usuario);
 		return new ModelAndView(viewModel, "home/sugerencias.hbs");
 	}
 
@@ -84,7 +84,7 @@ public class WardrobeController {
 
 		if(atuendoSugerencia == null) {
 			Prenda prendaNula = new Prenda.PrendaBuilder()
-					.nombrePrenda("No hay suficientes prendas para generar una recomendaci�n.")
+					.nombrePrenda("No hay suficientes prendas para generar una recomendacion.")
 					.tipoRopa("Nulo")
 					.setearColores("Blanco", "Rojo")
 					.material("Lycra")
@@ -122,6 +122,7 @@ public class WardrobeController {
 		
 		Atuendo nuevoAtuendo = usuario.getUltimoAtuendo();
 		usuario.eliminarDeRechazados(nuevoAtuendo);
+		usuario.agregarASugerenciasAceptadas(nuevoAtuendo);
 		List<Prenda> prendasUltimaSugerencia = nuevoAtuendo.getPrendas();
 		viewModel.put("prendasUltimaSugerencia", prendasUltimaSugerencia);
 		eventoEnCuestion.getSugerencias().add(nuevoAtuendo);
@@ -158,14 +159,14 @@ public class WardrobeController {
 
 		HashMap<String, Object> viewModel = new HashMap<>();
 
-		List<Evento> eventosProximos = usuario.getEventosProximosYnotificados().stream()
+		List<Evento> eventosProximos = usuario.getEventosProximosYsinNotificar().stream()
 				.filter(e->e.getUltimoAtuendoAceptado() == null)
 				.collect(Collectors.toList());
 
 
 		viewModel.put("eventosProximos", eventosProximos);
 
-		List<Evento> eventosNoUsados = usuario.getEventosProximosYnotificados().stream()
+		List<Evento> eventosNoUsados = usuario.getEventosNotificados().stream()
 				.filter(e->e.getUltimoAtuendoAceptado()!= null).collect(Collectors.toList());
 		viewModel.put("eventosNoUsados", eventosNoUsados);
 		return new ModelAndView(viewModel, "home/sugerencias.hbs");
@@ -244,16 +245,38 @@ public class WardrobeController {
 
 
 
-	public static ModelAndView envioSugerencia(Request req, Response res) {
+	public static ModelAndView envioSugerencia(Request req, Response res) throws Exception {
 
 		HashMap<String, Object> viewModel = new HashMap<>();
 
 		String evento = req.queryParams("evento");
 		eventoEnCuestion = usuario.getEventos().stream()
-				.filter(e->e.getNombre().equals(evento)).collect(Collectors.toList()).get(0);
-		List<Prenda> prendasUltimaSugerencia = eventoEnCuestion.getUltimaSugerencia().getPrendas();
-		viewModel.put("prendasUltimaSugerencia", prendasUltimaSugerencia);
+				.filter(e->String.valueOf(e.getId()).equals(evento)).collect(Collectors.toList()).get(0);
+		
+		
+		Atuendo atuendoSugerencia = usuario.pedirRecomendacion(eventoEnCuestion);
 
+		if(atuendoSugerencia == null) {
+			Prenda prendaNula = new Prenda.PrendaBuilder()
+					.nombrePrenda("No hay suficientes prendas para generar una recomendacion.")
+					.tipoRopa("Nulo")
+					.setearColores("Blanco", "Rojo")
+					.material("Lycra")
+					.build();
+			List<Prenda> prendasX = new ArrayList<>();
+			prendasX.add(prendaNula);
+			viewModel.put("prendasUltimaSugerencia", prendasX);
+		}
+		else {
+			viewModel.put("prendasUltimaSugerencia", atuendoSugerencia.getPrendas());
+		}
+		
+		usuario.setUltimoAtuendo(atuendoSugerencia);
+		eventoEnCuestion.agregarSugerencia(atuendoSugerencia);
+
+		usuario.agregarASugerenciasAceptadas(atuendoSugerencia);
+		
+		//viewModel.put("prendasUltimaSugerencia", prendasUltimaSugerencia);
 		return new ModelAndView(viewModel, "home/recomendacion.hbs");
 	}
 

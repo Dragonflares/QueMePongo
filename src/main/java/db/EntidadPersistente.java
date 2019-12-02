@@ -10,7 +10,11 @@ public class EntidadPersistente {
     @GeneratedValue
     private int id;
 
-    public int getId() {
+    public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getId() {
         return id;
     }
 }

@@ -86,7 +86,7 @@ public class Router {
 		Spark.get("/sugerencias", WardrobeController::mostrarSugerencias,engine);
 		Spark.post("/verRecomendacion", WardrobeController::envioSugerencia, engine);
 		Spark.post("/generarRecomendacion", WardrobeController::generaRecomendacion, engine);
-		Spark.post("/aceptarRecomendacion", WardrobeController::aceptarRecomendacion, engine);
+		Spark.post("/sugerencias", WardrobeController::aceptarRecomendacion, engine);
 		Spark.post("/rechazarRecomendacion", WardrobeController::rechazarRecomendacion, engine);
 		Spark.post("/deshacerRecomendacion", WardrobeController::deshacerRecomendacion, engine);
 

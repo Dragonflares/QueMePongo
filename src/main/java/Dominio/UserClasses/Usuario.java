@@ -208,6 +208,7 @@ public class Usuario extends EntidadPersistente{
 
 	public void agregarEvento(Evento evento) {
 		evento.setCreador(this);
+		evento.setId(this.eventos.size());
 		this.eventos.add(evento);
 	}
 
@@ -277,6 +278,13 @@ public class Usuario extends EntidadPersistente{
 		return eventos.stream().filter(e -> e.estaProximo() && e.getSeNotificoUltimaSugerencia()).collect(Collectors.toList());
 	}
 
+	
+	public List<Evento> getEventosNotificados()
+	{
+		return eventos.stream().filter(e -> e.getSeNotificoUltimaSugerencia()).collect(Collectors.toList());
+	}
+	
+	
 	public Atuendo getUltimoAtuendo() {
 		return ultimoAtuendo;
 	}

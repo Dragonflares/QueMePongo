@@ -59,10 +59,10 @@ public class Server {
 		Guardarropa guardarropa2 = new Guardarropa(usuario1, Estilo.CASUAL);
 		guardarropa2.setNombre("Guardarropas");
 		LocalDateTime dentroDeUnaSemana = LocalDateTime.now().plusDays(7);
-		Evento evento1 = new Evento("Cumpleanios", LocalDateTime.now().plusDays(2), "Avenida 123", Estilo.ELEGANTE_SPORT, null);
-		Evento evento2 = new Evento("Casamiento", dentroDeUnaSemana, "Calle 13", Estilo.ELEGANTE, null);
+		Evento evento1 = new Evento("Cumpleanios", LocalDateTime.now().plusDays(2), "Avenida 123", Estilo.CASUAL, null);
+		Evento evento2 = new Evento("Casamiento", dentroDeUnaSemana, "Calle 13", Estilo.CASUAL, null);
 		Evento evento3 = new Evento("Fiesta", LocalDateTime.now().minusDays(1), "Calle falsa 123", Estilo.CASUAL, null);
-		Evento evento4 = new Evento("Bautismo", dentroDeUnaSemana, "Iglesa 123", Estilo.FORMAL, null);
+		Evento evento4 = new Evento("Bautismo", dentroDeUnaSemana, "Iglesa 123", Estilo.CASUAL, null);
 		usuario1.agregarEvento(evento1);
 		usuario1.agregarEvento(evento2);
 		usuario2.agregarEvento(evento3);
@@ -262,7 +262,7 @@ public class Server {
 		ArrayList<Prenda> prendassugerencia = new ArrayList<Prenda>();
 		prendassugerencia.add(Sandalias2);
 		Atuendo sugerencia = new Atuendo(prendassugerencia);
-		evento1.agregarSugerencia(sugerencia);
+		//evento1.agregarSugerencia(sugerencia);
 
 		usuario1.agregarGuardarropa(guardarropa1);
 		
@@ -291,10 +291,10 @@ public class Server {
 
 		guardarropa1.permitirAccesoaUsuario(usuario2);
 		usuario2.agregarGuardarropa(guardarropa2);
-		evento1.setUltimoAtuendoAceptado(sugerencia);
+		//evento1.setUltimoAtuendoAceptado(sugerencia);
 		usuario1.agregarSugerenciaSinCalificar(sugerencia);
-		evento1.setSeNotificoUltimaSugerencia(true);
-		evento1.getPrendasUltimoAtuendo();
+		//evento1.setSeNotificoUltimaSugerencia(true);
+		//evento1.getPrendasUltimoAtuendo();
 		
 		ArrayList<Prenda> nuevaSugerencia2 = new ArrayList<Prenda>();
 		nuevaSugerencia2.add(Pollera2);
@@ -305,7 +305,7 @@ public class Server {
 		usuario1.agregarSugerenciaSinCalificar(sugerencia2);
 		evento3.agregarSugerencia(sugerencia2);
 		evento3.setUltimoAtuendoAceptado(sugerencia2);
-		
+		evento3.setSeNotificoUltimaSugerencia(true);
 		FactoryRepositorioUsuario.get().agregar(usuario1);
 		FactoryRepositorioUsuario.get().agregar(usuario2);
 		}

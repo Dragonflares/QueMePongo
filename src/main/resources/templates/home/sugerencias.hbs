@@ -45,7 +45,7 @@
         <td>{{ nombre }}</td>
         
         <td><form method="POST" action="/verRecomendacion" align="left">
-            <input id="evento" name="evento" type="hidden" value={{ nombre }}>
+            <input id="evento" name="evento" type="hidden" value={{ id }}>
             <button type="submit" class="btn btn-primary">Ver sugerencia</button></form></td>
       </tr>
     {{/each}}
@@ -58,7 +58,7 @@
             
         
 
-        <h2>Atuendos aceptados pero no usados</h2>
+        <h2>Sugerencias aceptados de Eventos </h2>
 
         <div>
 
@@ -87,6 +87,39 @@
 
 <br></br>
   </div>
+
+
+
+
+<h2>Sugerencias aceptados del Dia </h2>
+
+        <div>
+
+        <table class="table  table-dark table-hover">
+  <thead>
+    <tr>
+      <th>Atuendo</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    {{#each sugerenciasAceptadasDelDia}}
+      <tr>
+        <td>{{#each prendasUltimoAtuendo}}
+            <h6> {{nombrePrenda}}</h6>
+        {{/each}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+
+<br></br>
+  </div>
+
+
+
 
 
 {{/partial}}
