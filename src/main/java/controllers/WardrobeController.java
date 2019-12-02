@@ -63,12 +63,14 @@ public class WardrobeController {
 
 
 		viewModel.put("eventosProximos", eventosProximos);
-
+		
 		List<Evento> eventosNoUsados = usuario.getEventosNotificados().stream()
 				.filter(e->e.getUltimoAtuendoAceptado()!= null).collect(Collectors.toList());
 		viewModel.put("eventosNoUsados", eventosNoUsados);
 		usuario.setUltimoAtuendo(nuevoAtuendo);
 		FactoryRepositorioUsuario.get().modificar(usuario);
+		viewModel.put("sugerenciasAceptadasDelDia", usuario.getSugerenciasAceptadasEnElDia());
+
 		return new ModelAndView(viewModel, "home/sugerencias.hbs");
 	}
 
@@ -165,7 +167,10 @@ public class WardrobeController {
 
 
 		viewModel.put("eventosProximos", eventosProximos);
-
+		
+		
+		
+		viewModel.put("sugerenciasAceptadasDelDia", usuario.getSugerenciasAceptadasEnElDia());
 		List<Evento> eventosNoUsados = usuario.getEventosNotificados().stream()
 				.filter(e->e.getUltimoAtuendoAceptado()!= null).collect(Collectors.toList());
 		viewModel.put("eventosNoUsados", eventosNoUsados);
