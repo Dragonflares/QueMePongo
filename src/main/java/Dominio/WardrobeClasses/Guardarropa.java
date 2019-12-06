@@ -115,16 +115,16 @@ public class Guardarropa extends EntidadPersistente{
 		ArrayList<Prenda> prendasDeAtuendo = new ArrayList<Prenda>();
 		List<Prenda> prendasSuperiores = 
 				obtenerParteSuperior(evento, temperatura, 0, creador);
-		List<Prenda> prendaInferior = this.getPrendasInferioresDisponibles();//TODO esta harcodeado
-		List<Prenda> calzado = this.getCalzadosDisponibles();//TODO esta harcodeado
+		List<Prenda> prendaInferior = obtenerParteInferior(evento, temperatura, creador, 0);
+		List<Prenda> calzado = obtenerCalzado(evento, temperatura, creador, 0);
 		if(prendasSuperiores.isEmpty() || prendaInferior.isEmpty() || calzado.isEmpty())
 		{
 			return null;
 		}
 		else {
-			prendasDeAtuendo.add(this.getPrendasSuperioresDisponibles().get(0)); //TODO esta harcodeado
-			prendasDeAtuendo.add(this.getPrendasInferioresDisponibles().get(0));//TODO esta harcodeado
-			prendasDeAtuendo.add(this.getCalzadosDisponibles().get(0));//TODO esta harcodeado
+			prendasDeAtuendo.addAll(prendasSuperiores);
+			prendasDeAtuendo.addAll(prendaInferior);
+			prendasDeAtuendo.addAll(calzado);
 		}
 		return new Atuendo(prendasDeAtuendo);
 	}
