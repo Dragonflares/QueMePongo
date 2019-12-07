@@ -31,7 +31,7 @@ public class Router {
 	}
 
 	public static void configure() {
-
+		WardrobeController controller = new WardrobeController();
 		Spark.staticFiles.location("/public");
 		setPublicRoutes(publicRoutes);
 		
@@ -68,29 +68,29 @@ public class Router {
 		Spark.post("/loginFailure", LoginController::processLogin, engine);
 		Spark.post("/login", LoginController::processLogin, engine);
 		 
-		Spark.get("/", WardrobeController::init,engine);
-		Spark.get("/guardarropas/:idGuardarropa", WardrobeController::indexViewDatosDeUnGuardarropa, engine);
-		Spark.get("/guardarropas", WardrobeController::mostrarPrendas, engine);
+		Spark.get("/", controller::init,engine);
+		Spark.get("/guardarropas/:idGuardarropa", controller::indexViewDatosDeUnGuardarropa, engine);
+		Spark.get("/guardarropas", controller::mostrarPrendas, engine);
 		
-		Spark.get("/altaPrenda", WardrobeController::indexViewAgregarPrenda, engine);	
-		Spark.post("/altaPrenda", WardrobeController::registrarPrenda);
+		Spark.get("/altaPrenda", controller::indexViewAgregarPrenda, engine);	
+		Spark.post("/altaPrenda", controller::registrarPrenda);
 		
 		Spark.path("/eventos",  () -> {
-			Spark.get("", WardrobeController::verEventos, engine); // creo que no tendria que ser Wardrobe, pero lo puse para ponerle un cliente a Event
-			Spark.get("/alta", WardrobeController::agregarEvento, engine);
-			Spark.post("/alta", WardrobeController::processAgregarEvento);
+			Spark.get("", controller::verEventos, engine); // creo que no tendria que ser Wardrobe, pero lo puse para ponerle un cliente a Event
+			Spark.get("/alta", controller::agregarEvento, engine);
+			Spark.post("/alta", controller::processAgregarEvento);
 		});
 		
-		Spark.get("/calificaciones", WardrobeController::indexObtenerAtuendosCalificar,engine);
-		Spark.post("/calificaciones", WardrobeController::califico,engine);
-		Spark.get("/sugerencias", WardrobeController::mostrarSugerencias,engine);
-		Spark.post("/verRecomendacion", WardrobeController::envioSugerencia, engine);
-		Spark.post("/generarRecomendacion", WardrobeController::generaRecomendacion, engine);
-		Spark.post("/sugerencias", WardrobeController::aceptarRecomendacion, engine);
-		Spark.post("/rechazarRecomendacion", WardrobeController::rechazarRecomendacion, engine);
-		Spark.post("/deshacerRecomendacion", WardrobeController::deshacerRecomendacion, engine);
+		Spark.get("/calificaciones", controller::indexObtenerAtuendosCalificar,engine);
+		Spark.post("/calificaciones", controller::califico,engine);
+		Spark.get("/sugerencias", controller::mostrarSugerencias,engine);
+		Spark.post("/verRecomendacion", controller::envioSugerencia, engine);
+		Spark.post("/generarRecomendacion", controller::generaRecomendacion, engine);
+		Spark.post("/sugerencias", controller::aceptarRecomendacion, engine);
+		Spark.post("/rechazarRecomendacion", controller::rechazarRecomendacion, engine);
+		Spark.post("/deshacerRecomendacion", controller::deshacerRecomendacion, engine);
 
-		Spark.get("/out", WardrobeController::logOut, engine); // este boton no esta en nuestro tp, pero lo puse porque si
+		Spark.get("/out", controller::logOut, engine); // este boton no esta en nuestro tp, pero lo puse porque si
 	}
 
 }

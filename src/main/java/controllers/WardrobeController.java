@@ -34,22 +34,37 @@ import spark.Response;
 
 
 public class WardrobeController {
-	public static Usuario usuario;
-	private static Guardarropa guardarropaSeleccionado = null;
-	private static Evento eventoEnCuestion = null;
+	public Usuario usuario;
+	private Guardarropa guardarropaSeleccionado = null;
+	private Evento eventoEnCuestion = null;
 
-	public static ModelAndView init(Request req, Response res) {
+	public void setUsuario(Usuario user)
+	{
+		this.usuario = user;
+	}
+	
+	public  ModelAndView init(Request req, Response res) {
 
+		String username = req.session().attribute("username");
+
+		String password = req.session().attribute("password");
+		Usuario user = FactoryRepositorioUsuario.get().buscarUsuario(username, password);
+		usuario = user;
 		HashMap<String, Object> viewModel = new HashMap<>();
-		viewModel.put("guardarropas", usuario.getGuardarropas());
+
+		viewModel.put("guardarropas", this.usuario.getGuardarropas());
 
 		return new ModelAndView(viewModel, "home/guardarropas.hbs");
 	}
 
 
 
-	public static ModelAndView aceptarRecomendacion(Request req, Response res) {
+	public  ModelAndView aceptarRecomendacion(Request req, Response res) {
+		String username = req.session().attribute("username");
 
+		String password = req.session().attribute("password");
+		Usuario user = FactoryRepositorioUsuario.get().buscarUsuario(username, password);
+		usuario = user;
 		HashMap<String, Object> viewModel = new HashMap<>();
 
 		
@@ -75,8 +90,12 @@ public class WardrobeController {
 	}
 
 
-	public static ModelAndView rechazarRecomendacion(Request req, Response res) throws Exception {
+	public  ModelAndView rechazarRecomendacion(Request req, Response res) throws Exception {
+		String username = req.session().attribute("username");
 
+		String password = req.session().attribute("password");
+		Usuario user = FactoryRepositorioUsuario.get().buscarUsuario(username, password);
+		usuario = user;
 		HashMap<String, Object> viewModel = new HashMap<>();
 		Atuendo atuendoRechazado = usuario.getSugerenciasAceptadasEnElDia().get(usuario.getSugerenciasAceptadasEnElDia().size()-1);
 		usuario.removerASugerenciasAceptadas(atuendoRechazado);
@@ -105,8 +124,12 @@ public class WardrobeController {
 	}
 
 
-	public static ModelAndView deshacerRecomendacion(Request req, Response res) {
+	public  ModelAndView deshacerRecomendacion(Request req, Response res) {
+		String username = req.session().attribute("username");
 
+		String password = req.session().attribute("password");
+		Usuario user = FactoryRepositorioUsuario.get().buscarUsuario(username, password);
+		usuario = user;
 		HashMap<String, Object> viewModel = new HashMap<>();
 		if(eventoEnCuestion.getSugerencias().isEmpty()) {
 		}
@@ -134,8 +157,12 @@ public class WardrobeController {
 
 
 
-	public static ModelAndView indexViewDatosDeUnGuardarropa(Request req, Response res) {
+	public  ModelAndView indexViewDatosDeUnGuardarropa(Request req, Response res) {
+		String username = req.session().attribute("username");
 
+		String password = req.session().attribute("password");
+		Usuario user = FactoryRepositorioUsuario.get().buscarUsuario(username, password);
+		usuario = user;
 		int id=Integer.parseInt(req.params(":idGuardarropa"));
 
 		if(Config.useDataBase)
@@ -149,7 +176,7 @@ public class WardrobeController {
 		return null;
 	}
 
-	public static ModelAndView mostrarPrendas(Request req, Response res) {
+	public  ModelAndView mostrarPrendas(Request req, Response res) {
 		HashMap<String, Object> viewModel = new HashMap<>();
 		viewModel.put("guardarropas", guardarropaSeleccionado);
 		viewModel.put("prendasDisponibles", guardarropaSeleccionado.getPrendasDisponibles());
@@ -157,8 +184,12 @@ public class WardrobeController {
 	}
 
 
-	public static ModelAndView mostrarSugerencias(Request req, Response res) {
+	public  ModelAndView mostrarSugerencias(Request req, Response res) {
+		String username = req.session().attribute("username");
 
+		String password = req.session().attribute("password");
+		Usuario user = FactoryRepositorioUsuario.get().buscarUsuario(username, password);
+		usuario = user;
 		HashMap<String, Object> viewModel = new HashMap<>();
 
 		List<Evento> eventosProximos = usuario.getEventosProximosYsinNotificar().stream()
@@ -179,8 +210,12 @@ public class WardrobeController {
 	}
 
 
-	public static ModelAndView generaRecomendacion(Request req, Response res) throws Exception {
+	public  ModelAndView generaRecomendacion(Request req, Response res) throws Exception {
+		String username = req.session().attribute("username");
 
+		String password = req.session().attribute("password");
+		Usuario user = FactoryRepositorioUsuario.get().buscarUsuario(username, password);
+		usuario = user;
 		HashMap<String, Object> viewModel = new HashMap<>();
 
 		String estilo = req.queryParams("estilo");
@@ -250,8 +285,12 @@ public class WardrobeController {
 
 
 
-	public static ModelAndView envioSugerencia(Request req, Response res) throws Exception {
+	public  ModelAndView envioSugerencia(Request req, Response res) throws Exception {
+		String username = req.session().attribute("username");
 
+		String password = req.session().attribute("password");
+		Usuario user = FactoryRepositorioUsuario.get().buscarUsuario(username, password);
+		usuario = user;
 		HashMap<String, Object> viewModel = new HashMap<>();
 
 		String evento = req.queryParams("evento");
@@ -286,7 +325,7 @@ public class WardrobeController {
 	}
 
 
-	public static ModelAndView indexViewAgregarPrenda(Request req, Response res) throws JsonIOException, JsonSyntaxException, FileNotFoundException {
+	public  ModelAndView indexViewAgregarPrenda(Request req, Response res) throws JsonIOException, JsonSyntaxException, FileNotFoundException {
 
 		HashMap<String, Object> viewModel = new HashMap<>();
 		viewModel.put("tipos", FactoryRepositorioRopa.get().getTipoDeRopas());
@@ -297,8 +336,12 @@ public class WardrobeController {
 		return new ModelAndView(viewModel, "home/altaPrenda.hbs");
 	}
 	
-	public static ModelAndView registrarPrenda(Request req, Response res) throws JsonIOException, JsonSyntaxException, ProcessingDataFailedException, FileNotFoundException, Exception {
-		
+	public  ModelAndView registrarPrenda(Request req, Response res) throws JsonIOException, JsonSyntaxException, ProcessingDataFailedException, FileNotFoundException, Exception {
+		String username = req.session().attribute("username");
+
+		String password = req.session().attribute("password");
+		Usuario user = FactoryRepositorioUsuario.get().buscarUsuario(username, password);
+		usuario = user;
 		String tipo = req.queryParams("tipo");
 		String material = req.queryParams("material");
 		String colorPrincipal = req.queryParams("colorPrincipal");
@@ -324,7 +367,12 @@ public class WardrobeController {
 
 	//---------------------------------Calificaciones-------------------------
 
-	public static ModelAndView indexObtenerAtuendosCalificar(Request req, Response res) {
+	public  ModelAndView indexObtenerAtuendosCalificar(Request req, Response res) {
+		String username = req.session().attribute("username");
+
+		String password = req.session().attribute("password");
+		Usuario user = FactoryRepositorioUsuario.get().buscarUsuario(username, password);
+		usuario = user;
 		HashMap<String, Object> viewModel = new HashMap<>();
 		//viewModel.put("id", guardarropaSeleccionado.getId() );
 		viewModel.put("evento", usuario.getEventos().stream()
@@ -334,7 +382,12 @@ public class WardrobeController {
 		return new ModelAndView(viewModel, "home/calificaratuendo.hbs");
 	}
 
-	public static ModelAndView califico(Request req, Response res) {
+	public  ModelAndView califico(Request req, Response res) {
+		String username = req.session().attribute("username");
+
+		String password = req.session().attribute("password");
+		Usuario user = FactoryRepositorioUsuario.get().buscarUsuario(username, password);
+		usuario = user;
 		HashMap<String, Object> viewModel = new HashMap<>();
 		String temperaturaInferior = req.queryParams("temperaturaParteInferior");
 		String temperaturaSuperior = req.queryParams("temperaturaParteSuperior");
@@ -407,7 +460,7 @@ public class WardrobeController {
 
 	//---------------------------------Log out---------------------------------
 
-	public static ModelAndView logOut(Request req, Response res) {
+	public  ModelAndView logOut(Request req, Response res) {
 
 		req.session().removeAttribute("username");
 		res.redirect("/"); 
@@ -416,15 +469,19 @@ public class WardrobeController {
 
 
 	// ------------------------------- Eventos -------------------------------
-	public static ModelAndView verEventos(Request req, Response res) throws InterruptedException {
+	public  ModelAndView verEventos(Request req, Response res) throws InterruptedException {
+		String username = req.session().attribute("username");
 
+		String password = req.session().attribute("password");
+		Usuario user = FactoryRepositorioUsuario.get().buscarUsuario(username, password);
+		usuario = user;
 		HashMap<String, Object> viewModel = new HashMap<>();
 		viewModel.put("eventitos", usuario.getEventos());
 
 		return new ModelAndView(viewModel, "home/seleccionarFecha.hbs");
 	}
 
-	public static ModelAndView agregarEvento(Request req, Response res) 
+	public  ModelAndView agregarEvento(Request req, Response res) 
 	{
 		HashMap<String, Object> viewModel = new HashMap<>();
 		String fechita = req.queryParams("fecha").split("G")[0];
@@ -444,7 +501,7 @@ public class WardrobeController {
 		return new ModelAndView(viewModel, "home/altaEvento.hbs");
 	}
 
-	public static Void processAgregarEvento(Request req, Response res) {
+	public  Void processAgregarEvento(Request req, Response res) {
 		//30/11/2019 00:00
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm", Locale.ENGLISH); 
 		LocalDateTime fechaElegida = LocalDateTime.parse(req.queryParams("fecha"), formatter);

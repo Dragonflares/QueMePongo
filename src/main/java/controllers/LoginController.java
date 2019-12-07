@@ -43,9 +43,13 @@ public class LoginController {
 			res.redirect("/loginFailure");
 		} else {
 			res.status(200);
-			req.session().attribute("username", username);
+			Session session = req.session(true);
+			session.attribute("username", username);
+			session.attribute("password", password);
 
-			WardrobeController.usuario = FactoryRepositorioUsuario.get().buscarUsuario(username, password);
+			WardrobeController controller = new WardrobeController();
+			controller.setUsuario(FactoryRepositorioUsuario.get().buscarUsuario(username, password));
+
 			res.redirect("/");
 		}
 
@@ -53,11 +57,11 @@ public class LoginController {
 	}
 
 	public static Void logout(Request req, Response res) {
-        Session session = req.session(true);
-        session.invalidate();
-        req.session().removeAttribute("username");
-        res.redirect("/login");
-        return null;
-    }
+		Session session = req.session(true);
+		session.invalidate();
+		req.session().removeAttribute("username");
+		res.redirect("/login");
+		return null;
+	}
 
 }
