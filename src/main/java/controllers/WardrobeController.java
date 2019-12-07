@@ -14,6 +14,7 @@ import com.google.gson.JsonSyntaxException;
 
 import Dominio.ClothingClasses.Atuendo;
 import Dominio.ClothingClasses.Prenda;
+import Dominio.ClothingClasses.TipoDeRopa;
 import Dominio.Estilish.Estilo;
 import Dominio.EventClasses.Evento;
 import Dominio.UserClasses.Bien;
@@ -328,7 +329,8 @@ public class WardrobeController {
 	public  ModelAndView indexViewAgregarPrenda(Request req, Response res) throws JsonIOException, JsonSyntaxException, FileNotFoundException {
 
 		HashMap<String, Object> viewModel = new HashMap<>();
-		viewModel.put("tipos", FactoryRepositorioRopa.get().getTipoDeRopas());
+		List<TipoDeRopa> tipos = FactoryRepositorioRopa.get().getTipoDeRopas().stream().filter(t -> !t.compararNombres("Nulo")).collect(Collectors.toList());
+		viewModel.put("tipos", tipos);
 		viewModel.put("materiales", FactoryRepositoriosMaterial.get().getMateriales());
 		viewModel.put("colores", FactoryRepositorioColor.get().getColores());	
 		
